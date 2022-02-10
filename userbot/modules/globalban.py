@@ -116,10 +116,10 @@ async def ungban(event):
     count = 0
     fiz = len(san)
     if fiz == 0:
-        await ungbun.edit("**Anda Tidak mempunyai GC yang anda admin 🥺**")
+        await ungbun.edit("**Terjadi Kesalahan Karna Anda Bukan lah admin.**")
         return
     await ungbun.edit(
-        f"**initiating ungban of the** [Jamet](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
+        f"**initiating ungban of the** [null](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
     )
     for i in range(fiz):
         try:
