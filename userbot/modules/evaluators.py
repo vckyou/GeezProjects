@@ -77,7 +77,7 @@ async def _(event):
     final_output = f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n`{evaluation}` \n"
 
     if len(final_output) > 4096:
-        man = final_output.replace("`", "").replace("**", "").replace("__", "")
+        geez = final_output.replace("`", "").replace("**", "").replace("__", "")
         with io.BytesIO(str.encode(man)) as out_file:
             out_file.name = "eval.txt"
             await event.client.send_file(
