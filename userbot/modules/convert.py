@@ -4,8 +4,10 @@
 # you may not use this file except in compliance with the License.
 #
 # Ported by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 #
 
 import asyncio
