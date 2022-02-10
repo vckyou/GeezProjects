@@ -6,8 +6,11 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 #
 # Ported by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/Lunatic0de & t.me/SharingUserbot
+# Thanks to Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 
 import os
 import random
