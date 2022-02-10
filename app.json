@@ -1,0 +1,65 @@
+{
+  "name": "Geez Userbot",
+  "description": "[GeezUserbot] userbot Telegram modular yang berjalan pada Python 3.9+",
+  "logo": "https://telegra.ph/file/02b3dbeb4df30582f0d66.jp",
+  "keywords": ["telegram", "userbot", "geezprojects", "modular", "python"],
+  "repository": "https://github.com/vckyou/GeezProjects",
+  "stack": "container",
+  "env": {
+    "API_KEY": {
+      "description": "Dapatkan API KEY di web my.telegram.org Masukan yg APP ID Telegram",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Dapatkan API Hash di web my.telegram.org",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Buat Bot di t.me/botfather Masukan BOT tokennya disini",
+      "required": false
+    },
+    "BOT_USERNAME": {
+      "description": "Buat Bot di t.me/botfather Masukan BOT Usernamenya pake @",
+      "required": false
+    },
+     "STRING_SESSION": {
+      "description": "Dapatkan String Session di Grup » https://t.me/GeezSharing » Lalu ketik #string",
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Nama App heroku, Nama App yang paling pertama di isi (liat paling atas)",
+      "required": true
+    },
+    "HEROKU_API_KEY": {
+      "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
+      "required": true
+    },
+    "BOTLOG_CHATID": {
+      "description": "Buatlah grup telegram publik lalu masukan @MissRose_bot ketik /id, masukan id grup nya disini. contoh: -1001473548xxx",
+      "value": "Isi id grup mu wajib dengan awalan -100",
+      "required": true
+    }
+  },
+  "addons": [
+    {
+    "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
