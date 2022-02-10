@@ -23,7 +23,7 @@ from telethon import __version__, version
 
 from userbot import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_TEKS_CUSTOM, BOT_VER
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, StartTime, bot
+from userbot import CMD_HELP, StartTime, bot, GROUP, CHANNEL
 from userbot.utils import bash, edit_or_reply, geez_cmd
 
 from .ping import get_readable_time
@@ -176,13 +176,13 @@ async def amireallyalive(alive):
         f" {alive_text} \n"
         f" ─────────────────── \n"
         f" ❍ `Name      :` [{user.first_name}](tg://user?id={user.id}) \n"
-        f" ❍ `Telethon  :` Ver {version.__version__} \n"
-        f" ❍ `Python    :` Ver {python_version()} \n"
-        f" ❍ `Pytgcalls`: `{pytgcalls.__version__}` \n"
+        f" ❍ `Telethon  :` {version.__version__} \n"
+        f" ❍ `Python    :` {python_version()} \n"
+        f" ❍ `Pytgcalls :` {pytgcalls.__version__} \n"
         f" ❍ `Bot Ver   :` {BOT_VER} \n"
         f" ❍ `Modules   :` {len(modules)} Modules \n"
         f"╭═───────╼⌘╾───────═ \n"
-        f"┃[𝗥𝗲𝗽𝗼](https://github.com/GeezProjects)  |  [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](t.me/GeezSupport)  |  "
+        f"┃[𝗥𝗲𝗽𝗼](https://github.com/{GROUP})  |  [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](t.me/{CHANNEL})  |  "
         f"[𝗢𝘄𝗻𝗲𝗿](tg://user?id={user.id})\n"
         f"╰═──────╼═⌘═╾───────═")
     if ALIVE_LOGO:
