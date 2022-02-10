@@ -1,6 +1,8 @@
-# Credits: @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# ported by @mrismanaziz
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 
 import os
 from pathlib import Path
