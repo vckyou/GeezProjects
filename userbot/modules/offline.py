@@ -47,20 +47,20 @@ async def set_afk(afk_e):
     if string:
         AFKREASON = string
         await afk_e.edit(
-            f"**✘ {owner} Telah OFF ✘**\
-        \n✦҈͜͡➳ **Karena :** `{string}`"
+            f"**✆ {owner} Telah OFF **\
+        \n❖▸ **Karena :** `{string}`"
         )
     else:
-        await afk_e.edit(f"**✘ {owner} Telah OFF ✘**")
+        await afk_e.edit(f"**✆ {owner} Telah OFF !!**")
     if user.last_name:
         await afk_e.client(
             UpdateProfileRequest(
-                first_name=user.first_name, last_name=user.last_name + "【 OFF 】"
+                first_name=user.first_name, last_name=user.last_name + ""
             )
         )
     else:
         await afk_e.client(
-            UpdateProfileRequest(first_name=user.first_name, last_name="【 OFF 】")
+            UpdateProfileRequest(first_name=user.first_name, last_name="")
         )
     if BOTLOG_CHATID:
         await afk_e.client.send_message(BOTLOG_CHATID, f"#OFF\n**{owner} Telah OFF!**")
@@ -82,7 +82,7 @@ async def type_afk_is_not_true(notafk):
     global afk_end
     user = await bot.get_me()
     last = user.last_name
-    if last and last.endswith("【 OFF 】"):
+    if last and last.endswith(""):
         last1 = last[:-12]
     else:
         last1 = ""
@@ -170,8 +170,8 @@ async def mention_afk(mention):
         if mention.sender_id not in USERS:
             if AFKREASON:
                 await mention.reply(
-                    f"**✘ {owner} Sedang OFF ✘** {afk_since} **Yang Lalu.**\
-                        \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
+                    f"**✆ {owner} Sedang OFF** {afk_since} **Yang Lalu.**\
+                        \n❖▸ **Karena :** `{AFKREASON}`"
                 )
             else:
                 await mention.reply(str(choice(AFKSTR)))
@@ -180,8 +180,8 @@ async def mention_afk(mention):
             if USERS[mention.sender_id] % randint(2, 4) == 0:
                 if AFKREASON:
                     await mention.reply(
-                        f"**✘ {owner} Masih OFF ✘** {afk_since} **Yang Lalu.**\
-                            \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
+                        f"**✆ {owner} Masih OFF!!** {afk_since} **Yang Lalu.**\
+                            \n❖▸ **Karena :** `{AFKREASON}`"
                     )
                 else:
                     await mention.reply(str(choice(AFKSTR)))
@@ -250,8 +250,8 @@ async def afk_on_pm(sender):
             if sender.sender_id not in USERS:
                 if AFKREASON:
                     await sender.reply(
-                        f"✘ **{owner} Sedang OFF ✘** {afk_since} **Yang Lalu** ✘.\
-                        \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
+                        f"✆ **{owner} Sedang OFF** {afk_since} **Yang Lalu**.\
+                        \n❖▸ **Karena :** `{AFKREASON}`"
                     )
                 else:
                     await sender.reply(str(choice(AFKSTR)))
@@ -261,8 +261,8 @@ async def afk_on_pm(sender):
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
                         await sender.reply(
-                            f"✘ **{owner} Sedang OFF ✘** {afk_since} **Yang Lalu. ✘**\
-                            \n✦҈͜͡➳ **Karena :** `{AFKREASON}`"
+                            f"✆ **{owner} Sedang OFF!!** {afk_since} **Yang Lalu. **\
+                            \n❖▸ **Karena :** `{AFKREASON}`"
                         )
                     else:
                         await sender.reply(str(choice(AFKSTR)))
