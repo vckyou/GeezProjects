@@ -1,8 +1,3 @@
-# Copyright (C) 2021 Man-Userbot
-# Created by mrismanaziz
-# FROM <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
-
 from asyncio.exceptions import TimeoutError
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
