@@ -170,17 +170,19 @@ async def amireallyalive(alive):
     user = await bot.get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f"**[GeezProjects](https://github.com/vckyou/GeezProjects) is Up and Running.**\n\n"
-        f"**{alive_text}**\n\n"
-        f" 🤴 **Owner**  : [{user.first_name}](tg://user?id={user.id}) \n"
-        f"📂 **Modules   :** `{len(modules)} Modules` \n"
-        f"🛠️ **Bot Ver   :** `{BOT_VER}` \n"
-        f"🐍 **Python    :** `{python_version()}` \n"
-        f"🖥️ **Pytgcalls :** `{pytgcalls.__version__}` \n"
-        f"⚙️ **Telethon  :** `{version.__version__}` \n"
-        f"📌 **Uptime    :** `{uptime}`\n\n"
-        f"   **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/{GROUP})** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/{CHANNEL})** | **[𝗢𝘄𝗻𝗲𝗿](tg://user?id={user.id})**\n"
-    )
+        f"╭═──────╼═⌘═╾───────═\n"
+        f"┃[⚡ＧΞ ΞＺ - ＰＲＯＪＥＣＴ⚡](https://github.com/vckyou/GeezProjects)\n"
+        f"╰═─────╼══⌘══╾─────═ \n"
+        f" ❍ `Name      :` [{user.first_name}](tg://user?id={user.id}) \n"
+        f" ❍ `Telethon  :` Ver {version.__version__} \n"
+        f" ❍ `Python    :` Ver {python_version()} \n"
+        f" ❍ `Pytgcalls`: `{pytgcalls.__version__}` \n"
+        f" ❍ `Bot Ver   :` {BOT_VER} \n"
+        f" ❍ `Modules   :` {len(modules)} Modules \n"
+        f"╭═───────╼⌘╾───────═ \n"
+        f"┃[𝗥𝗲𝗽𝗼](https://github.com/GeezProjects)  |  [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](t.me/GeezSupport)  |  "
+        f"[𝗢𝘄𝗻𝗲𝗿](tg://user?id={user.id})\n"
+        f"╰═──────╼═⌘═╾───────═")
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
