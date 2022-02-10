@@ -160,7 +160,7 @@ async def purgto(purgke):
         if pmsgs:
             await purgke.client.delete_messages(chat, pmsgs)
             await purgke.delete()
-        man = await edit_delete(
+        geez = await edit_delete(
             purgke,
             f"**Fast purge complete!**\n**Berhasil Menghapus** `{message}` **Pesan**",
             5,
