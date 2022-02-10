@@ -182,7 +182,7 @@ async def amireallyalive(alive):
         f" ❍ `Bot Ver   :` {BOT_VER} \n"
         f" ❍ `Modules   :` {len(modules)} Modules \n"
         f"╭═───────╼⌘╾───────═ \n"
-        f"┃[𝗥𝗲𝗽𝗼](https://github.com/{GROUP})  |  [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](t.me/{CHANNEL})  |  "
+        f"┃[𝗚𝗿𝗼𝘂𝗽](https://t.me/{GROUP})  |  [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/{CHANNEL})  |  "
         f"[𝗢𝘄𝗻𝗲𝗿](tg://user?id={user.id})\n"
         f"╰═──────╼═⌘═╾───────═")
     if ALIVE_LOGO:
