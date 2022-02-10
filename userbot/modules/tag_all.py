@@ -1,10 +1,10 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
-# ReCode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# Support @GeezSupport & @GeezProjects
 
 import asyncio
 import random
