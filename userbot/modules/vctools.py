@@ -5,9 +5,10 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 #
 # Ported by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
+# Support @GeezSupport & @GeezProjects
 # Kalo mau ngecopas, jangan hapus credit ya goblok
 
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
