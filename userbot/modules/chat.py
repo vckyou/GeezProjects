@@ -565,7 +565,7 @@ CMD_HELP.update(
         \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}invite` <username/user id>\
         \n  ❍▸ : **Untuk Menambahkan/invite pengguna ke group chat.\
         \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}inviteall` <username grup yang mau di culik membernya>\
-        \n  ❍▸ : **Untuk Menambahkan/invite pengguna dari grup yang ditargetkan ke grup Anda. (ketik perintah `.inviteall` di gc lu)\
+        \n  ❍▸ : **Untuk Menambahkan/invite pengguna dari grup yang ditargetkan ke grup Anda. (ketik perintah `.inviteall` di gc mu)\
     "
     }
 )
@@ -579,7 +579,7 @@ CMD_HELP.update(
         \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}leave`\
         \n  ❍▸ : **Keluar grup dengan menampilkan pesan Master Telah Meninggalkan Grup, bye !!\
         \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}kikme`\
-        \n  ❍▸ : **Keluar grup dengan menampilkan pesan GC NYA JELEK GOBLOK KELUAR DULU AH CROTT 🥴\
+        \n  ❍▸ : **Keluar grup dengan menampilkan pesan {owner} TELAH MENINGGALKAN GROUP!\
     "
     }
 )
