@@ -181,9 +181,9 @@ async def amireallyalive(alive):
         f"├[•🐍 **Python      :** `{python_version()}` \n"
         f"├[•🖥️ **Pytgcalls   :** `{pytgcalls.__version__}` \n"
         f"├[•⚙️ **Telethon    :** `{version.__version__}` \n"
-        f"├[•📌 **Bot Uptime  :** `{uptime}` \n\n"
+        f"├[•📌 **Bot Uptime  :** `{uptime}`\n"
         f"├──────────────────\n"
-        f"├[• **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/{GROUP})** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/{CHANNEL})** | **[𝗢𝘄𝗻𝗲𝗿](tg://user?id={user.id})**"
+        f"├[• **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/{GROUP})** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/{CHANNEL})** | **[𝗢𝘄𝗻𝗲𝗿](tg://user?id={user.id})**\n"
         f"╰───────────────────"
     )
     if ALIVE_LOGO:
