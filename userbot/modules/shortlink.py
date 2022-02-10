@@ -1,7 +1,8 @@
 # Copyright (C) 2021 Man-Userbot
-# Created by mrismanaziz
-# FROM <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# 
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 
 from asyncio.exceptions import TimeoutError
 
