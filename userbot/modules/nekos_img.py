@@ -1,8 +1,7 @@
 # Copyright (C) 2021 Bian Sepang
 # All Rights Reserved.
 #
-# Recode by @mrismanaziz
-# @SharingUserbot
+# recode by @vckyaz
 
 import nekos
 
