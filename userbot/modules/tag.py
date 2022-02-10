@@ -1,8 +1,6 @@
 # Ultroid - UserBot
 # Copyright (C) 2020 TeamUltroid
 #
-# Recode by @mrismanaziz
-# @sharinguserbot
 
 from telethon.tl.types import ChannelParticipantAdmin as admin
 from telethon.tl.types import ChannelParticipantCreator as owner
