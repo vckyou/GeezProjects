@@ -1,7 +1,8 @@
 # Coded by KenHV
-# Recode by @mrismanaziz
-# FORM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 
 from telethon.tl.functions.account import UpdateProfileRequest
 from telethon.tl.functions.photos import DeletePhotosRequest, UploadProfilePhotoRequest
