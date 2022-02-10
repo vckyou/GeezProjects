@@ -1,7 +1,8 @@
 # Copyright (C) 2020 Catuserbot <https://github.com/sandy1709/catuserbot>
-# Ported by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 
 import asyncio
 from datetime import datetime
@@ -53,7 +54,7 @@ async def gban(event):
         await gbun.edit("**Terjadi Kesalahan, Harap Balas Kepesan Untuk Melakukan Gbanning**")
         return
     if user.id in DEVS:
-        await gbun.edit("**Gagal GBAN karena dia adalah Pembuat saya 🗿**")
+        await gbun.edit("**Gagal Melakukan Global Banning Karna Dia Adalah Pembuat Saya**")
         return
     if gban_sql.is_gbanned(user.id):
         await gbun.edit(
