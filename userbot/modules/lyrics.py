@@ -1,8 +1,3 @@
-# Credits: @mrismanaziz
-# API by @tofik_dn || https://github.com/tofikdn
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
-
 import requests
 
 from userbot import CMD_HANDLER as cmd
