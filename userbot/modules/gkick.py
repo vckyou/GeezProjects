@@ -1,5 +1,7 @@
-# Ported by X_ImFine
-# Recode by @mrismanaziz
+# recode by @vckyaz
+# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
+#
+# Support @GeezSupport & @GeezProjects
 
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 
