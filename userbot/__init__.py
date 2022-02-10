@@ -224,11 +224,11 @@ INLINE_PIC = (
 
 # Picture For VCPLUGIN
 PLAY_PIC = (
-    os.environ.get("PLAY_PIC") or "https://telegra.ph/file/6213d2673486beca02967.png"
+    os.environ.get("PLAY_PIC") or "https://telegra.ph/file/bcb83aaf377737de971d9.png"
 )
 
 QUEUE_PIC = (
-    os.environ.get("QUEUE_PIC") or "https://telegra.ph/file/d6f92c979ad96b2031cba.png"
+    os.environ.get("QUEUE_PIC") or "https://telegra.ph/file/bcb83aaf377737de971d9.png"
 )
 
 
