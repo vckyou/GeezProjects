@@ -153,7 +153,7 @@ async def moni(event):
 
 @bot.on(geez_cmd(outgoing=True, pattern=r"google ([\s\S]*)"))
 async def gsearch(q_event):
-    man = await edit_or_reply(q_event, "`Processing...`")
+    geez = await edit_or_reply(q_event, "`Processing...`")
     match = q_event.pattern_match.group(1)
     page = re.findall(r"-p\d+", match)
     lim = re.findall(r"-l\d+", match)
@@ -186,7 +186,7 @@ async def gsearch(q_event):
             try:
                 gresults = await ysearch.async_search(*search_args)
             except Exception as e:
-                return await edit_delete(man, f"**ERROR:**\n`{e}`", time=10)
+                return await edit_delete(geez, f"**ERROR:**\n`{e}`", time=10)
     msg = ""
     for i in range(lim):
         if i > len(gresults["links"]):
@@ -199,7 +199,7 @@ async def gsearch(q_event):
         except IndexError:
             break
     await edit_or_reply(
-        man,
+        geez,
         "**Keyword Google Search:**\n`" + match + "`\n\n**Results:**\n" + msg,
         link_preview=False,
         aslink=True,
