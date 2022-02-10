@@ -1,5 +1,5 @@
 # Copyright (C) 2021 Catuserbot <https://github.com/sandy1709/catuserbot>
-# Ported by @mrismanaziz
+# ported by @mrismanaziz
 # recode by @vckyaz
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
@@ -53,13 +53,13 @@ async def _(event):
         await edit_delete(manevent, "**Orang Ini Belum Pernah Mengganti Namanya**", 90)
     names, usernames = await sangamata_seperator(responses)
     cmd = event.pattern_match.group(1)
-    risman = None
+    geez = None
     check = usernames if cmd == "u" else names
     for i in check:
-        if risman:
+        if geez:
             await event.reply(i, parse_mode=_format.parse_pre)
         else:
-            risman = True
+            geez = True
             await manevent.edit(i, parse_mode=_format.parse_pre)
 
 
@@ -80,10 +80,10 @@ async def sangamata_seperator(sanga_list):
 CMD_HELP.update(
     {
         "sangmata": f"**Plugin : **`sangmata`\
-        \n\n   :** `{cmd}sg` <sambil reply chat>\
-        \n   : **Mendapatkan Riwayat Nama Pengguna selama di telegram.\
-        \n\n   :** `{cmd}sgu` <sambil reply chat>\
-        \n   : **Mendapatkan Riwayat Username Pengguna selama di telegram.\
+        \n\n  Command :** `{cmd}sg` <sambil reply chat>\
+        \n  Info : **Mendapatkan Riwayat Nama Pengguna selama di telegram.\
+        \n\n  Command :** `{cmd}sgu` <sambil reply chat>\
+        \n  Info : **Mendapatkan Riwayat Username Pengguna selama di telegram.\
     "
     }
 )
