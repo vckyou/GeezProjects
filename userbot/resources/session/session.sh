@@ -3,7 +3,7 @@
 # Copyright (C) 2022 GeezProjects
 #
 # This file is a part of < https://github.com/vckyou/GeezProjects/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/mrismanaziz/GeezProjects/blob/main/LICENSE/>
+# PLease read the GNU Affero General Public License in <https://www.github.com/vckyou/GeezProjects/blob/master/LICENSE/>
 
 clear
 sec=3
