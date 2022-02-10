@@ -21,9 +21,9 @@ import psutil
 from pytgcalls import __version__ as pytgcalls
 from telethon import __version__, version
 
-from userbot import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_TEKS_CUSTOM, BOT_VER, CHANNEL
+from userbot import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_TEKS_CUSTOM, BOT_VER
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, GROUP, StartTime, bot
+from userbot import CMD_HELP, StartTime, bot
 from userbot.utils import bash, edit_or_reply, geez_cmd
 
 from .ping import get_readable_time
@@ -168,7 +168,7 @@ async def bot_ver(event):
 @geez_cmd(pattern="(?:alive|on)\s?(.)?")
 async def amireallyalive(alive):
     user = await bot.get_me()
-    uptime = await get_readable_time((time.time() - StartTime))
+    await get_readable_time((time.time() - StartTime))
     output = (
         f"╭═──────╼═⌘═╾───────═\n"
         f"┃[⚡ＧΞ ΞＺ - ＰＲＯＪＥＣＴ⚡](https://github.com/vckyou/GeezProjects)\n"
