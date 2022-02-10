@@ -159,7 +159,7 @@ async def gunben(userbot):
             except BaseException:
                 b += 1
     else:
-        await dark.edit("`Balas Ke Pesan Penggunanya Goblok`")
+        await dark.edit("`Mohon Balas Pesan Ini Kepengguna`")
     try:
         if ungmute(user.id) is False:
             return await dark.edit("**Error! Pengguna Sedang Tidak Di Global Banned.**")
