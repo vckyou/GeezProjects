@@ -173,7 +173,7 @@ async def amireallyalive(alive):
         f"╭═──────╼═⌘═╾───────═\n"
         f"┃[⚡ＧΞ ΞＺ - ＰＲＯＪＥＣＴ⚡](https://github.com/vckyou/GeezProjects)\n"
         f"╰═─────╼══⌘══╾─────═ \n"
-        f" {alive_text}
+        f" {alive_text} \n"
         f" ─────────────────── \n"
         f" ❍ `Name      :` [{user.first_name}](tg://user?id={user.id}) \n"
         f" ❍ `Telethon  :` Ver {version.__version__} \n"
