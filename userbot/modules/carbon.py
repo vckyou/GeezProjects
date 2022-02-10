@@ -5,7 +5,6 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 #
-# Ported by @mrismanaziz
 # Thanks to Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
 # recode by @vckyaz
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
@@ -200,7 +199,7 @@ async def crbn(event):
     carbon = Carbon(
         base_url="https://carbonara.vercel.app/api/cook", code=code, background=col
     )
-    xx = await carbon.memorize("carbon_man")
+    xx = await carbon.memorize("carbon_geez")
     await xxxx.delete()
     await event.reply(
         f"**Carbonised by** {from_user}",
@@ -239,7 +238,7 @@ async def crbn(event):
         base_url="https://carbonara.vercel.app/api/cook", code=code, background=match
     )
     try:
-        xx = await carbon.memorize("carbon_man")
+        xx = await carbon.memorize("carbon_geez")
     except Exception as er:
         return await msg.edit(str(er))
     await msg.delete()
