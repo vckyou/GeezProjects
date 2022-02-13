@@ -21,6 +21,7 @@
 #
 
 
+import base64
 import asyncio
 import hashlib
 import os
@@ -404,6 +405,48 @@ def download_lagu(url: str) -> str:
     info = ydl.extract_info(url, download=False)
     ydl.download([url])
     return os.path.join("downloads", f"{info['id']}.{info['ext']}")
+
+
+O_API = "https://bot.lyo.su/quote/generate"
+
+
+async def create_quotly(
+    event,
+    url="https://qoute-api-akashpattnaik.koyeb.app/generate",
+    reply={},
+    bg=None,
+    sender=None,
+    file_name="quote.webp",
+):
+    if not isinstance(event, list):
+        event = [event]
+        url = O_API
+    if not bg:
+        bg = "#1b1429"
+    content = {
+        "type": "quote",
+        "format": "webp",
+        "backgroundColor": bg,
+        "width": 512,
+        "height": 768,
+        "scale": 2,
+        "messages": [
+            await _format_quote(message, reply=reply, sender=sender)
+            for message in event
+        ],
+    }
+    try:
+        request = await async_searcher(url, post=True, json=content, re_json=True)
+    except ContentTypeError as er:
+        if url != O_API:
+            return await create_quotly(O_API, post=True, json=content, re_json=True)
+        raise er
+    if request.get("ok"):
+        with open(file_name, "wb") as file:
+            image = base64.decodebytes(request["result"]["image"].encode("utf-8"))
+            file.write(image)
+        return file_name
+    raise Exception(str(request))
 
 
 # ------------------------#
