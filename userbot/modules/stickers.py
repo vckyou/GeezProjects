@@ -47,57 +47,67 @@ KANGING_STR = [
 
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
-async def kang(args):
-    user = await args.client.get_me()
-    if not user.username:
-        user.username = user.first_name
-    message = await args.get_reply_message()
-    photo = None
-    emojibypass = False
-    is_anim = False
-    emoji = None
-
-    if not message or not message.media:
-        return await edit_delete(
+async def hehe(args):
+    geez_bot = args.client
+    xx = await edit_delete(
             args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
         )
-
-    if isinstance(message.media, MessageMediaPhoto):
-        xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+    user = geez_bot.me
+    username = user.username
+    if not username:
+        username = user.first_name
+    else:
+        username = "@" + username
+    message = await args.get_reply_message()
+    photo = None
+    is_anim, is_vid = False, False
+    emoji = None
+    if not message:
+        return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+    if message.photo:
         photo = io.BytesIO()
-        photo = await args.client.download_media(message.photo, photo)
-    elif "image" in message.media.document.mime_type.split("/"):
-        xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+        photo = await geez_bot.download_media(message.photo, photo)
+    elif message.file and "image" in message.file.mime_type.split("/"):
         photo = io.BytesIO()
-        await args.client.download_file(message.media.document, photo)
+        await geez_bot.download_file(message.media.document, photo)
         if (
             DocumentAttributeFilename(file_name="sticker.webp")
             in message.media.document.attributes
         ):
             emoji = message.media.document.attributes[1].alt
-            if emoji != "✨":
-                emojibypass = True
-    elif "tgsticker" in message.media.document.mime_type:
-        xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
-        await args.client.download_file(message.media.document, "AnimatedSticker.tgs")
 
+    elif message.file and "video" in message.file.mime_type.split("/"):
+        xy = await message.download_media()
+        if (message.file.duration or 0) <= 10:
+            is_vid = True
+            photo = await TgConverter.create_webm(xy)
+        else:
+            y = cv2.VideoCapture(xy)
+            heh, lol = y.read()
+            cv2.imwrite("ult.webp", lol)
+            photo = "ult.webp"
+    elif message.file and "tgsticker" in message.file.mime_type:
+        await geez_bot.download_file(
+            message.media.document,
+            "AnimatedSticker.tgs",
+        )
         attributes = message.media.document.attributes
         for attribute in attributes:
             if isinstance(attribute, DocumentAttributeSticker):
                 emoji = attribute.alt
-
-        emojibypass = True
         is_anim = True
         photo = 1
+    elif message.message:
+        photo = await create_quotly(message)
     else:
-        return await xx.edit("**File Tidak Didukung, Silahkan Reply ke Media Foto !**")
-    if photo:
+        return await xx.edit("**File Tidak Didukung !**")
+        if photo:
         splat = args.text.split()
-        if not emojibypass:
-            emoji = "✨"
         pack = 1
+        if not emoji:
+            emoji = "✨"
         if len(splat) == 3:
-            pack = splat[2]
+            pack = splat[2]  # User sent geez_both
             emoji = splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
@@ -105,144 +115,164 @@ async def kang(args):
             else:
                 emoji = splat[1]
 
-        u_id = user.id
-        f_name = user.first_name
-        packname = f"Sticker_u{u_id}_Ke{pack}"
-        custom_packnick = f"{custompack}" or f"{f_name} Sticker Pack"
-        packnick = f"{custom_packnick}"
+        packname = f"ult_{user.id}_{pack}"
+        packnick = f"{username}'s Pack {pack}"
         cmd = "/newpack"
         file = io.BytesIO()
 
-        if not is_anim:
-            image = await resize_photo(photo)
-            file.name = "sticker.png"
-            image.save(file, "PNG")
-        else:
+        if is_vid:
+            packname += "_vid"
+            packnick += " (Video)"
+            cmd = "/newvideo"
+        elif is_anim:
             packname += "_anim"
             packnick += " (Animated)"
             cmd = "/newanimated"
+        else:
+            image = con.resize_photo_sticker(photo)
+            file.name = "sticker.png"
+            image.save(file, "PNG")
 
-        response = urllib.request.urlopen(
-            urllib.request.Request(f"http://t.me/addstickers/{packname}")
-        )
-        htmlstr = response.read().decode("utf8").split("\n")
+        response = requests.get(f"http://t.me/addstickers/{packname}")
+        htmlstr = response.text.split("\n")
 
         if (
             "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
             not in htmlstr
         ):
-            async with args.client.conversation("@Stickers") as conv:
-                await conv.send_message("/addsticker")
+            async with geez_bot.conversation("@Stickers") as conv:
+                try:
+                    await conv.send_message("/addsticker")
+                except YouBlockedUserError:
+                    LOGS.info("Unblocking @Stickers for kang...")
+                    await geez_bot(functions.contacts.UnblockRequest("stickers"))
+                    await conv.send_message("/addsticker")
                 await conv.get_response()
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
-                while "120" in x.text:
+                if x.text.startswith("Alright! Now send me the video sticker."):
+                    await conv.send_file(photo, force_document=True)
+                    x = await conv.get_response()
+                t = "50" if (is_anim or is_vid) else "120"
+                while t in x.message:
                     pack += 1
-                    packname = f"Sticker_u{u_id}_Ke{pack}"
-                    packnick = f"{custom_packnick}"
+                    packname = f"ult_{user.id}_{pack}"
+                    packnick = f"{username}'s Pack {pack}"
+                    if is_anim:
+                        packname += "_anim"
+                        packnick += " (Animated)"
+                    elif is_vid:
+                        packnick += " (Video)"
+                        packname += "_vid"
                     await xx.edit(
                         "`Membuat Sticker Pack Baru "
                         + str(pack)
                         + " Karena Sticker Pack Sudah Penuh`"
                     )
+                    await conv.send_message("/addsticker")
+                    await conv.get_response()
                     await conv.send_message(packname)
                     x = await conv.get_response()
-                    if x.text == "Gagal Memilih Pack.":
+                    if x.text.startswith("Alright! Now send me the video sticker."):
+                        await conv.send_file(photo, force_document=True)
+                        x = await conv.get_response()
+                    if x.text in ["Invalid pack selected.", "Invalid set selected."]:
                         await conv.send_message(cmd)
                         await conv.get_response()
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
                             remove("AnimatedSticker.tgs")
                         else:
-                            file.seek(0)
+                            if is_vid:
+                                file = photo
+                            else:
+                                file.seek(0)
                             await conv.send_file(file, force_document=True)
                         await conv.get_response()
                         await conv.send_message(emoji)
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
                             await conv.get_response()
                             await conv.send_message(f"<{packnick}>")
                         await conv.get_response()
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.send_message("/skip")
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message(packname)
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
-                        await args.client.send_read_acknowledge(conv.chat_id)
                         return await xx.edit(
                             "`Sticker ditambahkan ke pack yang berbeda !"
                             "\nIni pack yang baru saja dibuat!"
                             f"\nTekan [Sticker Pack](t.me/addstickers/{packname}) Untuk Melihat Sticker Pack",
                             parse_mode="md",
                         )
+                        return
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
-                else:
-                    file.seek(0)
+                elif "send me an emoji" not in x.message:
+                    if is_vid:
+                        file = photo
+                    else:
+                        file.seek(0)
                     await conv.send_file(file, force_document=True)
-                rsp = await conv.get_response()
-                if "Sorry, the file type is invalid." in rsp.text:
-                    return await xx.edit(
+                    rsp = await conv.get_response()
+                    if "Sorry, the file type is invalid." in rsp.text:
+                        return await xx.edit(
                         "**Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker Anda.**"
                     )
+                        return
                 await conv.send_message(emoji)
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
-                await args.client.send_read_acknowledge(conv.chat_id)
+                await geez_bot.send_read_acknowledge(conv.chat_id)
         else:
-            await xx.edit("`Membuat Sticker Pack Baru`")
-            async with args.client.conversation("@Stickers") as conv:
+            await xx.edit("`Brewing a new Pack...`")
+            async with geez_bot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packnick)
                 await conv.get_response()
-                await args.client.send_read_acknowledge(conv.chat_id)
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
                 else:
-                    file.seek(0)
+                    if is_vid:
+                        file = photo
+                    else:
+                        file.seek(0)
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
                     return await xx.edit(
                         "**Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker.**"
                     )
+                    return
                 await conv.send_message(emoji)
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/publish")
                 if is_anim:
                     await conv.get_response()
                     await conv.send_message(f"<{packnick}>")
+
                 await conv.get_response()
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message("/skip")
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message(packname)
-                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
-                await args.client.send_read_acknowledge(conv.chat_id)
-
+                await geez_bot.send_read_acknowledge(conv.chat_id)
         await xx.edit(
             "** Sticker Berhasil Ditambahkan!**"
-            f"\n        ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
+            f"\n       ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
             parse_mode="md",
         )
+        try:
+            os.remove(photo)
+        except BaseException:
+            pass
 
 
 async def resize_photo(photo):
