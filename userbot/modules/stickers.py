@@ -50,8 +50,11 @@ async def kang(args):
             args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
         )
     user = await args.client.get_me()
-    if not user.username:
-        user.username = user.first_name
+    username = user.username
+    if not username:
+        username = user.first_name
+    else:
+        username = "@" + username
     message = await args.get_reply_message()
     photo = None
     is_anim, is_vid = False, False
