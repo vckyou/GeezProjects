@@ -49,7 +49,7 @@ async def hehe(args):
     xx = await edit_delete(
             args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
         )
-    user = args.client.get_me
+    user = await args.client.get_me
     if not user.username:
         user.username = user.first_name
     else:
