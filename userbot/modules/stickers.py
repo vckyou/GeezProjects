@@ -45,15 +45,13 @@ KANGING_STR = [
 
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
-async def hehe(args):
+async def kang(args):
     xx = await edit_delete(
             args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
         )
-    user = await args.client.get_me
+    user = await args.client.get_me()
     if not user.username:
         user.username = user.first_name
-    else:
-        user.username = "@" + user.username
     message = await args.get_reply_message()
     photo = None
     is_anim, is_vid = False, False
