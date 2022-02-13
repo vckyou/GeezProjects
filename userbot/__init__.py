@@ -58,6 +58,7 @@ SUDO_LIST = {}
 ZALG_LIST = {}
 LOAD_PLUG = {}
 INT_PLUG = ""
+con = TgConverter
 ISAFK = False
 AFKREASON = None
 ENABLE_KILLME = True
