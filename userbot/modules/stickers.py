@@ -35,6 +35,7 @@ from userbot import CMD_HELP
 from userbot import tgbot
 from userbot.modules.sql_helper.globals import addgvar, gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils.tools import create_quotly, TgConverter
 
 KANGING_STR = [
     "Prosess Mengambil Sticker Pack!",
@@ -45,11 +46,10 @@ KANGING_STR = [
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
 async def hehe(args):
-    geez_bot = args.client
     xx = await edit_delete(
             args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
         )
-    user = geez_bot.me
+    user = args.client.get_me
     username = user.username
     if not username:
         username = user.first_name
@@ -63,10 +63,10 @@ async def hehe(args):
         return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
     if message.photo:
         photo = io.BytesIO()
-        photo = await geez_bot.download_media(message.photo, photo)
+        photo = await args.client.download_media(message.photo, photo)
     elif message.file and "image" in message.file.mime_type.split("/"):
         photo = io.BytesIO()
-        await geez_bot.download_file(message.media.document, photo)
+        await args.client.download_file(message.media.document, photo)
         if (
             DocumentAttributeFilename(file_name="sticker.webp")
             in message.media.document.attributes
@@ -84,7 +84,7 @@ async def hehe(args):
             cv2.imwrite("ult.webp", lol)
             photo = "ult.webp"
     elif message.file and "tgsticker" in message.file.mime_type:
-        await geez_bot.download_file(
+        await args.client.download_file(
             message.media.document,
             "AnimatedSticker.tgs",
         )
@@ -104,7 +104,7 @@ async def hehe(args):
         if not emoji:
             emoji = "✨"
         if len(splat) == 3:
-            pack = splat[2]  # User sent geez_both
+            pack = splat[2]  # User sent args.clienth
             emoji = splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
@@ -137,12 +137,12 @@ async def hehe(args):
             "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
             not in htmlstr
         ):
-            async with geez_bot.conversation("@Stickers") as conv:
+            async with args.client.conversation("@Stickers") as conv:
                 try:
                     await conv.send_message("/addsticker")
                 except YouBlockedUserError:
                     LOGS.info("Unblocking @Stickers for kang...")
-                    await geez_bot(functions.contacts.UnblockRequest("stickers"))
+                    await args.client(functions.contacts.UnblockRequest("stickers"))
                     await conv.send_message("/addsticker")
                 await conv.get_response()
                 await conv.send_message(packname)
@@ -225,10 +225,10 @@ async def hehe(args):
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
-                await geez_bot.send_read_acknowledge(conv.chat_id)
+                await args.client.send_read_acknowledge(conv.chat_id)
         else:
             await xx.edit("`Brewing a new Pack...`")
-            async with geez_bot.conversation("Stickers") as conv:
+            async with args.client.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
                 await conv.send_message(packnick)
@@ -260,7 +260,7 @@ async def hehe(args):
                 await conv.get_response()
                 await conv.send_message(packname)
                 await conv.get_response()
-                await geez_bot.send_read_acknowledge(conv.chat_id)
+                await args.client.send_read_acknowledge(conv.chat_id)
         await xx.edit(
             "** Sticker Berhasil Ditambahkan!**"
             f"\n       ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
