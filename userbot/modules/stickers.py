@@ -50,10 +50,10 @@ async def hehe(args):
             args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
         )
     user = args.client.get_me
-    if not username:
-        username = user.first_name
+    if not user.username:
+        user.username = user.first_name
     else:
-        username = "@" + username
+        user.username = "@" + user.username
     message = await args.get_reply_message()
     photo = None
     is_anim, is_vid = False, False
