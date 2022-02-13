@@ -158,7 +158,7 @@ async def kang(args):
                     elif is_vid:
                         packnick += " (Video)"
                         packname += "_vid"
-                    await? edit_or_reply(args,
+                    await edit_or_reply(args,
                         "`Membuat Sticker Pack Baru "
                         + str(pack)
                         + " Karena Sticker Pack Sudah Penuh`"
