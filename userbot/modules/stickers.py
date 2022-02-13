@@ -31,7 +31,7 @@ from telethon.utils import get_input_document
 
 from userbot import BOT_USERNAME
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, con
+from userbot import CMD_HELP
 from userbot import tgbot
 from userbot.modules.sql_helper.globals import addgvar, gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
