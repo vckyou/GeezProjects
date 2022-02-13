@@ -126,7 +126,7 @@ async def kang(args):
             packnick += " (Animated)"
             cmd = "/newanimated"
         else:
-            image = con.resize_photo_sticker(photo)
+            image = TgConverter.resize_photo_sticker(photo)
             file.name = "sticker.png"
             image.save(file, "PNG")
 
