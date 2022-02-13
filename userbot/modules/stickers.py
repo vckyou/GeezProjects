@@ -101,7 +101,7 @@ async def hehe(args):
         photo = await create_quotly(message)
     else:
         return await xx.edit("**File Tidak Didukung !**")
-        if photo:
+    if photo:
         splat = args.text.split()
         pack = 1
         if not emoji:
