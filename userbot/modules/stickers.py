@@ -11,7 +11,6 @@ import asyncio
 import io
 import math
 import random
-import urllib.request
 from os import remove
 
 import requests
@@ -27,14 +26,12 @@ from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
     InputStickerSetID,
-    MessageMediaPhoto,
 )
 from telethon.utils import get_input_document
 
 from userbot import BOT_USERNAME
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot import S_PACK_NAME as custompack
 from userbot import tgbot
 from userbot.modules.sql_helper.globals import addgvar, gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
