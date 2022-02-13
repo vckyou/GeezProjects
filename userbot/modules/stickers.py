@@ -26,6 +26,7 @@ from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
     InputStickerSetID,
+    MessageMediaPhoto,
 )
 from telethon.utils import get_input_document
 
