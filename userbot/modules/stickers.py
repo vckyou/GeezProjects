@@ -220,7 +220,6 @@ async def kang(args):
                     await edit_delete(args,
                         "**Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker Anda.**"
                     )
-                        return
                 await conv.send_message(emoji)
                 await conv.get_response()
                 await conv.send_message("/done")
