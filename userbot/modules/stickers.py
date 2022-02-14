@@ -46,9 +46,7 @@ KANGING_STR = [
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
 async def kang(args):
-    xx = await edit_delete(
-            args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
-        )
+    xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
     user = await args.client.get_me()
     username = user.username
     if not username:
@@ -97,7 +95,8 @@ async def kang(args):
     elif message.message:
         photo = await create_quotly(message)
     else:
-        return await edit_or_reply(args, "**File Tidak Didukung !**")
+        await edit_delete(args, "**File Tidak Didukung !**")
+        return
     if photo:
         splat = args.text.split()
         pack = 1
@@ -161,7 +160,7 @@ async def kang(args):
                     elif is_vid:
                         packnick += " (Video)"
                         packname += "_vid"
-                    await edit_or_reply(args,
+                    await edit_delete(args,
                         "`Membuat Sticker Pack Baru "
                         + str(pack)
                         + " Karena Sticker Pack Sudah Penuh`"
@@ -199,7 +198,7 @@ async def kang(args):
                         await conv.get_response()
                         await conv.send_message(packname)
                         await conv.get_response()
-                        return await edit_or_reply(args,
+                        await edit_delete(args,
                             "`Sticker ditambahkan ke pack yang berbeda !"
                             "\nIni pack yang baru saja dibuat!"
                             f"\nTekan [Sticker Pack](t.me/addstickers/{packname}) Untuk Melihat Sticker Pack",
@@ -217,7 +216,8 @@ async def kang(args):
                     await conv.send_file(file, force_document=True)
                     rsp = await conv.get_response()
                     if "Sorry, the file type is invalid." in rsp.text:
-                        return await edit_or_reply(args,
+                        return
+                    await edit_delete(args,
                         "**Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker Anda.**"
                     )
                         return
@@ -227,7 +227,7 @@ async def kang(args):
                 await conv.get_response()
                 await args.client.send_read_acknowledge(conv.chat_id)
         else:
-            await edit_or_reply(args, "`Brewing a new Pack...`")
+            await xx.edit("`Brewing a new Pack...`")
             async with args.client.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
@@ -261,7 +261,7 @@ async def kang(args):
                 await conv.send_message(packname)
                 await conv.get_response()
                 await args.client.send_read_acknowledge(conv.chat_id)
-        await edit_or_reply(args,
+        await edit_delete(args,
             "** Sticker Berhasil Ditambahkan!**"
             f"\n       ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
             parse_mode="md",
