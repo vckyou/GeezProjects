@@ -98,7 +98,6 @@ async def kang(args):
     else:
         await edit_delete(args, "**File Tidak Didukung !**")
         ra = random.choice(KANGING_STR)
-    else:
         await xx.edit(f"`{ra}`")
     if photo:
         splat = args.text.split()
