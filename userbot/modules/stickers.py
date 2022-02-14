@@ -15,7 +15,6 @@ import os
 import random
 from os import remove
 import cv2
-import numpy as np
 import requests
 
 from bs4 import BeautifulSoup as bs
