@@ -112,6 +112,7 @@ async def kang(args):
             else:
                 emoji = splat[1]
 
+        u_id = user.id
         packname = f"Sticker_u{u_id}_Ke{pack}"
         packnick = f"{custom_packnick}"
         cmd = "/newpack"
@@ -153,6 +154,7 @@ async def kang(args):
                 t = "50" if (is_anim or is_vid) else "120"
                 while t in x.message:
                     pack += 1
+                    u_id = user.id
                     packname = f"Sticker_u{u_id}_Ke{pack}"
                     packnick = f"{custom_packnick}"
                     if is_anim:
