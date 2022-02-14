@@ -112,8 +112,8 @@ async def kang(args):
             else:
                 emoji = splat[1]
 
-        packname = f"ult_{user.id}_{pack}"
-        packnick = f"{username}'s Pack {pack}"
+        packname = f"Sticker_u{u_id}_Ke{pack}"
+        packnick = f"{custom_packnick}"
         cmd = "/newpack"
         file = io.BytesIO()
 
@@ -153,8 +153,8 @@ async def kang(args):
                 t = "50" if (is_anim or is_vid) else "120"
                 while t in x.message:
                     pack += 1
-                    packname = f"ult_{user.id}_{pack}"
-                    packnick = f"{username}'s Pack {pack}"
+                    packname = f"Sticker_u{u_id}_Ke{pack}"
+                    packnick = f"{custom_packnick}"
                     if is_anim:
                         packname += "_anim"
                         packnick += " (Animated)"
@@ -261,9 +261,9 @@ async def kang(args):
                 await conv.send_message(packname)
                 await conv.get_response()
                 await args.client.send_read_acknowledge(conv.chat_id)
-        await edit_delete(args,
+        await edit_or_reply(args,
             "** Sticker Berhasil Ditambahkan!**"
-            f"\n       ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
+            f"\n        ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
             parse_mode="md",
         )
         try:
