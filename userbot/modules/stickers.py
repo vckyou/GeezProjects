@@ -8,13 +8,16 @@
 # Hehe
 
 import asyncio
-import math
 import io
 import math
 import random
+import os
+import random
 from os import remove
-
+import cv2
+import numpy as np
 import requests
+
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
