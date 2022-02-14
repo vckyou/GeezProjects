@@ -80,8 +80,8 @@ async def kang(args):
         else:
             y = cv2.VideoCapture(xy)
             heh, lol = y.read()
-            cv2.imwrite("ult.webp", lol)
-            photo = "ult.webp"
+            cv2.imwrite("geez.webp", lol)
+            photo = "geez.webp"
     elif message.file and "tgsticker" in message.file.mime_type:
         await args.client.download_file(
             message.media.document,
@@ -114,7 +114,9 @@ async def kang(args):
                 emoji = splat[1]
 
         u_id = user.id
+        f_name = user.first_name
         packname = f"Sticker_u{u_id}_Ke{pack}"
+        custom_packnick = f"{custompack}" or f"{f_name} Sticker Pack"
         packnick = f"{custom_packnick}"
         cmd = "/newpack"
         file = io.BytesIO()
@@ -156,7 +158,9 @@ async def kang(args):
                 while t in x.message:
                     pack += 1
                     u_id = user.id
+                    f_name = user.first_name
                     packname = f"Sticker_u{u_id}_Ke{pack}"
+                    custom_packnick = f"{custompack}" or f"{f_name} Sticker Pack"
                     packnick = f"{custom_packnick}"
                     if is_anim:
                         packname += "_anim"
@@ -179,7 +183,7 @@ async def kang(args):
                     if x.text in ["Invalid pack selected.", "Invalid set selected."]:
                         await conv.send_message(cmd)
                         await conv.get_response()
-                        await conv.send_message(packnick)
+                        await conv.send_message(custom_packnick)
                         await conv.get_response()
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
@@ -234,7 +238,7 @@ async def kang(args):
             async with args.client.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
-                await conv.send_message(packnick)
+                await conv.send_message(custom_packnick)
                 await conv.get_response()
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
