@@ -5,7 +5,7 @@
 #
 # Port By @VckyouuBitch
 # From Geez - Projects <https://github.com/vckyou/Geez-UserBot>
-#
+# Hehe
 
 import asyncio
 import math
