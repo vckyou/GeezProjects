@@ -42,6 +42,7 @@ from telethon.tl.types import (
     ChannelParticipantAdmin,
     ChannelParticipantCreator,
     DocumentAttributeFilename,
+    MessageEntitySpoiler,
 )
 from telethon.tl import types
 from yt_dlp import YoutubeDL
