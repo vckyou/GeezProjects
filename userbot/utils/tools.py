@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # mainted by @mrismanaziz
-# Created by @vckyaz
+# recode by @vckyaz
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 # t.me/GeezSupport & t.me/GeezProject
 #
@@ -448,6 +448,14 @@ async def create_quotly(
             file.write(image)
         return file_name
     raise Exception(str(request))
+
+
+async def parse_id(self, text):
+        try:
+            text = int(text)
+        except ValueError:
+            pass
+        return await self.get_peer_id(text)
 
 
 # ------------------------#
