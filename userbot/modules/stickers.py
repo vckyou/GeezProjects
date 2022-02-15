@@ -597,7 +597,7 @@ async def pussy(args):
     if message and message.media:
         if "video/mp4" in message.media.document.mime_type:
             xx = await edit_or_reply(args, "__⌛ Downloading..__")
-            sticker = await animator(message, args, catevent)
+            sticker = await animator(message, args, xx)
             await edit_or_reply(xx, f"`{random.choice(KANGING_STR)}`")
         else:
             await edit_delete(args, "`Reply to video/gif...!`")
@@ -626,7 +626,7 @@ async def pussy(args):
     await xx.edit("`Hold on, making sticker...`")
     async with args.client.conversation("@Stickers") as conv:
         otherpack, packname, emoji = await newpacksticker(
-            catevent,
+            xx,
             conv,
             "/newvideo",
             args,
