@@ -20,6 +20,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
+from userbot import S_PACK_NAME as custompack
 from telethon.errors import PackShortNameOccupiedError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
@@ -102,7 +103,7 @@ async def newpacksticker(
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
     rsp = await conv.get_response()
-    if not verify_cond(costumpack, rsp.text):
+    if not verify_cond(custompack, rsp.text):
         await xx.edit(
             f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
         )
@@ -131,10 +132,10 @@ async def newpacksticker(
 
 def pack_name(userid, pack, is_anim, is_video):
     if is_anim:
-        return f"geezbot_{userid}_{pack}_anim"
+        return f"geez_{userid}_{pack}_anim"
     if is_video:
-        return f"geezbot_{userid}_{pack}_vid"
-    return f"geezbot_{userid}_{pack}"
+        return f"geez_{userid}_{pack}_vid"
+    return f"geez_{userid}_{pack}"
 
 async def add_to_pack(
     xx,
@@ -199,7 +200,7 @@ async def add_to_pack(
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
     rsp = await conv.get_response()
-    if not verify_cond(KANGING_STR, rsp.text):
+    if not verify_cond(custompack, rsp.text):
         await xx.edit(
             f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
         )
