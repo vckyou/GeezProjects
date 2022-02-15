@@ -216,20 +216,23 @@ async def add_to_pack(
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
 async def kang(args):
-    user = await args.client.get_me()
-    if not user.username:
-        user.username = user.first_name
-    message = await args.get_reply_message()
+    "To kang a sticker."
     photo = None
     emojibypass = False
     is_anim = False
-    emoji = None
     is_video = False
-
-    if not message or not message.media:
-        return await edit_delete(
-            args, "**Silahkan Reply Ke Pesan Media Untuk Mencuri Sticker Pack itu!**"
-        )
+    emoji = None
+    message = await args.get_reply_message()
+    user = await args.client.get_me()
+    if not user.username:
+        try:
+            user.first_name.encode("utf-8").decode("ascii")
+            username = user.first_name
+        except UnicodeDecodeError:
+            username = f"geez_{user.id}"
+    else:
+        username = user.username
+    userid = user.id
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
