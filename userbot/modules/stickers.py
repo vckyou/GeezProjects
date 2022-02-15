@@ -261,8 +261,8 @@ async def kang(args):
             emojibypass = True
             is_anim = True
             photo = 1
-        elif message.media.document.mime_type in ["video/mp4", "video/webm"]:
-            if message.media.document.mime_type == "video/webm":
+        elif message.media.file.mime_type in ["video/mp4", "video/webm"]:
+            if message.media.file.mime_type == "video/webm":
                 xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
                 sticker = await args.client.download_media(
                     message.media.document, "animate.webm"
