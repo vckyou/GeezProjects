@@ -754,3 +754,28 @@ async def animator(media, mainevent, textevent):
     os.remove(geez)
     sticker = "animate.webm"
     return sticker
+
+async def async_searcher(
+    url: str,
+    post: bool = None,
+    headers: dict = None,
+    params: dict = None,
+    json: dict = None,
+    data: dict = None,
+    ssl=None,
+    re_json: bool = False,
+    re_content: bool = False,
+    real: bool = False,
+):
+    async with aiohttp.ClientSession(headers=headers) as client:
+        if post:
+            data = await client.post(url, json=json, data=data, ssl=ssl)
+        else:
+            data = await client.get(url, params=params, ssl=ssl)
+        if re_json:
+            return await data.json()
+        if re_content:
+            return await data.read()
+        if real:
+            return data
+        return await data.text()
