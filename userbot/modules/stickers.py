@@ -67,6 +67,22 @@ def pack_nick(username, pack, is_anim, is_video):
         return f"@{username} Vol. {pack} (Video)"
     return f"@{username} Vol.{pack}"
 
+async def delpack(xx, conv, cmd, args, packname):
+    try:
+        await conv.send_message(cmd)
+    except YouBlockedUserError:
+        await xx.edit("You have blocked the @stickers bot. unblock it and try.")
+        return None, None
+    await conv.send_message("/delpack")
+    await conv.get_response()
+    await args.client.send_read_acknowledge(conv.chat_id)
+    await conv.send_message(packname)
+    await conv.get_response()
+    await args.client.send_read_acknowledge(conv.chat_id)
+    await conv.send_message("Yes, I am totally sure.")
+    await conv.get_response()
+    await args.client.send_read_acknowledge(conv.chat_id)
+
 async def newpacksticker(
     xx,
     conv,
@@ -570,6 +586,70 @@ async def _(event):
             await xx.edit("**Maaf Paket yang dipilih tidak valid.**")
         else:
             await xx.edit("**Berhasil Menghapus Stiker.**")
+
+
+@geez_cmd(pattern="csticker ?(.*)")
+async def pussy(args):
+    "To kang a sticker." 
+    message = await args.get_reply_message()
+    user = await args.client.get_me()
+    userid = user.id
+    if message and message.media:
+        if "video/mp4" in message.media.document.mime_type:
+            xx = await edit_or_reply(args, "__⌛ Downloading..__")
+            sticker = await animator(message, args, catevent)
+            await edit_or_reply(xx, f"`{random.choice(KANGING_STR)}`")
+        else:
+            await edit_delete(args, "`Reply to video/gif...!`")
+            return
+    else:
+        await edit_delete(args, "`I can't convert that...`")
+        return
+    cmd = "/newvideo"
+    packname = f"geez_{userid}_temp_pack"
+    response = urllib.request.urlopen(
+        urllib.request.Request(f"http://t.me/addstickers/{packname}")
+    )
+    htmlstr = response.read().decode("utf8").split("\n")
+    if (
+        "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
+        not in htmlstr
+    ):
+        async with args.client.conversation("@Stickers") as xconv:
+            await delpack(
+                xx,
+                xconv,
+                cmd,
+                args,
+                packname,
+            )
+    await xx.edit("`Hold on, making sticker...`")
+    async with args.client.conversation("@Stickers") as conv:
+        otherpack, packname, emoji = await newpacksticker(
+            catevent,
+            conv,
+            "/newvideo",
+            args,
+            1,
+            "Cat",
+            True,
+            "😂",
+            packname,
+            False,
+            io.BytesIO(),
+        )
+    if otherpack is None:
+        return
+    await xx.delete()
+    await args.client.send_file(
+        args.chat_id,
+        sticker,
+        force_document=True,
+        caption=f"**[Sticker Preview](t.me/addstickers/{packname})**\n*__It will remove automatically on your next convert.__",
+        reply_to=message,
+    )
+    if os.path.exists(sticker):
+        os.remove(sticker)
 
 
 @geez_cmd(pattern="editsticker ?(.*)")
