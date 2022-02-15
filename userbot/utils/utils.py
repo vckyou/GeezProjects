@@ -184,7 +184,6 @@ def load_module(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.bot = bot
         mod.LOGS = LOGS
-        mod._geezutils = _geezutils
         mod.CMD_HELP = CMD_HELP
         mod.logger = logging.getLogger(shortname)
         spec.loader.exec_module(mod)
