@@ -46,7 +46,7 @@ from telethon.tl.types import (
 )
 from yt_dlp import YoutubeDL
 
-from userbot import LOGS, SUDO_USERS, bot
+from userbot import LOGS, SUDO_USERS, bot, TEMP_DOWNLOAD_DIRECTORY
 from userbot.utils.format import md_to_text, paste_message
 
 
@@ -628,3 +628,20 @@ class TgConverter:
 
 
 # --------- END --------- #
+
+
+async def animator(media, mainevent, textevent):
+    # //Hope u dunt kang :/ @Jisan7509
+    h = media.file.height
+    w = media.file.width
+    w, h = (-1, 512) if h > w else (512, -1)
+    if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
+    geez = await mainevent.client.download_media(media, TEMP_DOWNLOAD_DIRECTORY)
+    await textevent.edit("__🎞Converting into Animated sticker..__")
+    await runcmd(
+        f"ffmpeg -ss 00:00:00 -to 00:00:02.900 -i {BadCat} -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
+    )  # pain
+    os.remove(geez)
+    sticker = "animate.webm"
+    return sticker
