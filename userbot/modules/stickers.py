@@ -47,6 +47,9 @@ KANGING_STR = [
     "Proses!",
 ]
 
+def verify_cond(geezarray, text):
+    return any(i in text for i in geezarray)
+
 def char_is_emoji(character):
     return character in catemoji.UNICODE_EMOJI["en"]
 
@@ -237,7 +240,7 @@ async def kang(args):
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await args.client.download_media(message.photo, photo)
-        elif "image" in message.media.document.mime_type.split("/"):
+        elif message.file and "image" in message.file.mime_type.split("/"):
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await args.client.download_file(message.media.document, photo)
