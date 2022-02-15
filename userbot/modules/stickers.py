@@ -251,7 +251,7 @@ async def kang(args):
             ):
                 emoji = message.media.document.attributes[1].alt
                 emojibypass = True
-        elif "tgsticker" in message.media.document.mime_type:
+        elif message.file and "tgsticker" in message.file.mime_type:
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             await args.client.download_file(message.media.document, "AnimatedSticker.tgs")
             attributes = message.media.document.attributes
@@ -295,7 +295,7 @@ async def kang(args):
                 pack = splat[0]  # User sent both
                 emoji = splat[1]
             else:
-                return await catevent.edit("check `.info stickers`")
+                return await xx.edit("check `.info stickers`")
         elif len(splat) == 1:
             if char_is_emoji(splat[0][0]):
                 emoji = splat[0]
