@@ -33,6 +33,7 @@ from .tools import (
     humanbytes,
     create_quotly,
     TgConverter,
+    _format_quote,
     md5,
     media_to_pic,
     media_type,
