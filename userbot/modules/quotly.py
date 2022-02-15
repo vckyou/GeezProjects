@@ -21,7 +21,7 @@ async def quott_(event):
     match = event.pattern_match.group(1).strip()
     if not event.is_reply:
         return await edit_delete("`Reply Kepesan!`")
-    msg = await await edit_or_reply(event, "Sedang Memprosess!!")
+    msg = await edit_or_reply(event, "Sedang Memprosess!!")
     reply = await event.get_reply_message()
     replied_to, reply_ = None, None
     if match:
