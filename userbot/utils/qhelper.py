@@ -22,6 +22,7 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from telethon.tl import types
 
+from . import utils as _geezutils
 
 COLORS = [
     "#F07975",
@@ -160,7 +161,7 @@ async def process(msg, user, client, reply, replied=None):
                 cmd = (
                     f"lottie_convert.py --frame 0 -if lottie -of png {sticker} {file_1}"
                 )
-                stdout, stderr = (await _catutils.runcmd(cmd))[:2]
+                stdout, stderr = (await _geezutils.runcmd(cmd))[:2]
                 stimg = Image.open("./temp/q.png")
             else:
                 stimg = Image.open(sticker)
