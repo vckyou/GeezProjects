@@ -37,6 +37,7 @@ from .tools import (
     media_to_pic,
     media_type,
     post_to_telegraph,
+    parse_id,
     reply_id,
     run_cmd,
     animator,
