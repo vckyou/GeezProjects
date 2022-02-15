@@ -25,6 +25,7 @@ import base64
 import asyncio
 import hashlib
 import os
+import aiohttp
 import os.path
 import re
 import shlex
