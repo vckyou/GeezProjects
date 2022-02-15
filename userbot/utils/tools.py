@@ -424,7 +424,6 @@ _entities = {
     types.MessageEntityMentionName: "text_mention",
     types.MessageEntityUnderline: "underline",
     types.MessageEntityUrl: "url",
-    types.MessageEntitySpoiler: "spoiler",
     types.MessageEntityTextUrl: "text_link",
     types.MessageEntityBotCommand: "bot_command",
     types.MessageEntityCode: "code",
