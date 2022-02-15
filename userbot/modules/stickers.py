@@ -187,7 +187,7 @@ async def add_to_pack(
             pack = 1
         packname = pack_name(userid, pack, is_anim, is_video)
         packnick = pack_nick(username, pack, is_anim, is_video)
-        await catevent.edit(f"`Switching to Pack {pack} due to insufficient space`")
+        await xx.edit(f"`Switching to Pack {pack} due to insufficient space`")
         await conv.send_message(packname)
         x = await conv.get_response()
         if x.text == "Invalid pack selected.":
@@ -285,8 +285,8 @@ async def kang(args):
                 )
             else:
                 xx = await edit_or_reply(args, "__⌛ Downloading..__")
-                sticker = await animator(message, args, catevent)
-                await edit_or_reply(catevent, f"`{random.choice(KANGING_STR)}`")
+                sticker = await animator(message, args, xx)
+                await edit_or_reply(xx, f"`{random.choice(KANGING_STR)}`")
             is_video = True
             emoji = "😂"
             emojibypass = True
