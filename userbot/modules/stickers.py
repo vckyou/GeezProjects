@@ -277,6 +277,7 @@ async def kang(args):
         await edit_delete(args, "`I can't kang that...`")
         return
     if photo:
+        splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
         emoji = emoji if emojibypass else "😂"
         pack = 1
         if len(splat) == 2:
