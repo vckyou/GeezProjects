@@ -640,7 +640,7 @@ async def animator(media, mainevent, textevent):
     geez = await mainevent.client.download_media(media, TEMP_DOWNLOAD_DIRECTORY)
     await textevent.edit("__🎞Converting into Animated sticker..__")
     await runcmd(
-        f"ffmpeg -ss 00:00:00 -to 00:00:02.900 -i {BadCat} -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
+        f"ffmpeg -ss 00:00:00 -to 00:00:02.900 -i {geez} -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
     )  # pain
     os.remove(geez)
     sticker = "animate.webm"
