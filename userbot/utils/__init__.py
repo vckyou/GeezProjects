@@ -39,6 +39,7 @@ from .tools import (
     post_to_telegraph,
     reply_id,
     run_cmd,
+    animator,
     runcmd,
     take_screen_shot,
     time_formatter,
