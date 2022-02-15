@@ -45,7 +45,7 @@ from telethon.tl.types import (
 )
 from yt_dlp import YoutubeDL
 
-from userbot import LOGS, SUDO_USERS, DEVS, bot, TEMP_DOWNLOAD_DIRECTORY
+from userbot import LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.utils.format import md_to_text, paste_message
 
 
