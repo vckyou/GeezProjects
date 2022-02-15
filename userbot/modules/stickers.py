@@ -595,7 +595,7 @@ async def pussy(args):
     user = await args.client.get_me()
     userid = user.id
     if message and message.media:
-        if "video/mp4" in message.media.document.mime_type:
+        if "video/mp4" in message.media.file.mime_type:
             xx = await edit_or_reply(args, "__⌛ Downloading..__")
             sticker = await animator(message, args, xx)
             await edit_or_reply(xx, f"`{random.choice(KANGING_STR)}`")
