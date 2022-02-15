@@ -13,13 +13,9 @@ import math
 import random
 import urllib.request
 from os import remove
-import base64
 import os
-import re
-import string
 import urllib.request
 
-import cloudscraper
 import emoji as catemoji
 import requests
 from bs4 import BeautifulSoup as bs
