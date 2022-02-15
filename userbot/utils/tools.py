@@ -38,7 +38,6 @@ from hachoir.parser import createParser
 from html_telegraph_poster import TelegraphPoster
 from PIL import Image
 from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.types import MessageEntitySpoiler as spoiler
 from telethon.tl.types import (
     ChannelParticipantAdmin,
     ChannelParticipantCreator,
