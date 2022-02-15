@@ -22,7 +22,7 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from telethon.tl import types
 
-from .utils import _geezutils
+from userbot.utils.tools import runcmd as _geezutils
 
 COLORS = [
     "#F07975",
