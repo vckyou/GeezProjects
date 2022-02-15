@@ -3,11 +3,7 @@
 # Support @GeezSupport & @GeezProjects
 #
 
-import asyncio
 
-from telethon import events
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.functions.contacts import UnblockRequest
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
