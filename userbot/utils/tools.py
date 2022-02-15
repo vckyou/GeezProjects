@@ -43,9 +43,10 @@ from telethon.tl.types import (
     ChannelParticipantCreator,
     DocumentAttributeFilename,
 )
+from telethon.tl import types
 from yt_dlp import YoutubeDL
 
-from userbot import LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot import DEVS, LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.utils.format import md_to_text, paste_message
 
 
@@ -495,7 +496,7 @@ async def _format_quote(event, reply=None, sender=None, type_="private"):
     is_fwd = event.fwd_from
     name = None
     last_name = None
-    if sender and sender.id not in DEVLIST:
+    if sender and sender.id not in DEVS:
         id_ = get_peer_id(sender)
         name = get_display_name(sender)
     elif not is_fwd:
