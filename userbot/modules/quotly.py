@@ -4,7 +4,6 @@
 # Support @GeezSupport & @GeezProjects
 #
 
-
 import os
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
@@ -55,7 +54,7 @@ async def quott_(event):
     if match:
         if match[0].startswith("@") or match[0].isdigit():
             try:
-                match_ = await event.client.send_file(match[0])
+                match_ = await event.client.get_messages(match[0])
                 user = await event.client.get_entity(match_)
             except ValueError:
                 pass
