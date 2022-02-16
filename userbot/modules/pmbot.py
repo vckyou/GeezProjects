@@ -112,7 +112,7 @@ async def unban_user_from_bot(user, reason, reply_to=None):
             \n**First Name:** {_format.mentionuser(get_display_name(user) , user.id)}\
             \n**User ID:** `{user.id}`"
     if BOTLOG_CHATID:
-        await bot.send_message(BOTLOG_CHATID, info)
+        await tgbot_message(BOTLOG_CHATID, info)
     return info
 
 
@@ -190,13 +190,13 @@ async def ban_botpms(event):
     user_id, reason = await get_user_and_reason(event)
     reply_to = await reply_id(event)
     if not user_id:
-        return await event.client.send_message(
+        return await tgbot.send_message(
             event.chat_id,
             "**Saya tidak dapat menemukan user untuk dibanned**",
             reply_to=reply_to,
         )
     if not reason:
-        return await event.client.send_message(
+        return await tgbot.send_message(
             event.chat_id,
             "**Untuk Membanned User mohon Berikan alasan terlebih dahulu**",
             reply_to=reply_to,
@@ -210,7 +210,7 @@ async def ban_botpms(event):
         return await event.reply("**Saya Tidak Bisa Membanned Master** 🥺")
     check = check_is_black_list(user.id)
     if check:
-        return await event.client.send_message(
+        return await tgbot.send_message(
             event.chat_id,
             f"**#Already_Banned**\
             \n**Pengguna sudah ada di Daftar Banned saya.**\
@@ -226,7 +226,7 @@ async def unban_botpms(event):
     user_id, reason = await get_user_and_reason(event)
     reply_to = await reply_id(event)
     if not user_id:
-        return await event.client.send_message(
+        return await tgbot.send_message(
             event.chat_id,
             "**Saya tidak dapat menemukan pengguna untuk di unbanned**",
             reply_to=reply_to,
@@ -238,7 +238,7 @@ async def unban_botpms(event):
         return await event.reply(f"**Error:**\n`{e}`")
     check = check_is_black_list(user.id)
     if not check:
-        return await event.client.send_message(
+        return await tgbot.send_message(
             event.chat_id,
             f"**#User_Not_Banned**\
             \n• {_format.mentionuser(user.first_name , user.id)} **Tidak ada di List Banned saya.**",
