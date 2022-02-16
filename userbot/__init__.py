@@ -58,7 +58,6 @@ SUDO_LIST = {}
 ZALG_LIST = {}
 LOAD_PLUG = {}
 INT_PLUG = ""
-GROUP_CALLS = {}
 ISAFK = False
 AFKREASON = None
 ENABLE_KILLME = True
