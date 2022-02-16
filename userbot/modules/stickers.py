@@ -20,7 +20,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
-from userbot import S_PACK_NAME 
 from telethon.errors import PackShortNameOccupiedError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
