@@ -179,7 +179,7 @@ async def add_to_pack(
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
     rsp = await conv.get_response()
-    if not verify_cond(EMOJI_SEN, rsp.text):
+    if not verify_cond(custompack, rsp.text):
         await xx.edit(
             f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
         )
