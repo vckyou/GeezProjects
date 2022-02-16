@@ -12,10 +12,13 @@ from pytgcalls.types.input_stream.quality import (
     LowQualityVideo,
     MediumQualityVideo,
 )
+
+from pytgcalls import GroupCallFactory
 from telethon.tl import types
 from telethon.utils import get_display_name
 from youtubesearchpython import VideosSearch
 
+from asyncio import sleep
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot import PLAY_PIC as fotoplay
@@ -127,11 +130,11 @@ async def vc_play(event):
     ):
         return await edit_or_reply(event, "**Silahkan Masukan Judul Lagu**")
     elif replied and not replied.audio and not replied.voice or not replied:
-        botman = await edit_or_reply(event, "`Searching...`")
+        geezav = await edit_or_reply(event, "`Searching...`")
         query = event.text.split(maxsplit=1)[1]
         search = ytsearch(query)
         if search == 0:
-            await botman.edit(
+            await geezav.edit(
                 "**Tidak Dapat Menemukan Lagu** Coba cari dengan Judul yang Lebih Spesifik"
             )
         else:
@@ -147,11 +150,11 @@ async def vc_play(event):
             format = "best[height<=?720][width<=?1280]"
             hm, ytlink = await ytdl(format, url)
             if hm == 0:
-                await botman.edit(f"`{ytlink}`")
+                await geezav.edit(f"`{ytlink}`")
             elif chat_id in QUEUE:
                 pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                 caption = f"💡 **Lagu Ditambahkan Ke antrian »** `#{pos}`\n\n**🏷 Judul:** [{songname}]({url})\n**⏱ Durasi:** `{duration}`\n🎧 **Atas permintaan:** {from_user}"
-                await botman.delete()
+                await geezav.delete()
                 await event.client.send_file(
                     chat_id, thumb, caption=caption, reply_to=event.reply_to_msg_id
                 )
@@ -167,16 +170,16 @@ async def vc_play(event):
                     )
                     add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                     caption = f"🏷 **Judul:** [{songname}]({url})\n**⏱ Durasi:** `{duration}`\n💡 **Status:** `Sedang Memutar`\n🎧 **Atas permintaan:** {from_user}"
-                    await botman.delete()
+                    await geezav.delete()
                     await event.client.send_file(
                         chat_id, thumb, caption=caption, reply_to=event.reply_to_msg_id
                     )
                 except Exception as ep:
                     clear_queue(chat_id)
-                    await botman.edit(f"`{ep}`")
+                    await geezav.edit(f"`{ep}`")
 
     else:
-        botman = await edit_or_reply(event, "📥 **Sedang Mendownload**")
+        bot = await edit_or_reply(event, "📥 **Sedang Mendownload**")
         dl = await replied.download_media()
         link = f"https://t.me/c/{chat.id}/{event.reply_to_msg_id}"
         if replied.audio:
@@ -189,7 +192,7 @@ async def vc_play(event):
             await event.client.send_file(
                 chat_id, ngantri, caption=caption, reply_to=event.reply_to_msg_id
             )
-            await botman.delete()
+            await geezav.delete()
         else:
             try:
                 await call_py.join_group_call(
@@ -205,10 +208,10 @@ async def vc_play(event):
                 await event.client.send_file(
                     chat_id, fotoplay, caption=caption, reply_to=event.reply_to_msg_id
                 )
-                await botman.delete()
+                await geezav.delete()
             except Exception as ep:
                 clear_queue(chat_id)
-                await botman.edit(f"`{ep}`")
+                await geezav.edit(f"`{ep}`")
 
 
 @geez_cmd(pattern="vplay(?:\s|$)([\s\S]*)")
@@ -462,6 +465,64 @@ async def vc_volume(event):
             await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streaming**")
+
+
+@geez_cmd(pattern="joinvc$")
+@register(pattern=r"^\.joinvcs$", sudo=True)
+async def joinvc(event):
+    xx = await event.edit("`...`")
+
+    try:
+        call = await get_call(event)
+    except BaseException:
+        call = None
+
+    if not call:
+        await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
+        await sleep(15)
+        return await NotUBot.delete()
+
+    group_call = GROUP_CALLS.get(event.chat.id)
+    if group_call is None:
+        group_call = GroupCallFactory(
+            event.client,
+            GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
+            enable_logs_to_console=False,
+            path_to_log_file=None,
+        ).get_file_group_call(None)
+        GROUP_CALLS[event.chat.id] = group_call
+
+    if not (group_call and group_call.is_connected):
+        await group_call.start(event.chat.id, enable_action=False)
+
+    await xx.edit("`joined`")
+    await sleep(3)
+    await xx.delete()
+
+
+@geez_cmd(pattern="leavevc$")
+@register(pattern=r"^\.leavevcs$", sudo=True)
+async def leavevc(event):
+    xx = await event.edit("`...`")
+
+    try:
+        call = await get_call(event)
+    except BaseException:
+        call = None
+
+    if not call:
+        await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
+        await sleep(15)
+        return await xx.delete()
+
+    group_call = GROUP_CALLS.get(event.chat.id)
+    if group_call and group_call.is_connected:
+        await group_call.leave_current_group_call()
+        await group_call.stop()
+
+    await xx.edit("`leaved`")
+    await sleep(3)
+    await xx.delete()
 
 
 @geez_cmd(pattern="playlist$")
