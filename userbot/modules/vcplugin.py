@@ -19,8 +19,7 @@ from youtubesearchpython import VideosSearch
 
 from asyncio import sleep
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, GROUP_CALLS
-from userbot.events import register
+from userbot import CMD_HELP
 from userbot import PLAY_PIC as fotoplay
 from userbot import QUEUE_PIC as ngantri
 from userbot import call_py
@@ -465,64 +464,6 @@ async def vc_volume(event):
             await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streaming**")
-
-
-@geez_cmd(pattern="joinvc$")
-@register(pattern=r"^\.joinvcs$", sudo=True)
-async def joinvc(event):
-    xx = await event.edit("`...`")
-
-    try:
-        call = await get_call(event)
-    except BaseException:
-        call = None
-
-    if not call:
-        await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
-        await sleep(15)
-        return await xx.delete()
-
-    group_call = GROUP_CALLS.get(event.chat.id)
-    if group_call is None:
-        group_call = GroupCallFactory(
-            event.client,
-            GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
-            enable_logs_to_console=False,
-            path_to_log_file=None,
-        ).get_file_group_call(None)
-        GROUP_CALLS[event.chat.id] = group_call
-
-    if not (group_call and group_call.is_connected):
-        await group_call.start(event.chat.id, enable_action=False)
-
-    await xx.edit("`joined`")
-    await sleep(3)
-    await xx.delete()
-
-
-@geez_cmd(pattern="leavevc$")
-@register(pattern=r"^\.leavevcs$", sudo=True)
-async def leavevc(event):
-    xx = await event.edit("`...`")
-
-    try:
-        call = await get_call(event)
-    except BaseException:
-        call = None
-
-    if not call:
-        await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
-        await sleep(15)
-        return await xx.delete()
-
-    group_call = GROUP_CALLS.get(event.chat.id)
-    if group_call and group_call.is_connected:
-        await group_call.leave_current_group_call()
-        await group_call.stop()
-
-    await xx.edit("`leaved`")
-    await sleep(3)
-    await xx.delete()
 
 
 @geez_cmd(pattern="playlist$")
