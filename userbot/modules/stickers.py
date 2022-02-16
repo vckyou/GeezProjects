@@ -151,7 +151,7 @@ async def add_to_pack(
             pack = 1
         packname = pack_name(userid, pack, is_anim, is_video)
         packnick = pack_nick(username, pack, is_anim, is_video)
-        await xx.edit(f"`Switching to Pack {pack} due to insufficient space`")
+        await catevent.edit(f"`Switching to Pack {pack} due to insufficient space`")
         await conv.send_message(packname)
         x = await conv.get_response()
         if x.text == "Invalid pack selected.":
@@ -179,10 +179,17 @@ async def add_to_pack(
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
     rsp = await conv.get_response()
-    if not verify_cond(KANGING_STR, rsp.text):
+    if not verify_cond(EMOJI_SEN, rsp.text):
         await xx.edit(
             f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
         )
+    await conv.send_message(emoji)
+    await args.client.send_read_acknowledge(conv.chat_id)
+    await conv.get_response()
+    await conv.send_message("/done")
+    await conv.get_response()
+    await args.client.send_read_acknowledge(conv.chat_id)
+
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
 async def kang(args):
