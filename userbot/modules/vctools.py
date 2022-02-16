@@ -71,7 +71,8 @@ async def stop_voice(c):
 
 
 @geez_cmd(pattern="joinvc$")
-@register(pattern=r"^\.joinvcs$", sudo=True)async def joinvc(event):
+@register(pattern=r"^\.joinvcs$", sudo=True)
+async def joinvc(event):
     xx = await event.edit("`...`")
 
     try:
@@ -103,7 +104,8 @@ async def stop_voice(c):
 
 
 @geez_cmd(pattern="leavevc$")
-@register(pattern=r"^\.leavevcs$", sudo=True)async def leavevc(event):
+@register(pattern=r"^\.leavevcs$", sudo=True)
+async def leavevc(event):
     xx = await event.edit("`...`")
 
     try:
