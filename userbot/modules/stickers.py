@@ -20,6 +20,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
+from userbot import S_PACK_NAME as custompack
 from telethon.errors import PackShortNameOccupiedError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
@@ -56,10 +57,10 @@ def char_is_emoji(character):
 def pack_nick(username, pack, is_anim, is_video):
     if gvarstatus("custompack"):
         if is_anim:
-            return f"{gvarstatus('custompack')} Vol.{pack} (Animated)"
+            return f"{gvarstatus({custompack})} Vol.{pack} (Animated)"
         if is_video:
-            return f"{gvarstatus('custompack')} Vol. {pack} (Video)"
-        return f"{gvarstatus('custompack')} Vol.{pack}"
+            return f"{gvarstatus({custompack})} Vol. {pack} (Video)"
+        return f"{gvarstatus({custompack})} Vol.{pack}"
     if is_anim:
         return f"@{username} Vol.{pack} (Animated)"
     if is_video:
