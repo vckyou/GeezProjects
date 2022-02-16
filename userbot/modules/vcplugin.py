@@ -19,7 +19,7 @@ from youtubesearchpython import VideosSearch
 
 from asyncio import sleep
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
+from userbot import CMD_HELP, GROUP_CALLS
 from userbot.events import register
 from userbot import PLAY_PIC as fotoplay
 from userbot import QUEUE_PIC as ngantri
@@ -480,7 +480,7 @@ async def joinvc(event):
     if not call:
         await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
         await sleep(15)
-        return await NotUBot.delete()
+        return await xx.delete()
 
     group_call = GROUP_CALLS.get(event.chat.id)
     if group_call is None:
