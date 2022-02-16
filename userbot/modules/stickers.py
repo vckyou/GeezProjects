@@ -15,12 +15,12 @@ import urllib.request
 from os import remove
 import os
 
-import emoji as catemoji
+import emoji as geezemoji
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
-from userbot import S_PACK_NAME as custompack
+from userbot import S_PACK_NAME 
 from telethon.errors import PackShortNameOccupiedError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
@@ -52,15 +52,15 @@ def verify_cond(geezarray, text):
     return any(i in text for i in geezarray)
 
 def char_is_emoji(character):
-    return character in catemoji.UNICODE_EMOJI["en"]
+    return character in geezemoji.UNICODE_EMOJI["en"]
 
 def pack_nick(username, pack, is_anim, is_video):
-    if gvarstatus("custompack"):
+    if gvarstatus("S_PACK_NAME"):
         if is_anim:
-            return f"{gvarstatus('custompack')} Vol.{pack} (Animated)"
+            return f"{gvarstatus('S_PACK_NAME')} Vol.{pack} (Animated)"
         if is_video:
-            return f"{gvarstatus('custompack')} Vol. {pack} (Video)"
-        return f"{gvarstatus('custompack')} Vol.{pack}"
+            return f"{gvarstatus('S_PACK_NAME')} Vol. {pack} (Video)"
+        return f"{gvarstatus('S_PACK_NAME')} Vol.{pack}"
     if is_anim:
         return f"@{username} Vol.{pack} (Animated)"
     if is_video:
@@ -96,40 +96,11 @@ async def newpacksticker(
     is_anim,
     stfile,
     otherpack=False,
-    pkang=False,
 ):
     try:
         await conv.send_message(cmd)
     except YouBlockedUserError:
         await xx.edit("You have blocked the @stickers bot. unblock it and try.")
-        if not pkang:
-            return None, None, None
-        return None, None
-    await conv.get_response()
-    await args.client.send_read_acknowledge(conv.chat_id)
-    await conv.send_message(packnick)
-    await conv.get_response()
-    await args.client.send_read_acknowledge(conv.chat_id)
-    if is_video:
-        await conv.send_file("animate.webm")
-    elif is_anim:
-        await conv.send_file("AnimatedSticker.tgs")
-        os.remove("AnimatedSticker.tgs")
-    else:
-        stfile.seek(0)
-        await conv.send_file(stfile, force_document=True)
-    rsp = await conv.get_response()
-    if not verify_cond(custompack, rsp.text):
-        await xx.edit(
-            f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
-        )
-        if not pkang:
-            return None, None, None
-        return None, None
-    await conv.send_message(emoji)
-    await args.client.send_read_acknowledge(conv.chat_id)
-    await conv.get_response()
-    await conv.send_message("/publish")
     if is_anim:
         await conv.get_response()
         await conv.send_message(f"<{packnick}>")
@@ -142,9 +113,6 @@ async def newpacksticker(
     await args.client.send_read_acknowledge(conv.chat_id)
     await conv.get_response()
     await args.client.send_read_acknowledge(conv.chat_id)
-    if not pkang:
-        return otherpack, packname, emoji
-    return pack, packname
 
 def pack_name(userid, pack, is_anim, is_video):
     if is_anim:
@@ -166,7 +134,6 @@ async def add_to_pack(
     stfile,
     emoji,
     cmd,
-    pkang=False
 ):
     try:
         await conv.send_message("/addsticker")
@@ -204,7 +171,6 @@ async def add_to_pack(
                 is_anim,
                 stfile,
                 otherpack=True,
-                pkang=pkang,
             )
     if is_video:
         await conv.send_file("animate.webm")
@@ -216,22 +182,10 @@ async def add_to_pack(
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
     rsp = await conv.get_response()
-    if not verify_cond(custompack, rsp.text):
+    if not verify_cond(KANGING_STR, rsp.text):
         await xx.edit(
             f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
         )
-        if not pkang:
-            return None, None
-        return None, None
-    await conv.send_message(emoji)
-    await args.client.send_read_acknowledge(conv.chat_id)
-    await conv.get_response()
-    await conv.send_message("/done")
-    await conv.get_response()
-    await args.client.send_read_acknowledge(conv.chat_id)
-    if not pkang:
-        return packname, emoji
-    return pack, packname
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
 async def kang(args):
