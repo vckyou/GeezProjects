@@ -13,6 +13,13 @@ from userbot.utils.tools import create_quotly
 
 from .carbon import all_col
 
+async def parse_id(self, text):
+        try:
+            text = int(text)
+        except ValueError:
+            pass
+        return await self.get_peer_id(text)
+
 @geez_cmd(pattern="q ?(.*)")
 async def quott_(event):
     match = event.pattern_match.group(1).strip()
@@ -55,7 +62,7 @@ async def quott_(event):
     if match:
         if match[0].startswith("@") or match[0].isdigit():
             try:
-                match_ = await event.client.parse_id(match[0])
+                match_ = await event.client.conversation(match[0])
                 user = await event.client.get_entity(match_)
             except ValueError:
                 pass
