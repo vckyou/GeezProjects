@@ -179,7 +179,7 @@ async def vc_play(event):
                     await geezav.edit(f"`{ep}`")
 
     else:
-        bot = await edit_or_reply(event, "📥 **Sedang Mendownload**")
+        await edit_or_reply(event, "📥 **Sedang Mendownload**")
         dl = await replied.download_media()
         link = f"https://t.me/c/{chat.id}/{event.reply_to_msg_id}"
         if replied.audio:
