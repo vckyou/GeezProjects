@@ -20,6 +20,7 @@ from youtubesearchpython import VideosSearch
 from asyncio import sleep
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
+from userbot.events import register
 from userbot import PLAY_PIC as fotoplay
 from userbot import QUEUE_PIC as ngantri
 from userbot import call_py
