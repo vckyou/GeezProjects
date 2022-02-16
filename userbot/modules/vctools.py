@@ -1,16 +1,17 @@
-# Copyright (C) 2021 TeamUltroid
+# thanks full for © TeamUltroid
 #
 # This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 #
-# Ported by @mrismanaziz
-# recode by @vckyaz
+# Ported by @vckyaz
+#
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
 # Support @GeezSupport & @GeezProjects
-# Kalo mau ngecopas, jangan hapus credit ya goblok
+# 
 
+from pytgcalls import GroupCallFactory
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
@@ -67,6 +68,62 @@ async def stop_voice(c):
         await edit_or_reply(c, "`Voice Chat Stopped...`")
     except Exception as ex:
         await edit_delete(c, f"**ERROR:** `{ex}`")
+
+
+@geez_cmd(pattern="joinvc$")
+@register(pattern=r"^\.joinvcs$", sudo=True)async def joinvc(event):
+    xx = await event.edit("`...`")
+
+    try:
+        call = await get_call(event)
+    except BaseException:
+        call = None
+
+    if not call:
+        await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
+        await sleep(15)
+        return await NotUBot.delete()
+
+    group_call = GROUP_CALLS.get(event.chat.id)
+    if group_call is None:
+        group_call = GroupCallFactory(
+            event.client,
+            GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
+            enable_logs_to_console=False,
+            path_to_log_file=None,
+        ).get_file_group_call(None)
+        GROUP_CALLS[event.chat.id] = group_call
+
+    if not (group_call and group_call.is_connected):
+        await group_call.start(event.chat.id, enable_action=False)
+
+    await xx.edit("`joined`")
+    await sleep(3)
+    await xx.delete()
+
+
+@geez_cmd(pattern="leavevc$")
+@register(pattern=r"^\.leavevcs$", sudo=True)async def leavevc(event):
+    xx = await event.edit("`...`")
+
+    try:
+        call = await get_call(event)
+    except BaseException:
+        call = None
+
+    if not call:
+        await xx.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
+        await sleep(15)
+        return await xx.delete()
+
+    group_call = GROUP_CALLS.get(event.chat.id)
+    if group_call and group_call.is_connected:
+        await group_call.leave_current_group_call()
+        await group_call.stop()
+
+    await xx.edit("`leaved`")
+    await sleep(3)
+    await xx.delete()
 
 
 @geez_cmd(pattern="vcinvite")
