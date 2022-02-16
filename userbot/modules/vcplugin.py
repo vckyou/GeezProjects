@@ -13,7 +13,6 @@ from pytgcalls.types.input_stream.quality import (
     MediumQualityVideo,
 )
 
-from pytgcalls import GroupCallFactory
 from telethon.tl import types
 from telethon.utils import get_display_name
 from youtubesearchpython import VideosSearch
