@@ -54,7 +54,7 @@ async def quott_(event):
     if match:
         if match[0].startswith("@") or match[0].isdigit():
             try:
-                match_ = await event.client.get_messages(match[0])
+                match_ = await event.client.send_message(match[0])
                 user = await event.client.get_entity(match_)
             except ValueError:
                 pass
