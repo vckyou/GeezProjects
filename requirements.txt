@@ -48,6 +48,7 @@ pillow
 psutil
 psycopg2-binary
 py-tgcalls
+pytgcalls==2.1.0
 pyaztro
 pybase64
 pyfiglet
