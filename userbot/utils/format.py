@@ -1,5 +1,3 @@
-import math
-import os
 import datetime
 
 from bs4 import BeautifulSoup
