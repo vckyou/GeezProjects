@@ -1,16 +1,7 @@
-import base64
-import json
 import math
 import os
-import random
-import re
-import ssl
-import string
-from io import BytesIO
 import datetime
 
-from json.decoder import JSONDecodeError
-from traceback import format_exc
 from bs4 import BeautifulSoup
 from markdown import markdown
 from telethon.tl.tlobject import TLObject
