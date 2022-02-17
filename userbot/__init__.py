@@ -33,6 +33,7 @@ from telethon.sessions import StringSession
 from telethon.sync import TelegramClient, custom, events
 from telethon.tl.types import InputWebDocument
 from telethon.utils import get_display_name
+from .utils.tools import TgConverter
 
 from .storage import Storage
 
@@ -61,6 +62,7 @@ INT_PLUG = ""
 ISAFK = False
 AFKREASON = None
 ENABLE_KILLME = True
+con = TgConverter
 
 # Bot Logs setup:
 logging.basicConfig(
