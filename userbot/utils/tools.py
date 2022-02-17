@@ -48,7 +48,7 @@ from telethon.tl import types
 from yt_dlp import YoutubeDL
 
 from userbot import DEVS, LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.utils.format import md_to_text, paste_message
+from .format import md_to_text, paste_message
 
 
 def deEmojify(inputString):
