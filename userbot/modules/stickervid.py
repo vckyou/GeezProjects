@@ -11,6 +11,7 @@ from os import remove
 import cv2
 from userbot import LOGS
 from userbot.utils.tools import create_quotly
+from userbot import S_PACK_NAME as custompack
 from userbot.utils.tgconverter import TgConverter
 from telethon.errors import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename, DocumentAttributeSticker
@@ -79,7 +80,7 @@ async def hehe(args):
     elif message.message:
         photo = await create_quotly(message)
         return await xx.edit("`Unsupported File!`")
-    return await xx.edit(f"`{random.choice(KANGING_STR)}`")
+    return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
     if photo:
         splat = args.text.split()
         pack = 1
@@ -94,8 +95,11 @@ async def hehe(args):
             else:
                 emoji = splat[1]
 
-        packname = f"geez_{user.id}_{pack}"
-        packnick = f"{username}'s Pack {pack}"
+        u_id = user.id
+        f_name = user.first_name
+        packname = f"Sticker_u{u_id}_Ke{pack}"
+        custom_packnick = f"{custompack}" or f"{f_name} Sticker Pack"
+        packnick = f"{custom_packnick}"
         cmd = "/newpack"
         file = io.BytesIO()
 
@@ -128,8 +132,6 @@ async def hehe(args):
                 except YouBlockedUserError:
                     LOGS.info("Unblocking @Stickers for kang...")
                     await args.client(functions.contacts.UnblockRequest("stickers"))
-                    await conv.get_response()
-                    await args.client.send_read_acknowledge(conv.chat_id)
                     await conv.send_message("/addsticker")
                 await conv.get_response()
                 await conv.send_message(packname)
@@ -140,8 +142,8 @@ async def hehe(args):
                 t = "50" if (is_anim or is_vid) else "120"
                 while t in x.message:
                     pack += 1
-                    packname = f"geez_{user.id}_{pack}"
-                    packnick = f"{username}'s Pack {pack}"
+                    packname = f"Sticker_u{u_id}_Ke{pack}"
+                    packnick = f"{custom_packnick}"
                     if is_anim:
                         packname += "_anim"
                         packnick += " (Animated)"
