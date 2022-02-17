@@ -61,7 +61,6 @@ INT_PLUG = ""
 ISAFK = False
 AFKREASON = None
 ENABLE_KILLME = True
-con = TgConverter
 
 # Bot Logs setup:
 logging.basicConfig(
