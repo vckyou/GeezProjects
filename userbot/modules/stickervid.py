@@ -19,6 +19,8 @@ from telethon.tl.types import DocumentAttributeFilename, DocumentAttributeSticke
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.utils import get_input_document
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot import CMD_HANDLER as cmd
+from userbot import CMD_HELP
 
 KANGING_STR = [
     "Prosess Mengambil Sticker Pack!",
