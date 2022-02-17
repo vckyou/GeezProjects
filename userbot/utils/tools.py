@@ -49,7 +49,7 @@ from telethon.tl.types import (
 from telethon.tl import types
 from yt_dlp import YoutubeDL
 
-from userbot import DEVS, LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot, owner
+from userbot import DEVS, LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.utils.format import md_to_text, paste_message
 
 
@@ -629,7 +629,7 @@ async def metadata(file):
     if info.get("AudioCount"):
         data["title"] = info.get("Title", file)
         data["performer"] = (
-            info.get("Performer") or info.get("artist") or info.get(f"{owner}")
+            info.get("Performer") or info.get("artist")
         )
     if info.get("VideoCount"):
         data["height"] = int(float(_info[1].get("Height", 720)))
