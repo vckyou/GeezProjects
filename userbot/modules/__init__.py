@@ -9,9 +9,6 @@
 import sys
 
 from userbot import LOAD, LOGS, NO_LOAD
-from userbot.utils.tools import TgConverter
-
-con = TgConverter
 
 def __list_all_modules():
     import glob
