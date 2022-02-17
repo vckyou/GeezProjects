@@ -9,7 +9,6 @@ import random
 from os import remove
 
 import cv2
-import requests
 from userbot import LOGS
 from userbot.utils.tools import create_quotly
 from userbot.utils.tgconverter import TgConverter
