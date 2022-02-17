@@ -9,16 +9,12 @@ import random
 from os import remove
 
 import cv2
-import numpy as np
 import requests
-from PIL import Image, ImageDraw
-from userbot import LOGS, bot
+from userbot import LOGS
 from userbot.utils.tools import create_quotly, TgConverter
-from telethon.errors import PeerIdInvalidError, YouBlockedUserError
+from telethon.errors import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename, DocumentAttributeSticker
-from telethon.tl.functions.contacts import UnblockRequest
-from telethon.utils import get_input_document
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 
