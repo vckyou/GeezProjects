@@ -10,7 +10,7 @@ from os import remove
 
 import cv2
 import requests
-from userbot import LOGS
+from userbot import LOGS, con
 from userbot.utils.tools import create_quotly, TgConverter
 from telethon.errors import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename, DocumentAttributeSticker
