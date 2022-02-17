@@ -141,7 +141,7 @@ async def hehe(args):
                     elif is_vid:
                         packnick += " (Video)"
                         packname += "_vid"
-                    await xx.edit(get_string("sts_13").format(pack))
+                    await xx.edit(f"`Beralih ke Sticker Pack {pack} karena ruang yang tidak mencukupi`")
                     await conv.send_message("/addsticker")
                     await conv.get_response()
                     await conv.send_message(packname)
@@ -235,7 +235,7 @@ async def hehe(args):
                 await conv.get_response()
                 await conv.send_message(packname)
                 await conv.get_response()
-                await ultroid_bot.send_read_acknowledge(conv.chat_id)
+                await args.client.send_read_acknowledge(conv.chat_id)
         await xx.edit(
             f"**Kanged!**\n**Emoji :** {emoji}\n**Sticker Pack** [Lihat Disini](t.me/addstickers/{packname})",
             parse_mode="md",
