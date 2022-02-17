@@ -18,6 +18,8 @@ from userbot.utils import edit_or_reply, geez_cmd
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 
+con = TgConverter
+
 KANGING_STR = [
     "Prosess Mengambil Sticker Pack!",
     "Mengambil Sticker Pack Anda",
