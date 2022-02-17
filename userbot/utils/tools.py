@@ -616,7 +616,7 @@ def json_parser(data, indent=None):
 
 
 async def metadata(file):
-    user = await file.client.get_me()
+    await file.client.get_me()
     out, _ = await bash(f'mediainfo """{file}""" --Output=JSON')
     data = {}
     _info = json.loads(out)["media"]["track"]
