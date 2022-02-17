@@ -1,7 +1,7 @@
 # Thanks Full For © TeamUltroid
 # Ported By @Vckyaz < GeezProjects\ >
 #
-# From < https://github.com/vckyou/GeezProjects/ >
+# From GeezProjects < https://github.com/vckyou/GeezProjects/ >
 
 import io
 import os
