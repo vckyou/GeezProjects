@@ -49,7 +49,7 @@ from telethon.tl.types import (
 from telethon.tl import types
 from yt_dlp import YoutubeDL
 
-from userbot import ALIVE_NAME, DEVS, LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot import DEVS, LOGS, SUDO_USERS, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.utils.format import md_to_text, paste_message
 
 
@@ -616,7 +616,7 @@ def json_parser(data, indent=None):
 
 
 async def metadata(file):
-    ALIVE_NAME = bot.me.first_name
+    bot.me.first_name
     out, _ = await bash(f'mediainfo """{file}""" --Output=JSON')
     data = {}
     _info = json.loads(out)["media"]["track"]
