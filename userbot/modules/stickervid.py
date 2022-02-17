@@ -30,7 +30,7 @@ KANGING_STR = [
 @geez_cmd(pattern="vkang(?: |$)(.*)")
 async def hehe(args):
     user = await args.client.get_me()
-    xx = await edit_or_reply(args, "`Sedang Memproses...`)
+    xx = await edit_or_reply(args, "`Sedang Memproses...`")
     username = user.username
     if not username:
         username = user.first_name
