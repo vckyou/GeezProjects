@@ -32,6 +32,7 @@ import shlex
 import time
 from os.path import basename
 from typing import Optional, Union
+from json.decoder import JSONDecodeError
 
 from emoji import get_emoji_regexp
 from hachoir.metadata import extractMetadata
@@ -592,6 +593,27 @@ async def animator(media, mainevent, textevent):
     os.remove(geez)
     sticker = "animate.webm"
     return sticker
+
+
+def _unquote_text(text):
+    return text.replace("'", "'").replace('"', '"')
+
+
+def json_parser(data, indent=None):
+    parsed = {}
+    try:
+        if isinstance(data, str):
+            parsed = json.loads(str(data))
+            if indent:
+                parsed = json.dumps(json.loads(str(data)), indent=indent)
+        elif isinstance(data, dict):
+            parsed = data
+            if indent:
+                parsed = json.dumps(data, indent=indent)
+    except JSONDecodeError:
+        parsed = eval(data)
+    return parsed
+
 
 async def metadata(file):
     out, _ = await bash(f'mediainfo """{file}""" --Output=JSON')
