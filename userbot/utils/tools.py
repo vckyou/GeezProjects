@@ -33,6 +33,7 @@ import time
 from os.path import basename
 from typing import Optional, Union
 from json.decoder import JSONDecodeError
+from traceback import format_exc
 
 from emoji import get_emoji_regexp
 from hachoir.metadata import extractMetadata
