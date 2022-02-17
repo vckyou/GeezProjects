@@ -80,10 +80,12 @@ async def hehe(args):
         photo = 1
     elif message.message:
         photo = await create_quotly(message)
-    
-        return await edit_or_reply(xx, "Media Tidak Di Didukung!")
     else:
-    await xx.edit(f"`{random.choice(KANGING_STR)}`")
+    await edit_or_reply(args, "`Unsupported File!`")
+        return
+    ra = random.choice(KANGING_STR)
+        ra = ("`Colong Sticker Dulu Yee Kann!!`")
+    await xx.edit(f"`{ra}`")
     if photo:
         splat = args.text.split()
         pack = 1
