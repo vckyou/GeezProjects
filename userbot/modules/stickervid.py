@@ -113,8 +113,11 @@ async def hehe(args):
             file.name = "sticker.png"
             image.save(file, "PNG")
 
-        response = requests.get(f"http://t.me/addstickers/{packname}")
-        htmlstr = response.text.split("\n")
+        response = urllib.request.urlopen(
+            urllib.request.Request(f"http://t.me/addstickers/{packname}")
+        )
+        htmlstr = response.read().decode("utf8").split("\n")
+
 
         if (
             "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
@@ -126,6 +129,8 @@ async def hehe(args):
                 except YouBlockedUserError:
                     LOGS.info("Unblocking @Stickers for kang...")
                     await args.client(functions.contacts.UnblockRequest("stickers"))
+                    await conv.get_response()
+                    await args.client.send_read_acknowledge(conv.chat_id)
                     await conv.send_message("/addsticker")
                 await conv.get_response()
                 await conv.send_message(packname)
