@@ -9,7 +9,7 @@ from telethon.tl.types import MessageEntityPre
 from telethon.utils import add_surrogate
 
 from .paste import pastetext
-from .tools import bash
+from userbot.utils.tools import bash
 
 
 async def paste_message(text, pastetype="p", extension=None, markdown=True):
