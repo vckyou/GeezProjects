@@ -2,6 +2,7 @@ import math
 import os
 
 from userbot.utils.tools import bash
+from userbot.utils.tools import metadata
 
 # ------------------------#
 
