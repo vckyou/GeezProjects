@@ -10,11 +10,12 @@ from os import remove
 
 import cv2
 import requests
-from userbot import LOGS, con
+from userbot import LOGS
 from userbot.utils.tools import create_quotly, TgConverter
 from telethon.errors import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename, DocumentAttributeSticker
 from userbot.utils import edit_or_reply, geez_cmd
+from userbot.modules import con
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 
