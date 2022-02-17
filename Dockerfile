@@ -1,5 +1,5 @@
 # ngapain lo ajg
-FROM vckyouuu/geez:slim-buster
+FROM vckyouubitch/geez:slim-buster
 
 RUN git clone -b master https://github.com/vckyou/GeezProjects /home/geezprojects/ \
     && chmod 777 /home/geezprojects \
