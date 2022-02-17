@@ -32,11 +32,8 @@ KANGING_STR = [
 async def hehe(args):
     user = await args.client.get_me()
     xx = await edit_or_reply(args, "`Sedang Memproses...`")
-    username = user.username
-    if not username:
-        username = user.first_name
-    else:
-        username = "@" + username
+    if not user.username:
+        user.username = user.first_name
     message = await args.get_reply_message()
     photo = None
     is_anim = False
