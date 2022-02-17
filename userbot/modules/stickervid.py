@@ -184,7 +184,7 @@ async def hehe(args):
                         await conv.get_response()
                         await xx.edit(
                              "** Sticker Berhasil Ditambahkan!**"
-                             f"\n         ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
+                             f"\n          ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
                              parse_mode="md",
                         )
                         return
@@ -244,7 +244,7 @@ async def hehe(args):
                 await conv.get_response()
                 await ultroid_bot.send_read_acknowledge(conv.chat_id)
         await xx.edit(
-            "**Kanged!**\n**Emoji :** {emoji}\n**Sticker Pack** [Lihat Disini](t.me/addstickers/{packname})",
+            f"**Kanged!**\n**Emoji :** {emoji}\n**Sticker Pack** [Lihat Disini](t.me/addstickers/{packname})",
             parse_mode="md",
         )
         try:
