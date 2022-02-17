@@ -616,7 +616,7 @@ def json_parser(data, indent=None):
 
 
 async def metadata(file):
-    user = await event.client.get_me()
+    user = await file.client.get_me()
     out, _ = await bash(f'mediainfo """{file}""" --Output=JSON')
     data = {}
     _info = json.loads(out)["media"]["track"]
@@ -630,7 +630,7 @@ async def metadata(file):
     if info.get("AudioCount"):
         data["title"] = info.get("Title", file)
         data["performer"] = (
-            info.get("Performer") or user.first_name
+            info.get("Performer") or file.first_name
         )
     if info.get("VideoCount"):
         data["height"] = int(float(_info[1].get("Height", 720)))
