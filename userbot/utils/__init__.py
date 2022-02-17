@@ -17,7 +17,7 @@ from . import format as _format
 from .chrome import chrome, options
 from .decorator import asst_cmd, callback, geez_cmd, geez_handler
 from .events import checking, get_user_from_event
-from .format import parse_pre
+from .format import parse_pre, TgConverter
 from .qhelper import process
 from .google_images_download import googleimagesdownload
 from .progress import CancelProcess, progress
@@ -32,7 +32,6 @@ from .tools import (
     human_to_bytes,
     humanbytes,
     create_quotly,
-    TgConverter,
     _format_quote,
     md5,
     media_to_pic,
