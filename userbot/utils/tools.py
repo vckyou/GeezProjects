@@ -24,6 +24,7 @@ import base64
 import asyncio
 import hashlib
 import os
+import json
 import aiohttp
 import os.path
 import re
@@ -591,3 +592,26 @@ async def animator(media, mainevent, textevent):
     os.remove(geez)
     sticker = "animate.webm"
     return sticker
+
+async def metadata(file):
+    out, _ = await bash(f'mediainfo """{file}""" --Output=JSON')
+    data = {}
+    _info = json.loads(out)["media"]["track"]
+    info = _info[0]
+    if info.get("Format") in ["GIF", "PNG"]:
+        return {
+            "height": _info[1]["Height"],
+            "width": _info[1]["Width"],
+            "bitrate": _info[1].get("BitRate", 320),
+        }
+    if info.get("AudioCount"):
+        data["title"] = info.get("Title", file)
+        data["performer"] = (
+            info.get("Performer") or udB.get_key("artist") or ultroid_bot.me.first_name
+        )
+    if info.get("VideoCount"):
+        data["height"] = int(float(_info[1].get("Height", 720)))
+        data["width"] = int(float(_info[1].get("Width", 1280)))
+        data["bitrate"] = int(_info[1].get("BitRate", 320))
+    data["duration"] = int(float(info.get("Duration", 0)))
+    return data
