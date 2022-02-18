@@ -67,7 +67,7 @@ async def delpack(xx, conv, cmd, args, packname):
     await args.client.send_read_acknowledge(conv.chat_id)
 
 async def newpacksticker(
-    catevent,
+    xx,
     conv,
     cmd,
     args,
