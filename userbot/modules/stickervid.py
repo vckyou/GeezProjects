@@ -442,3 +442,4 @@ CMD_HELP.update(
         \n  ↳ : **Balas Ke Stcker Untuk Mendapatkan File 'PNG' Sticker.\
     "
     }
+)
