@@ -8,6 +8,7 @@
 #
 
 import asyncio
+import os
 import io
 import math
 import random
@@ -559,7 +560,7 @@ async def pussy(args):
             "/newvideo",
             args,
             1,
-            "Cat",
+            "Geez",
             True,
             "😂",
             packname,
@@ -747,6 +748,8 @@ CMD_HELP.update(
         \n  ↳ : **Untuk Mendapatkan Informasi Sticker Pack.\
         \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}stickers` <nama sticker pack >\
         \n  ↳ : **Untuk Mencari Sticker Pack.\
+        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}csticker`\
+        \n  ↳ : **Balas Gif/Video Untuk menjadikan Sticker\
         \n\n  •  **NOTE:** Untuk Membuat Sticker Pack baru Gunakan angka dibelakang `{cmd}kang`\
         \n  •  **CONTOH:** `{cmd}kang 2` untuk membuat dan menyimpan ke sticker pack ke 2\
     "
