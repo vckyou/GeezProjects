@@ -226,7 +226,7 @@ async def kang(args):
             async with args.client.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
-                await conv.send_message(custom_packnick)
+                await conv.send_message(packnick)
                 await conv.get_response()
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
