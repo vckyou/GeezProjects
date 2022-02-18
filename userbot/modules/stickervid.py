@@ -300,7 +300,7 @@ async def kang(args):  # sourcery no-metrics
             emojibypass = True
             is_anim = True
             photo = 1
-        elif message.media.document.mime_type in ["video/mp4", "video/webm"]:
+        elif message.file and ["video/mp4", "video/webm"] in message.file.mime_type.split:
             if message.media.document.mime_type == "video/webm":
                 catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
                 sticker = await args.client.download_media(
