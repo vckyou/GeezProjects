@@ -9,11 +9,9 @@ import random
 from os import remove
 
 import cv2
-from userbot import LOGS
 from userbot.utils.tools import create_quotly
 from userbot import S_PACK_NAME as custompack
 from userbot.utils.tgconverter import TgConverter
-from telethon.errors import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename, DocumentAttributeSticker
 from userbot.utils import edit_or_reply, geez_cmd
 from userbot import CMD_HANDLER as cmd
