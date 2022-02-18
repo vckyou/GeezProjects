@@ -3,7 +3,13 @@ import os
 
 from userbot.utils.tools import bash
 from userbot.utils.tools import metadata
+from userbot import LOGS
 
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    Image, ImageDraw, ImageFont = None, None, None
+    LOGS.info("PIL not installed!")
 # ------------------------#
 
 
