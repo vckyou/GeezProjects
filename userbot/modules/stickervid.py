@@ -83,7 +83,10 @@ async def kang(args):
     elif message.message:
         photo = await create_quotly(message)
     else:
-        await edit_delete(args, "**File Tidak Didukung !**")
+         await xx.edit("**File Tidak Didukung !**")
+        return
+    await xx.edit(f"`{random.choice(KANGING_STR)}`")
+    return
     if photo:
         splat = args.text.split()
         pack = 1
@@ -191,7 +194,7 @@ async def kang(args):
                         await conv.get_response()
                         await conv.send_message(packname)
                         await conv.get_response()
-                        await edit_delete(args,
+                        return await xx.edit(
                             "`Sticker ditambahkan ke pack yang berbeda !"
                             "\nIni pack yang baru saja dibuat!"
                             f"\nTekan [Sticker Pack](t.me/addstickers/{packname}) Untuk Melihat Sticker Pack",
@@ -253,7 +256,7 @@ async def kang(args):
                 await conv.send_message(packname)
                 await conv.get_response()
                 await args.client.send_read_acknowledge(conv.chat_id)
-        await edit_or_reply(args,
+        return await xx.edit(
             "** Sticker Berhasil Ditambahkan!**"
             f"\n        ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
             parse_mode="md",
