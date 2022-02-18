@@ -638,9 +638,29 @@ async def metadata(file):
     data["duration"] = int(float(info.get("Duration", 0)))
     return data
 
+
 async def parse_id(self, text):
         try:
             text = int(text)
         except ValueError:
             pass
         return await self.get_peer_id(text)
+
+async def get_uinfo(e):
+    user, data = None, None
+    reply = await e.get_reply_message()
+    if reply:
+        user = await e.client.get_entity(reply.sender_id)
+        data = e.pattern_match.group(1)
+    else:
+        ok = e.pattern_match.group(1).split(maxsplit=1)
+        if len(ok) > 1:
+            data = ok[1]
+        try:
+            user = await e.client.get_entity(await e.client.parse_id(ok[0]))
+        except IndexError:
+            pass
+        except ValueError as er:
+            await e.eor(str(er))
+            return None, None
+    return user, data
