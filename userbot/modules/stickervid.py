@@ -1,35 +1,23 @@
-import asyncio
-import base64
 import io
 import math
 import os
 import random
-import re
-import string
 import urllib.request
 
-import cloudscraper
 import emoji as catemoji
-from bs4 import BeautifulSoup as bs
 from PIL import Image
-from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl import functions, types
-from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
-    InputStickerSetID,
     MessageMediaPhoto,
 )
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils.tools import media_type, animator
-from userbot import tgbot
 from userbot.utils.tools import animator
-from userbot.modules.sql_helper.globals import addgvar, gvarstatus
+from userbot.utils.tools import animator
+from userbot.modules.sql_helper.globals import gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 
