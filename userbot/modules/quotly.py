@@ -5,6 +5,9 @@
 #
 
 import os
+
+from telethon import TelegramClient
+
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
