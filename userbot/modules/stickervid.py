@@ -53,7 +53,7 @@ async def hehe(args):
             in message.media.document.attributes
         ):
             emoji = message.media.document.attributes[1].alt
-b           if emoji != "⚡":
+            if emoji != "⚡":
                 emojibypass = True
     elif message.file and "video" in message.file.mime_type.split("/"):
         xy = await message.download_media()
