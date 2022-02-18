@@ -82,11 +82,8 @@ async def kang(args):
         photo = 1
     elif message.message:
         photo = await create_quotly(message)
-    else:
-         await xx.edit("**File Tidak Didukung !**")
-        return
-    await xx.edit(f"`{random.choice(KANGING_STR)}`")
-    return
+         return await xx.edit("`Unsupported File!`")
+    return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
     if photo:
         splat = args.text.split()
         pack = 1
