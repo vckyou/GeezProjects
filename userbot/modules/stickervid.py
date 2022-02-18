@@ -36,6 +36,7 @@ async def hehe(args):
         user.username = user.first_name
     message = await args.get_reply_message()
     photo = None
+    emojibypass = False
     is_anim = False
     is_vid = False
     emoji = None
@@ -52,7 +53,8 @@ async def hehe(args):
             in message.media.document.attributes
         ):
             emoji = message.media.document.attributes[1].alt
-
+b           if emoji != "⚡":
+                emojibypass = True
     elif message.file and "video" in message.file.mime_type.split("/"):
         xy = await message.download_media()
         if (message.file.duration or 0) <= 10:
@@ -72,6 +74,7 @@ async def hehe(args):
         for attribute in attributes:
             if isinstance(attribute, DocumentAttributeSticker):
                 emoji = attribute.alt
+        emojibypass = True
         is_anim = True
         photo = 1
     elif message.message:
@@ -81,7 +84,7 @@ async def hehe(args):
     if photo:
         splat = args.text.split()
         pack = 1
-        if not emoji:
+        if not emojibypass:
             emoji = "⚡"
         if len(splat) == 3:
             pack = splat[2]
@@ -124,13 +127,9 @@ async def hehe(args):
             not in htmlstr
         ):
             async with args.client.conversation("@Stickers") as conv:
-                try:
-                    await conv.send_message("/addsticker")
-                except YouBlockedUserError:
-                    LOGS.info("Unblocking @Stickers for kang...")
-                    await args.client(functions.contacts.UnblockRequest("stickers"))
-                    await conv.send_message("/addsticker")
+                await conv.send_message("/addsticker")
                 await conv.get_response()
+                await args.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
                 if x.text.startswith("Alright! Now send me the video sticker."):
@@ -158,8 +157,10 @@ async def hehe(args):
                     if x.text in ["Invalid pack selected.", "Invalid set selected."]:
                         await conv.send_message(cmd)
                         await conv.get_response()
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
                             remove("AnimatedSticker.tgs")
@@ -171,16 +172,21 @@ async def hehe(args):
                             await conv.send_file(file, force_document=True)
                         await conv.get_response()
                         await conv.send_message(emoji)
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
                             await conv.get_response()
                             await conv.send_message(f"<{packnick}>")
                         await conv.get_response()
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.send_message("/skip")
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message(packname)
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
+                        await args.client.send_read_acknowledge(conv.chat_id)
                         await xx.edit(
                              "** Sticker Berhasil Ditambahkan!**"
                              f"\n          ⚡ **[KLIK DISINI](t.me/addstickers/{packname})** ⚡\n**Untuk Menggunakan Stickers**",
