@@ -46,7 +46,7 @@ async def kang(args):
     is_anim, is_vid = False, False
     emoji = None
     if not message:
-        return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+        return await edit_or_reply(xx, "Membalas pesan/media...")
     if message.photo:
         photo = io.BytesIO()
         photo = await args.client.download_media(message.photo, photo)
@@ -82,7 +82,7 @@ async def kang(args):
         photo = 1
     elif message.message:
         photo = await create_quotly(message)
-         return await xx.edit("`Unsupported File!`")
+        return await xx.edit("`Unsupported File!`")
     return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
     if photo:
         splat = args.text.split()
