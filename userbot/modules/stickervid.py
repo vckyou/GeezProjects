@@ -51,6 +51,7 @@ async def kang(args):
         photo = io.BytesIO()
         photo = await args.client.download_media(message.photo, photo)
     elif message.file and "image" in message.file.mime_type.split("/"):
+        await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
         photo = io.BytesIO()
         await args.client.download_file(message.media.document, photo)
         if (
@@ -60,6 +61,7 @@ async def kang(args):
             emoji = message.media.document.attributes[1].alt
 
     elif message.file and "video" in message.file.mime_type.split("/"):
+        await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
         xy = await message.download_media()
         if (message.file.duration or 0) <= 10:
             is_vid = True
@@ -70,6 +72,7 @@ async def kang(args):
             cv2.imwrite("geez.webp", lol)
             photo = "geez.webp"
     elif message.file and "tgsticker" in message.file.mime_type:
+        await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
         await args.client.download_file(
             message.media.document,
             "AnimatedSticker.tgs",
