@@ -16,7 +16,6 @@ from telethon.tl.types import (
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot.utils.tools import animator
-from userbot.utils.tools import animator
 from userbot.modules.sql_helper.globals import gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
@@ -279,7 +278,7 @@ async def kang(args):  # sourcery no-metrics
             catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await args.client.download_media(message.photo, photo)
-        elif "image" in message.media.document.mime_type.split("/"):
+        elif message.file and "image" in message.file.mime_type.split("/"):
             catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await args.client.download_media(message.media.document, photo)
@@ -289,7 +288,7 @@ async def kang(args):  # sourcery no-metrics
             ):
                 emoji = message.media.document.attributes[1].alt
                 emojibypass = True
-        elif "tgsticker" in message.media.document.mime_type:
+        elif message.file and "tgsticker" in message.file.mime_type:
             catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             await args.client.download_media(
                 message.media.document, "AnimatedSticker.tgs"
