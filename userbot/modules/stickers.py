@@ -84,6 +84,8 @@ async def newpacksticker(
         await conv.send_message(cmd)
     except YouBlockedUserError:
         await xx.edit("You have blocked the @stickers bot. unblock it and try.")
+            return None, None, None
+        return None, None
     if is_anim:
         await conv.get_response()
         await conv.send_message(f"<{packnick}>")
@@ -96,6 +98,8 @@ async def newpacksticker(
     await args.client.send_read_acknowledge(conv.chat_id)
     await conv.get_response()
     await args.client.send_read_acknowledge(conv.chat_id)
+        return otherpack, packname, emoji
+    return pack, packname
 
 @geez_cmd(pattern="(?:tikel|kang)\s?(.)?")
 async def kang(args):
