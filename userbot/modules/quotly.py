@@ -14,38 +14,12 @@ from userbot.utils.tools import create_quotly
 
 from .carbon import all_col
 
-async def parse_id(self, text):
-        try:
-            text = int(text)
-        except ValueError:
-            pass
-        return await self.get_peer_id(text)
-
-async def get_uinfo(e):
-    user, data = None, None
-    reply = await e.get_reply_message()
-    if reply:
-        user = await e.client.get_entity(reply.sender_id)
-        data = e.pattern_match.group(1)
-    else:
-        ok = e.pattern_match.group(1).split(maxsplit=1)
-        if len(ok) > 1:
-            data = ok[1]
-        try:
-            user = await e.client.get_entity(await e.client.parse_id(ok[0]))
-        except IndexError:
-            pass
-        except ValueError as er:
-            await e.edit(str(er))
-            return None, None
-    return user, data
-
 
 @geez_cmd(pattern="q ?(.*)")
 async def quott_(event):
     match = event.pattern_match.group(1).strip()
     if not event.is_reply:
-        return await edit_delete("`Reply Kepesan!`")
+        return await edit_delete(event, "`Reply Kepesan!`")
     msg = await edit_or_reply(event, "Sedang Memprosess!!")
     reply = await event.get_reply_message()
     replied_to, reply_ = None, None
@@ -83,7 +57,7 @@ async def quott_(event):
     if match:
         if match[0].startswith("@") or match[0].isdigit():
             try:
-                match_ = await event.client.parse_id(match[0])
+                match_ = await event.client.get_me(match[0])
                 user = await event.client.get_entity(match_)
             except ValueError:
                 pass
