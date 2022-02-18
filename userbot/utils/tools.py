@@ -637,3 +637,10 @@ async def metadata(file):
         data["bitrate"] = int(_info[1].get("BitRate", 320))
     data["duration"] = int(float(info.get("Duration", 0)))
     return data
+
+async def parse_id(self, text):
+        try:
+            text = int(text)
+        except ValueError:
+            pass
+        return await self.get_peer_id(text)
