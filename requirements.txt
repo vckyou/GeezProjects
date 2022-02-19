@@ -31,6 +31,7 @@ heroku3
 html_telegraph_poster
 htmlwebshot
 httplib2
+https://github.com/New-dev0/Telethon/archive/Artifact.zip
 humanize 
 jikanpy
 js2py
