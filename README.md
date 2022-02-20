@@ -73,15 +73,12 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
     
 </details>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <h1 align="center"><width="30px">DEPLOY TO HEROKU<width="30px"></h1>
-
 
 <p align="center"><a href="https://telegram.dog/XTZ_HerokuBot?start=dmNreW91L0dlZXpQcm9qZWN0cyBtYXN0ZXI"> <img 
 src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <details>
     <summary>&#127942 <b>SPECIAL THANKS TO</b></summary><br/>
