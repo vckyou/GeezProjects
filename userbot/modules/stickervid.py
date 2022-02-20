@@ -286,31 +286,6 @@ async def resize_photo(photo):
     return image
 
 
-async def geez_webm(message, output="sticker.webm"):
-    w = message.file.width
-    h = message.file.height
-    w, h = (-1, 512) if h w else (512, -1)
-    output = output if output.endswith(".webm") else f"{output}.webm"
-    vid_input = await message.client.download_media(message, TEMP_DOWNLOAD_DIRECTORY)
-    await run_cmd(
-        [
-            "ffmpeg",
-            "-i",
-            vid_input,
-            "-c:v",
-            "libvpx-vp9",
-            "-t",
-            "3",
-            "-vf",
-            f"scale={w}:{h}",
-            "-an",
-            output,
-        ]
-    )
-    remove(vid_input)
-    return output
-
-
 CMD_HELP.update(
     {
         "stickervid": f"**Plugin : **`stickervid`\
