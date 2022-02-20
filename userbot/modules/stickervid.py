@@ -10,7 +10,7 @@ from telethon.tl.types import (
 )
 
 from userbot import CMD_HELP, bot
-from userbot.utils import edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, edit_delete, geez_cmd
 from userbot.utils.tools import geez_webm
 from userbot import CMD_HANDLER as cmd
 
@@ -63,9 +63,9 @@ async def kang(args):
             is_video = True
             photo = 1
         else:
-            return await xx.edit("`Unsupported File!`")
+            return await edit_delete(args, "`Unsupported File!`")
     else:
-        return await xx.edit("`I can't kang that...`")
+        return await edit_delete(args, "`I can't kang that...`")
 
     if photo:
         splat = args.text.split()
