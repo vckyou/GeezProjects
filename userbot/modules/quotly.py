@@ -11,7 +11,6 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 from userbot.utils.tools import create_quotly
-from telethon import TelegramClient as parse_id
 
 from .carbon import all_col
 
