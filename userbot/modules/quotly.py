@@ -11,6 +11,7 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 from userbot.utils.tools import create_quotly
+from telethon.tl.functions.users import GetFullUserRequest
 
 from .carbon import all_col
 
@@ -57,7 +58,7 @@ async def quott_(event):
     if match:
         if match[0].startswith("@") or match[0].isdigit():
             try:
-                match_ = await msg.parse_id(match[0])
+                match_ = await event.client(GetFullUserRequest(match[0]))
                 user = await event.client.get_entity(match_)
             except ValueError:
                 pass
