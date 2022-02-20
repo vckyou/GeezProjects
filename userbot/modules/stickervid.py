@@ -287,7 +287,13 @@ async def resize_photo(photo):
 async def convert_webm(message, output="sticker.webm"):
     w = message.file.width
     h = message.file.height
-    w, h = (-1, 512) if h > w else (512, -1)
+    if h == w and h != 512:
+        h, w = 512, 512
+    if h != 512 or w != 512:
+        if h > w:
+            h, w = 512, -1
+        if w > h:
+            h, w = -1, 512
     output = output if output.endswith(".webm") else f"{output}.webm"
     vid_input = await message.client.download_media(message, TEMP_DOWNLOAD_DIRECTORY)
     await run_cmd(
