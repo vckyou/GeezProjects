@@ -12,9 +12,10 @@ from telethon.tl.types import (
 )
 
 from userbot import CMD_HELP, bot, TEMP_DOWNLOAD_DIRECTORY
-from userbot.utils import edit_or_reply, edit_delete, geez_cmd
+from userbot.utils import edit_or_reply, edit_delete
 from userbot import CMD_HANDLER as cmd
 from userbot.utils import run_cmd
+from userbot.events import geez_cmd
 
 KANGING_STR = [
     "Ijin Colong Yabang xixi,"
@@ -22,7 +23,7 @@ KANGING_STR = [
     "Memproses Mengambil Sticker,"
 ]
 
-@geez_cmd(pattern="(?:vkang|vtikel)\s?(.)?")
+@bot.on(geez_cmd(outgoing=True, pattern=r"(?:vkang|vtikel)\s?(.)?"))
 async def kang(args):
     """For .kang command, kangs stickers or creates new ones."""
     user = await bot.get_me()
@@ -37,11 +38,11 @@ async def kang(args):
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-            xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
-            xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (
@@ -52,7 +53,7 @@ async def kang(args):
                 if emoji != "":
                     emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
-            xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            await args.edit(f"`{random.choice(KANGING_STR)}`")
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
@@ -64,21 +65,21 @@ async def kang(args):
             is_anim = True
             photo = 1
         elif "video" in message.media.document.mime_type:
-            await xx.edit("`Converting...`")
-            vid_sticker = await geez_webm(message)
-            xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            await args.edit("`Converting...`")
+            vid_sticker = await convert_webm(message)
+            await args.edit(f"`{random.choice(KANGING_STR)}`")
 
             is_video = True
             photo = 1
         else:
-            return await edit_delete(args, "`Unsupported File!`")
+            return await args.edit("`Unsupported File!`")
     else:
-        return await edit_delete(args, "`I can't kang that...`")
+        return await args.edit("`I can't kang that...`")
 
     if photo:
         splat = args.text.split()
         if not emojibypass:
-            emoji = "🤔"
+            emoji = ""
         pack = 1
         if len(splat) == 3:
             pack = splat[2]  # User sent both
@@ -131,7 +132,7 @@ async def kang(args):
                     pack += 1
                     packname = f"a{user.id}_by_{user.username}_{pack}"
                     packnick = f"@{user.username}'s kang pack Vol.{pack}"
-                    await xx.edit(
+                    await args.edit(
                         "`Switching to Pack "
                         + str(pack)
                         + " due to insufficient space`"
@@ -178,7 +179,7 @@ async def kang(args):
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
                         await bot.send_read_acknowledge(conv.chat_id)
-                        return await xx.edit(
+                        return await args.edit(
                             "`Sticker added in a Different Pack !"
                             "\nThis Pack is Newly created!"
                             f"\nYour pack can be found [here](t.me/addstickers/{packname})",
@@ -195,7 +196,7 @@ async def kang(args):
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
-                    return await xx.edit(
+                    return await args.edit(
                         "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
                     )
                 await conv.send_message(emoji)
@@ -228,7 +229,7 @@ async def kang(args):
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
-                    return await xx.edit(
+                    return await args.edit(
                         "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
                     )
                 await conv.send_message(emoji)
@@ -253,7 +254,7 @@ async def kang(args):
                 # Ensure user doesn't get spamming notifications
                 await bot.send_read_acknowledge(conv.chat_id)
 
-        await xx.edit(
+        await args.edit(
             "Curry Success!" f"\n[Klik Disini](t.me/addstickers/{packname})",
             parse_mode="md",
         )
