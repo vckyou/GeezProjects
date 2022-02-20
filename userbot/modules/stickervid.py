@@ -11,9 +11,8 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from userbot import CMD_HELP, bot, TEMP_DOWNLOAD_DIRECTORY
+from userbot import CMD_HELP, bot
 from userbot import CMD_HANDLER as cmd
-from userbot.utils import run_cmd
 from userbot.events import geez_cmd
 from userbot.utils.tools import animator
 
