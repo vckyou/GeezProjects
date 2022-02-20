@@ -65,7 +65,7 @@ async def kang(args):
             photo = 1
         elif "video" in message.media.document.mime_type:
             await args.edit("`Converting...`")
-            vid_sticker = await convert_webm(message)
+            vid_sticker = await geez_webm(message)
             await args.edit(f"`{random.choice(KANGING_STR)}`")
 
             is_video = True
