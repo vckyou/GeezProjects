@@ -8,7 +8,7 @@ import os
 
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
+from userbot import CMD_HELP, tgbot
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 from userbot.utils.tools import create_quotly
 
@@ -57,7 +57,7 @@ async def quott_(event):
     if match:
         if match[0].startswith("@") or match[0].isdigit():
             try:
-                match_ = await event.client.parse_id(match[0])
+                match_ = await tgbot.parse_id(match[0])
                 user = await event.client.get_entity(match_)
             except ValueError:
                 pass
