@@ -11,10 +11,9 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot import CMD_HANDLER as cmd
 from userbot.events import geez_cmd
-from userbot.utils.tools import animator
 
 KANGING_STR = [
     "Ijin Colong Yabang xixi,"
@@ -65,7 +64,7 @@ async def kang(args):
             photo = 1
         elif "video" in message.media.document.mime_type:
             await args.edit("`Converting...`")
-            vid_sticker = await animator(message)
+            vid_sticker = await convert_webm(message)
             await args.edit(f"`{random.choice(KANGING_STR)}`")
 
             is_video = True
@@ -283,6 +282,31 @@ async def resize_photo(photo):
         image.thumbnail(maxsize)
 
     return image
+
+
+async def convert_webm(message, output="sticker.webm"):
+    w = message.file.width
+    h = message.file.height
+    w, h = (-1, 512) if h > w else (512, -1)
+    output = output if output.endswith(".webm") else f"{output}.webm"
+    vid_input = await message.client.download_media(message, TEMP_DOWNLOAD_DIRECTORY)
+    await run_cmd(
+        [
+            "ffmpeg",
+            "-i",
+            vid_input,
+            "-c:v",
+            "libvpx-vp9",
+            "-t",
+            "3",
+            "-vf",
+            f"scale={w}:{h}",
+            "-an",
+            output,
+        ]
+    )
+    remove(vid_input)
+    return output
 
 
 CMD_HELP.update(
