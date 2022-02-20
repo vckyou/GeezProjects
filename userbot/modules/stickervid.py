@@ -15,6 +15,7 @@ from userbot import CMD_HELP, bot, TEMP_DOWNLOAD_DIRECTORY
 from userbot import CMD_HANDLER as cmd
 from userbot.utils import run_cmd
 from userbot.events import geez_cmd
+from userbot.utils.tools import animator
 
 KANGING_STR = [
     "Ijin Colong Yabang xixi,"
@@ -65,7 +66,7 @@ async def kang(args):
             photo = 1
         elif "video" in message.media.document.mime_type:
             await args.edit("`Converting...`")
-            vid_sticker = await geez_webm(message)
+            vid_sticker = await animator(message)
             await args.edit(f"`{random.choice(KANGING_STR)}`")
 
             is_video = True
