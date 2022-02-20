@@ -14,6 +14,7 @@ from telethon.tl.types import (
 from userbot import CMD_HELP, bot, TEMP_DOWNLOAD_DIRECTORY
 from userbot.utils import edit_or_reply, edit_delete, geez_cmd
 from userbot import CMD_HANDLER as cmd
+from userbot.utils import run_cmd
 
 KANGING_STR = [
     "Ijin Colong Yabang xixi,"
@@ -39,7 +40,7 @@ async def kang(args):
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
-        elif message.file and "image" in message.file.mime_type.split("/"):
+        elif "image" in message.media.document.mime_type.split("/"):
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
@@ -50,7 +51,7 @@ async def kang(args):
                 emoji = message.media.document.attributes[1].alt
                 if emoji != "":
                     emojibypass = True
-        elif message.file and "tgsticker" in message.file.mime_type:
+        elif "tgsticker" in message.media.document.mime_type:
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
@@ -62,7 +63,7 @@ async def kang(args):
             emojibypass = True
             is_anim = True
             photo = 1
-        elif message.file and "video" in message.file.mime_type.split:
+        elif "video" in message.media.document.mime_type:
             await xx.edit("`Converting...`")
             vid_sticker = await geez_webm(message)
             xx = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
