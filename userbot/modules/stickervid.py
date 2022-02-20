@@ -288,7 +288,7 @@ async def resize_photo(photo):
 async def geez_webm(message, output="sticker.webm"):
     w = message.file.width
     h = message.file.height
-    w, h = (-1, 512) if h > w else (512, -1)
+    w, h = (-1, 512) if h w else (512, -1)
     output = output if output.endswith(".webm") else f"{output}.webm"
     vid_input = await message.client.download_media(message, TEMP_DOWNLOAD_DIRECTORY)
     await run_cmd(
