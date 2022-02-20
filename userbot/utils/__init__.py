@@ -34,7 +34,6 @@ from .tools import (
     create_quotly,
     _format_quote,
     md5,
-    metadata,
     media_to_pic,
     media_type,
     post_to_telegraph,
