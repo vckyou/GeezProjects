@@ -23,11 +23,11 @@ async def detect(event):
     reply = await event.get_reply_message()
     if not reply:
         return await edit_delete(event, "**Mohon Reply ke gambar atau stiker!**", 90)
-    manevent = await edit_or_reply(event, "**MenDownload file untuk diperiksa...**")
+    coy = await edit_or_reply(event, "**MenDownload file untuk diperiksa...**")
     media = await event.client.download_media(reply)
     if not media.endswith(("png", "jpg", "webp")):
         return await edit_delete(event, "**Mohon Reply ke gambar atau stiker!**", 90)
-    manevent = await edit_or_reply(event, "**Detecting NSFW limit...**")
+    coy = await edit_or_reply(event, "**Detecting NSFW limit...**")
     r = requests.post(
         "https://api.deepai.org/api/nsfw-detector",
         files={
@@ -37,7 +37,7 @@ async def detect(event):
     )
     os.remove(media)
     if "status" in r.json():
-        return await edit_delete(manevent, r.json()["status"])
+        return await edit_delete(coy, r.json()["status"])
     r_json = r.json()["output"]
     pic_id = r.json()["id"]
     percentage = r_json["nsfw_score"] * 100
@@ -50,7 +50,7 @@ async def detect(event):
             confidence = int(float(parts["confidence"]) * 100)
             result += f"<b>• {name}:</b>\n   <code>{confidence} %</code>\n"
     await edit_or_reply(
-        manevent,
+        coy,
         result,
         link_preview=False,
         parse_mode="HTML",
