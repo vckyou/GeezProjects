@@ -12,7 +12,6 @@ from telethon.tl.types import (
 )
 
 from userbot import CMD_HELP, bot, TEMP_DOWNLOAD_DIRECTORY
-from userbot.utils import edit_or_reply, edit_delete
 from userbot import CMD_HANDLER as cmd
 from userbot.utils import run_cmd
 from userbot.events import geez_cmd
