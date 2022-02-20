@@ -1,23 +1,18 @@
 import io
-import math
 import random
 import urllib.request
 from os import remove
 
-from PIL import Image
-from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
-    InputStickerSetID,
     MessageMediaPhoto,
 )
 
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.utils import edit_or_reply, edit_delete, geez_cmd
+from userbot import CMD_HELP, bot
+from userbot.utils import edit_or_reply, geez_cmd
 from userbot.utils.tools import geez_webm
 from userbot import CMD_HANDLER as cmd
-from userbot.utils import run_cmd
 
 @geez_cmd(pattern="(?:vkang|vtikel)\s?(.)?")
 async def kang(args):
