@@ -1,18 +1,27 @@
 import io
+import math
 import random
 import urllib.request
 from os import remove
 
+from PIL import Image
+from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
+    InputStickerSetID,
     MessageMediaPhoto,
 )
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP, bot, TEMP_DOWNLOAD_DIRECTORY
 from userbot.utils import edit_or_reply, edit_delete, geez_cmd
-from userbot.utils.tools import geez_webm
 from userbot import CMD_HANDLER as cmd
+
+KANGING_STR = [
+    "Ijin Colong Yabang xixi,"
+    "Brisik Ah Langsung Ambil Aja,"
+    "Memproses Mengambil Sticker,"
+]
 
 @geez_cmd(pattern="(?:vkang|vtikel)\s?(.)?")
 async def kang(args):
@@ -249,6 +258,56 @@ async def kang(args):
             "Curry Success!" f"\n[Klik Disini](t.me/addstickers/{packname})",
             parse_mode="md",
         )
+
+
+async def resize_photo(photo):
+    """Resize the given photo to 512x512"""
+    image = Image.open(photo)
+    maxsize = (512, 512)
+    if (image.width and image.height) < 512:
+        size1 = image.width
+        size2 = image.height
+        if image.width > image.height:
+            scale = 512 / size1
+            size1new = 512
+            size2new = size2 * scale
+        else:
+            scale = 512 / size2
+            size1new = size1 * scale
+            size2new = 512
+        size1new = math.floor(size1new)
+        size2new = math.floor(size2new)
+        sizenew = (size1new, size2new)
+        image = image.resize(sizenew)
+    else:
+        image.thumbnail(maxsize)
+
+    return image
+
+
+async def geez_webm(message, output="sticker.webm"):
+    w = message.file.width
+    h = message.file.height
+    w, h = (-1, 512) if h > w else (512, -1)
+    output = output if output.endswith(".webm") else f"{output}.webm"
+    vid_input = await message.client.download_media(message, TEMP_DOWNLOAD_DIRECTORY)
+    await run_cmd(
+        [
+            "ffmpeg",
+            "-i",
+            vid_input,
+            "-c:v",
+            "libvpx-vp9",
+            "-t",
+            "3",
+            "-vf",
+            f"scale={w}:{h}",
+            "-an",
+            output,
+        ]
+    )
+    remove(vid_input)
+    return output
 
 
 CMD_HELP.update(
