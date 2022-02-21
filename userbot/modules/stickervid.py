@@ -36,8 +36,8 @@ async def kang(args):
     is_video = False
     emoji = None
 
-    if message and message.media:
           return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+    if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
