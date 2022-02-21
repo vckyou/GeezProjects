@@ -37,11 +37,11 @@ async def kang(args):
     emoji = None
 
     if message and message.media:
-          return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
     if isinstance(message.media, MessageMediaPhoto):
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
-        elif message.document and "image" in message.media.document.mime_type.split("/"):
+    elif message.document and "image" in message.media.document.mime_type.split("/"):
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (
@@ -51,12 +51,12 @@ async def kang(args):
                 emoji = message.document.attributes[1].alt
                 if emoji != "":
                     emojibypass = True
-        elif message.document and "video" in message.media.document.mime_type.split("/"):
+    elif message.document and "video" in message.media.document.mime_type.split("/"):
             await edit_delete(xx, "`Converting...`")
             vid_sticker = await convert_webm(message)
             is_video = True
             photo = 1
-        elif message.document and "tgsticker" in message.media.document.mime_type:
+    elif message.document and "tgsticker" in message.media.document.mime_type:
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
