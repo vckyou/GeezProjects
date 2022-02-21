@@ -47,7 +47,7 @@ async def kang(args):
 
             is_video = True
             photo = 1
-        elif "image" in message.media.document.mime_type.split("/"):
+        elif "image" in message.file.mime_type.split("/"):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
@@ -58,7 +58,7 @@ async def kang(args):
                 emoji = message.media.document.attributes[1].alt
                 if emoji != "":
                     emojibypass = True
-        elif "tgsticker" in message.media.document.mime_type:
+        elif "tgsticker" in message.file.mime_type:
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
