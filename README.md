@@ -2,14 +2,14 @@
 
 <p align="center">
 
-[![](https://img.shields.io/badge/GeezProjects-v.0.1-blue)](#)
+[![](https://img.shields.io/badge/GeezProjects-v.1.0.5-blue)](#)
 [![Stars](https://img.shields.io/github/stars/vckyou/GeezProjects?style=flat-square&color=yellow)](https://github.com/vckyou/GeezProjects/stargazers)
 [![Forks](https://img.shields.io/github/forks/vckyou/GeezProjects?style=flat-square&color=orange)](https://github.com/vckyou/GeezProjects/fork)
 [![Size](https://img.shields.io/github/repo-size/vckyou/GeezProjects?style=flat-square&color=green)](https://github.com/vckyou/GeezProjects/)   
-[![Python](https://img.shields.io/badge/Python-v3.9.10-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-v3.10.2-blue)](https://www.python.org/)
 [![CodeFactor](https://www.codefactor.io/repository/github/vckyou/geezprojects/badge/master)](https://www.codefactor.io/repository/github/vckyou/geezprojects/overview/master)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/vckyou/GeezProjects/graphs/commit-activity)
-[![Docker Pulls](https://img.shields.io/docker/pulls/vckyouuu/avprojects?style=flat-square)](https://img.shields.io/docker/pulls/vckyouuu/avprojects?style=flat-square)   
+[![Docker Pulls](https://img.shields.io/docker/pulls/vckyouuu/geez?style=flat-square)](https://img.shields.io/docker/pulls/vckyouuu/geez?style=flat-square)   
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/vckyou/GeezProjects)
 [![Contributors](https://img.shields.io/github/contributors/vckyou/GeezProjects?style=flat-square&color=green)](https://github.com/vckyou/GeezProjects/graphs/contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
@@ -74,14 +74,14 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 </details>
 
 <h4>DEPLOY VIA BOT</h4>
-<a href="https://heroku.com/deploy">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="https://telegram.dog/XTZ_HerokuBot?start=dmNreW91L0dlZXpQcm9qZWN0cyBtYXN0ZXI">
+<a href="https://telegram.dog/XTZ_HerokuBot?start=dmNreW91L0dlZXpQcm9qZWN0cyBtYXN0ZXI">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="deploy">
 </a>
 
 
 <h4>DEPLOY VIA WEBSITE</h4>
-<a href="https://heroku.com/deploy">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="https://geezdeploy.now.sh">
+<a href="https://geezdeploy.now.sh">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="deploy">
 </a>
 
 
