@@ -52,7 +52,7 @@ async def kang(args):
                 if emoji != "":
                     emojibypass = True
         elif message.document and "video" in message.media.document.mime_type.split("/"):
-            await args.edit("`Converting...`")
+            await edit_delete(xx, "`Converting...`")
             vid_sticker = await convert_webm(message)
             is_video = True
             photo = 1
