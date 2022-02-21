@@ -69,7 +69,7 @@ async def kang(args):
             photo = 1
         else:
             return await edit_delete(xx, "`Unsupported File!`")
-    else:
+
         return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
 
     if photo:
