@@ -17,10 +17,10 @@ from userbot.events import geez_cmd
 from userbot.utils import run_cmd
 
 KANGING_STR = [
-    "Ijin Colong Yabang xixi,"
-    "Brisik Ah Langsung Ambil Aja,"
-    "Memproses Mengambil Sticker,"
-]
+    "Ijin Colong Yabang xixi"
+    "Brisik Ah Langsung Ambil Aja"
+    "Memproses Mengambil Sticker"
+    ]
 
 @bot.on(geez_cmd(outgoing=True, pattern=r"(?:vkang|vtikel)\s?(.)?"))
 async def kang(args):
@@ -37,11 +37,11 @@ async def kang(args):
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
+            xx = await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
         elif message.document and "image" in message.media.document.mime_type.split("/"):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
+            xx = await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (
@@ -54,7 +54,7 @@ async def kang(args):
         elif message.document and "video" in message.media.document.mime_type.split("/"):
             await args.edit("`Converting...`")
             vid_sticker = await convert_webm(message)
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
+            xx = await args.edit(f"`{random.choice(KANGING_STR)}`")
 
             is_video = True
             photo = 1
