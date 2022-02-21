@@ -73,14 +73,17 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
     
 </details>
 
-
-<h1 align="center"><width="30px">DEPLOY TO HEROKU<width="30px"></h1>
-
-<p align="center"><a href="https://telegram.dog/XTZ_HerokuBot?start=dmNreW91L0dlZXpQcm9qZWN0cyBtYXN0ZXI"> <img 
-src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
-
+# DEPLOY VIA BOT
+<a href="https://heroku.com/deploy">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="https://telegram.dog/XTZ_HerokuBot?start=dmNreW91L0dlZXpQcm9qZWN0cyBtYXN0ZXI">
+</a>
+# DEPLOY VIA WEBSITE
+<a href="https://heroku.com/deploy">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="https://geezdeploy.now.sh">
+</a>
 
 <details>
+
     <summary>&#127942 <b>SPECIAL THANKS TO</b></summary><br/>
 
 #### Thanks To [Everyone](https://github.com/vckyou/GeezProjects/graphs/contributors) Who Has Helped Make This Userbot Awesome!
