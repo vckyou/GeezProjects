@@ -40,7 +40,7 @@ async def kang(args):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
-        elif message.document "image" in message.media.document.mime_type.split("/"):
+        elif message.document "image" in message.document.mime_type.split("/"):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
@@ -48,10 +48,10 @@ async def kang(args):
                 DocumentAttributeFilename(file_name="sticker.webp")
                 in message.media.document.attributes
             ):
-                emoji = message.media.document.attributes[1].alt
+                emoji = message.document.attributes[1].alt
                 if emoji != "":
                     emojibypass = True
-        elif message.document and "video" in message.media.document.mime_type.split("/"):
+        elif message.document and "video" in message.document.mime_type.split("/"):
             await args.edit("`Converting...`")
             vid_sticker = await convert_webm(message)
             await args.edit(f"`{random.choice(KANGING_STR)}`")
