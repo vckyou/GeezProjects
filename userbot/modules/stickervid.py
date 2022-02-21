@@ -68,9 +68,9 @@ async def kang(args):
             is_anim = True
             photo = 1
     else:
-            return await edit_delete(xx, "`Unsupported File!`")
+        return await edit_delete(xx, "`Unsupported File!`")
 
-        return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+    return await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
 
     if photo:
         splat = args.text.split()
