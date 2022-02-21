@@ -80,7 +80,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 
 
 <h4>DEPLOY VIA WEBSITE</h4>
-<a href="https://geezdeploy.now.sh">
+<a href="https://deploygeez.now.sh">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="deploy">
 </a>
 
