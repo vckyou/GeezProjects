@@ -73,17 +73,20 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
     
 </details>
 
-# DEPLOY VIA BOT
+<h4>DEPLOY VIA BOT</h4>
 <a href="https://heroku.com/deploy">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="https://telegram.dog/XTZ_HerokuBot?start=dmNreW91L0dlZXpQcm9qZWN0cyBtYXN0ZXI">
 </a>
-# DEPLOY VIA WEBSITE
+
+
+<h4>DEPLOY VIA WEBSITE</h4>
 <a href="https://heroku.com/deploy">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="https://geezdeploy.now.sh">
 </a>
 
-<details>
 
+
+<details>
     <summary>&#127942 <b>SPECIAL THANKS TO</b></summary><br/>
 
 #### Thanks To [Everyone](https://github.com/vckyou/GeezProjects/graphs/contributors) Who Has Helped Make This Userbot Awesome!
@@ -106,9 +109,9 @@ GeezProjects is licensed under [GNU Affero General Public License](https://www.g
 ---
 
 # Credits
-* [![TeamGeez](https://img.shields.io/static/v1?label=GeezProjects&message=devs&color=critical)](https://github.com/vckyou/GeezProjects/graphs/contributors)
+* [![TeamGeez](https://img.shields.io/static/v1?label=GeezProjects&message=contributions&color=critical)](https://github.com/vckyou/GeezProjects/graphs/contributors)
 * [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
-> Made with 💕 by [@GeezSupport](https://t.me/GeezSupport).    
+> Made with 💕 by [vckyaz](https://t.me/vckyaz).    
  
