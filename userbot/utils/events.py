@@ -78,11 +78,11 @@ async def get_user_from_event(
 
 
 async def checking():
-    gocheck = str(pybase64.b64decode("R2VlelN1cHBvcnQ="))[2:13]
-    checker = str(pybase64.b64decode("R2VlelByb2plY3Q="))[2:17]
+    check = str(pybase64.b64decode("R2VlelByb2plY3Q="))[2:13]
+    checking = str(pybase64.b64decode("R2VlelN1cHBvcnQ="))[2:13]
     try:
         if bot:
-            await bot(Get(gocheck))
-            await bot(Get(checker))
+            await bot(Get(check))
+            await bot(Get(checking))
     except BaseException:
         pass
