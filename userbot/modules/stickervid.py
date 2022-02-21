@@ -40,6 +40,13 @@ async def kang(args):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
+        elif "video" in message.media.document.mime_type:
+            await args.edit("`Converting...`")
+            vid_sticker = await convert_webm(message)
+            await args.edit(f"`{random.choice(KANGING_STR)}`")
+
+            is_video = True
+            photo = 1
         elif "image" in message.media.document.mime_type.split("/"):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
@@ -62,13 +69,6 @@ async def kang(args):
 
             emojibypass = True
             is_anim = True
-            photo = 1
-        elif "video" in message.media.document.mime_type:
-            await args.edit("`Converting...`")
-            vid_sticker = await convert_webm(message)
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
-
-            is_video = True
             photo = 1
         else:
             return await args.edit("`Unsupported File!`")
