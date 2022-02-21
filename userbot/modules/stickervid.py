@@ -40,7 +40,7 @@ async def kang(args):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
-        elif "video" in message.media.document.mime_type:
+        elif message.file and "video" in message.file.mime_type.split("/"):
             await args.edit("`Converting...`")
             vid_sticker = await convert_webm(message)
             await args.edit(f"`{random.choice(KANGING_STR)}`")
