@@ -40,7 +40,7 @@ async def kang(args):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
-        elif message.document and "image" in message.document.mime_type.split("/"):
+        elif message.document and "image" in message.media.document.mime_type.split("/"):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
@@ -51,14 +51,14 @@ async def kang(args):
                 emoji = message.document.attributes[1].alt
                 if emoji != "":
                     emojibypass = True
-        elif message.document and "video" in message.document.mime_type.split("/"):
+        elif message.document and "video" in message.media.document.mime_type.split("/"):
             await args.edit("`Converting...`")
             vid_sticker = await convert_webm(message)
             await args.edit(f"`{random.choice(KANGING_STR)}`")
 
             is_video = True
             photo = 1
-        elif message.document and "tgsticker" in message.document.mime_type:
+        elif message.document and "tgsticker" in message.media.document.mime_type:
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
@@ -73,7 +73,7 @@ async def kang(args):
         else:
             return await args.edit("`Unsupported File!`")
     else:
-        return await args.edit("`I can't kang that...`")
+        return await args.edit(f"`{random.choice(KANGING_STR)}`")
 
     if photo:
         splat = args.text.split()
