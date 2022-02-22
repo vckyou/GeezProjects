@@ -5,7 +5,7 @@
 #
 """ Userbot help command """
 
-from userbot import CHANNEL
+from userbot import GROUP
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, ICON_HELP, bot
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
@@ -31,11 +31,15 @@ async def help(event):
         await edit_or_reply(
             event,
             f"{ICON_HELP}   {string}"
-            f"**❍▸ Daftar Perintah Untuk [GeezProjects](https://github.com/vckyou/GeezProjects):**\n"
-            f"**❍▸ Jumlah** `{len(modules)}` **Modules**\n"
-            f"**❍▸ Owner:** [{user.first_name}](tg://user?id={user.id})\n\n"
-            f"\n\nSupport @{CHANNEL}",
+            f"\n\nSupport @{GROUP}\n"
         )
         await event.reply(
-            f"\n**Contoh Ketik** `{cmd}help ping` **Untuk Melihat Informasi Module**"
+            f"**╭┄──────┈┄┈──────┄**\n"
+            f"**│ ▸ Daftar Perintah [GeezProjects](https://github.com/vckyou/GeezProjects):**\n"
+            f"**│ ▸ Jumlah** `{len(modules)}` **Modules**\n"
+            f"**│ ▸ Owner:** [{user.first_name}](tg://user?id={user.id})\n"
+            f"**├┄─────┈┄┈─────┄\n"
+            f"**│ Contoh Ketik** `{cmd}help ping`\n"
+            f"**│ Untuk Melihat Informasi Module**\n"
+            f"**╰┄──────┈┈──────┄**"
         )
