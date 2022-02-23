@@ -21,7 +21,7 @@ async def help(event):
         if args in CMD_HELP:
             await edit_or_reply(event, str(CMD_HELP[args]))
         else:
-            await edit_delete(event, f"`Maaf Module` {args}` `Tidak Dapat Ditemukan!`")
+            await edit_delete(event, f"𝘔𝘢𝘢𝘧 𝘔𝘰𝘥𝘶𝘭𝘦 `{args}` 𝘛𝘪𝘥𝘢𝘬 𝘋𝘢𝘱𝘢𝘵 𝘋𝘪𝘵𝘦𝘮𝘶𝘬𝘢𝘯!!")
     else:
         user = await bot.get_me()
         string = ""
