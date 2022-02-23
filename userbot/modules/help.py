@@ -34,12 +34,12 @@ async def help(event):
             f"\n\nSupport @{GROUP}\n"
         )
         await event.reply(
-            f"**╭┄──────┈┄┈──────┄**\n"
-            f"**│ ▸ Daftar Perintah [GeezProjects](https://github.com/vckyou/GeezProjects):**\n"
-            f"**│ ▸ Jumlah** `{len(modules)}` **Modules**\n"
-            f"**│ ▸ Owner:** [{user.first_name}](tg://user?id={user.id})\n"
-            f"**├┄─────┈┄┈─────┄\n"
-            f"**│ Contoh Ketik** `{cmd}help ping`\n"
-            f"**│ Untuk Melihat Informasi Module**\n"
-            f"**╰┄──────┈┈──────┄**"
+            f"╭┄──────┈┄┈──────┄\n"
+            f"│ ▸ **Daftar Perintah GeezProjects :**\n"
+            f"│ ▸ **Jumlah** `{len(modules)}` **Modules**\n"
+            f"│ ▸ **Owner:** [{user.first_name}](tg://user?id={user.id})\n"
+            f"├┄─────┈┄┈─────┄\n"
+            f"│ **Contoh Ketik** `{cmd}help ping`\n"
+            f"│ **Untuk Melihat Informasi Module**\n"
+            f"╰┄──────┈┈──────┄"
         )
