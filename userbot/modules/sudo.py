@@ -3,7 +3,7 @@
 # recode by @vckyaz
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
-# Support @GeezSupport & @GeezProjects
+
 import os
 
 import heroku3
@@ -25,10 +25,10 @@ async def sudo(event):
     if sudo == "True":
         await edit_or_reply(
             event,
-            f"🔮 **Sudo:** `Enabled`\n\n📚 ** List Sudo Users:**\n» `{users}`\n\n**SUDO_HANDLER:** `{SUDO_HANDLER}`",
+            f"⛑️ **Sudo :** `Enabled`\n\n🗃️ ** Daftar List Sudo :**\n» `{users}`\n\n**SUDO_HANDLER:** `{SUDO_HANDLER}`",
         )
     else:
-        await edit_delete(event, "🔮 **Sudo:** `Disabled`")
+        await edit_delete(event, "⛑️ **Sudo :** `Disabled`")
 
 
 @geez_cmd(pattern="addsudo(?:\s|$)([\s\S]*)")
@@ -70,7 +70,7 @@ async def add(event):
     newsudo = suudo.replace("{", "")
     newsudo = newsudo.replace("}", "")
     await xxnx.edit(
-        f"**Berhasil Menambahkan** `{target}` **ke Pengguna Sudo.**\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan."
+        f"**Suksess Menambahkan** `{target}` **Ke Sudo Anda.**\n\nSedang Me Restart Heroku Anda Mohon Tunggu."
     )
     heroku_Config[var] = newsudo
 
@@ -138,13 +138,13 @@ async def get_user(event):
 CMD_HELP.update(
     {
         "sudo": f"**Plugin : **`sudo`\
-        \n\n   :** `{cmd}sudo`\
-        \n   : **Untuk Mengecek informasi Sudo.\
-        \n\n   :** `{cmd}addsudo` <reply/user id>\
-        \n   : **Untuk Menambahkan User ke Pengguna Sudo.\
-        \n\n   :** `{cmd}delsudo` <reply/user id>\
-        \n   : **Untuk Menghapus User dari Pengguna Sudo.\
-        \n\n  •  **NOTE: Berikan Hak Sudo anda Kepada orang yang anda percayai**\
+        \n\n  Command :** `{cmd}sudo`\
+        \n  Usage : **Untuk Mengecek informasi Sudo.\
+        \n\n  Command :** `{cmd}addsudo` <reply/user id>\
+        \n  Usage : **Untuk Menambahkan User ke Pengguna Sudo.\
+        \n\n  Command :** `{cmd}delsudo` <reply/user id>\
+        \n  Usage : **Untuk Menghapus User dari Pengguna Sudo.\
+        \n\n  The Method   **NOTE: Berikan Hak Sudo anda Kepada orang yang anda percayai**\
     "
     }
 )
