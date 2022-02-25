@@ -560,9 +560,8 @@ with bot:
                         [
                             custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/GeezSupport"),
                             custom.Button.url(
-                                "ꜱᴜᴘᴘᴏʀᴛ", "https://t.me/GeezProject"
+                                "ʀᴇᴘᴏꜱɪᴛᴏʀʏ", "https://github.com/vckyou/GeezProjects"
                              ),
-                            custom.Button.inline("ᴏᴘᴇɴ ᴍᴇɴᴜ ʜᴇʟᴘ", data="reopen")
                         ],
                     ],
                     link_preview=False,
