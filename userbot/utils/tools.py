@@ -30,15 +30,18 @@ import os.path
 import re
 import shlex
 import time
+
 from os.path import basename
 from typing import Optional, Union
 from json.decoder import JSONDecodeError
-
+from io import BytesIO
+from aiohttp import ContentTypeError
 from emoji import get_emoji_regexp
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from html_telegraph_poster import TelegraphPoster
 from PIL import Image
+
 from telethon.utils import get_display_name, get_peer_id
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import (
@@ -595,20 +598,14 @@ async def animator(media, mainevent, textevent):
     return sticker
 
 
-def _unquote_text(text):
-    return text.replace("'", "'").replace('"', '"')
-
-def json_parser(data, indent=None):
-    parsed = {}
-    try:
-        if isinstance(data, str):
-            parsed = json.loads(str(data))
-            if indent:
-                parsed = json.dumps(json.loads(str(data)), indent=indent)
-        elif isinstance(data, dict):
-            parsed = data
-            if indent:
-                parsed = json.dumps(data, indent=indent)
-    except JSONDecodeError:
-        parsed = eval(data)
-    return parsed
+async def Carbon(
+    code,
+    base_url="https://carbonara-42.herokuapp.com/api/cook",
+    file_name="Man-Userbot",
+    **kwargs,
+):
+    kwargs["code"] = code
+    con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
+    file = BytesIO(con)
+    file.name = f"{file_name}.jpg"
+    return file
