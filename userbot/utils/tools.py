@@ -480,7 +480,7 @@ _entities = {
 
 async def _format_quote(event, reply=None, sender=None, type_="private"):
     async def telegraph(file_):
-        file = file_ + ".png"
+        file = f"{file_}.png"
         Image.open(file_).save(file, "PNG")
         files = {"file": open(file, "rb").read()}
         uri = (
