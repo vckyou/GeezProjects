@@ -24,7 +24,6 @@ import base64
 import asyncio
 import hashlib
 import os
-import json
 import aiohttp
 import os.path
 import re
@@ -33,7 +32,6 @@ import time
 
 from os.path import basename
 from typing import Optional, Union
-from json.decoder import JSONDecodeError
 from io import BytesIO
 from aiohttp import ContentTypeError
 from emoji import get_emoji_regexp
