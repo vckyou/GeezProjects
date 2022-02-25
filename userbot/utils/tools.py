@@ -24,6 +24,7 @@ import base64
 import asyncio
 import hashlib
 import os
+import json
 import aiohttp
 import os.path
 import re
@@ -33,6 +34,7 @@ import time
 from os.path import basename
 from typing import Optional, Union
 from io import BytesIO
+from json.decoder import JSONDecodeError
 from aiohttp import ContentTypeError
 from emoji import get_emoji_regexp
 from hachoir.metadata import extractMetadata
@@ -332,6 +334,25 @@ def post_to_telegraph(title, html_format_content):
         text=html_format_content,
     )
     return post_page["url"]
+
+
+def _unquote_text(text):
+    return text.replace("'", "'").replace('"', '"')
+
+def json_parser(data, indent=None):
+    parsed = {}
+    try:
+        if isinstance(data, str):
+            parsed = json.loads(str(data))
+            if indent:
+                parsed = json.dumps(json.loads(str(data)), indent=indent)
+        elif isinstance(data, dict):
+            parsed = data
+            if indent:
+                parsed = json.dumps(data, indent=indent)
+    except JSONDecodeError:
+        parsed = eval(data)
+    return parsed
 
 
 async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
