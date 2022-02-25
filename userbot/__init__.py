@@ -159,7 +159,7 @@ UPSTREAM_REPO_URL = os.environ.get(
 )
 
 # Custom Name Sticker Pack
-S_PACK_NAME = os.environ.get("S_PACK_NAME", "Sticker Pack by @GeezProject")
+S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # SQL Database URI
 DB_URI = os.environ.get("DATABASE_URL", None)
@@ -195,7 +195,7 @@ ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚡️")
 INLINE_EMOJI = os.environ.get("INLINE_EMOJI", "❍")
 
 # Custom icon HELP
-ICON_HELP = os.environ.get("ICON_HELP", "🔸")
+ICON_HELP = os.environ.get("ICON_HELP", "ꖒ")
 
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY", "ID"))
@@ -555,13 +555,14 @@ with bot:
                     description="GeezProjects Ubot | Telethon",
                     url="https://t.me/GeezSupport",
                     thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text=f"**GeezProjects Ubot**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode:** [{user.first_name}](tg://user?id={user.id})\n**Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @GeezProject\n➖➖➖➖➖➖➖➖➖➖",
+                    text=f"**GeezProjects**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode:** [{user.first_name}](tg://user?id={user.id})\n**Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @GeezProject\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/GeezSupport"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/vckyou/GeezProjects"
-                            ),
+                                "ꜱᴜᴘᴘᴏʀᴛ", "https://t.me/GeezProject"
+                             ),
+                            custom.Button.inline("ᴏᴘᴇɴ ᴍᴇɴᴜ ʜᴇʟᴘ", data="reopen")
                         ],
                     ],
                     link_preview=False,
@@ -575,7 +576,7 @@ with bot:
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 current_page_number = int(looters)
                 buttons = paginate_help(current_page_number, dugmeler, "helpme")
-                text = f"**GeezProjects Inline Menu**\n\n🔸 **Owner** [{user.first_name}](tg://user?id={user.id})\n•  **Jumlah** `{len(dugmeler)}` Modules"
+                text = f"**GeezProjects Inline Menu**\n\n🔸 **Owner** [{user.first_name}](tg://user?id={user.id})\n•  **Jumlah** `{len(dugmeler)}` Module"
                 await event.edit(
                     text,
                     file=logogeez,
