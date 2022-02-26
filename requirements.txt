@@ -19,7 +19,6 @@ geopy
 git+https://github.com/programmingerror/heroku3.py.git
 git+https://github.com/1danish-00/carbon-now-sh-api-wrapper.git
 git+https://github.com/buddhhu/img2html.git
-git+https://github.com/yt-dlp/yt-dlp@master
 gitpython
 glitch_this
 google_images_download
@@ -88,4 +87,5 @@ wordcloud
 youtube-dl
 youtube-search
 youtube-search-python==1.4.9
+yt-dlp==2021.11.10.1
 zipfile38
