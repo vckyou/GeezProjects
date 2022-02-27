@@ -118,13 +118,16 @@ async def repeat(event):
 async def repo_is_here(event):
     xx = await edit_or_reply(event, "`Processing...`")
     await xx.edit(
-        f"**Hey**, __I am using__ [⚡ 𝙂𝙚𝙚𝙯 𝙋𝙧𝙤𝙟𝙚𝙘𝙩𝙨 ⚡](https://github.com/vckyou/GeezProjects)\n\n"
-        f"      __Thanks For Using me__\n\n"
-        f"🔸 **Userbot Version :** `{BOT_VER}@{branch}`\n"
-        f"🔸 **Group Support :** [Geez Support Group](t.me/GeezSupport)\n"
-        f"🔸 **Channel :** [ Channel Support](t.me/GeezProject)\n"
-        f"🔸 **Owner Repo :** [vckyou](t.me/vckyouubitch)\n"
-        f"🔸 **Repo :** [GeezProjects](https://github.com/vckyou/GeezProjects)\n"
+        f"╭‒─‒─────────────‒─‒\n"
+        f"│    __Thanks For Using Me__\n│\n"
+        f"│**Bot Ver :** `{BOT_VER}@{branch}`\n"
+        f"│**Support :** [Geez Support](t.me/GeezSupport)\n"
+        f"│**Channel :** [ Channel Support](t.me/GeezProject)\n"
+        f"│**Owner Repo :** [vickyaz](t.me/vckyaz)\n"
+        f"├‒─‒──────────────‒\n"
+        f"│**Repo :** [𝙂𝙚𝙚𝙯 𝙋𝙧𝙤𝙟𝙚𝙘𝙩𝙨](https://github.com/Vckyou/GeezProjects)\n"
+        f"├‒─‒──────────────\n"
+        f"│𝗟𝗶𝗰𝗲𝗻𝘀𝗲 : [GPL-3.0 License](https://github.com/Vckyou/GeezProjects/blob/master/LICENSE)"
     )
 
 
