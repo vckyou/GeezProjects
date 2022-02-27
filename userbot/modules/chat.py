@@ -39,7 +39,7 @@ from telethon.utils import get_input_location
 
 from userbot import BLACKLIST_CHAT
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, owner
+from userbot import CMD_HELP, owner, DEVS
 from userbot.events import register
 from userbot.modules.ping import absen
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd, get_user_from_event
@@ -132,7 +132,7 @@ async def kikme(leave):
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
-@register(incoming=True, from_users=5155140917, pattern=r"^.absenall$")
+@register(incoming=True, from_users=DEVS, pattern=r"^.absenall$")
 async def geez(ya):
     await ya.reply(random.choice(absen))
 
