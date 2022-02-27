@@ -183,7 +183,7 @@ ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
 ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 
 # untuk perintah teks costum .alive
-ALIVE_TEKS_CUSTOM = os.environ.get("ALIVE_TEKS_CUSTOM", "Hey, I am alive.")
+ALIVE_TEKS_CUSTOM = os.environ.get("ALIVE_TEKS_CUSTOM", "Hey, I Am Userbot.")
 
 # Default .alive name
 ALIVE_NAME = os.environ.get("ALIVE_NAME", "Geez")
@@ -215,7 +215,7 @@ BOT_VER = os.environ.get("BOT_VER", "1.0.5")
 
 # Default .alive logo
 ALIVE_LOGO = (
-    os.environ.get("ALIVE_LOGO") or "https://telegra.ph/file/02b3dbeb4df30582f0d66.jpg"
+    os.environ.get("ALIVE_LOGO") or "https://telegra.ph/file/8e256cb133087b060e288.png"
 )
 
 INLINE_PIC = (
