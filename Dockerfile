@@ -1,4 +1,3 @@
-# ngapain lo ajg
 FROM vckyouubitch/geez:master
 
 RUN git clone -b master https://github.com/vckyou/GeezProjects /home/geezprojects/ \
