@@ -128,7 +128,7 @@ async def kikme(leave):
         return await edit_or_reply(
             leave, "**Perintah ini Dilarang digunakan di Group ini**"
         )
-    await edit_or_reply(leave, "**{owner} TELAH MENINGGALKAN GROUP!**")
+    await edit_or_reply(leave, f"**{owner} TELAH MENINGGALKAN GROUP!**")
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
