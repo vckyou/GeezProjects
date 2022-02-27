@@ -24,9 +24,8 @@
 
 [GeezProjects](https://github.com/vckyou/GeezProjects) adalah userbot Telegram modular yang berjalan di Python3 dengan database sqlalchemy.
 
-Berbasis [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) / [ProjectBish](https://github.com/adekmaulana/ProjectBish)
-Dan [Man-Userbot](https://github.com/mrismanaziz/Man-Userbot)
-Untuk membuat repository ini saya menambahkan beberapa modul yang sangat di butuhkan dengan banyak perubahan dari berbagai fitur dan module lainnya.
+Berbasis [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) Dan [ProjectBish](https://github.com/adekmaulana/ProjectBish)
+Untuk membuat repository ini saya menambahkan beberapa modul yang sangat di butuhkan dengan banyak pengguna sehingga ada beberapa perubahan module yang di modifikasi.
 
 ## Disclaimer
 
