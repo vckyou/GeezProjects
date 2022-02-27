@@ -910,7 +910,7 @@ CMD_HELP.update(
         \n\n   :** `{cmd}google` <flags> <query>\
         \n   : **Untuk Melakukan pencarian di google (default 5 hasil pencarian)\
         \n  •  **Flags :** `-l` **= Untuk jumlah hasil pencarian.**\
-        \n  •  **Example :** `{cmd}google -l4 mrismanaziz` atau `{cmd}google mrismanaziz`\
+        \n  •  **Example :** `{cmd}google -l4 pertanyaan` atau `{cmd}google pertanyaan`\
     "
     }
 )
