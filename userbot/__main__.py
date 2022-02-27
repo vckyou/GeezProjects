@@ -14,7 +14,7 @@ from pytgcalls import idle
 from telethon.tl.functions.channels import InviteToChannelRequest
 
 from userbot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
-from userbot import DEVS, LOGS, bot, call_py
+from userbot import DEVS, LOGS, bot, branch, call_py
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
 
@@ -45,15 +45,15 @@ LOGS.info(
     f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GeezSupport"
 )
 
-LOGS.info(f"__Congratss✨ Geez Projects Version - {BOT_VER}__. [✨ HAS BEEN CONNECTED! ✨]")
-
+LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢",
+            )
 
 async def geez_userbot_on():
     try:
         if BOTLOG_CHATID != 0:
             await bot.send_message(
                 BOTLOG_CHATID,
-                f"__Congratss✨ Geez Projects Version - {BOT_VER}__.\n\n     [✨ HAS BEEN CONNECTED! ✨]",
+                (f"💢 Geez - Projects Berhasil Diaktfikan 💢\n╼┅━━━━━╍━━━━━┅╾\n❍▹ Bot Of : {user.first_name}\n❍▹ BotVer : {BOT_VER}@{branch}\n╼┅━━━━━╍━━━━━┅╾",
             )
     except Exception as e:
         LOGS.info(str(e))
