@@ -123,7 +123,7 @@ async def repo_is_here(event):
         f"├‒─‒─────────────\n"
         f"│`Bot Ver    :` `{BOT_VER}@{branch}`\n"
         f"│`Support    :` [Geez Support](t.me/GeezSupport)\n"
-        f"│`Channel    :` [ Channel Support](t.me/GeezProject)\n"
+        f"│`Channel    :` [Channel Support](t.me/GeezProject)\n"
         f"│`Owner Repo :` [vickyaz](t.me/vckyaz)\n"
         f"├‒─‒──────────────\n"
         f"│`Repository :` [𝙂𝙚𝙚𝙯 𝙋𝙧𝙤𝙟𝙚𝙘𝙩𝙨](https://github.com/Vckyou/GeezProjects)\n"
