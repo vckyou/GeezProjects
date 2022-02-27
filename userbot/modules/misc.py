@@ -120,7 +120,7 @@ async def repo_is_here(event):
     await xx.edit(
         f"╭‒─‒──────────────\n"
         f"│    __Thanks For Using Me__\n"
-        f"├‒─‒─────────────
+        f"├‒─‒─────────────\n"
         f"│**Bot Ver    :** `{BOT_VER}@{branch}`\n"
         f"│**Support    :** [Geez Support](t.me/GeezSupport)\n"
         f"│**Channel    :** [ Channel Support](t.me/GeezProject)\n"
