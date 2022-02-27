@@ -17,7 +17,7 @@
 ----
 
 <p align="center">
-   <a href="https://github.com/vckyou/Geez-UserBot"><img src="https://telegra.ph/file/47cdc3d607b1a4f55b830.png" alt="Geez Projects" width=400px></a>
+   <a href="https://github.com/vckyou/GeezProjects"><img src="https://telegra.ph/file/8e256cb133087b060e288.png" alt="Geez Projects" width=400px></a>
    <br>
    <br>
 </p>
