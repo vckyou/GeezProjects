@@ -53,7 +53,7 @@ async def geez_userbot_on():
         if BOTLOG_CHATID != 0:
             await bot.send_message(
                 BOTLOG_CHATID,
-                (f"💢 Geez - Projects Berhasil Diaktfikan 💢\n╼┅━━━━━╍━━━━━┅╾\n❍▹ Bot Of : {user.first_name}\n❍▹ BotVer : {BOT_VER}@{branch}\n╼┅━━━━━╍━━━━━┅╾",
+                f"💢 Geez - Projects Berhasil Diaktfikan 💢\n╼┅━━━━━╍━━━━━┅╾\n❍▹ Bot Of : {user.first_name}\n❍▹ BotVer : {BOT_VER}@{branch}\n╼┅━━━━━╍━━━━━┅╾",
             )
     except Exception as e:
         LOGS.info(str(e))
