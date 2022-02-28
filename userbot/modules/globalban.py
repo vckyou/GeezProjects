@@ -129,7 +129,7 @@ async def ungban(event):
     timetaken = (end - start).seconds
     if reason:
         await ungbun.edit(
-            f"**UngBanned** [{user.first_name}](tg://user?id={user.id}`) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Reason :** `{reason}`"
+            f"**UngBanned** [{user.first_name}](tg://user?id={user.id}) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Reason :** `{reason}`"
         )
     else:
         await ungbun.edit(
