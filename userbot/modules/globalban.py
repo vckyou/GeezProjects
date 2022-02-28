@@ -1,9 +1,3 @@
-# Copyright (C) 2020 Catuserbot <https://github.com/sandy1709/catuserbot>
-# recode by @vckyaz
-# FROM GeezProjects <https://github.com/vckyou/GeezProjects>
-#
-# Support @GeezSupport & @GeezProjects
-
 import asyncio
 from datetime import datetime
 from io import BytesIO
@@ -45,20 +39,20 @@ def mentionuser(name, userid):
 async def gban(event):
     if event.fwd_from:
         return
-    gbun = await edit_or_reply(event, "`Gbanning...`")
+    gbun = await edit_or_reply(event, "`Processing Gbanning...`")
     start = datetime.now()
     user, reason = await get_user_from_event(event, gbun)
     if not user:
         return
     if user.id == (await event.client.get_me()).id:
-        await gbun.edit("**Terjadi Kesalahan, Harap Balas Kepesan Untuk Melakukan Gbanning**")
+        await gbun.edit("**Terjadi Kesalahan, Harap Balas Kepesanan Untuk melakukan Gbanning**")
         return
     if user.id in DEVS:
         await gbun.edit("**Gagal Melakukan Global Banning Karna Dia Adalah Pembuat Saya**")
         return
     if gban_sql.is_gbanned(user.id):
         await gbun.edit(
-            f"[null](tg://user?id={user.id}) **ini sudah ada di daftar gbanned**"
+            f"[{user.first_name}](tg://user?id={user.id}) **Sudah Berada Di Daftar Gban List**"
         )
     else:
         gban_sql.freakgban(user.id, reason)
@@ -67,10 +61,10 @@ async def gban(event):
     count = 0
     fiz = len(san)
     if fiz == 0:
-        await gbun.edit("**Anda Tidak mempunyai GC yang anda admin 🥺**")
+        await gbun.edit("**maaf Anda Tidak Mempunyai Hak Admin Di Group Ini**")
         return
     await gbun.edit(
-        f"**initiating gban of the** [null](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
+        f"**initiating gban of the** [{user.first_name}](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
     )
     for i in range(fiz):
         try:
@@ -108,7 +102,7 @@ async def ungban(event):
         gban_sql.freakungban(user.id)
     else:
         await ungbun.edit(
-            f"[null](tg://user?id={user.id}) **ini tidak ada dalam daftar gban Anda**"
+            f"[{user.first_name}](tg://user?id={user.id}) **Tidak Berada Di Daftar GBan List!!!**"
         )
         return
     san = []
@@ -119,7 +113,7 @@ async def ungban(event):
         await ungbun.edit("**Terjadi Kesalahan Karna Anda Bukan lah admin.**")
         return
     await ungbun.edit(
-        f"**initiating ungban of the** [null](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
+        f"**initiating ungban of the** [{user.first_name}](tg://user?id={user.id}) **in** `{len(san)}` **groups**"
     )
     for i in range(fiz):
         try:
@@ -135,11 +129,11 @@ async def ungban(event):
     timetaken = (end - start).seconds
     if reason:
         await ungbun.edit(
-            f"**Ungbanned** [{user.first_name}](tg://user?id={user.id}`) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Reason :** `{reason}`"
+            f"**UngBanned** [{user.first_name}](tg://user?id={user.id}`) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Reason :** `{reason}`"
         )
     else:
         await ungbun.edit(
-            f"**Ungbanned** [{user.first_name}](tg://user?id={user.id}) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Removed from gbanlist**"
+            f"**UngBanned** [{user.first_name}](tg://user?id={user.id}) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Removed from gbanlist**"
         )
 
 
@@ -148,7 +142,7 @@ async def gablist(event):
     if event.fwd_from:
         return
     gbanned_users = gban_sql.get_all_gbanned()
-    GBANNED_LIST = "**List Global Banned Saat Ini**\n"
+    GBANNED_LIST = "**List Global Banned Anda Saat Ini**\n"
     if len(gbanned_users) > 0:
         for a_user in gbanned_users:
             if a_user.reason:
