@@ -36,7 +36,7 @@ mengelola grup secara efisien dan mengotomatiskan beberapa hal yang membosankan.
 Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 ```
 <details>
-<summary><b>🖇️ Deploy to VPS</b></summary>
+<summary><b>Deploy to VPS</b></summary>
 <br>
     
 ### REQUIREMENTS PACKAGE !
@@ -48,7 +48,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 -  Install FFMPEG `sudo apt install tree wget2 p7zip-full jq ffmpeg wget git -y`
 -  Install Chrome `wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb` lalu ketik `sudo apt install ./google-chrome-stable_current_amd64.deb`
 
-###⚙️ Tutorial Deploy To VPS
+### Tutorial Deploy To VPS
 
 -  `git clone https://github.com/vckyou/GeezProjects`
 -  `cd GeezProjects`
@@ -61,7 +61,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 </details>
 
 <details>
-<summary><b>⚙️ String Session</b></summary>
+<summary><b>String Session</b></summary>
 <br>
     
 > Anda memerlukan API_ID & API_HASH untuk menghasilkan sesi telethon. ambil APP ID dan API Hash di my.telegram.org
@@ -84,6 +84,11 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 </a>
 
 
+# License
+[![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
+GeezProjects is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
+
+---
 
 <details>
     <summary>&#127942 <b>SPECIAL THANKS TO</b></summary><br/>
@@ -94,23 +99,17 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 *   [TeamUltroid](https://github.com/TeamUltroid/Ultroid) :  UltroidUserbot
 *   [BianSepang](https://github.com/BianSepang/WeebProject) : WeebProject
 *   [Sandy1709](https://github.com/sandy1709/catuserbot) : CatUserbot
-*   [X_ImFine](https://github.com/ximfine) :  XBot-REMIX
 *   [VICKY](https://github.com/vckyou/GeezProjects) :  GeezProjects
 *   [Risman](https://github.com/mrismanaziz/Man-Userbot) :  Man-Userbot
 *   [Alvin](https://github.com/Zora24/Lord-Userbot) : Lord-Userbot
+*   [X_ImFine](https://github.com/ximfine) :  XBot-REMIX
 
-</details>
-
-# License
-[![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
-GeezProjects is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
-
----
-
-# Credits
+### Credits
 * [![TeamGeez](https://img.shields.io/static/v1?label=GeezProjects&message=contributions&color=critical)](https://github.com/vckyou/GeezProjects/graphs/contributors)
 * [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
 > Made with 💕 by [vckyaz](https://t.me/vckyaz).    
+
+</details>
  
