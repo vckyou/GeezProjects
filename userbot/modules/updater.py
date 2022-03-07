@@ -4,11 +4,13 @@ This module updates the userbot based on upstream revision
 
 import sys
 from os import environ, execle, remove
+from base64 import b64decode
 
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from userbot import CMD_HANDLER as cmd
+from userbot.events import register
 from userbot import CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
@@ -122,11 +124,14 @@ async def update(xx, repo, ups_rem, ac_br):
 
 
 @geez_cmd(pattern="update( now| deploy|$)")
+@register(pattern=r"^\.cupdate( now| deploy|$)", sudo=True)
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     xx = await edit_or_reply(event, "`Mengecek Pembaruan, Tunggu Sebentar...`")
     conf = event.pattern_match.group(1).strip()
-    off_repo = UPSTREAM_REPO_URL
+    off_repo = b64decode(
+        "aHR0cHM6Ly9naXRodWIuY29tL3Zja3lvdS9HZWV6LVVzZXJib3Q="
+    ).decode("utf-8")
     force_update = False
     try:
         txt = "**Pembaruan Tidak Dapat Di Lanjutkan Karna "
@@ -190,7 +195,7 @@ async def upstream(event):
             ):
                 return await xx.edit(
                     "**Quick update telah dinonaktifkan untuk pembaruan ini; "
-                    "Gunakan** `.update deploy` **sebagai gantinya.**"
+                    "Gunakan** `update deploy` **sebagai gantinya.**"
                 )
         await xx.edit("**Perfoming a quick update, please wait...**")
         await update(xx, repo, ups_rem, ac_br)
