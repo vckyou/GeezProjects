@@ -1,4 +1,4 @@
-FROM vckyouubitch/geez:master
+FROM vckyouuu/geez:slim-buster
 
 RUN git clone -b master https://github.com/vckyou/GeezProjects /home/geezprojects/ \
     && chmod 777 /home/geezprojects \
