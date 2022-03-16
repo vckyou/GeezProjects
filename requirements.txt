@@ -47,7 +47,7 @@ pendulum
 pillow
 psutil
 psycopg2-binary
-pytgcalls
+py-tgcalls
 pyaztro
 pybase64
 pyfiglet
