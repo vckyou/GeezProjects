@@ -42,13 +42,12 @@ motor
 natsort
 nekos.py
 opencv-python-headless
-py-tgcalls==0.8.5
 pafy
 pendulum
 pillow
 psutil
 psycopg2-binary
-pytgcalls==3.0.0.dev19
+pytgcalls
 pyaztro
 pybase64
 pyfiglet
