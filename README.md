@@ -1,26 +1,22 @@
-<h1 align="center"><img src="userbot/resources/geez.gif" width="35px">GEEZ PROJECTS<img src="userbot/resources/geez.gif" width="35px"></h1>
-
-<p align="center">
-
-[![](https://img.shields.io/badge/GeezProjects-v.1.0.5-blue)](#)
-[![Stars](https://img.shields.io/github/stars/vckyou/GeezProjects?style=flat-square&color=yellow)](https://github.com/vckyou/GeezProjects/stargazers)
-[![Forks](https://img.shields.io/github/forks/vckyou/GeezProjects?style=flat-square&color=orange)](https://github.com/vckyou/GeezProjects/fork)
-[![Size](https://img.shields.io/github/repo-size/vckyou/GeezProjects?style=flat-square&color=green)](https://github.com/vckyou/GeezProjects/)   
-[![Python](https://img.shields.io/badge/Python-v3.10.2-blue)](https://www.python.org/)
-[![CodeFactor](https://www.codefactor.io/repository/github/vckyou/geezprojects/badge/master)](https://www.codefactor.io/repository/github/vckyou/geezprojects/overview/master)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/vckyou/GeezProjects/graphs/commit-activity)
-[![Docker Pulls](https://img.shields.io/docker/pulls/vckyouuu/geez?style=flat-square)](https://img.shields.io/docker/pulls/vckyouuu/geez?style=flat-square)   
-[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/vckyou/GeezProjects)
-[![Contributors](https://img.shields.io/github/contributors/vckyou/GeezProjects?style=flat-square&color=green)](https://github.com/vckyou/GeezProjects/graphs/contributors)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-[![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/vckyou/GeezProjects/blob/main/LICENSE)   
-----
-
 <p align="center">
    <a href="https://github.com/vckyou/GeezProjects"><img src="https://telegra.ph/file/8e256cb133087b060e288.png" alt="Geez Projects" width=400px></a>
    <br>
    <br>
 </p>
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/vckyouuu/geez?style=flat-square)](https://img.shields.io/docker/pulls/vckyouuu/geez?style=flat-square)  [![Size](https://img.shields.io/github/repo-size/vckyou/GeezProjects?style=flat-square&color=green)](https://github.com/vckyou/GeezProjects/)    
+[![](https://img.shields.io/badge/GeezProjects-v.1.0.5-blue)](#)
+[![Stars](https://img.shields.io/github/stars/vckyou/GeezProjects?style=flat-square&color=yellow)](https://github.com/vckyou/GeezProjects/stargazers)
+[![Forks](https://img.shields.io/github/forks/vckyou/GeezProjects?style=flat-square&color=orange)](https://github.com/vckyou/GeezProjects/fork)
+[![Python](https://img.shields.io/badge/Python-v3.10.2-blue)](https://www.python.org/)
+[![CodeFactor](https://www.codefactor.io/repository/github/vckyou/geezprojects/badge/master)](https://www.codefactor.io/repository/github/vckyou/geezprojects/overview/master)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/vckyou/GeezProjects/graphs/commit-activity)
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/vckyou/GeezProjects)
+[![Contributors](https://img.shields.io/github/contributors/vckyou/GeezProjects?style=flat-square&color=green)](https://github.com/vckyou/GeezProjects/graphs/contributors)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+[![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/vckyou/GeezProjects/blob/main/LICENSE)
+----
+
 
 [GeezProjects](https://github.com/vckyou/GeezProjects) adalah userbot Telegram modular yang berjalan di Python3 dengan database sqlalchemy.
 
