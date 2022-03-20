@@ -15,7 +15,7 @@ MSG_ON = """
 """
 
 
-async def GEEZ_userbot_on():
+async def geez_userbot_on():
     try:
         if bot:
             if BOTLOG_CHATID != 0:
