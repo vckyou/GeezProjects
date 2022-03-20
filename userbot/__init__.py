@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 # inline credit @keselekpermen69
-# Recode by @vckyou
+# Recode by @vckyaz
 # t.me/GeezSupport
 #
 """ Userbot initialization. """
