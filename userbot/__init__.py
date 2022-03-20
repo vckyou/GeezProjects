@@ -108,6 +108,20 @@ while 0 < 6:
 
 del _DEVS
 
+while 0 < 6:
+    _BLACKLIST = get(
+        "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
+    )
+    if _BLACKLIST.status_code != 200:
+        if 0 != 5:
+            continue
+        blacklistgeez = []
+        break
+    blacklistman = _BLACKLIST.json()
+    break
+
+del _BLACKLIST
+
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
 
