@@ -82,7 +82,31 @@ async def checking():
     checking = str(pybase64.b64decode("R2VlelN1cHBvcnQ="))[2:13]
     try:
         if bot:
-            await bot(Get(check))
+            await bot(Get(gocheck))
             await bot(Get(checking))
+    except BaseException:
+        pass
+    try:
+        if GEEZ2:
+            await GEEZ2(Get(gocheck))
+            await GEEZ2(Get(checking))
+    except BaseException:
+        pass
+    try:
+        if GEEZ3:
+            await GEEZ3(Get(gocheck))
+            await GEEZ3(Get(checking))
+    except BaseException:
+        pass
+    try:
+        if GEEZ4:
+            await GEEZ4(Get(gocheck))
+            await GEEZ4(Get(checking))
+    except BaseException:
+        pass
+    try:
+        if GEEZ5:
+            await GEEZ5(Get(gocheck))
+            await GEEZ5(Get(checking))
     except BaseException:
         pass
