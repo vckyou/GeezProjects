@@ -345,7 +345,7 @@ if STRING_4:
     session4 = StringSession(str(STRING_4))
     GEEZ4 = TelegramClient(
         session=session4,
-        api_id=API_KEY
+        api_id=API_KEY,
         api_hash=API_HASH,
         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
