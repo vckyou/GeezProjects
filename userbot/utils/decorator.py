@@ -77,26 +77,60 @@ def geez_cmd(
 
 
     def decorator(func):
-        if not disable_edited:
-            bot.add_event_handler(
-                func, events.MessageEdited(**args, outgoing=True, pattern=geez_reg)
-            )
-        bot.add_event_handler(
-            func, events.NewMessage(**args, outgoing=True, pattern=geez_reg)
-        )
-        if allow_sudo:
+        if bot:
             if not disable_edited:
                 bot.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=geez_reg)
+                )
+            bot.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=geez_reg)
+            )
+        if bot:
+            if allow_sudo:
+                if not disable_edited:
+                    bot.add_event_handler(
+                        func,
+                        events.MessageEdited(
+                            **args, from_users=list(SUDO_USERS), pattern=sudo_reg
+                        ),
+                    )
+                bot.add_event_handler(
                     func,
-                    events.MessageEdited(
+                    events.NewMessage(
                         **args, from_users=list(SUDO_USERS), pattern=sudo_reg
                     ),
                 )
-            bot.add_event_handler(
-                func,
-                events.NewMessage(
-                    **args, from_users=list(SUDO_USERS), pattern=sudo_reg
-                ),
+        if GEEZ2:
+            if not disable_edited:
+                GEEZ2.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=geez_reg)
+                )
+            GEEZ2.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=geez_reg)
+            )
+        if GEEZ3:
+            if not disable_edited:
+                GEEZ3.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=geez_reg)
+                )
+            GEEZ3.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=geez_reg)
+            )
+        if GEEZ4:
+            if not disable_edited:
+                GEEZ4.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=geez_reg)
+                )
+            GEEZ4.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=geez_reg)
+            )
+        if GEEZ5:
+            if not disable_edited:
+                GEEZ5.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=geez_reg)
+                )
+            GEEZ5.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=geez_reg)
             )
         try:
             LOAD_PLUG[file_test].append(func)
@@ -106,11 +140,21 @@ def geez_cmd(
 
     return decorator
 
+
 def geez_handler(
     **args,
 ):
     def decorator(func):
-        bot.add_event_handler(func, events.NewMessage(**args, incoming=True))
+        if bot:
+            bot.add_event_handler(func, events.NewMessage(**args, incoming=True))
+        if GEEZ2:
+            GEEZ2.add_event_handler(func, events.NewMessage(**args, incoming=True))
+        if GEEZ3:
+            GEEZ3.add_event_handler(func, events.NewMessage(**args, incoming=True))
+        if GEEZ4:
+            GEEZ4.add_event_handler(func, events.NewMessage(**args, incoming=True))
+        if GEEZ5:
+            GEEZ5.add_event_handler(func, events.NewMessage(**args, incoming=True))
         return func
 
     return decorator
@@ -126,6 +170,23 @@ def asst_cmd(**args):
     def decorator(func):
         if tgbot:
             tgbot.add_event_handler(func, events.NewMessage(**args))
+        return func
+
+    return decorator
+
+
+def chataction(**args):
+    def decorator(func):
+        if bot:
+            bot.add_event_handler(func, events.ChatAction(**args))
+        if GEEZ2:
+            GEEZ2.add_event_handler(func, events.ChatAction(**args))
+        if GEEZ3:
+            GEEZ3.add_event_handler(func, events.ChatAction(**args))
+        if GEEZ4:
+            GEEZ4.add_event_handler(func, events.ChatAction(**args))
+        if GEEZ5:
+            GEEZ5.add_event_handler(func, events.ChatAction(**args))
         return func
 
     return decorator
