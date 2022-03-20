@@ -14,12 +14,15 @@ from userbot import (
     CMD_HANDLER,
     CMD_LIST,
     LOAD_PLUG,
+    GEEZ2,
+    GEEZ3,
+    GEEZ4,
+    GEEZ5,
     SUDO_HANDLER,
     SUDO_USERS,
     bot,
     tgbot,
 )
-
 
 def geez_cmd(
     pattern: str = None,
