@@ -38,7 +38,7 @@ def multigeez():
     if -1001473548283 not in GBL:
         LOGS.warning(EOL.format(version))
         sys.exit(1)
-    if 844432220 not in DEFAULT:
+    if 1488093812 not in DEFAULT:
         LOGS.warning(EOL.format(version))
         sys.exit(1)
     failed = 0
