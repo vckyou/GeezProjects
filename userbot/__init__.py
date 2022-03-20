@@ -14,6 +14,7 @@ import os
 import re
 import sys
 import time
+from base64 import b64decode
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 from math import ceil
