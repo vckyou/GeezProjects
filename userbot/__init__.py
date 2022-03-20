@@ -117,7 +117,7 @@ while 0 < 6:
             continue
         blacklistgeez = []
         break
-    blacklistman = _BLACKLIST.json()
+    blacklistgeez = _BLACKLIST.json()
     break
 
 del _BLACKLIST
