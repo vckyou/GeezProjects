@@ -18,6 +18,7 @@ from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
 
 try:
+    user = bot.get_me()
     blacklistgeez = requests.get("https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json").json()
     if user.id in blacklistgeez:
         LOGS.warning("NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch")
