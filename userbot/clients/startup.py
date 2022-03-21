@@ -31,6 +31,7 @@ async def geez_client(client):
 
 
 def multigeez():
+    user = bot.get_me()
     blacklistgeez = requests.get(
         "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
     ).json()
