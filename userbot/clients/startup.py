@@ -1,11 +1,9 @@
 import sys
-import requests
 
 import telethon.utils
 
 from userbot import BOT_VER as version
 from userbot import (
-    DEVS,
     LOGS,
     GEEZ2,
     GEEZ3,
@@ -19,7 +17,6 @@ from userbot import (
     bot,
     call_py,
 )
-from userbot.modules.gcast import GCAST_BLACKLIST as GBL
 
 
 MSG_BLACKLIST = "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOT {} GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nGeezProjects v{}, Copyright © 2021-2022 VCKY! <https://github.com/vckyou>"
