@@ -3,14 +3,10 @@
 
 import sys
 from importlib import import_module
-from platform import python_version
 
-from pytgcalls import __version__ as pytgcalls
 from pytgcalls import idle
-from telethon import version
 
 from userbot import BOT_TOKEN
-from userbot import BOT_VER as ubotversion
 from userbot import LOGS, bot
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
