@@ -7,11 +7,12 @@ from userbot import CMD_HANDLER as cmd
 from userbot import GEEZ2, GEEZ3, GEEZ4, GEEZ5, bot, branch
 
 MSG_ON = """
-🔥 **GEEZ-Userbot Berhasil Di Aktifkan**
-━━
-➠ **Userbot Version -** `{}@{}`
-➠ **Ketik** `{}alive` **untuk Mengecheck Bot**
-━━
+     __⚡ Congratulations ⚡__
+__GeezProhects Has Been Deployed__
+─┄───┅───┄─
+▸ **Userbot Version -** `{}@{}`
+▸ **Ketik** `{}ping` **untuk Mengecheck Bot**
+─┄───┅───┄─
 """
 
 
