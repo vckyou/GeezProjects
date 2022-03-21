@@ -26,7 +26,7 @@ try:
         LOGS.warning(
             "NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch"        )
         sys.exit(1)
-    if 1488093812 not in DEVS:
+    if 5155140917 not in DEVS:
         LOGS.warning(
             f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>"
         )
