@@ -31,22 +31,6 @@ async def geez_client(client):
 
 
 def multigeez():
-    user = bot.get_me()
-    blacklistgeez = requests.get(
-        "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
-    ).json()
-    if user.id in blacklistgeez:
-        LOGS.warning(
-            "NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch"        )
-        sys.exit(1)
-    if -1001459812644 not in GBL:
-        LOGS.warning(version)
-        sys.exit(1)
-    if 5155140917 not in DEVS:
-        LOGS.warning(
-            f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>"
-        )
-        sys.exit(1)
     failed = 0
     if STRING_SESSION:
         try:
