@@ -7,7 +7,7 @@ from importlib import import_module
 from pytgcalls import idle
 
 from userbot import BOT_TOKEN
-from userbot import DEVS, LOGS, bot, call_py
+from userbot import DEVS, LOGS, bot
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
@@ -16,7 +16,6 @@ try:
     client = multigeez()
     total = 5 - client
     bot.start()
-    call_py.start()
     user = bot.get_me()
     blacklistgeez = requests.get(
         "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
