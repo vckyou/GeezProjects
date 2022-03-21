@@ -2,7 +2,6 @@
 
 
 import sys
-import requests
 from importlib import import_module
 from platform import python_version
 
@@ -12,7 +11,7 @@ from telethon import version
 
 from userbot import BOT_TOKEN
 from userbot import BOT_VER as ubotversion
-from userbot import LOGS, DEVS, bot
+from userbot import LOGS, bot
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
