@@ -34,7 +34,7 @@ except Exception as e:
     LOGS.info(str(e), exc_info=True)
     sys.exit(1)
 
-    for module_name in ALL_MODULES:
+for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
     LOGS.info(f"Total Clients = {total} User")
