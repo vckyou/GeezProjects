@@ -15,7 +15,6 @@ from userbot import (
     STRING_5,
     STRING_SESSION,
     bot,
-    call_py,
 )
 
 
@@ -32,7 +31,6 @@ def multigeez():
     if STRING_SESSION:
         try:
             bot.start()
-            call_py.start()
             bot.loop.run_until_complete(geez_client(bot))
             user = bot.get_me()
             name = user.first_name
