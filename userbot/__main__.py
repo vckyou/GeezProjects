@@ -7,7 +7,7 @@ from importlib import import_module
 from pytgcalls import idle
 
 from userbot import BOT_TOKEN
-from userbot import DEVS, LOGS, bot, branch, call_py
+from userbot import DEVS, LOGS, bot, call_py
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
