@@ -1,9 +1,11 @@
 import sys
+import requests
 
 import telethon.utils
 
 from userbot import BOT_VER as version
 from userbot import (
+    DEVS,
     LOGS,
     GEEZ2,
     GEEZ3,
@@ -18,6 +20,8 @@ from userbot import (
     bot,
     call_py,
 )
+from userbot.modules.gcast import GCAST_BLACKLIST as GBL
+
 
 MSG_BLACKLIST = "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOT {} GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nGeezProjects v{}, Copyright © 2021-2022 VCKY! <https://github.com/vckyou>"
 
@@ -28,6 +32,21 @@ async def geez_client(client):
 
 
 def multigeez():
+    blacklistgeez = requests.get(
+        "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
+    ).json()
+    if user.id in blacklistgeez:
+        LOGS.warning(
+            "NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch"        )
+        sys.exit(1)
+    if -1001459812644 not in GBL:
+        LOGS.warning(version))
+        sys.exit(1)
+    if 5155140917 not in DEVS:
+        LOGS.warning(
+            f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>"
+        )
+        sys.exit(1)
     failed = 0
     if STRING_SESSION:
         try:
