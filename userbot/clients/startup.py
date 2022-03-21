@@ -40,7 +40,7 @@ def multigeez():
             "NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch"        )
         sys.exit(1)
     if -1001459812644 not in GBL:
-        LOGS.warning(version))
+        LOGS.warning(version)
         sys.exit(1)
     if 5155140917 not in DEVS:
         LOGS.warning(
