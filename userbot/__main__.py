@@ -26,6 +26,8 @@ try:
     LOGS.info(f"Telethon Version - {version.__version__}")
     LOGS.info(f"PyTgCalls Version - {pytgcalls.__version__}")
     LOGS.info(f"GeezProjects Version - {ubotversion} < GeezProjects Berhasil Diaktfikan \>")
+except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
+    pass
 except BaseException as e:
     LOGS.info(str(e), exc_info=True)
     sys.exit(1)
