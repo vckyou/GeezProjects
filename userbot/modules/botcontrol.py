@@ -559,7 +559,7 @@ async def strone(event):
     var = "STRING_SESSION"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            f"**Silahkan Kirimkan {var} Telethon anda dari @StringManRobot**\n\nGunakan /cancel untuk membatalkan."
+            f"**Silahkan Kirimkan {var} Telethon anda dari @GeezStringBot**\n\nGunakan /cancel untuk membatalkan."
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
@@ -584,7 +584,7 @@ async def strtwo(event):
     name = "MULTI CLIENT ke 2"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            f"**Silahkan Kirimkan {var} Telethon anda dari @StringManRobot**\n\nGunakan /cancel untuk membatalkan."
+            f"**Silahkan Kirimkan {var} Telethon anda dari @GeezStringBot**\n\nGunakan /cancel untuk membatalkan."
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
@@ -609,7 +609,7 @@ async def strtri(event):
     name = "MULTI CLIENT ke 3"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            f"**Silahkan Kirimkan {var} Telethon anda dari @StringManRobot**\n\nGunakan /cancel untuk membatalkan."
+            f"**Silahkan Kirimkan {var} Telethon anda dari @GeezStringBot**\n\nGunakan /cancel untuk membatalkan."
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
@@ -634,7 +634,7 @@ async def strfor(event):
     name = "MULTI CLIENT ke 4"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            f"**Silahkan Kirimkan {var} Telethon anda dari @StringManRobot**\n\nGunakan /cancel untuk membatalkan."
+            f"**Silahkan Kirimkan {var} Telethon anda dari @GeezStringBot**\n\nGunakan /cancel untuk membatalkan."
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
@@ -659,7 +659,7 @@ async def strfiv(event):
     name = "MULTI CLIENT ke 5"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            f"**Silahkan Kirimkan {var} Telethon anda dari @StringManRobot**\n\nGunakan /cancel untuk membatalkan."
+            f"**Silahkan Kirimkan {var} Telethon anda dari @GeezStringBot**\n\nGunakan /cancel untuk membatalkan."
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
