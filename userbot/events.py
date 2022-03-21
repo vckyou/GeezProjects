@@ -15,8 +15,7 @@ from time import gmtime, strftime
 from traceback import format_exc
 
 from telethon import events
-
-from userbot import CMD_HANDLER, CMD_LIST, DEVS, bot
+from userbot import CMD_HANDLER, CMD_LIST, DEFAULT, DEVS, GEEZ2, GEEZ3, GEEZ4, GEEZ5, bot
 
 def geez_cmd(pattern=None, command=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -125,6 +124,7 @@ def register(**args):
     disable_errors = args.get("disable_errors", False)
     insecure = args.get("insecure", False)
     args.get("sudo", False)
+    args.get("own", False)
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -148,6 +148,11 @@ def register(**args):
 
     if "trigger_on_fwd" in args:
         del args["trigger_on_fwd"]
+
+    if "own" in args:
+        del args["own"]
+        args["incoming"] = True
+        args["from_users"] = DEFAULT
 
     if "insecure" in args:
         del args["insecure"]
@@ -187,7 +192,7 @@ def register(**args):
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    text = "**✘ GeezProjects ERROR REPORT ✘**\n\n"
+                    text = "**GeezProjects ERROR REPORT**\n\n"
                     link = "[Group Support](https://t.me/GeezSupport)"
                     text += "Jika mau, Anda bisa melaporkan error ini, "
                     text += f"Cukup forward saja pesan ini ke {link}.\n\n"
@@ -226,10 +231,26 @@ def register(**args):
                     with open("error.log", "w+") as file:
                         file.write(ftext)
 
-        if not disable_edited:
-            bot.add_event_handler(wrapper, events.MessageEdited(**args))
-        bot.add_event_handler(wrapper, events.NewMessage(**args))
+        if bot:
+            if not disable_edited:
+                bot.add_event_handler(wrapper, events.MessageEdited(**args))
+            bot.add_event_handler(wrapper, events.NewMessage(**args))
+        if GEEZ2:
+            if not disable_edited:
+                GEEZ2.add_event_handler(wrapper, events.MessageEdited(**args))
+            GEEZ2.add_event_handler(wrapper, events.NewMessage(**args))
+        if GEEZ3:
+            if not disable_edited:
+                GEEZ3.add_event_handler(wrapper, events.MessageEdited(**args))
+            GEEZ3.add_event_handler(wrapper, events.NewMessage(**args))
+        if GEEZ4:
+            if not disable_edited:
+                GEEZ4.add_event_handler(wrapper, events.MessageEdited(**args))
+            GEEZ4.add_event_handler(wrapper, events.NewMessage(**args))
+        if GEEZ5:
+            if not disable_edited:
+                GEEZ5.add_event_handler(wrapper, events.MessageEdited(**args))
+            GEEZ5.add_event_handler(wrapper, events.NewMessage(**args))
         return wrapper
-
 
     return decorator
