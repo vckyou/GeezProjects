@@ -34,12 +34,14 @@ except Exception as e:
     LOGS.info(str(e), exc_info=True)
     sys.exit(1)
 
-for module_name in ALL_MODULES:
+try:
+    for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
     LOGS.info(f"Total Clients = {total} User")
     LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GeezSupport")
     LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢")
+
 except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
     pass
 except BaseException as e:
