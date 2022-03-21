@@ -2,6 +2,7 @@
 
 
 import sys
+import requests
 from importlib import import_module
 from platform import python_version
 
