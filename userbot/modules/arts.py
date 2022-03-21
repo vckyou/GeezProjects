@@ -1,6 +1,5 @@
 # recode by @vckyaz
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
-#
 # Support @GeezSupport & @GeezProjects
 
 from userbot import CMD_HANDLER as cmd
