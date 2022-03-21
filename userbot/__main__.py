@@ -18,13 +18,20 @@ from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
 
 try:
+    bot.start()
     user = bot.get_me()
-    blacklistgeez = requests.get("https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json").json()
+    blacklistgeez = requests.get(
+        "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
+    ).json()
     if user.id in blacklistgeez:
-        LOGS.warning("NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch")
+        LOGS.warning(
+            "NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch"
+        )
         sys.exit(1)
     if 5155140917 not in DEVS:
-        LOGS.warning(f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>")
+        LOGS.warning(
+            f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>"
+        )
         sys.exit(1)
 except BaseException as e:
     LOGS.info(str(e), exc_info=True)
