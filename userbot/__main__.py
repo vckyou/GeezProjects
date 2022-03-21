@@ -12,7 +12,7 @@ from telethon import version
 
 from userbot import BOT_TOKEN
 from userbot import BOT_VER as ubotversion
-from userbot import LOGS, bot
+from userbot import LOGS, DEVS, bot
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking
@@ -26,6 +26,10 @@ try:
     if 5155140917 not in DEVS:
         LOGS.warning(f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>")
         sys.exit(1)
+except BaseException as e:
+    LOGS.info(str(e), exc_info=True)
+    sys.exit(1)
+
     for module_name in ALL_MODULES:
         imported_module = import_module(f"userbot.modules.{module_name}")
     client = multigeez()
