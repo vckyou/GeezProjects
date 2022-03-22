@@ -1,14 +1,5 @@
-import base64
-import json
 import math
 import os
-import random
-import re
-import ssl
-import string
-from io import BytesIO
-from json.decoder import JSONDecodeError
-from traceback import format_exc
 
 from userbot import LOGS
 from userbot.utils import bash
@@ -24,9 +15,6 @@ except ImportError:
     Image, ImageDraw, ImageFont = None, None, None
     LOGS.info("PIL not installed!")
 
-from requests.exceptions import MissingSchema
-from telethon import Button
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 
 
 class LottieException(Exception):
