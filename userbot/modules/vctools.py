@@ -11,6 +11,9 @@
 # Support @GeezSupport & @GeezProjects
 # 
 
+from asyncio import sleep
+
+from pytgcalls import GroupCall
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
@@ -19,7 +22,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, owner
+from userbot import CMD_HELP, bot, owner, GROUP_CALLS
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
@@ -85,6 +88,37 @@ async def _(c):
         except BaseException:
             pass
     await xxnx.edit(f"`{z}` **Orang Berhasil diundang ke VCG**")
+
+
+@geez_cmd(pattern="joinvc")
+async def joinvc(event):
+    geezav = await event.edit("`...`")
+
+    try:
+        call = await get_call(event)
+    except BaseException:
+        call = None
+
+    if not call:
+        await geezav.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
+        await sleep(15)
+        return await geezav.delete()
+
+    group_call = GROUP_CALLS.get(event.chat.id)
+    if group_call is None:
+        group_call = GroupCall(
+            event.client=bot,
+            enable_logs_to_console=False,
+            path_to_log_file=None,
+        ).get_file_group_call(None)
+        GROUP_CALLS[event.chat.id] = group_call
+
+    if not (group_call and group_call.is_connected):
+        await group_call.start(event.chat.id, enable_action=False)
+
+    await geezav.edit("`joined`")
+    await sleep(3)
+    await geezav.delete()
 
 
 @geez_cmd(pattern="vctitle(?: |$)(.*)")
