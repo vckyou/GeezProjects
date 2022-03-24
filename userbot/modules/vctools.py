@@ -22,7 +22,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, GROUP_CALLS, owner
+from userbot import CMD_HELP, bot, GROUP_CALLS, owner
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
@@ -107,7 +107,7 @@ async def joinvc(event):
     group_call = GROUP_CALLS.get(event.chat.id)
     if group_call is None:
         group_call = GroupCall(
-            event.client,
+            bot,
             enable_logs_to_console=False,
             path_to_log_file=None,
         ).get_file_group_call(None)
