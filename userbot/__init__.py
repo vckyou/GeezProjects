@@ -58,6 +58,7 @@ CMD_LIST = {}
 SUDO_LIST = {}
 ZALG_LIST = {}
 LOAD_PLUG = {}
+GROUP_CALLS = {}
 INT_PLUG = ""
 ISAFK = False
 AFKREASON = None
