@@ -22,7 +22,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot, owner, GROUP_CALLS
+from userbot import CMD_HELP, GROUP_CALLS, owner
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
