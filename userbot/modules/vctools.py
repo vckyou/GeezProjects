@@ -107,7 +107,7 @@ async def joinvc(event):
     group_call = GROUP_CALLS.get(event.chat.id)
     if group_call is None:
         group_call = GroupCall(
-            event.client=bot,
+            event.client,
             enable_logs_to_console=False,
             path_to_log_file=None,
         ).get_file_group_call(None)
