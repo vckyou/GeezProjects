@@ -123,13 +123,13 @@ while 0 < 6:
 
 del _BLACKLIST
 
-if video_chat.STRING_SESSION:
+if STRING_SESSION:
     GEEZ_CLIENT = TelegramClient(
-        video_chat.STRING_SESSION,
+        STRING_SESSION,
         api_id=API_KEY,
         api_hash=API_HASH)
     # hmm ...
-    GEEZ_CLIENT.storage.name = video_chat.STRING_SESSION
+    GEEZ_CLIENT.storage.name = STRING_SESSION
 else:
     # https://github.com/pytgcalls/pytgcalls/blob/master/pytgcalls/mtproto/mtproto_client.py#L18
     userbot.__class__.__module__ = 'telethon.client'
