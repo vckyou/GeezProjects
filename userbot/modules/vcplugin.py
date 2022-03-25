@@ -484,7 +484,7 @@ async def joinvc(event):
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
     else:
-        chat = event.chat_id
+        event.chat_id
         await edit_delete(event, "**Successfully Joined VC Group!!**")
 
 
