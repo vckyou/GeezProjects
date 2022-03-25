@@ -465,6 +465,31 @@ async def vc_volume(event):
         await edit_delete(event, "**Tidak Sedang Memutar Streamming**")
 
 
+@geez_cmd(pattern="joinvc(?: |$)(.*)")
+async def join_(event):
+    if len(event.text.split()) > 1:
+        chat = event.text.split()[1]
+        chat_id = event.chat_id
+        try:
+        if not call_py.is_connected:
+            await call_py.start()
+        await call_py.join_group_call(
+            chat_id,
+            AudioPiped(
+                'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
+            ),
+            stream_type=StreamType().pulse_stream
+        )
+        try:
+            chat = await event.client.join_group_call(chat_id, AudioPiped(dl))
+            await edit_or_reply(event, "**Processing..**")
+        except Exception as e:
+            await edit_delete(event, f"**ERROR:** `{e}`")
+    else:
+        chat = event.chat_id
+        await edit_delete(event, "**Successfully Joined VC Group!!**")
+
+
 @geez_cmd(pattern="playlist$")
 async def vc_playlist(event):
     chat_id = event.chat_id
