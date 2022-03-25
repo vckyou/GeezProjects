@@ -480,6 +480,7 @@ async def joinvc(event):
             ),
             stream_type=StreamType().pulse_stream
         )
+        try:
             await edit_or_reply(event, "**Processing..**")
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
