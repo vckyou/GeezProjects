@@ -468,10 +468,10 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     if len(event.text.split()) > 1:
-        event.text.split()[1]
+        chat = event.text.split()[1]
         chat_id = event.chat_id
         me = await event.client.get_me()
-        await call_py.join_group_call(
+        chat = await call_py.join_group_call(
             chat_id,
             AudioPiped(
                 "http://duramecho.com/Misc/SilentCd/Silence01s.mp3"
@@ -484,7 +484,7 @@ async def joinvc(event):
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
     else:
-        event.chat_id
+        chat = event.chat_id
         await edit_delete(event, "**Successfully Joined VC Group!!**")
 
 
