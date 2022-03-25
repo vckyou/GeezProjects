@@ -471,6 +471,7 @@ async def joinvc(event):
         chat = event.text.split()[1]
         chat_id = event.chat_id
         me = await event.client.get_me()
+        geezav = await edit_or_reply(event, "**Processing**")
         chat = await call_py.join_group_call(
             chat_id,
             AudioPiped(
@@ -480,11 +481,11 @@ async def joinvc(event):
             stream_type=StreamType().pulse_stream
         )
         try:
-            await edit_or_reply(event, "**Successfully Joined VC Group!**")
+            await edit_or_reply(geezav, "**Successfully Joined VC Group!**")
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
     else:
-        await edit_delete(event, "`Terjadi Kesalahan!!`")
+        await edit_delete(geezav, "`Terjadi Kesalahan!!`")
 
 
 @geez_cmd(pattern="playlist$")
