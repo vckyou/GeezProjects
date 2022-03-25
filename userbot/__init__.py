@@ -123,21 +123,6 @@ while 0 < 6:
 
 del _BLACKLIST
 
-if STRING_SESSION:
-    GEEZ_CLIENT = TelegramClient(
-        STRING_SESSION,
-        api_id=API_KEY,
-        api_hash=API_HASH)
-    # hmm ...
-    GEEZ_CLIENT.storage.name = STRING_SESSION
-else:
-    # https://github.com/pytgcalls/pytgcalls/blob/master/pytgcalls/mtproto/mtproto_client.py#L18
-    userbot.__class__.__module__ = 'telethon.client'
-    GEEZ_CLIENT = userbot
-
-call= PyTgCalls(GEEZ_CLIENT, overload_quiet_mode=True)
-call._env_checker.check_environment()  # pylint: disable=protected-access
-
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
 
@@ -341,6 +326,22 @@ try:
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
+
+if STRING_SESSION:
+    GEEZ_CLIENT = TelegramClient(
+        STRING_SESSION,
+        api_id=API_KEY,
+        api_hash=API_HASH)
+    # hmm ...
+    GEEZ_CLIENT.storage.name = STRING_SESSION
+else:
+    # https://github.com/pytgcalls/pytgcalls/blob/master/pytgcalls/mtproto/mtproto_client.py#L18
+    userbot.__class__.__module__ = 'telethon.client'
+    GEEZ_CLIENT = userbot
+
+call = PyTgCalls(GEEZ_CLIENT, overload_quiet_mode=True)
+call._env_checker.check_environment()  # pylint: disable=protected-access
+
 
 if STRING_2:
     session2 = StringSession(str(STRING_2))
