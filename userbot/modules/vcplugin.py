@@ -470,7 +470,7 @@ async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
         chat_id = event.chat_id
-        try:
+    try:
         if not call_py.is_connected:
             await call_py.start()
         await call_py.join_group_call(
