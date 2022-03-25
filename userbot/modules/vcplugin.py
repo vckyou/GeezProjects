@@ -3,7 +3,7 @@
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
 
-from pytgcalls import PyTgCalls, StreamType
+from pytgcalls import StreamType
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
 from pytgcalls.types.input_stream.quality import (
@@ -19,7 +19,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from youtubesearchpython import VideosSearch
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, call
+from userbot import CMD_HELP
 from userbot import PLAY_PIC as fotoplay
 from userbot import QUEUE_PIC as ngantri
 from userbot import call_py
