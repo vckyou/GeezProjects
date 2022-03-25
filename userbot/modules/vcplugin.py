@@ -468,9 +468,9 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     if len(event.text.split()) > 1:
-        chat = event.text.split()[1]
+        event.text.split()[1]
         chat_id = event.chat_id
-        me = await event.client.get_me()
+        await event.client.get_me()
         if not call_py.is_connected:
             await call_py.start()
         await call_py.join_group_call(
@@ -485,7 +485,7 @@ async def joinvc(event):
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
     else:
-        chat = event.chat_id
+        event.chat_id
         await edit_delete(event, "**Successfully Joined VC Group!!**")
 
 
