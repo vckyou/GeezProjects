@@ -14,7 +14,6 @@ from pytgcalls.types.input_stream.quality import (
 )
 
 from telethon.tl import types
-from telethon.sync import TelegramClient
 from telethon.utils import get_display_name
 from telethon.tl.functions.channels import GetFullChannelRequest
 from youtubesearchpython import VideosSearch
