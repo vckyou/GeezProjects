@@ -39,8 +39,8 @@ async def get_call(event):
     call = await event.client(GetFullChannelRequest(event.chat.id))
     return call.full_chat.call
 
-call_py = PyTgCalls(TelegramClient, overload_quiet_mode=True)
-call_py._env_checker.check_environment()  # pylint: disable=protected-access
+call= PyTgCalls(call_py, overload_quiet_mode=True)
+call._env_checker.check_environment()  # pylint: disable=protected-access
 
 def vcmention(user):
     full_name = get_display_name(user)
