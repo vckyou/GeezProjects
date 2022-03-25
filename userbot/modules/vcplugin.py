@@ -19,7 +19,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from youtubesearchpython import VideosSearch
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
+from userbot import CMD_HELP, call
 from userbot import PLAY_PIC as fotoplay
 from userbot import QUEUE_PIC as ngantri
 from userbot import call_py
@@ -37,9 +37,6 @@ from userbot.utils.thumbnail import gen_thumb
 async def get_call(event):
     call = await event.client(GetFullChannelRequest(event.chat.id))
     return call.full_chat.call
-
-call= PyTgCalls(call_py, overload_quiet_mode=True)
-call._env_checker.check_environment()  # pylint: disable=protected-access
 
 def vcmention(user):
     full_name = get_display_name(user)
@@ -488,9 +485,9 @@ async def joinvc(event):
         await sleep(15)
         return await geezav.delete()
 
-    if not call_py.is_connected:
-            await call_py.start()
-    call = await call_py.join_group_call(
+    if not call.is_connected:
+            await call.start()
+    call = await call.join_group_call(
             chat_id,
             AudioPiped(
                 "http://duramecho.com/Misc/SilentCd/Silence01s.mp3"
