@@ -480,12 +480,11 @@ async def joinvc(event):
             stream_type=StreamType().pulse_stream
         )
         try:
-            await edit_or_reply(event, "**Processing..**")
+            await edit_or_reply(event, "**Successfully Joined VC Group!**")
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
     else:
-        event.chat_id
-        await edit_delete(event, "**Successfully Joined VC Group!!**")
+        await edit_delete(event, "`Terjadi Kesalahan!!`")
 
 
 @geez_cmd(pattern="playlist$")
