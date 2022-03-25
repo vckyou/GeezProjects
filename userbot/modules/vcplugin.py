@@ -15,6 +15,7 @@ from pytgcalls.types.input_stream.quality import (
 
 from telethon.tl import types
 from telethon.utils import get_display_name
+from telethon.tl.functions.channels import GetFullChannelRequest
 from youtubesearchpython import VideosSearch
 
 from userbot import CMD_HANDLER as cmd
@@ -33,6 +34,10 @@ from userbot.utils.queues.queues import (
 )
 from userbot.utils.thumbnail import gen_thumb
 
+
+async def get_call(event):
+    call = await event.client(GetFullChannelRequest(event.chat.id))
+    return call.full_chat.call
 
 def vcmention(user):
     full_name = get_display_name(user)
@@ -467,25 +472,33 @@ async def vc_volume(event):
 
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
-    if len(event.text.split()) > 1:
-        chat = event.text.split()[1]
-        chat_id = event.chat_id
-        me = await event.client.get_me()
-        geezav = await edit_or_reply(event, "**Processing**")
-        chat = await call_py.join_group_call(
+    chat = event.text.split()[1]
+    chat_id = event.chat_id
+    me = await event.client.get_me()
+    geezav = await event.edit("`...`")
+
+    try:
+        call = await get_call(event)
+    except BaseException:
+        call = None
+
+    if not call:
+        await geezav.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
+        await sleep(15)
+        return await geezav.delete()
+
+    call = await call_py.join_group_call(
             chat_id,
+            me,
             AudioPiped(
                 "http://duramecho.com/Misc/SilentCd/Silence01s.mp3"
             ),
-            me,
-            stream_type=StreamType().pulse_stream
+            stream_type=StreamType().pulse_stream,
         )
-        try:
-            await edit_or_reply(geezav, "**Successfully Joined VC Group!**")
-        except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`")
-    else:
-        await edit_delete(geezav, "`Terjadi Kesalahan!!`")
+
+    await geezav.edit("`joined`")
+    await sleep(3)
+    await geezav.delete()
 
 
 @geez_cmd(pattern="playlist$")
