@@ -486,6 +486,8 @@ async def joinvc(event):
         await sleep(15)
         return await geezav.delete()
 
+    if not call_py.is_connected:
+            await call_py.start()
     call = await call_py.join_group_call(
             chat_id,
             AudioPiped(
