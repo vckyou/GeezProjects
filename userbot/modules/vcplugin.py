@@ -14,6 +14,7 @@ from pytgcalls.types.input_stream.quality import (
 )
 
 from telethon.tl import types
+from telethon.sync import TelegramClient
 from telethon.utils import get_display_name
 from telethon.tl.functions.channels import GetFullChannelRequest
 from youtubesearchpython import VideosSearch
@@ -38,7 +39,7 @@ async def get_call(event):
     call = await event.client(GetFullChannelRequest(event.chat.id))
     return call.full_chat.call
 
-call_py = PyTgCalls(event.client, overload_quiet_mode=True)
+call_py = PyTgCalls(TelegramClient, overload_quiet_mode=True)
 call_py._env_checker.check_environment()  # pylint: disable=protected-access
 
 def vcmention(user):
