@@ -470,14 +470,13 @@ async def joinvc(event):
     if len(event.text.split()) > 1:
         event.text.split()[1]
         chat_id = event.chat_id
-        await event.client.get_me()
-        if not call_py.is_connected:
-            await call_py.start()
+        me = await event.client.get_me()
         await call_py.join_group_call(
             chat_id,
             AudioPiped(
                 "http://duramecho.com/Misc/SilentCd/Silence01s.mp3"
             ),
+            me,
             stream_type=StreamType().pulse_stream
         )
         try:
