@@ -488,11 +488,11 @@ async def joinvc(event):
 
     call = await call_py.join_group_call(
             chat_id,
-            me,
             AudioPiped(
                 "http://duramecho.com/Misc/SilentCd/Silence01s.mp3"
             ),
-            stream_type=StreamType().pulse_stream,
+            me,
+            stream_type=StreamType().pulse_stream
         )
 
     await geezav.edit("`joined`")
