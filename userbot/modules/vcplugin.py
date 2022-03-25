@@ -472,7 +472,7 @@ async def vc_volume(event):
 
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
-    chat = event.text.split()[1]
+    event.text.split()[1]
     chat_id = event.chat_id
     me = await event.client.get_me()
     geezav = await event.edit("`...`")
