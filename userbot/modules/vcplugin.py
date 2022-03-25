@@ -471,7 +471,6 @@ async def joinvc(event):
         chat = event.text.split()[1]
         chat_id = event.chat_id
         me = await event.client.get_me()
-        try:
         if not call_py.is_connected:
             await call_py.start()
         await call_py.join_group_call(
