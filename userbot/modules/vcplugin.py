@@ -498,7 +498,7 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-    await geezav.edit(f"**{from_user} Berhasil Naik Ke OS Group!**")
+    await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
@@ -512,9 +512,9 @@ async def leavevc(event):
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await geezav.edit(f"**{from_user} Berhasil Turun Dari OS Group.**")
+        await geezav.edit(f"**{from_user} Berhasil Turun Dari VC Group.**")
     else:
-        await geezav.delete(event, f"**Maaf {from_user} Tidak Berada Di OS Group**")
+        await geezav.delete(f"**Maaf {from_user} Tidak Berada Di VC Group**")
 
 
 @geez_cmd(pattern="playlist$")
