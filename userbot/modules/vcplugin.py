@@ -3,6 +3,7 @@
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
 
+import re
 from pytgcalls import StreamType
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
@@ -480,7 +481,7 @@ async def vc_volume(event):
 async def joinvc(event):
     chat_id = event.chat_id
     link = event.text.split(None, 1)[1]
-      match = str(match["link"])
+      match = re.match(link)
     if match:
          joined = await joinvc(link)
       else:
