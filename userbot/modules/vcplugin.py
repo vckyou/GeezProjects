@@ -479,12 +479,14 @@ async def vc_volume(event):
 
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
+    geezav = await edit_or_reply(event, f"**Processing**")
+        return
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
         try:
             chat = await event.client(GetFullUserRequest(chat))
         except Exception as e:
-            return await edit_or_reply(event, "`Processing`")
+            await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
@@ -497,22 +499,25 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-    await edit_or_reply(event, f"**{from_user} Berhasil Naik Ke OS Group!**")
+    await geezav.edit(f"**{from_user} Berhasil Naik Ke OS Group!**")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
 async def leavevc(event):
     """ leave video chat """
+    geezav = await edit_or_reply(event, "Processing")
+        return
     chat_id = event.chat_id
     from_user = vcmention(event.sender)
     if from_user:
-        await edit_delete(event, f"**Maaf {from_user} Tidak Berada Di OS Group**")
-        return
         try:
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await edit_or_reply(event, f"**{from_user} Berhasil Turun Dari OS Group.**")
+        await geezav.edit(f"**{from_user} Berhasil Turun Dari OS Group.**")
+    else:
+        await geezav.delete(event, f"**Maaf {from_user} Tidak Berada Di OS Group**")
+            return
 
 
 @geez_cmd(pattern="playlist$")
