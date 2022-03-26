@@ -515,7 +515,6 @@ async def leavevc(event):
         await geezav.edit(f"**{from_user} Berhasil Turun Dari OS Group.**")
     else:
         await geezav.delete(event, f"**Maaf {from_user} Tidak Berada Di OS Group**")
-            return
 
 
 @geez_cmd(pattern="playlist$")
