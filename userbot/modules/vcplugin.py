@@ -503,7 +503,6 @@ async def join_(event):
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
 async def leavevc(event):
     """ leave video chat """
-    await edit.delete()
     chat_id = event.chat_id
     from_user = vcmention(event.sender)
     if from_user:
