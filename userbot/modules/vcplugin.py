@@ -114,6 +114,13 @@ async def skip_current_song(chat_id: int):
     return [songname, link, type]
 
 
+async def joinvc():
+    stdout, stderr = await bash("http://duramecho.com/Misc/SilentCd/Silence01s.mp3")
+    if stdout:
+        return 1, stdout.split("\n")[0]
+    return 0, stderr
+
+
 @geez_cmd(pattern="play(?:\s|$)([\s\S]*)")
 async def vc_play(event):
     title = event.pattern_match.group(1)
@@ -472,33 +479,27 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     chat_id = event.chat_id
-    me = await event.client.get_me()
-    geezav = await event.edit("`...`")
-
-    try:
-        call = await get_call(event)
-    except BaseException:
-        call = None
-
-    if not call:
-        await geezav.edit(f"`Tidak ada obrolan, mulai dengan {cmd}startvc`")
-        await sleep(15)
-        return await geezav.delete()
-
-    if not call.is_connected:
-            await call.start()
-    call = await call.join_group_call(
+    link = event.text.split(None, 1)[1]
+      match = re.match(link)
+    if match:
+         joined = await joinvc(link)
+      else:
+         joined = link
+    if chat_id in QUEUE:
+        try:
+            await call_py.join_group_call(
             chat_id,
             AudioPiped(
-                "http://duramecho.com/Misc/SilentCd/Silence01s.mp3"
+                joined,
             ),
-            me,
             stream_type=StreamType().pulse_stream
         )
-
-    await geezav.edit("`joined`")
-    await sleep(3)
-    await geezav.delete()
+            clear_queue(chat_id)
+            await edit_or_reply(event, "**Successfully Joined VC Group!**")
+        except Exception as e:
+            await edit_delete(event, f"**ERROR:** `{e}`")
+    else:
+        await edit_delete(event, "**Tidak Sedang Memutar Streaming**")
 
 
 @geez_cmd(pattern="playlist$")
