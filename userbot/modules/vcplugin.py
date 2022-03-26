@@ -507,7 +507,6 @@ async def vc_end(event):
         try:
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
-            pass
             await edit_or_reply(event, "**Successfully Leave VC!!**")
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
