@@ -469,7 +469,9 @@ async def vc_volume(event):
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streamming**")
 
-
+# credits by @vckyaz 
+# FROM GeezProjects < https://github.com/vckyou/GeezProjects \>
+# ambil boleh apus kredit jangan ya ka:)
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
