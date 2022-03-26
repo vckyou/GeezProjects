@@ -480,12 +480,9 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     chat_id = event.chat_id
-    link = event.text.split(maxsplit=1)[1]
-    match = re.match(link)
-    if match:
-        joined = await joinvc(link)
-    else:
-        joined = link
+    hm, joined = await joinvc()
+    if hm == 0:
+        await edit_or_reply(event, f"`{joined}`")
     if chat_id in QUEUE:
         try:
             await call_py.join_group_call(
