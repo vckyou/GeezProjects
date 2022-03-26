@@ -499,8 +499,23 @@ async def join_(event):
     await edit_or_reply(event, "**Joined.**")
 
 
+@geez_cmd(pattern="leavevc$")
+async def vc_end(event):
+    chat_id = event.chat_id
+    from_user = vcmention(event.sender)
+    if chat_id in QUEUE:
+        try:
+            await call_py.leave_group_call(chat_id)
+        except (NotInGroupCallError, NoActiveGroupCall):
+            pass
+            await edit_or_reply(event, "**Successfully Leave VC!!**")
+        except Exception as e:
+            await edit_delete(event, f"**ERROR:** `{e}`")
+    else:
+        await edit_delete(event, f"**Maaf {from_user} sedang tidak di OS group**")
 
-@geez_cmd(pattern="leavevc(?: |$)(.*)")
+
+@geez_cmd(pattern="leavevcs(?: |$)(.*)")
 async def leavevc(event):
     """ leave video chat """
     chat_id = event.chat_id
@@ -510,7 +525,7 @@ async def leavevc(event):
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await edit_or_reply(event, "`Left Videochat`", del_in=5)
+        await edit_delete(event, "`Left Videochat`", del_in=5)
     else:
         await edit_or_reply(event, "`I didn't find any Video-Chat to leave`")
 
