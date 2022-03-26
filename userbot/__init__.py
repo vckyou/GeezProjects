@@ -388,22 +388,6 @@ else:
     GEEZ5 = None
 
 
-if STRING_SESSION:
-    GEEZ_CLIENT = TelegramClient(
-        STRING_SESSION,
-        api_id=API_KEY,
-        api_hash=API_HASH)
-    # hmm ...
-    GEEZ_CLIENT.storage.name = STRING_SESSION
-else:
-    # https://github.com/pytgcalls/pytgcalls/blob/master/pytgcalls/mtproto/mtproto_client.py#L18
-    userbot.__class__.__module__ = 'telethon.client'
-    GEEZ_CLIENT = userbot
-
-call= PyTgCalls(GEEZ_CLIENT, overload_quiet_mode=True)
-call._env_checker.check_environment()  # pylint: disable=protected-access
-
-
 async def check_botlog_chatid() -> None:
     if not BOTLOG_CHATID:
         LOGS.warning(
