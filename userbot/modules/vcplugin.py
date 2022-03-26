@@ -12,6 +12,10 @@ from pytgcalls.types.input_stream.quality import (
     LowQualityVideo,
     MediumQualityVideo,
 )
+from pytgcalls.exceptions import (
+    NoActiveGroupCall,
+    NotInGroupCallError,
+)
 
 from telethon.tl import types
 from telethon.utils import get_display_name
@@ -469,9 +473,10 @@ async def vc_volume(event):
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streamming**")
 
-# credits by @vckyaz 
+# credits by @vckyaz < vicky \>
 # FROM GeezProjects < https://github.com/vckyou/GeezProjects \>
-# ambil boleh apus kredit jangan ya ka:)
+# ambil boleh apus credits jangan ya ka:)
+
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
@@ -492,6 +497,24 @@ async def join_(event):
         stream_type=StreamType().pulse_stream,
     )
     await edit_or_reply(event, "**Joined.**")
+
+
+
+@geez_cmd(pattern="leavevc(?: |$)(.*)")
+async def leavevc(event):
+    """ leave video chat """
+    await edit.delete()
+    chat_id = event.chat_id
+    from_user = vcmention(event.sender)
+    if from_user:
+        try:
+            await call_py.leave_group_call(chat_id)
+        except (NotInGroupCallError, NoActiveGroupCall):
+            pass
+        await edit_or_reply(event, "`Left Videochat`", del_in=5)
+    else:
+        await edit_or_reply(event, "`I didn't find any Video-Chat to leave`")
+
 
 
 @geez_cmd(pattern="playlist$")
