@@ -114,13 +114,6 @@ async def skip_current_song(chat_id: int):
     return [songname, link, type]
 
 
-async def joinvc(url):
-    stdout, stderr = await bash("http://duramecho.com/Misc/SilentCd/Silence01s.mp3")
-    if stdout:
-        return 1, stdout.split("\n")[0]
-    return 0, stderr
-
-
 @geez_cmd(pattern="play(?:\s|$)([\s\S]*)")
 async def vc_play(event):
     title = event.pattern_match.group(1)
@@ -479,23 +472,18 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     chat_id = event.chat_id
-    query = event.text.split(maxsplit=1)[1]
-    search = joinvc(query)
-    url = search[1]
-    hm, joined = await joinvc(url)
-    if hm == 0:
-        await edit_or_reply(event, f"`{joined}`")
+    geezav = await edit_or_reply(event, f"`processing`")
     if chat_id in QUEUE:
         try:
             await call_py.join_group_call(
             chat_id,
             AudioPiped(
-                joined,
+                'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
             ),
             stream_type=StreamType().pulse_stream
         )
             clear_queue(chat_id)
-            await edit_or_reply(event, "**Successfully Joined VC Group!**")
+            await edit_or_reply(geezav, "**Successfully Joined VC Group!**")
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`")
     else:
