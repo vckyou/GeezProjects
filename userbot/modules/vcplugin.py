@@ -511,7 +511,7 @@ async def leavevc(event):
             pass
         await edit_delete(event, f"`{from_user} Berhasil Turun Dari OS Group.`", 15)
     else:
-        await edit_delete(event, "`Maaf {from_user} Tidak Berada Di OS Group`")
+        await edit_delete(event, f"`Maaf {from_user} Tidak Berada Di OS Group`")
 
 
 
