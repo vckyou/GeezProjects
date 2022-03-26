@@ -15,6 +15,7 @@ from pytgcalls.types.input_stream.quality import (
 
 from telethon.tl import types
 from telethon.utils import get_display_name
+from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.functions.channels import GetFullChannelRequest
 from youtubesearchpython import VideosSearch
 
@@ -470,24 +471,25 @@ async def vc_volume(event):
 
 
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
-async def joinvc(event):
-    chat_id = event.chat_id
-    geezav = await edit_or_reply(event, f"`processing`")
-    if chat_id in QUEUE:
+async def join_(event):
+    if len(event.text.split()) > 1:
+        chat = event.text.split()[1]
         try:
-            await call_py.join_group_call(
-            chat_id,
-            AudioPiped(
-                'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
-            ),
-            stream_type=StreamType().pulse_stream
-        )
-            clear_queue(chat_id)
-            await edit_or_reply(geezav, "**Successfully Joined VC Group!**")
+            chat = await event.client(GetFullUserRequest(chat))
         except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`")
+            return await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
-        await edit_delete(event, "**Tidak Sedang Memutar Streaming**")
+        chat = event.chat_id
+    if not call_py.is_connected:
+        await call_py.start()
+    await call_py.join_group_call(
+        chat_id,
+        AudioPiped(
+            'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
+        ),
+        stream_type=StreamType().pulse_stream,
+    )
+    await edit_or_reply(event, "**Joined.**")
 
 
 @geez_cmd(pattern="playlist$")
