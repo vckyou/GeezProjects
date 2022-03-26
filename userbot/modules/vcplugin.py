@@ -503,7 +503,7 @@ async def join_(event):
 async def vc_end(event):
     chat_id = event.chat_id
     from_user = vcmention(event.sender)
-    if chat_id in QUEUE:
+    if chat_id in from_user:
         try:
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
@@ -524,7 +524,7 @@ async def leavevc(event):
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await edit_delete(event, "`Left Videochat`", del_in=5)
+        await edit_or_delete(event, "`Left Videochat`", 5)
     else:
         await edit_or_reply(event, "`I didn't find any Video-Chat to leave`")
 
