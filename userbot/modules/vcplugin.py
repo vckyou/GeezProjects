@@ -114,7 +114,7 @@ async def skip_current_song(chat_id: int):
     return [songname, link, type]
 
 
-async def joinvc():
+async def joinvc(url):
     stdout, stderr = await bash("http://duramecho.com/Misc/SilentCd/Silence01s.mp3")
     if stdout:
         return 1, stdout.split("\n")[0]
@@ -479,7 +479,7 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     chat_id = event.chat_id
-    hm, joined = await joinvc()
+    hm, joined = await joinvc(url)
     if hm == 0:
         await edit_or_reply(event, f"`{joined}`")
     if chat_id in QUEUE:
