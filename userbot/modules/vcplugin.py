@@ -480,7 +480,6 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
-        return
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
         try:
@@ -506,7 +505,6 @@ async def join_(event):
 async def leavevc(event):
     """ leave video chat """
     geezav = await edit_or_reply(event, "Processing")
-        return
     chat_id = event.chat_id
     from_user = vcmention(event.sender)
     if from_user:
