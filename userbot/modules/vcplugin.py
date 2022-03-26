@@ -480,6 +480,7 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
+        geezav = await edit_or_reply(event, "`Processing`")
         chat = event.text.split()[1]
         try:
             chat = await event.client(GetFullUserRequest(chat))
@@ -496,7 +497,7 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-    await edit_or_reply(event, "**Joined.**")
+        await edit_or_reply(geezav, "**Joined.**")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
@@ -509,9 +510,9 @@ async def leavevc(event):
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await edit_delete(event, f"`{from_user} Berhasil Turun Dari OS Group.`", 15)
+        await edit_or_reply(event, f"**{from_user} Berhasil Turun Dari OS Group.**", 15)
     else:
-        await edit_delete(event, f"`Maaf {from_user} Tidak Berada Di OS Group`")
+        await edit_delete(event, f"**Maaf {from_user} Tidak Berada Di OS Group**")
 
 
 
