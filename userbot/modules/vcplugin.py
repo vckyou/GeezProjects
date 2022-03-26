@@ -479,9 +479,9 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def joinvc(event):
     chat_id = event.chat_id
-    url = search[1]
     query = event.text.split(maxsplit=1)[1]
-    joinvc(query)
+    search = joinvc(query)
+    url = search[1]
     hm, joined = await joinvc(url)
     if hm == 0:
         await edit_or_reply(event, f"`{joined}`")
