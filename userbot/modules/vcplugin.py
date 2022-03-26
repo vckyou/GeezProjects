@@ -483,9 +483,9 @@ async def joinvc(event):
     link = event.text.split(None, 1)[1]
     match = re.match(link)
     if match:
-         joined = await joinvc(link)
-      else:
-         joined = link
+        joined = await joinvc(link)
+        else:
+        joined = link
     if chat_id in QUEUE:
         try:
             await call_py.join_group_call(
