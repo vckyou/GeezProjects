@@ -481,7 +481,7 @@ async def joinvc(event):
     chat_id = event.chat_id
     url = search[1]
     query = event.text.split(maxsplit=1)[1]
-    search = joinvc(query)
+    joinvc(query)
     hm, joined = await joinvc(url)
     if hm == 0:
         await edit_or_reply(event, f"`{joined}`")
