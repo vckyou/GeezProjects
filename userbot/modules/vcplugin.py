@@ -480,7 +480,7 @@ async def vc_volume(event):
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
-        await edit_or_reply(event, "`Processing`")
+        geezav = await edit_or_reply(event, "`Processing`")
         chat = event.text.split()[1]
         try:
             chat = await event.client(GetFullUserRequest(chat))
@@ -498,7 +498,7 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-        await edit_or_reply(event, f"**{from_user} Berhasil Naik Ke OS Group!**")
+    await geezav.edit(f"**{from_user} Berhasil Naik Ke OS Group!**")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
