@@ -508,11 +508,11 @@ async def leavevc(event):
     if from_user:
         await edit_delete(event, f"**Maaf {from_user} Tidak Berada Di OS Group**")
         return
-    try:
-        await call_py.leave_group_call(chat_id)
-    except (NotInGroupCallError, NoActiveGroupCall):
-        pass
-    await edit_or_reply(event, f"**{from_user} Berhasil Turun Dari OS Group.**")
+        try:
+            await call_py.leave_group_call(chat_id)
+        except (NotInGroupCallError, NoActiveGroupCall):
+            pass
+        await edit_or_reply(event, f"**{from_user} Berhasil Turun Dari OS Group.**")
 
 
 @geez_cmd(pattern="playlist$")
