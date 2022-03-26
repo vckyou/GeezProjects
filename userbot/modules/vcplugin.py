@@ -483,7 +483,7 @@ async def join_(event):
     if not call_py.is_connected:
         await call_py.start()
     await call_py.join_group_call(
-        chat_id,
+        chat,
         AudioPiped(
             'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
         ),
