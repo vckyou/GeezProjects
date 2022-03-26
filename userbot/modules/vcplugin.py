@@ -481,7 +481,7 @@ async def vc_volume(event):
 async def joinvc(event):
     chat_id = event.chat_id
     link = event.text.split(None, 1)[1]
-      match = re.match(link)
+    match = re.match(link)
     if match:
          joined = await joinvc(link)
       else:
