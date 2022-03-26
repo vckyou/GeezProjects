@@ -484,7 +484,7 @@ async def joinvc(event):
     match = re.match(link)
     if match:
         joined = await joinvc(link)
-        else:
+    else:
         joined = link
     if chat_id in QUEUE:
         try:
