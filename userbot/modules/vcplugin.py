@@ -13,8 +13,11 @@ from pytgcalls.types.input_stream.quality import (
     MediumQualityVideo,
 )
 from pytgcalls.exceptions import (
+    NodeJSNotInstalled,
+    TooOldNodeJSVersion,
     NoActiveGroupCall,
-    NotInGroupCallError,
+    AlreadyJoinedError,
+    NotInGroupCallError
 )
 
 from telethon.tl import types
@@ -498,6 +501,14 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
+    try:
+    except (NodeJSNotInstalled, TooOldNodeJSVersion):
+        return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
+    except AlreadyJoinedError:
+        await call_py.leave_group_call(chat)
+        await asyncio.sleep(3)
+    except Exception as e:
+        return await edit_or_reply(msg, f'Error during Joining the Call\n`{e}`')
     await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
 
 
