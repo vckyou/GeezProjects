@@ -490,7 +490,8 @@ async def join_(event):
         except (NodeJSNotInstalled, TooOldNodeJSVersion):
             return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
         except AlreadyJoinedError:
-            await call_py.leave_group_call(chat)
+            await call_py.send_message(
+                event.chat_id, "**Error during Joining the Call**", reply_to=event.reply_to_msg_id)
             await asyncio.sleep(3)
         except Exception as e:
             return await edit_delete(event, f'Error during Joining the Call\n`{e}`')
