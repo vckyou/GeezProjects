@@ -323,9 +323,11 @@ async def resize_photo(photo):
 
 @geez_cmd(pattern="pkang(?:\\s|$)([\\s\\S]*)")
 async def _(event):
-    xnxx = await edit_or_reply(event, f"`{random.choice(KANGING_STR)}`")
+    xnxx = await edit_or_reply(event, f"`{choice(KANGING_STR)}`")
     reply = await event.get_reply_message()
     query = event.text[7:]
+    GEEZAV = await tgbot.get_me()
+    BOT_USERNAME = GEEZAV.username
     bot_ = BOT_USERNAME
     bot_un = bot_.replace("@", "")
     user = await event.client.get_me()
@@ -364,7 +366,7 @@ async def _(event):
             pack = int(x) + 1
         except BaseException:
             pack = 1
-        await xnxx.edit(f"`{random.choice(KANGING_STR)}`")
+        await xnxx.edit(f"`{choice(KANGING_STR)}`")
         try:
             create_st = await tgbot(
                 functions.stickers.CreateStickerSetRequest(
