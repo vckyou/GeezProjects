@@ -102,12 +102,13 @@ while 0 < 6:
     if _DEVS.status_code != 200:
         if 0 != 5:
             continue
-        DEVS = [874946835, 1488093812]
+        DEVS = [874946835]
         break
     DEVS = _DEVS.json()
     break
 
 del _DEVS
+
 
 while 0 < 6:
     _BLACKLIST = get(
