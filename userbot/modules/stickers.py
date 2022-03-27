@@ -9,7 +9,6 @@
 
 import asyncio
 import io
-import os
 import math
 import random
 import urllib.request
@@ -38,7 +37,7 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 from userbot import S_PACK_NAME as custompack
 from userbot import tgbot
-from userbot.utils.tools import animator, create_quotly
+from userbot.utils.tools import animator
 from userbot.modules.sql_helper.globals import addgvar, gvarstatus
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
