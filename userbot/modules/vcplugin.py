@@ -487,8 +487,13 @@ async def join_(event):
         chat = event.text.split()[1]
         try:
             chat = await event.client(GetFullUserRequest(chat))
+        except (NodeJSNotInstalled, TooOldNodeJSVersion):
+            return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
+        except AlreadyJoinedError:
+            await call_py.leave_group_call(chat)
+            await asyncio.sleep(3)
         except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`", 30)
+            return await edit_delete(event, f'Error during Joining the Call\n`{e}`')
     else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
@@ -501,14 +506,6 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-    try:
-    except (NodeJSNotInstalled, TooOldNodeJSVersion):
-        return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
-    except AlreadyJoinedError:
-        await call_py.leave_group_call(chat)
-        await asyncio.sleep(3)
-    except Exception as e:
-        return await edit_or_reply(msg, f'Error during Joining the Call\n`{e}`')
     await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
 
 
