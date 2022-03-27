@@ -11,7 +11,7 @@ from userbot import BOT_TOKEN, BOT_VER, blacklistgeez
 from userbot import DEVS, LOGS, bot, call_py
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
-from userbot.utils import autobot, checking
+from userbot.utils import autobot, checking, autocreategroup
 
 try:
     client = multigeez()
@@ -45,10 +45,15 @@ LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢")
 
 bot.loop.run_until_complete(checking())
 bot.loop.run_until_complete(geez_userbot_on())
+if not BOTLOG_CHATID:
+    bot.loop.run_until_complete(autocreategroup())
 if not BOT_TOKEN:
-    bot.loop.run_until_complete(autobot())
+    LOOP.run_until_complete(autobot())
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    bot.run_until_disconnected()
+    try:
+        bot.run_until_disconnected()
+    except ConnectionError:
+        pass
