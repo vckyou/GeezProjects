@@ -11,7 +11,7 @@ from userbot import BOT_TOKEN, BOT_VER, blacklistgeez
 from userbot import DEVS, LOGS, LOOP, bot, call_py, BOTLOG_CHATID
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
-from userbot.utils import autobot, autocreategroup checking
+from userbot.utils import autobot, autocreategroup, checking
 
 try:
     client = multigeez()
