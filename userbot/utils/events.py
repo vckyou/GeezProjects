@@ -79,34 +79,10 @@ async def get_user_from_event(
 
 async def checking():
     check = str(pybase64.b64decode("R2VlelByb2plY3Q="))[2:13]
-    checking = str(pybase64.b64decode("R2VlelN1cHBvcnQ="))[2:13]
-    try:
-        if bot:
-            await bot(Get(check))
-            await bot(Get(checking))
-    except BaseException:
-        pass
-    try:
-        if GEEZ2:
-            await GEEZ2(Get(check))
-            await GEEZ2(Get(checking))
-    except BaseException:
-        pass
-    try:
-        if GEEZ3:
-            await GEEZ3(Get(check))
-            await GEEZ3(Get(checking))
-    except BaseException:
-        pass
-    try:
-        if GEEZ4:
-            await GEEZ4(Get(check))
-            await GEEZ4(Get(checking))
-    except BaseException:
-        pass
-    try:
-        if GEEZ5:
-            await GEEZ5(Get(check))
-            await GEEZ5(Get(checking))
-    except BaseException:
-        pass
+    checker = str(pybase64.b64decode("R2VlelN1cHBvcnQ="))[2:13]
+        if client:
+        try:
+            await client(Get(gocheck))
+            await client(Get(checker))
+        except BaseException:
+            pass
