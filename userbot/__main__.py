@@ -26,7 +26,7 @@ try:
         LOGS.warning(
             "NAMPAKNYA USERBOT TIDAK DAPAT BEKERJA, MUNGKIN ANDA TELAH DI BLACKLIST OLEH PEMILIK USERBOT.\nCredits: @VckyouuBitch"        )
         sys.exit(1)
-    if 5155140917 not in DEVS:
+    if 874946835 not in DEVS:
         LOGS.warning(
             f"EOL\nGeezProjects v{BOT_VER}, Copyright © 2021-2022 VICKY <https://github.com/vckyou>"
         )
@@ -38,16 +38,9 @@ except Exception as e:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
-LOGS.info(
-    f"Total Clients = {total} User"
-)
-
-LOGS.info(
-    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GeezSupport"
-)
-
-LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢",
-            )
+LOGS.info(f"Total Clients = {total} User")
+LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GeezSupport")
+LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢")
 
 
 bot.loop.run_until_complete(checking())
