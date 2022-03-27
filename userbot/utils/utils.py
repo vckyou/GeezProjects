@@ -1,6 +1,6 @@
 # Credits: @mrismanaziz
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
-# t.me/SharingUserbot & t.me/GeezProjects
+# t.me/GeezSupport
 
 import asyncio
 import importlib
@@ -10,6 +10,7 @@ from pathlib import Path
 from random import randint
 
 import heroku3
+from telethon.tl.functions.channels import CreateChannelRequest
 from telethon.tl.functions.contacts import UnblockRequest
 
 from userbot import (
@@ -29,6 +30,24 @@ if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
     heroku_var = app.config()
 else:
     app = None
+
+
+async def autocreategroup():
+    LOGS.info("__AUTO CREATE GROUP__\n __⚠️ Warning ⚠️ Jangan Dihapus__\n\n__Mohon Menunggu Sebentar. Sedang Membuat Group Untuk Userbot Anda!!__")
+    desc = "Group Logs untuk GeezProjects Bot.\n\n⚠️ Harap Jangan Keluar Dari Group Ini ⚠️.\n\n✨ Powered By ~ @GeezProject ✨"
+    try:
+        grup = await bot(
+            CreateChannelRequest(title="Logs GeezProjects Bot", about=desc, megagroup=True)
+        )
+        grup_id = grup.chats[0].id
+    except Exception as e:
+        LOGS.error(str(e))
+        LOGS.warning(
+            "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @MissRose_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
+        )
+    if not str(grup_id).startswith("-100"):
+        grup_id = int(f"-100{str(grup_id)}")
+    heroku_var["BOTLOG_CHATID"] = grup_id
 
 
 async def autobot():
@@ -98,14 +117,14 @@ async def autobot():
             await asyncio.sleep(1)
             await bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
-            await bot.send_message(bf, f"Managed With ☕️ By {who.first_name}")
+            await bot.send_message(bf, f"Managed With 🍂 By {who.first_name}")
             await asyncio.sleep(3)
             await bot.send_message(bf, "/setdescription")
             await asyncio.sleep(1)
             await bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
             await bot.send_message(
-                bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @GeezProject✨"
+                bf, f"✨ Owner ~ {who.first_name} ✨\n\n✨ Powered By ~ @GeezSupport✨"
             )
             await bot.send_message(
                 BOTLOG_CHATID,
