@@ -17,6 +17,7 @@ from os import remove
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
+from secrets import choice
 from telethon import events
 from telethon.errors import PackShortNameOccupiedError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
