@@ -5,6 +5,7 @@ import telethon.utils
 from userbot import BOT_VER as version
 from userbot import (
     LOGS,
+    LOOP
     GEEZ2,
     GEEZ3,
     GEEZ4,
@@ -32,7 +33,7 @@ def multigeez():
     if STRING_SESSION:
         try:
             bot.start()
-            bot.loop.run_until_complete(geez_client(bot))
+            LOOP.run_until_complete(geez_client(bot))
             user = bot.get_me()
             name = user.first_name
             uid = user.id
@@ -48,7 +49,7 @@ def multigeez():
     if STRING_2:
         try:
             GEEZ2.start()
-            GEEZ2.loop.run_until_complete(geez_client(GEEZ2))
+            LOOP.run_until_complete(geez_client(GEEZ2))
             user = GEEZ2.get_me()
             name = user.first_name
             uid = user.id
@@ -62,7 +63,7 @@ def multigeez():
     if STRING_3:
         try:
             GEEZ3.start()
-            GEEZ3.loop.run_until_complete(geez_client(GEEZ3))
+            LOOP.run_until_complete(geez_client(GEEZ3))
             user = GEEZ3.get_me()
             name = user.first_name
             uid = user.id
@@ -76,7 +77,7 @@ def multigeez():
     if STRING_4:
         try:
             GEEZ4.start()
-            GEEZ4.loop.run_until_complete(geez_client(GEEZ4))
+            LOOP.run_until_complete(geez_client(GEEZ4))
             user = GEEZ4.get_me()
             name = user.first_name
             uid = user.id
@@ -90,7 +91,7 @@ def multigeez():
     if STRING_5:
         try:
             GEEZ5.start()
-            GEEZ5.loop.run_until_complete(geez_client(GEEZ5))
+            LOOP.run_until_complete(geez_client(GEEZ5))
             user = GEEZ5.get_me()
             name = user.first_name
             uid = user.id
