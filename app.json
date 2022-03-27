@@ -23,7 +23,7 @@
       "required": false
     },
      "STRING_SESSION": {
-      "description": "Dapatkan String Session di Grup » https://t.me/GeezSharing » Lalu ketik #string",
+      "description": "Dapatkan String Session di Grup » https://t.me/GeezSupport » Lalu ketik /get string",
       "required": true
     },
     "HEROKU_APP_NAME": {
@@ -32,11 +32,6 @@
     },
     "HEROKU_API_KEY": {
       "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
-      "required": true
-    },
-    "BOTLOG_CHATID": {
-      "description": "Buatlah grup telegram publik lalu masukan @MissRose_bot ketik /id, masukan id grup nya disini. contoh: -1001473548xxx",
-      "value": "Isi id grup mu wajib dengan awalan -100",
       "required": true
     }
   },
