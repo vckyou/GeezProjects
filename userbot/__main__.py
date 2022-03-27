@@ -11,7 +11,7 @@ from userbot import BOT_TOKEN, BOT_VER, blacklistgeez
 from userbot import DEVS, LOGS, LOOP, bot, call_py, BOTLOG_CHATID
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
-from userbot.utils import autobot, autocreategroup
+from userbot.utils import autobot, autocreategroup, checking
 
 try:
     client = multigeez()
@@ -44,8 +44,9 @@ LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢")
 
 
 LOOP.run_until_complete(geez_userbot_on())
+LOOP.run_until_complete(checking())
 if not BOTLOG_CHATID:
-    bot.loop.run_until_complete(autocreategroup())
+    LOOP.run_until_complete(autopilot())
 if not BOT_TOKEN:
     LOOP.run_until_complete(autobot())
 idle()
