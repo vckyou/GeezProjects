@@ -8,7 +8,7 @@ from importlib import import_module
 from pytgcalls import idle
 
 from userbot import BOT_TOKEN, BOT_VER, blacklistgeez
-from userbot import DEVS, LOGS, bot, call_py
+from userbot import DEVS, LOGS, LOOP, bot, call_py, BOTLOG_CHATID
 from userbot.clients import geez_userbot_on, multigeez
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, checking, autocreategroup
@@ -44,7 +44,7 @@ LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢")
 
 
 bot.loop.run_until_complete(checking())
-bot.loop.run_until_complete(geez_userbot_on())
+LOOP.run_until_complete(geez_userbot_on())
 if not BOTLOG_CHATID:
     bot.loop.run_until_complete(autocreategroup())
 if not BOT_TOKEN:
