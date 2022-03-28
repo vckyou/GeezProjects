@@ -511,6 +511,8 @@ async def joinvc(e):
         chat = event.text.split()[1]
     try:
         chat = await event.client(GetFullUserRequest(chat))
+    except Exception as ex:
+        await edit_delete(e, f"**ERROR:** `{ex}`")
     else:
     if not call_py.is_connected:
         await call_py.start()
