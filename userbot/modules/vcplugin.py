@@ -592,7 +592,7 @@ CMD_HELP.update(
         \n\n  Command :** `{cmd}joinvc`\
         \n  • : Untuk Join VC Group\
         \n\n  Command :** `{cmd}leavevc`\
-        \n  • : Untuk Turun Dari VC Group\n
+        \n  • : Untuk Turun Dari VC Group\
     "
     }
 )
