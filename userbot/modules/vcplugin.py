@@ -590,9 +590,6 @@ CMD_HELP.update(
         \n\n  Command :** `{cmd}playlist`\
         \n  • : **Untuk menampilkan daftar putar Lagu/Video\
         \n\n  Command :** `{cmd}joinvc`\
-        \n  • : Untuk Join VC Group\
-        \n\n  Command :** `{cmd}leavevc`\
-        \n  • : Untuk Turun Dari VC Group\
     "
     }
 )
