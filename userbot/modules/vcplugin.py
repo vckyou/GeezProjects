@@ -518,7 +518,7 @@ async def leavevc(event):
             pass
         await geezav.edit(f"**{from_user} Berhasil Turun Dari VC Group.**")
     else:
-        await geezav.delete(f"**Maaf {from_user} Tidak Berada Di VC Group**")
+        await edit_delete(event, f"**Maaf {from_user} Tidak Berada Di VC Group**")
 
 
 @geez_cmd(pattern="playlist$")
@@ -573,22 +573,26 @@ async def kickedvc(_, chat_id: int):
 CMD_HELP.update(
     {
         "vcplugin": f"**Plugin : **`vcplugin`\
-        \n\n   :** `{cmd}play` <Judul Lagu/Link YT>\
-        \n   : **Untuk Memutar Lagu di voice chat group dengan akun kamu\
-        \n\n   :** `{cmd}vplay` <Judul Video/Link YT>\
-        \n   : **Untuk Memutar Video di voice chat group dengan akun kamu\
-        \n\n   :** `{cmd}end`\
-        \n   : **Untuk Memberhentikan video/lagu yang sedang putar di voice chat group\
-        \n\n   :** `{cmd}skip`\
-        \n   : **Untuk Melewati video/lagu yang sedang di putar\
-        \n\n   :** `{cmd}pause`\
-        \n   : **Untuk memberhentikan video/lagu yang sedang diputar\
-        \n\n   :** `{cmd}resume`\
-        \n   : **Untuk melanjutkan pemutaran video/lagu yang sedang diputar\
-        \n\n   :** `{cmd}volume` 1-200\
-        \n   : **Untuk mengubah volume (Membutuhkan Hak admin)\
-        \n\n   :** `{cmd}playlist`\
-        \n   : **Untuk menampilkan daftar putar Lagu/Video\
+        \n\n  Command :** `{cmd}play` <Judul Lagu/Link YT>\
+        \n  • : **Untuk Memutar Lagu di voice chat group dengan akun kamu\
+        \n\n  Command :** `{cmd}vplay` <Judul Video/Link YT>\
+        \n  • : **Untuk Memutar Video di voice chat group dengan akun kamu\
+        \n\n  Command :** `{cmd}end`\
+        \n  • : **Untuk Memberhentikan video/lagu yang sedang putar di voice chat group\
+        \n\n  Command :** `{cmd}skip`\
+        \n  • : **Untuk Melewati video/lagu yang sedang di putar\
+        \n\n  Command :** `{cmd}pause`\
+        \n  • : **Untuk memberhentikan video/lagu yang sedang diputar\
+        \n\n  Command :** `{cmd}resume`\
+        \n  • : **Untuk melanjutkan pemutaran video/lagu yang sedang diputar\
+        \n\n  Command :** `{cmd}volume` 1-200\
+        \n  • : **Untuk mengubah volume (Membutuhkan Hak admin)\
+        \n\n  Command :** `{cmd}playlist`\
+        \n  • : **Untuk menampilkan daftar putar Lagu/Video\
+        \n\n  Command :** `{cmd}joinvc`\
+        \n  • : Untuk Join VC Group\
+        \n\n  Command :** `{cmd}leavevc`\
+        \n  • : Untuk Turun Dari VC Group\n
     "
     }
 )
