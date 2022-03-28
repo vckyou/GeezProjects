@@ -515,7 +515,7 @@ async def leavevc(event):
         try:
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
-            await edit_or_reply(event, f"{from_user} Tidak Berada Di VC Group.
+            await edit_or_reply(event, f"{from_user} Tidak Berada Di VC Group.")
             pass
         await geezav.edit(f"**{from_user} Berhasil Turun Dari VC Group.**")
 
