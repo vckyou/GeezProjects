@@ -77,8 +77,8 @@ async def _(c):
     async for x in c.client.iter_participants(c.chat_id):
         if not x.bot:
             users.append(x.id)
-    botman = list(user_list(users, 6))
-    for p in botman:
+    geez = list(user_list(users, 6))
+    for p in geez:
         try:
             await c.client(invitetovc(call=await get_call(c), users=p))
             z += 6
@@ -111,14 +111,18 @@ async def change_title(e):
 CMD_HELP.update(
     {
         "vcg": f"**Plugin : **`vcg`\
-        \n\n   :** `{cmd}startvc`\
-        \n   : **Untuk Memulai voice chat group\
-        \n\n   :** `{cmd}stopvc`\
-        \n   : **Untuk Memberhentikan voice chat group\
-        \n\n   :** `{cmd}vctitle` <title vcg>\
-        \n   : **Untuk Mengubah title/judul voice chat group\
-        \n\n   :** `{cmd}vcinvite`\
-        \n   : **Mengundang Member group ke voice chat group\
+        \n\n  Command :** `{cmd}startvc`\
+        \n  • : **Untuk Memulai voice chat group\
+        \n\n  Command :** `{cmd}stopvc`\
+        \n  • : **Untuk Memberhentikan voice chat group\
+        \n\n  Command :** `{cmd}vctitle` <title vcg>\
+        \n  • : **Untuk Mengubah title/judul voice chat group\
+        \n\n  Command :** `{cmd}vcinvite`\
+        \n  • : **Mengundang Member group ke voice chat group\
+        \n\n  Command :** `{cmd}joinvc`\
+        \n  • : Untuk Join VC Group\
+        \n\n  Command :** `{cmd}leavevc`\
+        \n  • : Untuk Turun Dari VC Group\
     "
     }
 )
