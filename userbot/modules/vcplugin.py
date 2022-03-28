@@ -504,10 +504,10 @@ async def join_(event):
 @geez_cmd(pattern="jvc(?: |$)(.*)")
 async def joinvc(e):
     chat = e.chat_id
-    if len(event.text.split()) > 1:
-        chat = event.text.split()[1]
+    if len(e.text.split()) > 1:
+        chat = e.text.split()[1]
     try:
-        chat = await event.client(GetFullUserRequest(chat))
+        chat = await e.client(GetFullUserRequest(chat))
     except Exception as ex:
         await edit_delete(e, f"**ERROR:** `{ex}`")
     if not call_py.is_connected:
