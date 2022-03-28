@@ -490,6 +490,7 @@ async def join_(event):
     else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
+        err = event.pattern_match.group(1)
     if not call_py.is_connected:
         await call_py.start()
     await call_py.join_group_call(
@@ -499,11 +500,9 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-    try:
         await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
-    except Exception as ex:
-        await edit_delete(event, f"**ERROR:** `{ex}`")
-
+    if not err:
+        return await edit_or_reply(event, f"**{from_user} Sudah Berada Di VC Group!**")
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
 async def leavevc(event):
@@ -511,15 +510,15 @@ async def leavevc(event):
     geezav = await edit_or_reply(event, "Processing")
     chat_id = event.chat_id
     from_user = vcmention(event.sender)
+    err = event.pattern_match.group(1)
     if from_user:
         try:
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
         await geezav.edit(f"**{from_user} Berhasil Turun Dari VC Group.**")
-    else:
-        await edit_delete(event, f"**Maaf {from_user} Tidak Berada Di VC Group**")
-
+    if not err:
+        return await edit_or_reply(event, f"**{from_user} Tidak Berada Di VC Group!**")
 
 @geez_cmd(pattern="playlist$")
 async def vc_playlist(event):
