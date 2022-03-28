@@ -511,6 +511,7 @@ async def joinvc(e):
         chat = event.text.split()[1]
     try:
         chat = await event.client(GetFullUserRequest(chat))
+    else:
     if not call_py.is_connected:
         await call_py.start()
     await call_py.join_group_call(
@@ -520,6 +521,7 @@ async def joinvc(e):
         ),
         stream_type=StreamType().pulse_stream,
     )
+    try:
         await edit_or_reply(e, f"**Berhasil Naik Ke OS Group**")
     except Exception as ex:
         await edit_delete(e, f"**ERROR:** `{ex}`")
