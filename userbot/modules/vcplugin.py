@@ -489,7 +489,7 @@ async def join_(event):
         except AlreadyJoinedError as e:
             return await edit_delete(event, f"**ERROR:** `{e}`", 30)
         except (NodeJSNotInstalled, TooOldNodeJSVersion):
-        return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
+            return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
     else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
