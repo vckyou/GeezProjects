@@ -500,7 +500,7 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-        await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
+    await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
     if not err:
         return await edit_or_reply(event, f"**{from_user} Sudah Berada Di VC Group!**")
 
