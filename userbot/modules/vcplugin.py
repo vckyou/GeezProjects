@@ -15,7 +15,8 @@ from pytgcalls.types.input_stream.quality import (
 )
 from pytgcalls.exceptions import (
     NoActiveGroupCall,
-    NotInGroupCallError
+    AlreadyJoinedError,
+    NotInGroupCallError,
 )
 
 from telethon.tl import types
@@ -482,11 +483,13 @@ async def vc_volume(event):
 async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
     if len(event.text.split()) > 1:
-        chat_ = event.pattern_match.group(1)
+        chat = event.pattern_match.group(1)
         try:
-            chat = await event.client(GetFullUserRequest(chat_))
-        except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`", 30)
+            chat = await event.client(GetFullUserRequest(chat))
+        except AlreadyJoinedError as e:
+            return await edit_delete(event, f"**ERROR:** `{e}`", 30)
+        except (NodeJSNotInstalled, TooOldNodeJSVersion):
+        return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
     else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
@@ -512,6 +515,7 @@ async def leavevc(event):
         try:
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
+            await edit_or_reply(event, f"{from_user} Tidak Berada Di VC Group.
             pass
         await geezav.edit(f"**{from_user} Berhasil Turun Dari VC Group.**")
 
