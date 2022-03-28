@@ -486,6 +486,7 @@ async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
+        xx = event.pattern_match.group(1)
         try:
             chat = await event.client(GetFullUserRequest(chat))
         except (NodeJSNotInstalled, TooOldNodeJSVersion):
@@ -493,8 +494,8 @@ async def join_(event):
         except AlreadyJoinedError:
             await call_py.leave_group_call(chat)
             await asyncio.sleep(3)
-        except Exception as e:
-            return await geezav.delete(f'Error during Joining the Call\n`{e}`')
+    if not xx:
+        return await edit_delete(geezav, f'Error during Joining the Call\n`{e}`')
     else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
