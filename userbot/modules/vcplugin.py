@@ -488,7 +488,6 @@ async def join_(event):
         chat = event.text.split()[1]
         try:
             chat = await event.client(GetFullUserRequest(chat))
-    else:
         chat = event.chat_id
         from_user = vcmention(event.sender)
     if not call_py.is_connected:
