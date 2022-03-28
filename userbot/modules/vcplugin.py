@@ -499,31 +499,10 @@ async def join_(event):
         ),
         stream_type=StreamType().pulse_stream,
     )
-    await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
-
-@geez_cmd(pattern="jvc(?: |$)(.*)")
-async def joinvc(e):
-    chat = e.chat_id
-    if len(e.text.split()) > 1:
-        chat = e.text.split()[1]
     try:
-        chat = await e.client(GetFullUserRequest(chat))
+        await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
     except Exception as ex:
-        await edit_delete(e, f"**ERROR:** `{ex}`")
-    if not call_py.is_connected:
-        await call_py.start()
-    await call_py.join_group_call(
-        chat,
-        AudioPiped(
-            'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
-        ),
-        stream_type=StreamType().pulse_stream,
-    )
-    try:
-        await edit_or_reply(e, f"**Berhasil Naik Ke OS Group**")
-    except Exception as ex:
-        await edit_delete(e, f"**ERROR:** `{ex}`")
-
+        await edit_delete(event, f"**ERROR:** `{ex}`")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
