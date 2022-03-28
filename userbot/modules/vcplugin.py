@@ -14,10 +14,7 @@ from pytgcalls.types.input_stream.quality import (
     MediumQualityVideo,
 )
 from pytgcalls.exceptions import (
-    NodeJSNotInstalled,
-    TooOldNodeJSVersion,
     NoActiveGroupCall,
-    AlreadyJoinedError,
     NotInGroupCallError
 )
 
