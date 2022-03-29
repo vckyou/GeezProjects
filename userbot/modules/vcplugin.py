@@ -6,7 +6,12 @@
 
 from pytgcalls import StreamType
 from pytgcalls.types import Update
-from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
+from pytgcalls.types.input_stream import (
+    AudioPiped,
+    AudioVideoPiped,
+    InputStream,
+    InputAudioStream,
+)
 from pytgcalls.types.input_stream.quality import (
     HighQualityAudio,
     HighQualityVideo,
@@ -510,6 +515,26 @@ async def join_(event):
     )
     await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
 
+@geez_cmd(pattern="joinvcs(?: |$)(.*)")
+async def joinvcs(event):
+    chat_id = event.chat_id
+    file = 'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
+    from_user = vcmention(event.sender)
+    if chat_id:
+        try:
+            await call_py.join_group_call(
+                      chat_id,
+                      InputStream(
+                          InputAudioStream(
+                              file,
+                          ),
+                      ),
+                      stream_type=StreamType().pulse_stream,
+            )
+            await edit_or_reply(event, f"**{} Berhasil Naik Ke VC `{}`**".format(from_user, str(event.chat_id))))
+        except Exception as ep:       
+            await event.edit(f"`{ep}`")
+
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
 async def leavevc(event):
@@ -594,7 +619,6 @@ CMD_HELP.update(
         \n  • : **Untuk mengubah volume (Membutuhkan Hak admin)\
         \n\n  Command :** `{cmd}playlist`\
         \n  • : **Untuk menampilkan daftar putar Lagu/Video\
-        \n\n  Command :** `{cmd}joinvc`\
     "
     }
 )
