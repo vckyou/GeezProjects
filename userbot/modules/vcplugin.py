@@ -531,7 +531,7 @@ async def joinvcs(event):
                       ),
                       stream_type=StreamType().pulse_stream,
             )
-            await edit_or_reply(event, f"**{} Berhasil Naik Ke VC `{}`**".format(from_user, str(event.chat_id))))
+            await edit_or_reply(event, f"**{} Berhasil Naik Ke VC `{}`**".format(from_user, str(event.chat_id)))
         except Exception as ep:       
             await event.edit(f"`{ep}`")
 
