@@ -502,10 +502,10 @@ async def join_(event):
         await call_py.start()
     await call_py.join_group_call(
         chat_id,
-        chats,
         AudioPiped(
             'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
         ),
+        chats,
         stream_type=StreamType().pulse_stream,
     )
     await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
