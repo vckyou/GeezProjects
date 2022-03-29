@@ -484,7 +484,7 @@ async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
     if len(event.text.split()) > 1:
         chat = event.chat_id
-        chats = event.pattern_match.group(1)
+        event.pattern_match.group(1)
         try:
             chat = await event.client(GetFullUserRequest(chat))
         except AlreadyJoinedError as e:
