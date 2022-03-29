@@ -37,7 +37,7 @@ async def get_tz(con):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"weather(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"weather(?: |$)(.*)"))
 async def get_weather(weather):
     """For .weather command, gets the current weather of a city."""
 

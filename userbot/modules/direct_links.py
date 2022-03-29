@@ -21,7 +21,7 @@ from userbot.events import geez_cmd
 from userbot.utils import edit_delete, edit_or_reply
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
 async def direct_link_generator(event):
     textx = await event.get_reply_message()
     message = event.pattern_match.group(1)

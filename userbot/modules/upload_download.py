@@ -29,7 +29,7 @@ from userbot.utils import humanbytes, progress, run_cmd
 from userbot.utils.FastTelethon import download_file, upload_file
 
 
-@bot.on(geez_cmd(pattern=r"download(?: |$)(.*)", outgoing=True))
+@geez_cmd(geez_cmd(pattern=r"download(?: |$)(.*)", outgoing=True))
 async def download(target_file):
     """For .download command, download files to the userbot's server."""
     await target_file.edit("`Processing...`")
@@ -152,7 +152,7 @@ async def get_video_thumb(file, output):
     return None
 
 
-@bot.on(geez_cmd(pattern=r"upload (.*)", outgoing=True))
+@geez_cmd(geez_cmd(pattern=r"upload (.*)", outgoing=True))
 async def upload(event):
     if event.fwd_from:
         return

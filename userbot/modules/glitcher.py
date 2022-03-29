@@ -20,7 +20,7 @@ from userbot.utils import check_media, progress
 Glitched = TEMP_DOWNLOAD_DIRECTORY + "glitch.gif"
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"glitch(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"glitch(?: |$)(.*)"))
 async def glitch(event):
     if not event.reply_to_msg_id:
         await event.edit("`Aku Mau Glitch Sebuah Hantu!`")

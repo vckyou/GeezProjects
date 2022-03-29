@@ -24,7 +24,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="shibe$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="shibe$"))
 async def shibe(event):
     await event.edit("`Processing...`")
     response = requests.get("https://shibe.online/api/shibes").json()
@@ -35,7 +35,7 @@ async def shibe(event):
     await event.delete()
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="cat$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="cat$"))
 async def cats(event):
     await event.edit("`Processing...`")
     response = requests.get("https://shibe.online/api/cats").json()

@@ -17,7 +17,7 @@ if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"clone ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"clone ?(.*)"))
 async def impostor(event):
     inputArgs = event.pattern_match.group(1)
 

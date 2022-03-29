@@ -10,7 +10,7 @@ from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(
+@geez_cmd(
     geez_cmd(
         outgoing=True,
         pattern=r"webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)",

@@ -19,7 +19,7 @@ from userbot.utils import edit_delete, edit_or_reply, reply_id
 ppath = os.path.join(os.getcwd(), "temp", "githubuser.jpg")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"github( -l(\d+))? ([\s\S]*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"github( -l(\d+))? ([\s\S]*)"))
 async def _(event):
     "Get info about an GitHub User"
     reply_to = await reply_id(event)

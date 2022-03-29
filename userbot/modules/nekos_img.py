@@ -76,7 +76,7 @@ arguments = [
 ]
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"nekos(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"nekos(?: |$)(.*)"))
 async def nekos_img(event):
     args = event.pattern_match.group(1)
     if not args or args not in arguments:

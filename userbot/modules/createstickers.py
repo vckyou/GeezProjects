@@ -15,7 +15,7 @@ from userbot import bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"cs(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"cs(?: |$)(.*)"))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)

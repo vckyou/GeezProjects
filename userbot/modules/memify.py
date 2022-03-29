@@ -15,7 +15,7 @@ from userbot.events import geez_cmd
 from userbot.utils import runcmd, take_screen_shot
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"mmf (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"mmf (.*)"))
 async def memify(event):
     reply_msg = await event.get_reply_message()
     input_str = event.pattern_match.group(1)

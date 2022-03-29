@@ -43,7 +43,7 @@ async def filter_incoming_handler(handler):
         pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"filter (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"filter (.*)"))
 async def add_new_filter(new_handler):
     """For .filter command, allows adding new filters in a chat"""
     if new_handler.chat_id in BLACKLIST_CHAT:
@@ -92,7 +92,7 @@ async def add_new_filter(new_handler):
         await new_handler.edit(success.format(keyword, "Disini"))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"stop (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"stop (.*)"))
 async def remove_a_filter(r_handler):
     """For .stop command, allows you to remove a filter from a chat."""
     try:
@@ -108,7 +108,7 @@ async def remove_a_filter(r_handler):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"delfilterbot (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"delfilterbot (.*)"))
 async def kick_marie_filter(event):
     """ For .bersihkanbotfilter command, allows you to kick all \
         Marie(or her clones) filters from a chat. """
@@ -133,7 +133,7 @@ async def kick_marie_filter(event):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"filters$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"filters$"))
 async def filters_active(event):
     """For .filters command, lists all of the active filters in a chat."""
     try:

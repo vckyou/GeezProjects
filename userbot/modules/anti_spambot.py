@@ -14,7 +14,7 @@ from telethon.tl.types import ChannelParticipantsAdmins, Message
 from userbot import ANTI_SPAMBOT, ANTI_SPAMBOT_SHOUT, BOTLOG_CHATID, CMD_HELP, bot
 
 
-@bot.on(ChatAction)
+@geez_cmd(ChatAction)
 async def ANTI_SPAMBOTS(welcm):
     """Ban a recently joined user if it matches the spammer checking algorithm."""
     try:

@@ -42,7 +42,7 @@ from userbot.events import geez_cmd
 from userbot.utils import check_media
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"deepfry(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"deepfry(?: |$)(.*)"))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))

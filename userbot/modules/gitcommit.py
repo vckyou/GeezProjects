@@ -19,7 +19,7 @@ from userbot.events import geez_cmd
 GIT_TEMP_DIR = "./userbot/temp/"
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"gcommit(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"gcommit(?: |$)(.*)"))
 async def download(event):
     if event.fwd_from:
         return

@@ -12,7 +12,7 @@ from userbot.events import geez_cmd
 from userbot.utils import edit_or_reply, load_module, remove_plugin, reply_id
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="install$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="install$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def _(event):
             os.remove(downloaded_file_name)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"psend ([\s\S]*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"psend ([\s\S]*)"))
 async def send(event):
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
@@ -62,7 +62,7 @@ async def send(event):
         await edit_or_reply(event, "**ERROR: Modules Tidak ditemukan**")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"uninstall (?P<shortname>\w+)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"uninstall (?P<shortname>\w+)"))
 async def uninstall(event):
     if event.fwd_from:
         return

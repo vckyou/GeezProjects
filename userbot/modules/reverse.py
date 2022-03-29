@@ -30,7 +30,7 @@ useragent = (
 opener.addheaders = [("User-agent", useragent)]
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"reverse(?: |$)(\d*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"reverse(?: |$)(\d*)"))
 async def okgoogle(img):
     """For .reverse command, Google search images and stickers."""
     if os.path.isfile("okgoogle.png"):

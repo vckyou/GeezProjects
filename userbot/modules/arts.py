@@ -8,7 +8,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"frog(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"frog(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(
@@ -30,7 +30,7 @@ async def typewriter(typew):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"dfrog(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"dfrog(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(
@@ -52,7 +52,7 @@ async def typewriter(typew):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"strump(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"strump(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(
@@ -74,7 +74,7 @@ async def typewriter(typew):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"scina(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"scina(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(
@@ -97,7 +97,7 @@ async def typewriter(typew):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"wlcm(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"wlcm(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(
@@ -114,7 +114,7 @@ async def typewriter(typew):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"gta(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"gta(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(
@@ -132,7 +132,7 @@ async def typewriter(typew):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"sthink(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"sthink(?: |$)(.*)"))
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit(

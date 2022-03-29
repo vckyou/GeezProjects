@@ -17,7 +17,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"imp (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"imp (.*)"))
 async def f_load(message):
     clrs = {
         "red": 1,

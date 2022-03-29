@@ -15,7 +15,7 @@ from userbot.events import geez_cmd
 from userbot.utils import post_to_telegraph
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"nhentai(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"nhentai(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

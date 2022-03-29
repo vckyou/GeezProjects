@@ -17,7 +17,7 @@ fban_replies = [
 unfban_replies = ["New un-FedBan", "I'll give", "Un-FedBan"]
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"(d)?fban(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"(d)?fban(?: |$)(.*)"))
 async def fban(event):
     """Bans a user from connected federations."""
     try:
@@ -90,7 +90,7 @@ async def fban(event):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"unfban(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"unfban(?: |$)(.*)"))
 async def unfban(event):
     """Unbans a user from connected federations."""
     try:
@@ -156,7 +156,7 @@ async def unfban(event):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"addf(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"addf(?: |$)(.*)"))
 async def addf(event):
     """Adds current chat to connected federations."""
     try:
@@ -176,7 +176,7 @@ async def addf(event):
     await event.edit("**Menambahkan grup ini ke daftar federasi!**")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"delf$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"delf$"))
 async def delf(event):
     """Removes current chat from connected federations."""
     try:
@@ -188,7 +188,7 @@ async def delf(event):
     await event.edit("**Menghapus grup ini dari daftar federasi!**")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"listf$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"listf$"))
 async def listf(event):
     """List all connected federations."""
     try:
@@ -208,7 +208,7 @@ async def listf(event):
     await event.edit(msg)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"clearf$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"clearf$"))
 async def clearf(event):
     """Removes all chats from connected federations."""
     try:

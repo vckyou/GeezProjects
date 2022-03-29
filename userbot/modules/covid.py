@@ -10,7 +10,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"covid (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"covid (.*)"))
 async def corona(event):
     await event.edit("`Processing...`")
     country = event.pattern_match.group(1)
@@ -32,7 +32,7 @@ async def corona(event):
     await event.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="covid$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="covid$"))
 async def corona(event):
     await event.edit("`Processing...`")
     country = "World"

@@ -23,8 +23,8 @@ last_afk_msg = {}
 afk_start = {}
 
 
-@bot.on(events.NewMessage(outgoing=True))
-@bot.on(events.MessageEdited(outgoing=True))
+@geez_cmd(events.NewMessage(outgoing=True))
+@geez_cmd(events.MessageEdited(outgoing=True))
 async def set_not_afk(event):
     global USER_AFK
     global afk_time
@@ -72,7 +72,7 @@ async def set_not_afk(event):
         await bash("rm -rf *.jpg")
 
 
-@bot.on(
+@geez_cmd(
     events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private))
 )
 async def on_afk(event):
@@ -125,7 +125,7 @@ async def on_afk(event):
             pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="afk(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="afk(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

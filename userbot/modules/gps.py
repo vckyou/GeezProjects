@@ -7,7 +7,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"gps(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"gps(?: |$)(.*)"))
 async def gps(event):
     if event.fwd_from:
         return

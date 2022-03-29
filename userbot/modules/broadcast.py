@@ -12,7 +12,7 @@ from userbot.modules.sql_helper import broadcast_sql as sql
 from userbot.utils import parse_pre
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"sendto ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"sendto ?(.*)"))
 async def catbroadcast_send(event):
     if event.fwd_from:
         return
@@ -58,7 +58,7 @@ async def catbroadcast_send(event):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"fwdto ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"fwdto ?(.*)"))
 async def catbroadcast_send(event):
     if event.fwd_from:
         return
@@ -104,7 +104,7 @@ async def catbroadcast_send(event):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"addto ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"addto ?(.*)"))
 async def catbroadcast_add(event):
     if event.fwd_from:
         return
@@ -140,7 +140,7 @@ async def catbroadcast_add(event):
             )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"rmfrom ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"rmfrom ?(.*)"))
 async def catbroadcast_remove(event):
     if event.fwd_from:
         return
@@ -176,7 +176,7 @@ async def catbroadcast_remove(event):
             )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"bclist ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"bclist ?(.*)"))
 async def catbroadcast_list(event):
     if event.fwd_from:
         return
@@ -216,7 +216,7 @@ async def catbroadcast_list(event):
     await catevent.edit(finaloutput)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"bclistall ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"bclistall ?(.*)"))
 async def catbroadcast_list(event):
     if event.fwd_from:
         return
@@ -232,7 +232,7 @@ async def catbroadcast_list(event):
     await event.efit(resultext)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"frmfrom ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"frmfrom ?(.*)"))
 async def catbroadcast_remove(event):
     if event.fwd_from:
         return
@@ -289,7 +289,7 @@ async def catbroadcast_remove(event):
             )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"delc ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"delc ?(.*)"))
 async def catbroadcast_delete(event):
     if event.fwd_from:
         return

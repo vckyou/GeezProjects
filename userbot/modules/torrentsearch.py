@@ -18,7 +18,7 @@ from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"ts (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"ts (.*)"))
 async def gengkapak(e):
     await e.edit("`Please wait, fetching results...`")
     query = e.pattern_match.group(1)
@@ -75,7 +75,7 @@ def dogbin(magnets):
     return urls
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"tos(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"tos(?: |$)(.*)"))
 async def tor_search(event):
     if event.fwd_from:
         return

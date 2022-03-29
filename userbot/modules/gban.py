@@ -10,7 +10,7 @@ from userbot.utils import geez_cmd, get_user_from_event
 # Ported For Lord-Userbot by liualvinas/Alvin
 
 
-@bot.on(ChatAction)
+@geez_cmd(ChatAction)
 async def handler(tele):
     if not tele.user_joined and not tele.user_added:
         return

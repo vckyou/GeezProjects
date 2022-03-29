@@ -5,7 +5,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"sadboy(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"sadboy(?: |$)(.*)"))
 async def _(event):
     await event.edit("`Pertama-tama kamu cantik`")
     sleep(2)
@@ -17,7 +17,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"punten(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"punten(?: |$)(.*)"))
 async def _(event):
     await event.edit(
         "`\n┻┳|―-∩`"
@@ -31,7 +31,7 @@ async def _(event):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"pantau(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"pantau(?: |$)(.*)"))
 async def _(event):
     await event.edit(
         "`\n┻┳|―-∩`"

@@ -35,7 +35,7 @@ def inline_mention(user):
     return f"[{full_name}](tg://user?id={user.id})"
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"stats$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"stats$"))
 async def stats(
     event: NewMessage.Event,
 ) -> None:
@@ -109,7 +109,7 @@ async def stats(
     await stat.edit(response)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"(ustat|deteksi|ustats)(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"(ustat|deteksi|ustats)(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

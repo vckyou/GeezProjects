@@ -167,7 +167,7 @@ async def gablist(event):
     await edit_or_reply(event, GBANNED_LIST)
 
 
-@bot.on(events.ChatAction)
+@geez_cmd(events.ChatAction)
 async def _(event):
     if event.user_joined or event.added_by:
         user = await event.get_user()

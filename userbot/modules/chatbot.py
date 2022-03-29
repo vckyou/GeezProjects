@@ -50,7 +50,7 @@ async def on_apa_off(event):
     await chat_bot_toggle(event)
 
 
-@bot.on(
+@geez_cmd(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),

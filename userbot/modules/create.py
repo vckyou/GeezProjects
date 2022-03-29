@@ -12,7 +12,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"buat (gb|g|c)(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"buat (gb|g|c)(?: |$)(.*)"))
 async def telegraphs(grop):
     """For .create command, Creating New Group & Channel"""
     if grop.text[0].isalpha() or grop.text[0] in ("/", "#", "@", "!"):

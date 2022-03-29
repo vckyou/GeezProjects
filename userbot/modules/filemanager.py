@@ -23,7 +23,7 @@ from userbot.utils import humanbytes
 MAX_MESSAGE_SIZE_LIMIT = 4095
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"ls(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"ls(?: |$)(.*)"))
 async def lst(event):
     if event.fwd_from:
         return
@@ -123,7 +123,7 @@ async def lst(event):
         await event.edit(msg)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"rm(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"rm(?: |$)(.*)"))
 async def rmove(event):
     """Removing Directory/File"""
     cat = event.pattern_match.group(1)
@@ -140,7 +140,7 @@ async def rmove(event):
     await event.edit(f"Dihapus `{cat}`")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"rn ([^|]+)\|([^|]+)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"rn ([^|]+)\|([^|]+)"))
 async def rname(event):
     """Renaming Directory/File"""
     cat = str(event.pattern_match.group(1)).strip()
@@ -153,7 +153,7 @@ async def rname(event):
     await event.edit(f"Diganti nama dari `{cat}` ke `{new_path}`")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"zip (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"zip (.*)"))
 async def zip_file(event):
     if event.fwd_from:
         return
@@ -202,7 +202,7 @@ async def zip_file(event):
         await event.edit("`404: Not Found`")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"unzip (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"unzip (.*)"))
 async def unzip_file(event):
     if event.fwd_from:
         return

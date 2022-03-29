@@ -12,7 +12,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"dice(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"dice(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -29,7 +29,7 @@ async def _(event):
             pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"dart(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"dart(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -46,7 +46,7 @@ async def _(event):
             pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"basket(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"basket(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -63,7 +63,7 @@ async def _(event):
             pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"bowling(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"bowling(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -80,7 +80,7 @@ async def _(event):
             pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"ball(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"ball(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -97,7 +97,7 @@ async def _(event):
             pass
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"jackpot(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"jackpot(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

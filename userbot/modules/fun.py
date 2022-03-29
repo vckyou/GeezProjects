@@ -15,7 +15,7 @@ from userbot.events import geez_cmd
 from userbot.utils import bash, progress
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"honka(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"honka(?: |$)(.*)"))
 async def frg(animu):
     text = animu.pattern_match.group(1)
     if not text:
@@ -37,7 +37,7 @@ async def frg(animu):
     await animu.delete()
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"rgif(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"rgif(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

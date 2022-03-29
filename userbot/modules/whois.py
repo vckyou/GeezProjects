@@ -19,7 +19,7 @@ from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(pattern=r"whois(?: |$)(.*)", outgoing=True))
+@geez_cmd(geez_cmd(pattern=r"whois(?: |$)(.*)", outgoing=True))
 async def who(event):
 
     await event.edit("`Mengambil Informasi Pengguna Ini...`")

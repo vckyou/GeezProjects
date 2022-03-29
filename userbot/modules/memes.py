@@ -883,7 +883,7 @@ weebyfont = [
 # ===========================================
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"(\w+)say (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"(\w+)say (.*)"))
 async def _(cowmsg):
     """For .cowsay module, userbot wrapper for cow which says things."""
     arg = cowmsg.pattern_match.group(1).lower()
@@ -899,7 +899,7 @@ async def _(cowmsg):
     await cowmsg.edit(f"`{cheese.milk(text).replace('`', '´')}`")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"coinflip (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"coinflip (.*)"))
 async def _(event):
     r = choice(["Kepala", "Ekor"])
     input_str = event.pattern_match.group(1)
@@ -925,7 +925,7 @@ async def _(event):
             await event.edit("Koin Itu Mendarat Di: **Ekor**.")
 
 
-@bot.on(geez_cmd(pattern=r"slap(?: |$)(.*)", outgoing=True))
+@geez_cmd(geez_cmd(pattern=r"slap(?: |$)(.*)", outgoing=True))
 async def _(event):
     """slaps a user, or get slapped if not a reply."""
     replied_user = await get_user_from_event(event)
@@ -978,7 +978,7 @@ async def slap(replied_user, event):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"tt(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"tt(?: |$)(.*)"))
 async def _(e):
     await e.edit("`Mencari Gambar tt, Dosa ditanggung sendiri...`")
     await sleep(3)
@@ -991,7 +991,7 @@ async def _(e):
     await e.delete()
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"pantat(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"pantat(?: |$)(.*)"))
 async def _(e):
     await e.edit("`Mencari Gambar Pantat, Dosa ditanggung sendiri...`")
     await sleep(3)
@@ -1004,7 +1004,7 @@ async def _(e):
     await e.delete()
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"(yes|no|maybe|decide)$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"(yes|no|maybe|decide)$"))
 async def _(event):
     decision = event.pattern_match.group(1).lower()
     message_id = event.reply_to_msg_id or None
@@ -1018,7 +1018,7 @@ async def _(event):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r";_;$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r";_;$"))
 async def _(idk):
     t = ";_;"
     for _ in range(10):
@@ -1026,25 +1026,25 @@ async def _(idk):
         await idk.edit(t)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"fp$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"fp$"))
 async def _(palm):
     """Facepalm  🤦‍♂"""
     await palm.edit("🤦‍♂")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"cry$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"cry$"))
 async def _(e):
     """y u du dis, i cry everytime !!"""
     await e.edit(choice(CRI))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"insult$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"insult$"))
 async def _(e):
     """I make you cry !!"""
     await e.edit(choice(INSULT_STRINGS))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"cp(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"cp(?: |$)(.*)"))
 async def _(cp_e):
     """Copypasta the famous meme"""
     textx = await cp_e.get_reply_message()
@@ -1076,7 +1076,7 @@ async def _(cp_e):
     await cp_e.edit(reply_text)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"vapor(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"vapor(?: |$)(.*)"))
 async def _(vpr):
     """Vaporize everything!"""
     reply_text = []
@@ -1100,7 +1100,7 @@ async def _(vpr):
     await vpr.edit("".join(reply_text))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"str(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"str(?: |$)(.*)"))
 async def _(stret):
     """Stretch it."""
     textx = await stret.get_reply_message()
@@ -1118,7 +1118,7 @@ async def _(stret):
     await stret.edit(reply_text)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"zal(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"zal(?: |$)(.*)"))
 async def _(zgfy):
     """Invoke the feeling of chaos."""
     reply_text = []
@@ -1153,13 +1153,13 @@ async def _(zgfy):
     await zgfy.edit("".join(reply_text))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"hi$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"hi$"))
 async def _(hello):
     """Greet everyone!"""
     await hello.edit(choice(HELLOSTR))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"owo(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"owo(?: |$)(.*)"))
 async def _(owo):
     """UwU"""
     textx = await owo.get_reply_message()
@@ -1181,37 +1181,37 @@ async def _(owo):
     await owo.edit(reply_text)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"react$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"react$"))
 async def _(react):
     """Make your userbot react to everything."""
     await react.edit(choice(FACEREACTS))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"shg$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"shg$"))
 async def _(shg):
     r"""¯\_(ツ)_/¯"""
     await shg.edit(choice(SHGS))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"chase$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"chase$"))
 async def _(chase):
     """Lari bro lari, aku akan segera menangkapmu !!"""
     await chase.edit(choice(CHASE_STR))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"run$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"run$"))
 async def _(run):
     """Lari, lari, LARIII!"""
     await run.edit(choice(RUNS_STR))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"metoo$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"metoo$"))
 async def _(hahayes):
     """Haha yes"""
     await hahayes.edit(choice(METOOSTR))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"oem$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"oem$"))
 async def _(e):
     t = "Oem"
     for _ in range(16):
@@ -1219,7 +1219,7 @@ async def _(e):
         await e.edit(t)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"Oem$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"Oem$"))
 async def _(e):
     t = "Oem"
     for _ in range(16):
@@ -1227,12 +1227,12 @@ async def _(e):
         await e.edit(t)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"10iq$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"10iq$"))
 async def _(e):
     await e.edit("♿")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"fuck$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"fuck$"))
 async def _(e):
     await e.edit(".                       /¯ )")
     await e.edit(".                       /¯ )\n                      /¯  /")
@@ -1262,7 +1262,7 @@ async def _(e):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"moon$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"moon$"))
 async def _(moone):
     deq = deque(list("🌗🌘🌑🌒🌓🌔🌕🌖"))
     try:
@@ -1274,7 +1274,7 @@ async def _(moone):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"bunga$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"bunga$"))
 async def _(event):
     deq = deque(list("🌼🌻🌺🌹🌸🌷"))
     try:
@@ -1286,7 +1286,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"waktu$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"waktu$"))
 async def _(event):
     deq = deque(list("🎑🌄🌅🌇🌆🌃🌌"))
     try:
@@ -1298,7 +1298,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"buah$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"buah$"))
 async def _(event):
     deq = deque(list("🍉🍓🍇🍎🍍🍐🍌"))
     try:
@@ -1310,7 +1310,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"clock$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"clock$"))
 async def _(event):
     deq = deque(list("🕙🕘🕗🕖🕕🕔🕓🕒🕑🕐🕛"))
     try:
@@ -1322,7 +1322,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"rain$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"rain$"))
 async def _(event):
     deq = deque(list("☀️🌤⛅️🌥☁️🌧⛈"))
     try:
@@ -1334,7 +1334,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"boxes$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"boxes$"))
 async def _(event):
     deq = deque(list("🟥🟧🟨🟩🟦🟪🟫⬛⬜"))
     try:
@@ -1346,7 +1346,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"hmm$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"hmm$"))
 async def _(event):
     deq = deque(list("🤔🧐🤔🧐🤔🧐"))
     try:
@@ -1358,7 +1358,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"haha$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"haha$"))
 async def _(event):
     deq = deque(list("😂🤣😂🤣😂🤣"))
     try:
@@ -1370,7 +1370,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"operations$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"operations$"))
 async def _(event):
     deq = deque(list("!@#$%^&*()_+="))
     try:
@@ -1382,7 +1382,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"love$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"love$"))
 async def _(event):
     deq = deque(list("❤️🧡💛💚💙💜🖤💕💞💓💗💖💘💝"))
     try:
@@ -1394,7 +1394,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"earth$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"earth$"))
 async def _(event):
     deq = deque(list("🌏🌍🌎🌎🌍🌏🌍🌎"))
     try:
@@ -1406,7 +1406,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"hati$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"hati$"))
 async def _(event):
     deq = deque(list("🖤💜💙💚💛🧡❤️🤍"))
     try:
@@ -1418,7 +1418,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=".monyet$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=".monyet$"))
 async def _(event):
     deq = deque(list("🙈🙉🙈🙉🙈🙉🙈🙉"))
     try:
@@ -1430,7 +1430,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=".emo$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=".emo$"))
 async def _(event):
     deq = deque(list("🙂😁😄😃😂🤣😭🐵🙊🙉🙈"))
     try:
@@ -1442,7 +1442,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"mock(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"mock(?: |$)(.*)"))
 async def _(mock):
     """Do it and find the real fun."""
     reply_text = []
@@ -1465,7 +1465,7 @@ async def _(mock):
     await mock.edit("".join(reply_text))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"weeb(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"weeb(?: |$)(.*)"))
 async def _(e):
     args = e.pattern_match.group(1)
     if not args:
@@ -1482,7 +1482,7 @@ async def _(e):
     await e.edit(string)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"clap(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"clap(?: |$)(.*)"))
 async def _(memereview):
     """Praise people!"""
     textx = await memereview.get_reply_message()
@@ -1499,7 +1499,7 @@ async def _(memereview):
     await memereview.edit(reply_text)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"teksbiru$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"teksbiru$"))
 async def _(bt_e):
     """Believe me, you will find this useful."""
     if await bt_e.get_reply_message() and bt_e.is_group:
@@ -1509,7 +1509,7 @@ async def _(bt_e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"f (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"f (.*)"))
 async def _(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -1529,7 +1529,7 @@ async def _(event):
     await event.edit(pay)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"lfy (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"lfy (.*)"))
 async def _(lmgtfy_q):
     textx = await lmgtfy_q.get_reply_message()
     qry = lmgtfy_q.pattern_match.group(1)
@@ -1547,7 +1547,7 @@ async def _(lmgtfy_q):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"-_-$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"-_-$"))
 async def _(sigh):
     """Ok..."""
     okay = "-_-"
@@ -1556,7 +1556,7 @@ async def _(sigh):
         await sigh.edit(okay)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"sayhi$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"sayhi$"))
 async def _(e):
     await e.edit(
         "\n💰💰💰💰💰💰💰💰💰💰💰💰"
@@ -1571,7 +1571,7 @@ async def _(e):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"scam(?:\s|$)([\s\S]*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"scam(?:\s|$)([\s\S]*)"))
 async def _(event):
     options = [
         "typing",
@@ -1613,7 +1613,7 @@ async def _(event):
         return
 
 
-@bot.on(geez_cmd(pattern=r"type(?: |$)(.*)", outgoing=True))
+@geez_cmd(geez_cmd(pattern=r"type(?: |$)(.*)", outgoing=True))
 async def _(typew):
     """Just a small command to make your keyboard become a typewriter!"""
     textx = await typew.get_reply_message()
@@ -1638,7 +1638,7 @@ async def _(typew):
         await sleep(sleep_time)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"f (.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"f (.*)"))
 async def _(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -1658,7 +1658,7 @@ async def _(event):
     await event.edit(pay)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"fail$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"fail$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1669,7 +1669,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"lol$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"lol$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1680,7 +1680,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"rock$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"rock$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1694,7 +1694,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"lool$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"lool$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1704,7 +1704,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"stfu$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"stfu$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1720,7 +1720,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"gtfo$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"gtfo$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1736,7 +1736,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"nih$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"nih$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1750,7 +1750,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"fag$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"fag$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1764,25 +1764,25 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"tai$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"tai$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("\n{\\__/}" "\n(●_●)" "\n( >💩 Mau Tai Ku?")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"paw$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"paw$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("`(=ↀωↀ=)")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"tf$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"tf$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄  ")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"gey$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"gey$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1793,7 +1793,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"gay$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"gay$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1804,7 +1804,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"bot$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"bot$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1813,7 +1813,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"hey$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"hey$"))
 async def hey(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1823,7 +1823,7 @@ async def hey(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"nou$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"nou$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -1834,7 +1834,7 @@ async def _(e):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"iwi(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"iwi(?: |$)(.*)"))
 async def _(siwis):
     """IwI"""
     textx = await siwis.get_reply_message()
@@ -1854,7 +1854,7 @@ async def _(siwis):
     await siwis.edit(reply_text)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"koc$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"koc$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("8✊===D")
@@ -1889,7 +1889,7 @@ async def _(e):
         await e.edit("😭😭😭😭")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=".gas$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=".gas$"))
 async def _(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("___________________🚑")
@@ -1904,13 +1904,13 @@ async def _(e):
         await e.edit(choice(FACEREACTS))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"shg$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"shg$"))
 async def _(shg):
     r"""¯\_(ツ)_/¯"""
     await shg.edit(choice(SHGS))
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"(?:penis|dick)\s?(.)?"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"(?:penis|dick)\s?(.)?"))
 async def _(e):
     emoji = e.pattern_match.group(1)
     titid = GAMBAR_TITIT
@@ -1919,7 +1919,7 @@ async def _(e):
     await e.edit(titid)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"(?:kontol)\s?(.)?"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"(?:kontol)\s?(.)?"))
 async def _(e):
     emoji = e.pattern_match.group(1)
     kontl = GAMBAR_KONTL
@@ -1928,7 +1928,7 @@ async def _(e):
     await e.edit(kontl)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"skull$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"skull$"))
 async def _(e):
     emoji = e.pattern_match.group(1)
     tengkorak = GAMBAR_TENGKORAK

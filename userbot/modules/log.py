@@ -28,7 +28,7 @@ class LOG_CHATS:
 LOG_CHATS_ = LOG_CHATS()
 
 
-@bot.on(events.ChatAction)
+@geez_cmd(events.ChatAction)
 async def logaddjoin(event):
     user = await event.get_user()
     chat = await event.get_chat()
@@ -48,8 +48,8 @@ async def logaddjoin(event):
     await event.client.send_message(BOTLOG_CHATID, text)
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
-@bot.on(events.MessageEdited(incoming=True, func=lambda e: e.is_private))
+@geez_cmd(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+@geez_cmd(events.MessageEdited(incoming=True, func=lambda e: e.is_private))
 async def monito_p_m_s(event):
     if BOTLOG_CHATID == -100:
         return
@@ -84,8 +84,8 @@ async def monito_p_m_s(event):
                 LOGS.warn(str(e))
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
-@bot.on(events.MessageEdited(incoming=True, func=lambda e: e.mentioned))
+@geez_cmd(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
+@geez_cmd(events.MessageEdited(incoming=True, func=lambda e: e.mentioned))
 async def log_tagged_messages(event):
     if BOTLOG_CHATID == -100:
         return

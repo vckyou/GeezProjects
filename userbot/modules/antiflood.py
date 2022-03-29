@@ -60,7 +60,7 @@ async def _(event):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"setflood(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"setflood(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -16,7 +16,7 @@ from userbot.events import geez_cmd
 from userbot.utils import deEmojify
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"figlet (\w+) (.+)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"figlet (\w+) (.+)"))
 async def figlet(event):
     if event.fwd_from:
         return

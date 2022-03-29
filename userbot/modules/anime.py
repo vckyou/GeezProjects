@@ -235,7 +235,7 @@ async def formatJSON(outData):
     return msg
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"anilist ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"anilist ?(.*)"))
 async def anilist(event):
     if event.fwd_from:
         return
@@ -245,7 +245,7 @@ async def anilist(event):
     await event.edit(msg, link_preview=True)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"anime ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"anime ?(.*)"))
 async def search_anime(message):
     search_query = message.pattern_match.group(1)
     await message.get_reply_message()
@@ -266,7 +266,7 @@ async def search_anime(message):
         )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"manga ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"manga ?(.*)"))
 async def search_manga(message):
     search_query = message.pattern_match.group(1)
     await message.get_reply_message()
@@ -281,7 +281,7 @@ async def search_manga(message):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="a(kaizoku|kayo) ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="a(kaizoku|kayo) ?(.*)"))
 async def site_search(event):
     message = await event.get_reply_message()
     search_query = event.pattern_match.group(2)
@@ -330,7 +330,7 @@ async def site_search(event):
             await event.edit(result, parse_mode="HTML")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"char ?(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"char ?(.*)"))
 async def character(event):
     message = await event.get_reply_message()
     search_query = event.pattern_match.group(1)
@@ -380,7 +380,7 @@ async def character(event):
     )
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="upcoming$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="upcoming$"))
 async def upcoming(message):
     rep = "<b>Upcoming anime</b>\n"
     later = jikan.season_later()
@@ -394,7 +394,7 @@ async def upcoming(message):
         await message.edit(rep, parse_mode="html")
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="whatanime$"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="whatanime$"))
 async def whatanime(e):
     media = e.media
     if not media:

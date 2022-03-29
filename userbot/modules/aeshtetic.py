@@ -24,7 +24,7 @@ def aesthetify(string):
         yield chr(c)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="ae(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern="ae(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

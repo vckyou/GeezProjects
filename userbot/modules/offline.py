@@ -28,7 +28,7 @@ afk_start = {}
 # =================================================================
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"off(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"off(?: |$)(.*)"))
 async def set_afk(afk_e):
     """For .afk command, allows you to inform people that you are afk when they message you"""
     string = afk_e.pattern_match.group(1)

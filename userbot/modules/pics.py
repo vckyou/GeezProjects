@@ -20,7 +20,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@bot.on(geez_cmd(outgoing=True, pattern=r"pic(?: |$)(.*)"))
+@geez_cmd(geez_cmd(outgoing=True, pattern=r"pic(?: |$)(.*)"))
 async def on_file_to_photo(pics):
     await pics.edit("`Processing...`")
     await sleep(1.5)
