@@ -508,7 +508,7 @@ async def join_(event):
     )
     try:
         await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
-    except AlreadyJoinedError
+    except AlreadyJoinedError:
         return await edit_delete(event, f"{from_user} Akun Sudah Berada Di VC Group")
     except Exception as e:
         return await edit_delete(event, f"**ERROR : **`{str(e)}`")
