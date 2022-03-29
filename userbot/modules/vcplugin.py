@@ -4,6 +4,7 @@
 #
 # Recode by @vckyaz
 
+import asyncio
 from pytgcalls import StreamType
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import (
@@ -496,7 +497,9 @@ async def join_(event):
             await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         chat_id = event.chat_id
-        event.pattern_match.group(1)
+        title = event.pattern_match.group(1)
+        chat = await event.get_chat()
+        tittle = chat.title
         from_user = vcmention(event.sender)
     if not call_py.is_connected:
         await call_py.start()
@@ -510,8 +513,14 @@ async def join_(event):
     try:
         await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
     except AlreadyJoinedError:
+        await call.leave_group_call(Vars.CHAT_ID)
+        await asyncio.sleep(3)
+        chat_id, tittle = 0, ''
         return await edit_delete(event, f"{from_user} Akun Sudah Berada Di VC Group")
+        clear_queue(chat_id)
     except Exception as e:
+        chat_id, tittle = 0, ''
+        clear_queue(chat_id)
         return await edit_delete(event, f"**ERROR : **`{str(e)}`")
 
 
