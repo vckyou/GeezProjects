@@ -493,7 +493,8 @@ async def join_(event):
         try:
             chat = await event.client(GetFullUserRequest(chat))
         except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`", 30)    else:
+            await edit_delete(event, f"**ERROR:** `{e}`", 30)
+    else:
         chat_id = event.chat_id
         chats = event.pattern_match.group(1)
         from_user = vcmention(event.sender)
