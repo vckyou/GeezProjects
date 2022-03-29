@@ -489,14 +489,14 @@ async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
     if len(event.text.split()) > 1:
         chat = event.chat_id
-        chats = event.pattern_match.group(1)
+        event.pattern_match.group(1)
         try:
             chat = await event.client(GetFullUserRequest(chat))
         except Exception as e:
             await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         chat_id = event.chat_id
-        chats = event.pattern_match.group(1)
+        event.pattern_match.group(1)
         from_user = vcmention(event.sender)
     if not call_py.is_connected:
         await call_py.start()
