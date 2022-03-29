@@ -413,7 +413,7 @@ async def vc_skip(event):
                     hm = await skip_item(chat_id, x)
                     if hm != 0:
                         DELQUE = DELQUE + "\n" + f"**#{x}** - {hm}"
-            await event.edit(DELQUE)
+            await edit_or_reply(DELQUE)
 
 
 @geez_cmd(pattern="pause$")

@@ -12,7 +12,7 @@ from userbot.events import geez_cmd
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"covid (.*)"))
 async def corona(event):
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     country = event.pattern_match.group(1)
     covid = Covid(source="worldometers")
     country_data = covid.get_status_by_country_name(country)
@@ -29,12 +29,12 @@ async def corona(event):
     else:
         output_text = "No information yet about this country!"
 
-    await event.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
+    await edit_or_reply(f"**Corona Virus Info in {country}:**\n\n{output_text}")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern="covid$"))
 async def corona(event):
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     country = "World"
     covid = Covid(source="worldometers")
     country_data = covid.get_status_by_country_name(country)
@@ -51,7 +51,7 @@ async def corona(event):
     else:
         output_text = "No information yet about this country!"
 
-    await event.edit(f"**Corona Virus Info in {country}:**\n\n{output_text}")
+    await edit_or_reply(f"**Corona Virus Info in {country}:**\n\n{output_text}")
 
 
 CMD_HELP.update(

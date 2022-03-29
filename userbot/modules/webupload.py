@@ -19,7 +19,7 @@ from userbot.events import geez_cmd
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("`Processing ...`")
+    await edit_or_reply("`Processing ...`")
     PROCESS_RUN_TIME = 100
     input_str = event.pattern_match.group(1)
     selected_transfer = event.pattern_match.group(2)
@@ -39,14 +39,14 @@ async def _(event):
     try:
         selected_one = CMD_WEB[selected_transfer].format(file_name)
     except KeyError:
-        await event.edit("Invalid selected Transfer")
+        await edit_or_reply("Invalid selected Transfer")
     cmd = selected_one
     time.time() + PROCESS_RUN_TIME
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    await event.edit(f"{stdout.decode()}")
+    await edit_or_reply(f"{stdout.decode()}")
 
 
 CMD_HELP.update(

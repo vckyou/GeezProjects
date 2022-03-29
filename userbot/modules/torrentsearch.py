@@ -86,7 +86,7 @@ async def tor_search(event):
     search_str = event.pattern_match.group(1)
 
     print(search_str)
-    await event.edit("Searching for " + search_str + ".....")
+    await edit_or_reply("Searching for " + search_str + ".....")
     if " " in search_str:
         search_str = search_str.replace(" ", "+")
         print(search_str)
@@ -119,7 +119,7 @@ async def tor_search(event):
             break
         counter += 1
     if not urls:
-        await event.edit("Either the Keyword was restricted or not found..")
+        await edit_or_reply("Either the Keyword was restricted or not found..")
         return
 
     print("Found URLS...")
@@ -151,7 +151,7 @@ async def tor_search(event):
             + "\n\n"
         )
         counter += 1
-    await event.edit(msg, link_preview=False)
+    await edit_or_reply(msg, link_preview=False)
 
 
 CMD_HELP.update(

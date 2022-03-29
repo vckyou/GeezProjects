@@ -46,7 +46,7 @@ async def mention(event):
                         rep = tag.format(rep)
             newstr = re.sub(re.escape(match.group(0)), rep, newstr)
     if newstr != event.text:
-        await event.edit(newstr, parse_mode="html")
+        await edit_or_reply(newstr, parse_mode="html")
 
 
 CMD_HELP.update(

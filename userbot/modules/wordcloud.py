@@ -89,7 +89,7 @@ async def _(event):
         await bash("rm *.png *.mp4 *.tgs *.webp")
     except BaseException as e:
         await bash("rm *.png *.mp4 *.tgs *.webp")
-        return await event.edit(str(e))
+        return await edit_or_reply(str(e))
 
 
 CMD_HELP.update(

@@ -23,9 +23,9 @@ from userbot.utils import bash, geez_cmd
 async def ultiny(event):
     reply = await event.get_reply_message()
     if not (reply and (reply.media)):
-        await event.edit("`Balas Ke Pesan Sticker !`")
+        await edit_or_reply("`Balas Ke Pesan Sticker !`")
         return
-    xx = await event.edit("`Processing tiny...`")
+    xx = await edit_or_reply("`Processing tiny...`")
     ik = await event.client.download_media(reply)
     im1 = Image.open("userbot/resources/geez_blank.png")
     if ik.endswith(".tgs"):

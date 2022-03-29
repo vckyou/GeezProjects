@@ -17,13 +17,13 @@ from userbot.utils import bash
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"(mirror|flip|ghost|bw|poster)$"))
 async def transform(event):
     if not event.reply_to_msg_id:
-        await event.edit("**Mohon Reply ke Media atau Sticker**")
+        await edit_or_reply("**Mohon Reply ke Media atau Sticker**")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("**Mohon Reply ke Media atau Sticker**")
+        await edit_or_reply("**Mohon Reply ke Media atau Sticker**")
         return
-    await event.edit("`Downloading Media...`")
+    await edit_or_reply("`Downloading Media...`")
     if reply_message.photo:
         transform = await bot.download_media(
             reply_message,
@@ -55,7 +55,7 @@ async def transform(event):
             "transform.png",
         )
     try:
-        await event.edit("`Transforming this media..`")
+        await edit_or_reply("`Transforming this media..`")
         cmd = event.pattern_match.group(1)
         im = Image.open(transform).convert("RGB")
         if cmd == "mirror":
@@ -90,13 +90,13 @@ async def _(event):
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"rotate(?: |$)(.*)"))
 async def rotate(event):
     if not event.reply_to_msg_id:
-        await event.edit("**Mohon Reply ke Media atau Sticker**")
+        await edit_or_reply("**Mohon Reply ke Media atau Sticker**")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("**Mohon Reply ke Media atau Sticker**")
+        await edit_or_reply("**Mohon Reply ke Media atau Sticker**")
         return
-    await event.edit("`Downloading Media...`")
+    await edit_or_reply("`Downloading Media...`")
     if reply_message.photo:
         rotate = await bot.download_media(
             reply_message,
@@ -133,7 +133,7 @@ async def rotate(event):
             raise ValueError
     except ValueError:
         value = 90
-    await event.edit("`Rotating your media...`")
+    await edit_or_reply("`Rotating your media...`")
     im = Image.open(rotate).convert("RGB")
     IMG = im.rotate(value, expand=1)
     IMG.save(Converted, quality=95)

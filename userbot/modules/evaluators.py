@@ -23,20 +23,20 @@ p, pp = print, pprint
 async def _(event):
     expression = event.pattern_match.group(1)
     if not expression:
-        return await event.edit("**Berikan Code untuk di eksekusi.**")
+        return await edit_or_reply("**Berikan Code untuk di eksekusi.**")
 
     if expression in ("userbot.session", "config.env"):
-        return await event.edit("**Itu operasi yang berbahaya! Tidak diperbolehkan!**")
+        return await edit_or_reply("**Itu operasi yang berbahaya! Tidak diperbolehkan!**")
 
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
-        return event.edit("**Apa yang harus saya jalankan?**")
+        return edit_or_reply("**Apa yang harus saya jalankan?**")
     cmd = (
         cmd.replace("sendmessage", "send_message")
         .replace("sendfile", "send_file")
         .replace("editmessage", "edit_message")
     )
-    xx = await event.edit("`Processing...`")
+    xx = await edit_or_reply("`Processing...`")
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     old_stderr = sys.stderr
@@ -99,12 +99,12 @@ async def run(event):
     """For .exec command, which executes the dynamically created program"""
     code = event.pattern_match.group(1)
     if not code:
-        return await event.edit("**Read** `.help exec` **for an example.**")
+        return await edit_or_reply("**Read** `.help exec` **for an example.**")
 
     if code in ("userbot.session", "config.env"):
-        return await event.edit("`Itu operasi yang berbahaya! Tidak diperbolehkan!`")
+        return await edit_or_reply("`Itu operasi yang berbahaya! Tidak diperbolehkan!`")
 
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     if len(code.splitlines()) <= 5:
         codepre = code
     else:
@@ -141,7 +141,7 @@ async def run(event):
             caption="**Output terlalu besar, dikirim sebagai file**",
         )
         return remove("output.txt")
-    await event.edit(f"**Query:**\n`{codepre}`\n\n**Result:**\n`{stdout}`")
+    await edit_or_reply(f"**Query:**\n`{codepre}`\n\n**Result:**\n`{stdout}`")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"term(?: |$|\n)([\s\S]*)"))
@@ -150,12 +150,12 @@ async def terminal_runner(event):
     command = event.pattern_match.group(1)
 
     if not command:
-        return await event.edit("`Give a command or use .help term for an example.`")
+        return await edit_or_reply("`Give a command or use .help term for an example.`")
 
     if command in ("userbot.session", "config.env"):
-        return await event.edit("`Itu operasi yang berbahaya! Tidak diperbolehkan!`")
+        return await edit_or_reply("`Itu operasi yang berbahaya! Tidak diperbolehkan!`")
 
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     process = await asyncio.create_subprocess_shell(
         command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT
     )
@@ -180,7 +180,7 @@ async def terminal_runner(event):
         )
         return remove("output.txt")
 
-    await event.edit(f"**Command:**\n`{command}`\n\n**Result:**\n`{result}`")
+    await edit_or_reply(f"**Command:**\n`{command}`\n\n**Result:**\n`{result}`")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"json$"))
@@ -209,7 +209,7 @@ async def _(event):
             )
             await event.delete()
     else:
-        await event.edit("`{}`".format(the_real_message))
+        await edit_or_reply("`{}`".format(the_real_message))
 
 
 CMD_HELP.update(

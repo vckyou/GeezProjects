@@ -23,21 +23,21 @@ Glitched = TEMP_DOWNLOAD_DIRECTORY + "glitch.gif"
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"glitch(?: |$)(.*)"))
 async def glitch(event):
     if not event.reply_to_msg_id:
-        await event.edit("`Aku Mau Glitch Sebuah Hantu!`")
+        await edit_or_reply("`Aku Mau Glitch Sebuah Hantu!`")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("`Bales Ke Gambar/Sticker`")
+        await edit_or_reply("`Bales Ke Gambar/Sticker`")
         return
     await bot.download_file(reply_message.media)
-    await event.edit("`Sedang Mendownload Media....`")
+    await edit_or_reply("`Sedang Mendownload Media....`")
     if event.is_reply:
         data = await check_media(reply_message)
         if isinstance(data, bool):
-            await event.edit("`File Tidak Di Dukung...`")
+            await edit_or_reply("`File Tidak Di Dukung...`")
             return
     else:
-        await event.edit("`Balas Ke Media....`")
+        await edit_or_reply("`Balas Ke Media....`")
         return
 
     try:
@@ -46,7 +46,7 @@ async def glitch(event):
             raise ValueError
     except ValueError:
         value = 2
-    await event.edit("```Melakukan Glitch Pada Media Ini```")
+    await edit_or_reply("```Melakukan Glitch Pada Media Ini```")
     await asyncio.sleep(2)
     file_name = "glitch.png"
     to_download_directory = TEMP_DOWNLOAD_DIRECTORY
@@ -69,7 +69,7 @@ async def glitch(event):
         duration=DURATION,
         loop=LOOP,
     )
-    await event.edit("`Sedang Mengunggah Media Yang Telah Di Glitch`")
+    await edit_or_reply("`Sedang Mengunggah Media Yang Telah Di Glitch`")
     c_time = time.time()
     nosave = await event.client.send_file(
         event.chat_id,

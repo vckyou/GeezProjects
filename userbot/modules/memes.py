@@ -907,22 +907,22 @@ async def _(event):
         input_str = input_str.lower()
     if r == "Kepala":
         if input_str == "Kepala":
-            await event.edit("Koin Itu Mendarat Di: **Kepala**.\nKamu Benar.")
+            await edit_or_reply("Koin Itu Mendarat Di: **Kepala**.\nKamu Benar.")
         elif input_str == "Ekor":
-            await event.edit(
+            await edit_or_reply(
                 "Koin Itu Mendarat Di: **Kepala**.\nKamu Salah, Coba Lagi..."
             )
         else:
-            await event.edit("Koin Itu Mendarat Di: **Kepala**.")
+            await edit_or_reply("Koin Itu Mendarat Di: **Kepala**.")
     elif r == "Ekor":
         if input_str == "Ekor":
-            await event.edit("Koin Itu Mendarat Di: **Ekor**.\nKamu Benar.")
+            await edit_or_reply("Koin Itu Mendarat Di: **Ekor**.\nKamu Benar.")
         elif input_str == "Kepala":
-            await event.edit(
+            await edit_or_reply(
                 "Koin Itu Mendarat Di: **Ekor**.\nKamu Salah, Coba Lagi..."
             )
         else:
-            await event.edit("Koin Itu Mendarat Di: **Ekor**.")
+            await edit_or_reply("Koin Itu Mendarat Di: **Ekor**.")
 
 
 @geez_cmd(geez_cmd(pattern=r"slap(?: |$)(.*)", outgoing=True))
@@ -936,10 +936,10 @@ async def _(event):
     caption = await slap(replied_user, event)
 
     try:
-        await event.edit(caption)
+        await edit_or_reply(caption)
 
     except BaseException:
-        await event.edit(
+        await edit_or_reply(
             "`Tidak bisa slap orang ini, perlu mengambil beberapa meteor dan batu!`"
         )
 
@@ -1280,7 +1280,7 @@ async def _(event):
     try:
         for _ in range(35):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1292,7 +1292,7 @@ async def _(event):
     try:
         for _ in range(100):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1304,7 +1304,7 @@ async def _(event):
     try:
         for _ in range(35):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1316,7 +1316,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1328,7 +1328,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1340,7 +1340,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1352,7 +1352,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1364,7 +1364,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1376,7 +1376,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1388,7 +1388,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1400,7 +1400,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1412,7 +1412,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1424,7 +1424,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1436,7 +1436,7 @@ async def _(event):
     try:
         for _ in range(32):
             await sleep(0.1)
-            await event.edit("".join(deq))
+            await edit_or_reply("".join(deq))
             deq.rotate(1)
     except BaseException:
         return
@@ -1526,7 +1526,7 @@ async def _(event):
         paytext * 2,
         paytext * 2,
     )
-    await event.edit(pay)
+    await edit_or_reply(pay)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"lfy (.*)"))
@@ -1655,7 +1655,7 @@ async def _(event):
         paytext * 2,
         paytext * 2,
     )
-    await event.edit(pay)
+    await edit_or_reply(pay)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"fail$"))

@@ -23,7 +23,7 @@ async def fban(event):
     try:
         from userbot.modules.sql_helper.fban_sql import get_flist
     except IntegrityError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
 
     match = event.pattern_match.group(2)
 
@@ -46,17 +46,17 @@ async def fban(event):
         pass
 
     if event.sender_id == fban_id:
-        return await event.edit(
+        return await edit_or_reply(
             "**Error: Tindakan ini telah dicegah oleh protokol keamanan diri GeezProjects.**"
         )
 
     fed_list = get_flist()
     if len(fed_list) == 0:
-        return await event.edit("**Anda belum terhubung ke federasi mana pun!**")
+        return await edit_or_reply("**Anda belum terhubung ke federasi mana pun!**")
 
     user_link = f"[{fban_id}](tg://user?id={fban_id})"
 
-    await event.edit(f"**Fbanning** {user_link}...")
+    await edit_or_reply(f"**Fbanning** {user_link}...")
     failed = []
     total = 0
 
@@ -85,7 +85,7 @@ async def fban(event):
     else:
         status = f"Success! Fbanned in {total} feds."
 
-    await event.edit(
+    await edit_or_reply(
         f"**Fbanned **{user_link}!\n**Reason:** {reason}\n**Status:** {status}"
     )
 
@@ -96,7 +96,7 @@ async def unfban(event):
     try:
         from userbot.modules.sql_helper.fban_sql import get_flist
     except IntegrityError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
 
     match = event.pattern_match.group(1)
     if event.is_reply:
@@ -113,15 +113,15 @@ async def unfban(event):
         pass
 
     if event.sender_id == unfban_id:
-        return await event.edit("**Tunggu, itu illegal**")
+        return await edit_or_reply("**Tunggu, itu illegal**")
 
     fed_list = get_flist()
     if len(fed_list) == 0:
-        return await event.edit("**Anda belum terhubung ke federasi mana pun!**")
+        return await edit_or_reply("**Anda belum terhubung ke federasi mana pun!**")
 
     user_link = f"[{unfban_id}](tg://user?id={unfban_id})"
 
-    await event.edit(f"**Un-fbanning **{user_link}**...**")
+    await edit_or_reply(f"**Un-fbanning **{user_link}**...**")
     failed = []
     total = 0
 
@@ -151,7 +151,7 @@ async def unfban(event):
         status = f"Success! Un-fbanned in {total} feds."
 
     reason = reason or "Not specified."
-    await event.edit(
+    await edit_or_reply(
         f"**Un-fbanned** {user_link}!\n**Reason:** {reason}\n**Status:** {status}"
     )
 
@@ -162,18 +162,18 @@ async def addf(event):
     try:
         from userbot.modules.sql_helper.fban_sql import add_flist
     except IntegrityError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
 
     fed_name = event.pattern_match.group(1)
     if not fed_name:
-        return await event.edit("**Berikan nama untuk terhubung ke grup ini!**")
+        return await edit_or_reply("**Berikan nama untuk terhubung ke grup ini!**")
 
     try:
         add_flist(event.chat_id, fed_name)
     except IntegrityError:
-        return await event.edit("**Grup ini sudah terhubung ke daftar federasi.**")
+        return await edit_or_reply("**Grup ini sudah terhubung ke daftar federasi.**")
 
-    await event.edit("**Menambahkan grup ini ke daftar federasi!**")
+    await edit_or_reply("**Menambahkan grup ini ke daftar federasi!**")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"delf$"))
@@ -182,10 +182,10 @@ async def delf(event):
     try:
         from userbot.modules.sql_helper.fban_sql import del_flist
     except IntegrityError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
 
     del_flist(event.chat_id)
-    await event.edit("**Menghapus grup ini dari daftar federasi!**")
+    await edit_or_reply("**Menghapus grup ini dari daftar federasi!**")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"listf$"))
@@ -194,18 +194,18 @@ async def listf(event):
     try:
         from userbot.modules.sql_helper.fban_sql import get_flist
     except IntegrityError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
 
     fed_list = get_flist()
     if len(fed_list) == 0:
-        return await event.edit("**Anda belum terhubung ke federasi mana pun!**")
+        return await edit_or_reply("**Anda belum terhubung ke federasi mana pun!**")
 
     msg = "**Connected federations:**\n\n"
 
     for i in fed_list:
         msg += f"• {i.fed_name}\n"
 
-    await event.edit(msg)
+    await edit_or_reply(msg)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"clearf$"))
@@ -214,10 +214,10 @@ async def clearf(event):
     try:
         from userbot.modules.sql_helper.fban_sql import del_flist_all
     except IntegrityError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
 
     del_flist_all()
-    await event.edit("**Disconnected dari semua federasi yang terhubung!**")
+    await edit_or_reply("**Disconnected dari semua federasi yang terhubung!**")
 
 
 CMD_HELP.update(

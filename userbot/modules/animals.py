@@ -26,10 +26,10 @@ from userbot.events import geez_cmd
 
 @geez_cmd(geez_cmd(outgoing=True, pattern="shibe$"))
 async def shibe(event):
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     response = requests.get("https://shibe.online/api/shibes").json()
     if not response:
-        await event.edit("**Tidak bisa menemukan Anjing.**")
+        await edit_or_reply("**Tidak bisa menemukan Anjing.**")
         return
     await event.client.send_message(entity=event.chat_id, file=response[0])
     await event.delete()
@@ -37,10 +37,10 @@ async def shibe(event):
 
 @geez_cmd(geez_cmd(outgoing=True, pattern="cat$"))
 async def cats(event):
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     response = requests.get("https://shibe.online/api/cats").json()
     if not response:
-        await event.edit("**Tidak bisa menemukan kucing.**")
+        await edit_or_reply("**Tidak bisa menemukan kucing.**")
         return
     await event.client.send_message(entity=event.chat_id, file=response[0])
     await event.delete()

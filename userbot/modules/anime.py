@@ -242,7 +242,7 @@ async def anilist(event):
     input_str = event.pattern_match.group(1)
     result = await callAPI(input_str)
     msg = await formatJSON(result)
-    await event.edit(msg, link_preview=True)
+    await edit_or_reply(msg, link_preview=True)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"anime ?(.*)"))
@@ -291,7 +291,7 @@ async def site_search(event):
     elif message:
         search_query = message.text
     else:
-        await event.edit("`Uuf Bro.. Gib something to Search`")
+        await edit_or_reply("`Uuf Bro.. Gib something to Search`")
         return
 
     if site == "kaizoku":
@@ -306,10 +306,10 @@ async def site_search(event):
                 post_link = entry.a["href"]
                 post_name = html.escape(entry.text.strip())
                 result += f"• <a href='{post_link}'>{post_name}</a>\n"
-                await event.edit(result, parse_mode="HTML")
+                await edit_or_reply(result, parse_mode="HTML")
         else:
             result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>"
-            await event.edit(result, parse_mode="HTML")
+            await edit_or_reply(result, parse_mode="HTML")
 
     elif site == "kayo":
         search_url = f"https://animekayo.com/?s={search_query}"
@@ -327,7 +327,7 @@ async def site_search(event):
             post_link = entry.a["href"]
             post_name = html.escape(entry.text.strip())
             result += f"• <a href='{post_link}'>{post_name}</a>\n"
-            await event.edit(result, parse_mode="HTML")
+            await edit_or_reply(result, parse_mode="HTML")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"char ?(.*)"))
@@ -339,14 +339,14 @@ async def character(event):
     elif message:
         search_query = message.text
     else:
-        await event.edit("Format: `.char <character name>`")
+        await edit_or_reply("Format: `.char <character name>`")
         return
-    await event.edit("`Searching Character...`")
+    await edit_or_reply("`Searching Character...`")
 
     try:
         search_result = jikan.search("character", search_query)
     except APIException:
-        await event.edit("`Character not found.`")
+        await edit_or_reply("`Character not found.`")
         return
     first_mal_id = search_result["results"][0]["mal_id"]
     character = jikan.character(first_mal_id)

@@ -176,21 +176,21 @@ async def _(event):
     final_term2 = int(term2)
     # actual calculations go here
     if input == "help":
-        await event.edit(
+        await edit_or_reply(
             "Syntax .calc <term1><operator><term2>\nFor eg .calc 02*02 or 99*99 (the zeros are important) (two terms and two digits max)"
         )
     elif operator == "*":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 * final_term2))
+        await edit_or_reply("Solution -->\n" + exp + "\n" + str(final_term1 * final_term2))
     elif operator == "-":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 - final_term2))
+        await edit_or_reply("Solution -->\n" + exp + "\n" + str(final_term1 - final_term2))
     elif operator == "+":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 + final_term2))
+        await edit_or_reply("Solution -->\n" + exp + "\n" + str(final_term1 + final_term2))
     elif operator == "/":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 / final_term2))
+        await edit_or_reply("Solution -->\n" + exp + "\n" + str(final_term1 / final_term2))
     elif operator == "%":
-        await event.edit("Solution -->\n" + exp + "\n" + str(final_term1 % final_term2))
+        await edit_or_reply("Solution -->\n" + exp + "\n" + str(final_term1 % final_term2))
     else:
-        await event.edit("use .calc help")
+        await edit_or_reply("use .calc help")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"xcd(?: |$)(.*)"))
@@ -233,9 +233,9 @@ Month: {}
 Year: {}""".format(
             img, input_str, xkcd_link, safe_title, alt, day, month, year
         )
-        await event.edit(output_str, link_preview=True)
+        await edit_or_reply(output_str, link_preview=True)
     else:
-        await event.edit("xkcd n.{} not found!".format(xkcd_id))
+        await edit_or_reply("xkcd n.{} not found!".format(xkcd_id))
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"remove(?: |$)(.*)"))
@@ -248,7 +248,7 @@ async def _(event):
     if input_str:
         chat = await event.get_chat()
         if not (chat.admin_rights or chat.creator):
-            await event.edit("`Anda Bukan Admin Disini!`")
+            await edit_or_reply("`Anda Bukan Admin Disini!`")
             return False
     p = 0
     b = 0
@@ -262,7 +262,7 @@ async def _(event):
     o = 0
     q = 0
     r = 0
-    await event.edit("`Mencari Daftar Peserta....`")
+    await edit_or_reply("`Mencari Daftar Peserta....`")
     async for i in bot.iter_participants(event.chat_id):
         p += 1
         #
@@ -274,7 +274,7 @@ async def _(event):
             if "y" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -285,7 +285,7 @@ async def _(event):
             if "m" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -296,7 +296,7 @@ async def _(event):
             if "w" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -307,7 +307,7 @@ async def _(event):
             if "o" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -318,7 +318,7 @@ async def _(event):
             if "q" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -329,7 +329,7 @@ async def _(event):
             if "r" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -340,7 +340,7 @@ async def _(event):
             if "b" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -351,7 +351,7 @@ async def _(event):
             if "d" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await event.edit(
+                    await edit_or_reply(
                         "**Saya memerlukan hak admin untuk melakukan tindakan ini!**"
                     )
                     e.append(str(e))
@@ -370,9 +370,9 @@ UserStatusOnline: {}
 UserStatusRecently: {}
 Bots: {}
 None: {}"""
-        await event.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
+        await edit_or_reply(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
         await asyncio.sleep(5)
-    await event.edit(
+    await edit_or_reply(
         """Total= {} users
 Number Of Deleted Accounts= {}
 Status: Empty= {}
@@ -401,7 +401,7 @@ async def _(event):
     if event.fwd_from:
         return
     thumb = thumb_image_path if os.path.exists(thumb_image_path) else None
-    await event.edit("`Rename & Upload in processing ....`")
+    await edit_or_reply("`Rename & Upload in processing ....`")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -431,15 +431,15 @@ async def _(event):
             end_two = datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await event.edit(
+            await edit_or_reply(
                 "**Downloaded in** `{}` **seconds. Uploaded in** `{}` **seconds**".format(
                     ms_one, ms_two
                 )
             )
         else:
-            await event.edit("File Not Found {}".format(input_str))
+            await edit_or_reply("File Not Found {}".format(input_str))
     else:
-        await event.edit("Syntax // .rnupload filename.extension <reply ke media>")
+        await edit_or_reply("Syntax // .rnupload filename.extension <reply ke media>")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"grab(?: |$)(.*)"))
@@ -462,16 +462,16 @@ async def potocmd(event):
         try:
             id = int(id)
             if id <= 0:
-                await event.edit("**Nomer ID Yang Anda Masukkan Tidak Valid**")
+                await edit_or_reply("**Nomer ID Yang Anda Masukkan Tidak Valid**")
                 return
         except BaseException:
-            await event.edit("**Lmao**")
+            await edit_or_reply("**Lmao**")
             return
         if int(id) <= (len(photos)):
             send_photos = await event.client.download_media(photos[id - 1])
             await bot.send_file(event.chat_id, send_photos)
         else:
-            await event.edit("**Tidak Dapat Menemukan Foto Pengguna Ini**")
+            await edit_or_reply("**Tidak Dapat Menemukan Foto Pengguna Ini**")
             return
 
 
@@ -480,14 +480,14 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("**Mohon Balas Ke Link.**")
+        await edit_or_reply("**Mohon Balas Ke Link.**")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        await event.edit("**Mohon Balas Ke Link.**")
+        await edit_or_reply("**Mohon Balas Ke Link.**")
         return
     chat = "@CheckRestrictionsBot"
-    await event.edit("```Memproses....```")
+    await edit_or_reply("```Memproses....```")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -500,7 +500,7 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         if response.text.startswith(""):
-            await event.edit("**Terjadi Error**")
+            await edit_or_reply("**Terjadi Error**")
         else:
             await event.delete()
             await event.client.send_message(event.chat_id, response.message)
@@ -579,7 +579,7 @@ async def _(event):
     if event.fwd_from:
         return
     query = event.pattern_match.group(1)
-    await event.edit("Finding Sites...")
+    await edit_or_reply("Finding Sites...")
     streams = get_stream_data(query)
     title = streams["title"]
     thumb_link = streams["movie_thumb"]
@@ -637,14 +637,14 @@ async def weebify(event):
         get = await event.get_reply_message()
         args = get.text
     if not args:
-        await event.edit("**Teks Apa Yang Harus Saya Weebify Kan?**")
+        await edit_or_reply("**Teks Apa Yang Harus Saya Weebify Kan?**")
         return
     string = " ".join(args).lower()
     for normiecharacter in string:
         if normiecharacter in normiefont:
             weebycharacter = weebyfont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, weebycharacter)
-    await event.edit(string)
+    await edit_or_reply(string)
 
 
 boldfont = [

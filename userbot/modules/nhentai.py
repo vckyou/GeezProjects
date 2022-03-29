@@ -19,7 +19,7 @@ from userbot.utils import post_to_telegraph
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("`Searching for doujin...`")
+    await edit_or_reply("`Searching for doujin...`")
     input_str = event.pattern_match.group(1)
     code = input_str
     if "nhentai" in input_str:
@@ -32,8 +32,8 @@ async def _(event):
         doujin = Hentai(code)
     except BaseException as n_e:
         if "404" in str(n_e):
-            return await event.edit(f"No doujin found for `{code}`")
-        return await event.edit(f"**ERROR :** `{n_e}`")
+            return await edit_or_reply(f"No doujin found for `{code}`")
+        return await edit_or_reply(f"**ERROR :** `{n_e}`")
     msg = ""
     imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
     imgs = f"&#8205; {imgs}"
@@ -89,7 +89,7 @@ async def _(event):
 
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
-    await event.edit(msg, link_preview=True)
+    await edit_or_reply(msg, link_preview=True)
 
 
 CMD_HELP.update(

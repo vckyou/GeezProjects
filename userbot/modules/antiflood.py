@@ -68,13 +68,13 @@ async def _(event):
     try:
         sql.set_flood(event.chat_id, input_str)
         sql.__load_flood_settings()
-        await event.edit(
+        await edit_or_reply(
             "**Antiflood diperbarui menjadi** `{}` **dalam obrolan saat ini**".format(
                 input_str
             )
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        await event.edit(str(e))
+        await edit_or_reply(str(e))
 
 
 CMD_HELP.update(

@@ -22,21 +22,21 @@ from userbot.events import geez_cmd
 @geez_cmd(geez_cmd(pattern=r"whois(?: |$)(.*)", outgoing=True))
 async def who(event):
 
-    await event.edit("`Mengambil Informasi Pengguna Ini...`")
+    await edit_or_reply("`Mengambil Informasi Pengguna Ini...`")
 
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
 
     replied_user = await get_user(event)
     if replied_user is None:
-        return await event.edit(
+        return await edit_or_reply(
             "**itu admin anonim, selamat mencoba cari tahu yang mana!**"
         )
 
     try:
         photo, caption = await fetch_info(replied_user, event)
     except AttributeError:
-        return await event.edit("**Saya Tidak Mendapatkan Informasi Apapun.**")
+        return await edit_or_reply("**Saya Tidak Mendapatkan Informasi Apapun.**")
 
     message_id_to_reply = event.message.reply_to_msg_id
 
@@ -59,7 +59,7 @@ async def who(event):
         await event.delete()
 
     except TypeError:
-        await event.edit(caption, parse_mode=r"html")
+        await edit_or_reply(caption, parse_mode=r"html")
 
 
 async def get_user(event):
@@ -92,7 +92,7 @@ async def get_user(event):
             user_object = await event.client.get_entity(user)
             replied_user = await event.client(GetFullUserRequest(user_object.id))
         except (TypeError, ValueError) as err:
-            return await event.edit(str(err))
+            return await edit_or_reply(str(err))
 
     return replied_user
 

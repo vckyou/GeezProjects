@@ -114,8 +114,8 @@ async def kick_marie_filter(event):
         Marie(or her clones) filters from a chat. """
     bot_type = event.pattern_match.group(1).lower()
     if bot_type not in ["marie", "rose"]:
-        return await event.edit("**Bot Itu Belum Didukung!**")
-    await event.edit("```Saya Akan Menghapus Semua Filter!```")
+        return await edit_or_reply("**Bot Itu Belum Didukung!**")
+    await edit_or_reply("```Saya Akan Menghapus Semua Filter!```")
     await sleep(3)
     resp = await event.get_reply_message()
     filters = resp.text.split("-")[1:]
@@ -139,14 +139,14 @@ async def filters_active(event):
     try:
         from userbot.modules.sql_helper.filter_sql import get_filters
     except AttributeError:
-        return await event.edit("**Running on Non-SQL mode!**")
+        return await edit_or_reply("**Running on Non-SQL mode!**")
     transact = "**Tidak Ada Filter Apapun Disini.**"
     filters = get_filters(event.chat_id)
     for filt in filters:
         if transact == "**Tidak Ada Filter Apapun Disini.**":
             transact = "**✥ Daftar Filter Yang Aktif Disini:**\n"
         transact += " ✣ `{}`\n".format(filt.keyword)
-    await event.edit(transact)
+    await edit_or_reply(transact)
 
 
 CMD_HELP.update(

@@ -100,7 +100,7 @@ async def ocr_space_file(
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"img (.*)"))
 async def img_sampler(event):
     """For .img command, search and return images matching the query."""
-    await event.edit("`Sedang Mencari Gambar Yang Anda Cari...`")
+    await edit_or_reply("`Sedang Mencari Gambar Yang Anda Cari...`")
     query = event.pattern_match.group(1)
     lim = findall(r"lim=\d+", query)
     try:
@@ -140,15 +140,15 @@ async def moni(event):
             params={"from": c_from, "to": c_to},
         ).json()
     except Exception:
-        await event.edit("**Error: API is down.**")
+        await edit_or_reply("**Error: API is down.**")
         return
     if "error" in response:
-        await event.edit(
+        await edit_or_reply(
             "**sepertinya ini  mata uang asing, yang tidak dapat saya konversi sekarang.**"
         )
         return
     c_to_val = round(c_from_val * response["rates"][c_to], 2)
-    await event.edit(f"**{c_from_val} {c_from} = {c_to_val} {c_to}**")
+    await edit_or_reply(f"**{c_from_val} {c_from} = {c_to_val} {c_to}**")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"google ([\s\S]*)"))
@@ -240,18 +240,18 @@ async def wiki(wiki_q):
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("processing...")
+    await edit_or_reply("processing...")
     word = event.pattern_match.group(1)
     urban = asyncurban.UrbanDictionary()
     try:
         mean = await urban.get_word(word)
-        await event.edit(
+        await edit_or_reply(
             "Text: **{}**\n\nBerarti: **{}**\n\nContoh: __{}__".format(
                 mean.word, mean.definition, mean.example
             )
         )
     except asyncurban.WordNotFoundError:
-        await event.edit("Tidak ada hasil untuk **" + word + "**")
+        await edit_or_reply("Tidak ada hasil untuk **" + word + "**")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"tts(?: |$)([\s\S]*)"))
@@ -308,7 +308,7 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await event.edit("**.tr <kode bahasa>** sambil reply ke pesan")
+        await edit_or_reply("**.tr <kode bahasa>** sambil reply ke pesan")
         return
     text = emoji.demojize(text.strip())
     lan = lan.strip()
@@ -320,9 +320,9 @@ async def _(event):
 {}""".format(
             translated.src, lan, after_tr_text
         )
-        await event.edit(output_str)
+        await edit_or_reply(output_str)
     except Exception as exc:
-        await event.edit(str(exc))
+        await edit_or_reply(str(exc))
 
 
 @geez_cmd(geez_cmd(pattern=r"lang (tr|tts) (.*)", outgoing=True))
@@ -678,10 +678,10 @@ async def ReTrieveURL(input_url):
 @geez_cmd(geez_cmd(pattern=r"ocr (.*)", outgoing=True))
 async def ocr(event):
     if not OCR_SPACE_API_KEY:
-        return await event.edit(
+        return await edit_or_reply(
             "`Error: OCR.Space API key is missing! Add it to environment variables or config.env.`"
         )
-    await event.edit("`Sedang Membaca...`")
+    await edit_or_reply("`Sedang Membaca...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     lang_code = event.pattern_match.group(1)
@@ -692,11 +692,11 @@ async def ocr(event):
     try:
         ParsedText = test_file["ParsedResults"][0]["ParsedText"]
     except BaseException:
-        await event.edit(
+        await edit_or_reply(
             "`Tidak bisa membacanya.`\n`Saya rasa saya perlu kacamata baru.`"
         )
     else:
-        await event.edit(f"`Inilah yang bisa saya baca darinya:`\n\n{ParsedText}")
+        await edit_or_reply(f"`Inilah yang bisa saya baca darinya:`\n\n{ParsedText}")
     os.remove(downloaded_file_name)
 
 
@@ -738,7 +738,7 @@ async def parseqr(qr_e):
 @geez_cmd(geez_cmd(pattern=r"barcode(?: |$)([\s\S]*)", outgoing=True))
 async def bq(event):
     """For .barcode command, genrate a barcode containing the given content."""
-    await event.edit("`Processing..`")
+    await edit_or_reply("`Processing..`")
     input_str = event.pattern_match.group(1)
     message = "SYNTAX: `.barcode <long text to include>`"
     reply_msg_id = event.message.id
@@ -757,7 +757,7 @@ async def bq(event):
         else:
             message = previous_message.message
     else:
-        return event.edit("SYNTAX: `.barcode <long text to include>`")
+        return edit_or_reply("SYNTAX: `.barcode <long text to include>`")
 
     bar_code_type = "code128"
     try:
@@ -766,7 +766,7 @@ async def bq(event):
         await event.client.send_file(event.chat_id, filename, reply_to=reply_msg_id)
         os.remove(filename)
     except Exception as e:
-        return await event.edit(str(e))
+        return await edit_or_reply(str(e))
     await event.delete()
 
 

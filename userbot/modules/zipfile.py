@@ -25,14 +25,14 @@ today = date.today()
 async def _(event):
     # Prevent Channel Bug to use update
     if event.is_channel and not event.is_group:
-        await event.edit("`Compress Command isn't permitted on channels`")
+        await edit_or_reply("`Compress Command isn't permitted on channels`")
         return
     if event.fwd_from:
         return
     if not event.is_reply:
-        await event.edit("`Reply to a file to compress it.`")
+        await edit_or_reply("`Reply to a file to compress it.`")
         return
-    mone = await event.edit("`Processing...`")
+    mone = await edit_or_reply("`Processing...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -47,7 +47,7 @@ async def _(event):
                 ),
             )
             directory_name = downloaded_file_name
-            await event.edit(
+            await edit_or_reply(
                 f"Downloaded to `{directory_name}`" "`\ncompressing file...`"
             )
         except Exception as e:  # pylint:disable=C0103,W0703
@@ -66,7 +66,7 @@ async def _(event):
             progress(d, t, mone, c_time, "[UPLOADING]")
         ),
     )
-    await event.edit("`Done!!`")
+    await edit_or_reply("`Done!!`")
     await asyncio.sleep(7)
     await event.delete()
 

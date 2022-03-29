@@ -15,7 +15,7 @@ async def _(event):
         await event.client.send_file(event.chat_id, response["url"])
         await event.delete()
     except Exception:
-        await event.edit("**Tidak bisa menemukan video asupan.**")
+        await edit_or_reply("**Tidak bisa menemukan video asupan.**")
 
 
 @geez_cmd(pattern="wibu$")
@@ -25,7 +25,7 @@ async def _(event):
         await event.client.send_file(event.chat_id, response["url"])
         await event.delete()
     except Exception:
-        await event.edit("**Tidak bisa menemukan video wibu.**")
+        await edit_or_reply("**Tidak bisa menemukan video wibu.**")
 
 
 @geez_cmd(pattern="chika$")
@@ -35,7 +35,7 @@ async def _(event):
         await event.client.send_file(event.chat_id, response["url"])
         await event.delete()
     except Exception:
-        await event.edit("**Tidak bisa menemukan video chikakiku.**")
+        await edit_or_reply("**Tidak bisa menemukan video chikakiku.**")
 
 
 CMD_HELP.update(

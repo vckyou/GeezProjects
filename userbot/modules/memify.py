@@ -19,13 +19,13 @@ from userbot.utils import runcmd, take_screen_shot
 async def memify(event):
     reply_msg = await event.get_reply_message()
     input_str = event.pattern_match.group(1)
-    await event.edit("**Sedang Memperoses...**")
+    await edit_or_reply("**Sedang Memperoses...**")
 
     if not reply_msg:
-        return await event.edit("**Balas ke pesan yang berisi media!**")
+        return await edit_or_reply("**Balas ke pesan yang berisi media!**")
 
     if not reply_msg.media:
-        return await event.edit("**Balas ke image/sticker/gif/video!**")
+        return await edit_or_reply("**Balas ke image/sticker/gif/video!**")
 
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -34,29 +34,29 @@ async def memify(event):
     input_file = os.path.join(TEMP_DOWNLOAD_DIRECTORY, os.path.basename(input_file))
 
     if input_file.endswith(".tgs"):
-        await event.edit("**Mengekstrak Frame pertama...**")
+        await edit_or_reply("**Mengekstrak Frame pertama...**")
         converted_file = os.path.join(TEMP_DOWNLOAD_DIRECTORY, "meme.webp")
         cmd = f"lottie_convert.py --frame 0 {input_file} {converted_file}"
         await runcmd(cmd)
         os.remove(input_file)
         if not os.path.lexists(converted_file):
-            return await event.edit("**Tidak dapat menguraikan stiker animasi ini.**")
+            return await edit_or_reply("**Tidak dapat menguraikan stiker animasi ini.**")
         input_file = converted_file
 
     elif input_file.endswith(".mp4"):
-        await event.edit("**Mengekstrak Frame pertama...**")
+        await edit_or_reply("**Mengekstrak Frame pertama...**")
         converted_file = os.path.join(TEMP_DOWNLOAD_DIRECTORY, "meme.png")
         await take_screen_shot(input_file, 0, converted_file)
         os.remove(input_file)
         if not os.path.lexists(converted_file):
-            return await event.edit("**Tidak Dapat Mengurai Video ini.**")
+            return await edit_or_reply("**Tidak Dapat Mengurai Video ini.**")
         input_file = converted_file
 
-    await event.edit("**Menambahkan Teks...**")
+    await edit_or_reply("**Menambahkan Teks...**")
     try:
         final_image = await add_text_img(input_file, input_str)
     except Exception as e:
-        return await event.edit(f"**Terjadi kesalahan:**\n`{e}`")
+        return await edit_or_reply(f"**Terjadi kesalahan:**\n`{e}`")
     await event.client.send_file(
         entity=event.chat_id, file=final_image, reply_to=reply_msg
     )

@@ -156,7 +156,7 @@ async def get_video_thumb(file, output):
 async def upload(event):
     if event.fwd_from:
         return
-    await event.edit("`Processing...`")
+    await edit_or_reply("`Processing...`")
     input_str = event.pattern_match.group(1)
     if os.path.exists(input_str):
         if os.path.isfile(input_str):
@@ -218,7 +218,7 @@ async def upload(event):
             )
             if thumb is not None:
                 os.remove(thumb)
-            await event.edit(f"Uploaded successfully in `{up_time}` seconds.")
+            await edit_or_reply(f"Uploaded successfully in `{up_time}` seconds.")
         elif os.path.isdir(input_str):
             start_time = datetime.now()
             lst_files = []
@@ -226,8 +226,8 @@ async def upload(event):
                 for file in files:
                     lst_files.append(os.path.join(root, file))
             if not lst_files:
-                return await event.edit(f"`{input_str}` is empty.")
-            await event.edit(f"Found `{len(lst_files)}` files. Now uploading...")
+                return await edit_or_reply(f"`{input_str}` is empty.")
+            await edit_or_reply(f"Found `{len(lst_files)}` files. Now uploading...")
             for files in os_sorted(lst_files):
                 file_name = os.path.basename(files)
                 thumb = None
@@ -294,7 +294,7 @@ async def upload(event):
                 f"in `{up_time}` seconds."
             )
     else:
-        await event.edit("`404: File/Folder Not Found`")
+        await edit_or_reply("`404: File/Folder Not Found`")
 
 
 CMD_HELP.update(

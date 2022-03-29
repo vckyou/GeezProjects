@@ -53,7 +53,7 @@ async def mine(event):
         for channel_obj in result.chats
     )
 
-    await event.edit(output_str)
+    await edit_or_reply(output_str)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"name"))
@@ -128,7 +128,7 @@ async def count(event):
     bc = 0
     b = 0
     result = ""
-    await event.edit("`Sedang Dalam Proses....`")
+    await edit_or_reply("`Sedang Dalam Proses....`")
     dialogs = await bot.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
@@ -153,7 +153,7 @@ async def count(event):
     result += f"`Channel:`\t**{bc}**\n"
     result += f"`Bot:`\t**{b}**"
 
-    await event.edit(result)
+    await edit_or_reply(result)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"delpfp"))
@@ -185,7 +185,7 @@ async def remove_profilepic(delpfp):
 @geez_cmd(geez_cmd(pattern=r"info(?: |$)(.*)", outgoing=True))
 async def who(event):
 
-    await event.edit("`Mengambil Informasi Data User ini...`")
+    await edit_or_reply("`Mengambil Informasi Data User ini...`")
 
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -195,7 +195,7 @@ async def who(event):
     try:
         photo, caption = await fetch_info(replied_user, event)
     except AttributeError:
-        event.edit("`Saya Tidak Mendapatkan Informasi Pengguna.`")
+        edit_or_reply("`Saya Tidak Mendapatkan Informasi Pengguna.`")
         return
 
     message_id_to_reply = event.message.reply_to_msg_id
@@ -219,7 +219,7 @@ async def who(event):
         await event.delete()
 
     except TypeError:
-        await event.edit(caption, parse_mode="html")
+        await edit_or_reply(caption, parse_mode="html")
 
 
 async def get_user(event):
@@ -248,7 +248,7 @@ async def get_user(event):
             user_object = await event.client.get_entity(user)
             replied_user = await event.client(GetFullUserRequest(user_object.id))
         except (TypeError, ValueError) as err:
-            await event.edit(str(err))
+            await edit_or_reply(str(err))
             return None
 
     return replied_user

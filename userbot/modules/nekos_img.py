@@ -80,10 +80,10 @@ arguments = [
 async def nekos_img(event):
     args = event.pattern_match.group(1)
     if not args or args not in arguments:
-        return await event.edit(
+        return await edit_or_reply(
             "ketik `.help nekos` untuk melihat argumen yang tersedia."
         )
-    await event.edit("`Fetching from nekos...`")
+    await edit_or_reply("`Fetching from nekos...`")
     pic = nekos.img(args)
     await event.client.send_file(
         event.chat_id,

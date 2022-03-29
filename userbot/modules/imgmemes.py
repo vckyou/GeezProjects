@@ -187,9 +187,9 @@ async def trump(event):
         if event.is_reply and not reply_to_id.media:
             text = reply_to_id.message
         else:
-            await event.edit("`Send you text to trump so he can tweet.`")
+            await edit_or_reply("`Send you text to trump so he can tweet.`")
             return
-    await event.edit("`Requesting trump to tweet...`")
+    await edit_or_reply("`Requesting trump to tweet...`")
     text = deEmojify(text)
     img = await trumptweet(text)
     await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
@@ -207,9 +207,9 @@ async def nekobot(event):
         if event.is_reply and not reply_to_id.media:
             text = reply_to_id.message
         else:
-            await event.edit("Send you text to modi so he can tweet.")
+            await edit_or_reply("Send you text to modi so he can tweet.")
             return
-    await event.edit("Requesting modi to tweet...")
+    await edit_or_reply("Requesting modi to tweet...")
     text = deEmojify(text)
     file = await moditweet(text)
     await event.client.send_file(event.chat_id, file, reply_to=reply_to_id)
@@ -228,9 +228,9 @@ async def cmm(event):
         if event.is_reply and not reply_to_id.media:
             text = reply_to_id.message
         else:
-            await event.edit("`Give text for to write on banner!`")
+            await edit_or_reply("`Give text for to write on banner!`")
             return
-    await event.edit("`Your banner is under creation wait a sec...`")
+    await edit_or_reply("`Your banner is under creation wait a sec...`")
     text = deEmojify(text)
     img = await changemymind(text)
     await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
@@ -249,9 +249,9 @@ async def kanna(event):
         if event.is_reply and not reply_to_id.media:
             text = reply_to_id.message
         else:
-            await event.edit("`What should kanna write give text!`")
+            await edit_or_reply("`What should kanna write give text!`")
             return
-    await event.edit("`Kanna is writing your text...`")
+    await edit_or_reply("`Kanna is writing your text...`")
     text = deEmojify(text)
     img = await kannagen(text)
     await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
@@ -271,16 +271,16 @@ async def tweet(event):
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await event.edit("`What should i tweet? Give your username and tweet!`")
+                await edit_or_reply("`What should i tweet? Give your username and tweet!`")
                 return
         else:
-            await event.edit("What should i tweet? Give your username and tweet!`")
+            await edit_or_reply("What should i tweet? Give your username and tweet!`")
             return
     if "." in text:
         username, text = text.split(".", 1)
     else:
-        await event.edit("`What should i tweet? Give your username and tweet!`")
-    await event.edit(f"`Requesting {username} to tweet...`")
+        await edit_or_reply("`What should i tweet? Give your username and tweet!`")
+    await edit_or_reply(f"`Requesting {username} to tweet...`")
     text = deEmojify(text)
     img = await tweets(text, username)
     await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
@@ -294,12 +294,12 @@ async def nekobot(event):
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if not replied:
-        await event.edit("reply to a supported media file")
+        await edit_or_reply("reply to a supported media file")
         return
     if replied.media:
-        await event.edit("passing to telegraph...")
+        await edit_or_reply("passing to telegraph...")
     else:
-        await event.edit("reply to a supported media file")
+        await edit_or_reply("reply to a supported media file")
         return
     download_location = await bot.download_media(replied, TEMP_DOWNLOAD_DIRECTORY)
     if download_location.endswith((".webp")):
@@ -307,21 +307,21 @@ async def nekobot(event):
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await event.edit(
+            await edit_or_reply(
                 "the replied file size is not supported it must me below 5 mb"
             )
             os.remove(download_location)
             return
-        await event.edit("generating image..")
+        await edit_or_reply("generating image..")
     else:
-        await event.edit("the replied file is not supported")
+        await edit_or_reply("the replied file is not supported")
         os.remove(download_location)
         return
     try:
         response = upload_file(download_location)
         os.remove(download_location)
     except exceptions.TelegraphException as exc:
-        await event.edit("ERROR: " + str(exc))
+        await edit_or_reply("ERROR: " + str(exc))
         os.remove(download_location)
         return
     file = f"https://telegra.ph{response[0]}"
@@ -336,12 +336,12 @@ async def nekobot(event):
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if not replied:
-        await event.edit("reply to a supported media file")
+        await edit_or_reply("reply to a supported media file")
         return
     if replied.media:
-        await event.edit("passing to telegraph...")
+        await edit_or_reply("passing to telegraph...")
     else:
-        await event.edit("reply to a supported media file")
+        await edit_or_reply("reply to a supported media file")
         return
     download_location = await bot.download_media(replied, TEMP_DOWNLOAD_DIRECTORY)
     if download_location.endswith((".webp")):
@@ -349,21 +349,21 @@ async def nekobot(event):
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await event.edit(
+            await edit_or_reply(
                 "the replied file size is not supported it must me below 5 mb"
             )
             os.remove(download_location)
             return
-        await event.edit("generating image..")
+        await edit_or_reply("generating image..")
     else:
-        await event.edit("the replied file is not supported")
+        await edit_or_reply("the replied file is not supported")
         os.remove(download_location)
         return
     try:
         response = upload_file(download_location)
         os.remove(download_location)
     except exceptions.TelegraphException as exc:
-        await event.edit("ERROR: " + str(exc))
+        await edit_or_reply("ERROR: " + str(exc))
         os.remove(download_location)
         return
     file = f"https://telegra.ph{response[0]}"
@@ -429,15 +429,15 @@ async def FakeGoogleSearch(event):
     """Get a user-customised google search meme!"""
     input_str = event.pattern_match.group(1)
     if input_str is None:
-        await event.edit("No input found!", del_in=5)
+        await edit_or_reply("No input found!", del_in=5)
         return
     if ";" in input_str:
         search, result = input_str.split(";", 1)
     else:
-        await event.edit("Invalid Input! Check help for more info!", del_in=5)
+        await edit_or_reply("Invalid Input! Check help for more info!", del_in=5)
         return
 
-    await event.edit("Connecting to `https://www.google.com/` ...")
+    await edit_or_reply("Connecting to `https://www.google.com/` ...")
     await asyncio.sleep(2)
     img = "https://i.imgur.com/wNFr5X2.jpg"
     r = download(img)
@@ -462,7 +462,7 @@ async def FakeGoogleSearch(event):
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"ph(?: |$)(.*)"))
 async def phcomment(event):
     try:
-        await event.edit("`Processing..`")
+        await edit_or_reply("`Processing..`")
         text = event.pattern_match.group(1)
         reply = await event.get_reply_message()
         if reply:
@@ -479,7 +479,7 @@ async def phcomment(event):
             else:
                 name = user.first_name
         else:
-            return await event.edit("`Give text..`")
+            return await edit_or_reply("`Give text..`")
         try:
             photo = await event.client.download_profile_photo(
                 user.id,
@@ -491,7 +491,7 @@ async def phcomment(event):
             uplded = "https://telegra.ph/file/7d110cd944d54f72bcc84.jpg"
     except BaseException as e:
         await purge()
-        return await event.edit(f"`Error: {e}`")
+        return await edit_or_reply(f"`Error: {e}`")
     img = await phss(uplded, text, name)
     try:
         await event.client.send_file(
@@ -501,7 +501,7 @@ async def phcomment(event):
         )
     except BaseException:
         await purge()
-        return await event.edit("`Reply message has no text!`")
+        return await edit_or_reply("`Reply message has no text!`")
     await event.delete()
     await purge()
 

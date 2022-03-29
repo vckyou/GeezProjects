@@ -41,7 +41,7 @@ async def _(event):
                 url = await conv.get_response()
                 sponser = await conv.get_response()
                 await event.client.send_read_acknowledge(conv.chat_id)
-                await event.edit(response.text)
+                await edit_or_reply(response.text)
             except YouBlockedUserError:
                 await event.client(UnblockRequest(chat))
                 return await xx.edit("**Silahkan Unblock @ShortUrlBot dan coba lagi**")

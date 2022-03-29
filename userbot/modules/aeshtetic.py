@@ -30,7 +30,7 @@ async def _(event):
         return
     text = event.pattern_match.group(1)
     text = "".join(aesthetify(text))
-    await event.edit(text=text, parse_mode=None, link_preview=False)
+    await edit_or_reply(text=text, parse_mode=None, link_preview=False)
     raise events.StopPropagation
 
 

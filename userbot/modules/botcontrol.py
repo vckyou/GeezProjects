@@ -56,7 +56,7 @@ async def setit(event, name, value):
     try:
         heroku_var[name] = value
     except BaseException:
-        return await event.edit("**Maaf Gagal Menyimpan Karena ERROR**")
+        return await edit_or_reply("**Maaf Gagal Menyimpan Karena ERROR**")
 
 
 def get_back_button(name):
@@ -171,7 +171,7 @@ async def botsettings(event):
 
 @callback(data=re.compile(b"apiset"))
 async def apiset(event):
-    await event.edit(
+    await edit_or_reply(
         "**Silahkan Pilih VAR yang ingin anda Setting**",
         buttons=[
             [
@@ -193,7 +193,7 @@ async def apiset(event):
 
 @callback(data=re.compile(b"alivemenu"))
 async def alivemenu(event):
-    await event.edit(
+    await edit_or_reply(
         "**Silahkan Pilih VAR yang ingin anda Setting**",
         buttons=[
             [
@@ -215,7 +215,7 @@ async def alivemenu(event):
 
 @callback(data=re.compile(b"inlinemenu"))
 async def inlinemenu(event):
-    await event.edit(
+    await edit_or_reply(
         "**Silahkan Pilih VAR yang ingin anda Setting**",
         buttons=[
             [
@@ -229,7 +229,7 @@ async def inlinemenu(event):
 
 @callback(data=re.compile(b"hndlrmenu"))
 async def hndlrmenu(event):
-    await event.edit(
+    await edit_or_reply(
         "**Silahkan Pilih VAR yang ingin anda Setting**",
         buttons=[
             [

@@ -7,11 +7,11 @@ from userbot.events import geez_cmd
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"sadboy(?: |$)(.*)"))
 async def _(event):
-    await event.edit("`Pertama-tama kamu cantik`")
+    await edit_or_reply("`Pertama-tama kamu cantik`")
     sleep(2)
-    await event.edit("`Kedua kamu manis`")
+    await edit_or_reply("`Kedua kamu manis`")
     sleep(1)
-    await event.edit("`Dan yang terakhir adalah kamu bukan jodohku`")
+    await edit_or_reply("`Dan yang terakhir adalah kamu bukan jodohku`")
 
 
 # Create by myself @localheart
@@ -19,7 +19,7 @@ async def _(event):
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"punten(?: |$)(.*)"))
 async def _(event):
-    await event.edit(
+    await edit_or_reply(
         "`\n┻┳|―-∩`"
         "`\n┳┻|     ヽ`"
         "`\n┻┳|    ● |`"
@@ -33,7 +33,7 @@ async def _(event):
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"pantau(?: |$)(.*)"))
 async def _(event):
-    await event.edit(
+    await edit_or_reply(
         "`\n┻┳|―-∩`"
         "`\n┳┻|     ヽ`"
         "`\n┻┳|    ● |`"

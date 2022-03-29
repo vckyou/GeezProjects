@@ -97,11 +97,11 @@ async def welcome_to_chat(event):
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"setwelcome(?: |$)(.*)"))
 async def save_welcome(event):
     if event.chat_id in BLACKLIST_CHAT:
-        return await event.edit("**Perintah ini Dilarang digunakan di Group ini**")
+        return await edit_or_reply("**Perintah ini Dilarang digunakan di Group ini**")
     try:
         from userbot.modules.sql_helper.welcome_sql import add_welcome_setting
     except AttributeError:
-        return await event.edit("**Berjalan Pada Mode Non-SQL!**")
+        return await edit_or_reply("**Berjalan Pada Mode Non-SQL!**")
     msg = await event.get_reply_message()
     string = event.pattern_match.group(1)
     msg_id = None
@@ -118,7 +118,7 @@ async def save_welcome(event):
             )
             msg_id = msg_o.id
         else:
-            return await event.edit(
+            return await edit_or_reply(
                 "**Untuk membuat media sebagai pesan Welcome** `BOTLOG_CHATID` **Harus disetel.**"
             )
     elif event.reply_to_msg_id and not string:
@@ -126,9 +126,9 @@ async def save_welcome(event):
         string = rep_msg.text
     success = "**Berhasil Menyimpan Pesan Welcome {} **"
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
-        await event.edit(success.format("Disini"))
+        await edit_or_reply(success.format("Disini"))
     else:
-        await event.edit(success.format("Disini"))
+        await edit_or_reply(success.format("Disini"))
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"checkwelcome$"))
@@ -136,18 +136,18 @@ async def show_welcome(event):
     try:
         from userbot.modules.sql_helper.welcome_sql import get_current_welcome_settings
     except AttributeError:
-        return await event.edit("`Running on Non-SQL mode!`")
+        return await edit_or_reply("`Running on Non-SQL mode!`")
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        return await event.edit("**Tidak Ada Pesan Welcome Yang Anda Simpan**")
+        return await edit_or_reply("**Tidak Ada Pesan Welcome Yang Anda Simpan**")
     if cws.f_mesg_id:
         msg_o = await event.client.get_messages(
             entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id)
         )
-        await event.edit("**Anda Telah Membuat Pesan Welcome Disini**")
+        await edit_or_reply("**Anda Telah Membuat Pesan Welcome Disini**")
         await event.reply(msg_o.message, file=msg_o.media)
     elif cws.reply:
-        await event.edit("**Anda Telah Membuat Pesan Welcome Disini**")
+        await edit_or_reply("**Anda Telah Membuat Pesan Welcome Disini**")
         await event.reply(cws.reply)
 
 
@@ -156,11 +156,11 @@ async def del_welcome(event):
     try:
         from userbot.modules.sql_helper.welcome_sql import rm_welcome_setting
     except AttributeError:
-        return await event.edit("`Running on Non-SQL mode!`")
+        return await edit_or_reply("`Running on Non-SQL mode!`")
     if rm_welcome_setting(event.chat_id) is True:
-        await event.edit("**Berhasil Menghapus Pesan Welcome Disini**")
+        await edit_or_reply("**Berhasil Menghapus Pesan Welcome Disini**")
     else:
-        await event.edit("**Tidak Ada Pesan Welcome Yang Anda Simpan**")
+        await edit_or_reply("**Tidak Ada Pesan Welcome Yang Anda Simpan**")
 
 
 CMD_HELP.update(

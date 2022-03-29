@@ -26,7 +26,7 @@ async def _(event):
 
     if input_str == "eye":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "👁👁\n  👄  =====> Hey, How are you?",
@@ -49,7 +49,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 103])
+            await edit_or_reply(animation_chars[i % 103])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"earth(?: |$)(.*)"))
@@ -59,7 +59,7 @@ async def _(event):
     deq = deque(list("🌏🌍🌎🌎🌍🌏🌍🌎"))
     for _ in range(48):
         await asyncio.sleep(0.1)
-        await event.edit("".join(deq))
+        await edit_or_reply("".join(deq))
         deq.rotate(1)
 
 
@@ -68,25 +68,25 @@ async def _(event):
     if event.fwd_from:
         return
 
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await edit_or_reply("💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
     await asyncio.sleep(1)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
     await asyncio.sleep(0.5)
-    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
+    await edit_or_reply("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
     await asyncio.sleep(0.5)
-    await event.edit("RIP PLOX...")
+    await edit_or_reply("RIP PLOX...")
     await asyncio.sleep(2)
     await event.delete()
 
@@ -105,7 +105,7 @@ async def _(event):
 
     if input_str == "gift":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://github.com/sahyam2019/OpenUserBot)⬜",
@@ -135,7 +135,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 17])
+            await edit_or_reply(animation_chars[i % 17])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -149,7 +149,7 @@ async def _(event):
 
     if input_str == "police":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
@@ -174,7 +174,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 12])
+            await edit_or_reply(animation_chars[i % 12])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -188,7 +188,7 @@ async def _(event):
 
     if input_str == "kill":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "Ｆｉｉｉｉｉｒｅ",
@@ -209,7 +209,7 @@ async def _(event):
 
         for i in animation_ttl:
 
-            await event.edit(animation_chars[i % 103])
+            await edit_or_reply(animation_chars[i % 103])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -223,7 +223,7 @@ async def _(event):
 
     if input_str == "Macos":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Hackintosh...`",
@@ -247,7 +247,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -261,7 +261,7 @@ async def _(event):
 
     if input_str == "Windows":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Windows 10...`",
@@ -285,7 +285,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -299,7 +299,7 @@ async def _(event):
 
     if input_str == "Linux":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Linux...`",
@@ -323,7 +323,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -337,7 +337,7 @@ async def _(event):
 
     if input_str == "Stock":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Symbian OS...`",
@@ -361,7 +361,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -375,7 +375,7 @@ async def _(event):
 
     if input_str == "os":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Scanning OS...`",
@@ -395,7 +395,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 7])
+            await edit_or_reply(animation_chars[i % 7])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -409,7 +409,7 @@ async def _(event):
 
     if input_str == "isro":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛",
@@ -446,27 +446,27 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 24])
+            await edit_or_reply(animation_chars[i % 24])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"gangstar(?: |$)(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-        await event.edit("EVERyBOdy")
+        await edit_or_reply("EVERyBOdy")
         await asyncio.sleep(0.3)
-        await event.edit("wAs")
+        await edit_or_reply("wAs")
         await asyncio.sleep(0.2)
-        await event.edit("GanGeSTar")
+        await edit_or_reply("GanGeSTar")
         await asyncio.sleep(0.5)
-        await event.edit("UNtIL ")
+        await edit_or_reply("UNtIL ")
         await asyncio.sleep(0.2)
-        await event.edit("I")
+        await edit_or_reply("I")
         await asyncio.sleep(0.3)
-        await event.edit("ArRivEd")
+        await edit_or_reply("ArRivEd")
         await asyncio.sleep(0.3)
-        await event.edit("😎😎😎")
+        await edit_or_reply("😎😎😎")
         await asyncio.sleep(0.3)
-        await event.edit("EVERyBOdy wAs GanGeSTar UNtIL I ArRivEd 😎😎😎")
+        await edit_or_reply("EVERyBOdy wAs GanGeSTar UNtIL I ArRivEd 😎😎😎")
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -480,7 +480,7 @@ async def _(event):
 
     if input_str == "hack":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Hacked Private Server...`",
@@ -504,7 +504,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -518,7 +518,7 @@ async def _(event):
 
     if input_str == "hypno":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
@@ -546,7 +546,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 15])
+            await edit_or_reply(animation_chars[i % 15])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -560,7 +560,7 @@ async def _(event):
 
     if input_str == "whatsapp":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "Looking for WhatsApp databases in targeted person...",
@@ -588,7 +588,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 15])
+            await edit_or_reply(animation_chars[i % 15])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -597,7 +597,7 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if input_str == "solar":
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
         animation_chars = [
             "`◼️◼️◼️◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️🌎◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️◼️◼️◼️`",
             "`◼️◼️◼️◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️◼️◼️◼️`",
@@ -749,7 +749,7 @@ async def _(event):
         animation_ttl = range(549755813888)
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-            await event.edit(animation_chars[i % 549755813888])
+            await edit_or_reply(animation_chars[i % 549755813888])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -763,7 +763,7 @@ async def _(event):
 
     if input_str == "quickheal":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Downloading File..`",
@@ -787,7 +787,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -801,7 +801,7 @@ async def _(event):
 
     if input_str == "sqh":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Downloading File..`",
@@ -825,7 +825,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -839,7 +839,7 @@ async def _(event):
 
     if input_str == "vquickheal":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Downloading File..`",
@@ -863,7 +863,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"plane(?: |$)(.*)"))
@@ -871,20 +871,20 @@ async def _(event):
     if event.fwd_from:
         return
 
-    await event.edit("✈-------------")
-    await event.edit("-✈------------")
-    await event.edit("--✈-----------")
-    await event.edit("---✈----------")
-    await event.edit("----✈---------")
-    await event.edit("-----✈--------")
-    await event.edit("------✈-------")
-    await event.edit("-------✈------")
-    await event.edit("--------✈-----")
-    await event.edit("---------✈----")
-    await event.edit("----------✈---")
-    await event.edit("-----------✈--")
-    await event.edit("------------✈-")
-    await event.edit("-------------✈")
+    await edit_or_reply("✈-------------")
+    await edit_or_reply("-✈------------")
+    await edit_or_reply("--✈-----------")
+    await edit_or_reply("---✈----------")
+    await edit_or_reply("----✈---------")
+    await edit_or_reply("-----✈--------")
+    await edit_or_reply("------✈-------")
+    await edit_or_reply("-------✈------")
+    await edit_or_reply("--------✈-----")
+    await edit_or_reply("---------✈----")
+    await edit_or_reply("----------✈---")
+    await edit_or_reply("-----------✈--")
+    await edit_or_reply("------------✈-")
+    await edit_or_reply("-------------✈")
     await asyncio.sleep(3)
     await event.delete()
 
@@ -900,7 +900,7 @@ async def _(event):
 
     if input_str == "jio":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Jio Network...`",
@@ -932,7 +932,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 19])
+            await edit_or_reply(animation_chars[i % 19])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"dump(?: |$)(.*)"))
@@ -982,7 +982,7 @@ async def _(event):
 
     if input_str == "fadmin":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "**Promoting User As Admin...**",
@@ -1015,7 +1015,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 20])
+            await edit_or_reply(animation_chars[i % 20])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1029,7 +1029,7 @@ async def _(event):
 
     if input_str == "fleave":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬛⬛⬛\n⬛⬛⬛\n⬛⬛⬛",
@@ -1057,7 +1057,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 17])
+            await edit_or_reply(animation_chars[i % 17])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1071,7 +1071,7 @@ async def _(event):
 
     if input_str == "snake":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️",
@@ -1111,7 +1111,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 27])
+            await edit_or_reply(animation_chars[i % 27])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1120,7 +1120,7 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if input_str == "think":
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
         animation_chars = [
             "THINKING",
             "THI&K#N₹",
@@ -1165,7 +1165,7 @@ async def _(event):
         for i in animation_ttl:
 
             await asyncio.sleep(animation_interval)
-            await event.edit(animation_chars[i % 72])
+            await edit_or_reply(animation_chars[i % 72])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1174,7 +1174,7 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if input_str == "wtf":
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
         animation_chars = [
             "What",
             "What The",
@@ -1188,7 +1188,7 @@ async def _(event):
         for i in animation_ttl:
 
             await asyncio.sleep(animation_interval)
-            await event.edit(animation_chars[i % 5])
+            await edit_or_reply(animation_chars[i % 5])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1202,7 +1202,7 @@ async def _(event):
 
     if input_str == "music":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬤⬤⬤ 81% ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`✖️`\n\n⠀⠀⠀⠀⠀[cee jay Music Player](tg://user?id=689811472)\n\n⠀⠀⠀⠀**Now Playing:Kamasutra BGM**\n\n**00:00** ▱▱▱▱▱▱▱▱▱▱ **00:10**\n\n⠀⠀⠀⠀⠀`🔂` `⏮️` `⏪️` `▶️` `⏩️` `⏭️`\n\n**⠀Next Song:** __I Am Sexy And I Know It.__\n\n⠀⠀⠀⠀**⠀Device: Nokia 1100**",
@@ -1226,7 +1226,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1240,7 +1240,7 @@ async def _(event):
 
     if input_str == "call":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting To Telegram Headquarters...`",
@@ -1271,7 +1271,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 18])
+            await edit_or_reply(animation_chars[i % 18])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1285,7 +1285,7 @@ async def _(event):
 
     if input_str == "human":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n🔲🔲🔲🔲🔲🔲🔲",
@@ -1314,7 +1314,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 16])
+            await edit_or_reply(animation_chars[i % 16])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1328,7 +1328,7 @@ async def _(event):
 
     if input_str == "load":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = ["▮", "▯", "▬", "▭", "‎"]
 
@@ -1340,7 +1340,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 4])
+            await edit_or_reply(animation_chars[i % 4])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1354,7 +1354,7 @@ async def _(event):
 
     if input_str == "square":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = ["◧", "◨", "◧", "◨", "‎"]
 
@@ -1366,7 +1366,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 4])
+            await edit_or_reply(animation_chars[i % 4])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1380,7 +1380,7 @@ async def _(event):
 
     if input_str == "up":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = ["╹", "╻", "╹", "╻", "‎"]
 
@@ -1392,7 +1392,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 4])
+            await edit_or_reply(animation_chars[i % 4])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1406,7 +1406,7 @@ async def _(event):
 
     if input_str == "round":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = ["⚫", "⬤", "●", "∘", "‎"]
 
@@ -1418,7 +1418,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 4])
+            await edit_or_reply(animation_chars[i % 4])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1432,7 +1432,7 @@ async def _(event):
 
     if input_str == "heart":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = ["🖤", "❤️", "🖤", "❤️", "‎"]
 
@@ -1444,7 +1444,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 4])
+            await edit_or_reply(animation_chars[i % 4])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1458,7 +1458,7 @@ async def _(event):
 
     if input_str == "anim":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "😁",
@@ -1480,7 +1480,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1494,7 +1494,7 @@ async def _(event):
 
     if input_str == "fnl":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "😁🏿",
@@ -1513,7 +1513,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 6])
+            await edit_or_reply(animation_chars[i % 6])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1527,7 +1527,7 @@ async def _(event):
 
     if input_str == "monkey":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = ["🐵", "🙉", "🙈", "🙊", "🖕‎🐵🖕", "**OPPA MONEKEYY Style....**"]
 
@@ -1539,7 +1539,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 6])
+            await edit_or_reply(animation_chars[i % 6])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1553,7 +1553,7 @@ async def _(event):
 
     if input_str == "hand":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "👈",
@@ -1579,7 +1579,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 14])
+            await edit_or_reply(animation_chars[i % 14])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1593,7 +1593,7 @@ async def _(event):
 
     if input_str == "cnt":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "🔟",
@@ -1618,7 +1618,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 13])
+            await edit_or_reply(animation_chars[i % 13])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1632,7 +1632,7 @@ async def _(event):
 
     if input_str == "wupload":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "Uploading File From Telegram To Whatsapp...",
@@ -1660,7 +1660,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 15])
+            await edit_or_reply(animation_chars[i % 15])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -1674,7 +1674,7 @@ async def _(event):
 
     if input_str == "admeme":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "@aaaaaaaaaaaaadddddddddddddmmmmmmmmmmmmmiiiiiiiiiiiiinnnnnnnnnnnnn",
@@ -1696,7 +1696,7 @@ async def _(event):
 
         for i in animation_ttl:
 
-            await event.edit(animation_chars[i % 103])
+            await edit_or_reply(animation_chars[i % 103])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"kiss(?: |$)(.*)"))
@@ -1706,7 +1706,7 @@ async def _(event):
     deq = deque(list("😗😙😚😚😘"))
     for _ in range(48):
         await asyncio.sleep(0.1)
-        await event.edit("".join(deq))
+        await edit_or_reply("".join(deq))
         deq.rotate(1)
 
 

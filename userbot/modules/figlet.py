@@ -40,7 +40,7 @@ async def figlet(event):
     try:
         font = style_list[style]
     except KeyError:
-        return await event.edit(
+        return await edit_or_reply(
             "**Style yang dipilih tidak valid, ketik** `.help figlet` **bila butuh bantuan**"
         )
     result = pyfiglet.figlet_format(deEmojify(text), font=font)

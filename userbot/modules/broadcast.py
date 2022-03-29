@@ -18,23 +18,23 @@ async def catbroadcast_send(event):
         return
     catinput_str = event.pattern_match.group(1)
     if not catinput_str:
-        return await event.edit(
+        return await edit_or_reply(
             "**Ke kategori mana saya harus mengirim pesan ini?**", parse_mode=parse_pre
         )
     reply = await event.get_reply_message()
     if not reply:
-        return await event.edit(
+        return await edit_or_reply(
             "**apa yang harus saya kirim ke kategori ini?**", parse_mode=parse_pre
         )
     keyword = catinput_str.lower()
     no_of_chats = sql.num_broadcastlist_chat(keyword)
     if no_of_chats == 0:
-        return await event.edit(
+        return await edit_or_reply(
             f"**Tidak ada kategori dengan nama** `{keyword}` **Check** `.bclistall`",
             parse_mode=parse_pre,
         )
     chats = sql.get_chat_broadcastlist(keyword)
-    catevent = await event.edit(
+    catevent = await edit_or_reply(
         "**mengirim pesan ini ke semua grup dalam kategori**",
         parse_mode=parse_pre,
     )
@@ -64,23 +64,23 @@ async def catbroadcast_send(event):
         return
     catinput_str = event.pattern_match.group(1)
     if not catinput_str:
-        return await event.edit(
+        return await edit_or_reply(
             "**Ke kategori mana saya harus mengirim pesan ini?**", parse_mode=parse_pre
         )
     reply = await event.get_reply_message()
     if not reply:
-        return await event.edit(
+        return await edit_or_reply(
             "**apa yang harus saya kirim ke kategori ini?**", parse_mode=parse_pre
         )
     keyword = catinput_str.lower()
     no_of_chats = sql.num_broadcastlist_chat(keyword)
     if no_of_chats == 0:
-        return await event.edit(
+        return await edit_or_reply(
             f"**Tidak ada kategori dengan nama** `{keyword}` **Check** '.bclistall'",
             parse_mode=parse_pre,
         )
     chats = sql.get_chat_broadcastlist(keyword)
-    catevent = await event.edit(
+    catevent = await edit_or_reply(
         "**mengirim pesan ini ke semua grup dalam kategori**",
         parse_mode=parse_pre,
     )
@@ -110,18 +110,18 @@ async def catbroadcast_add(event):
         return
     catinput_str = event.pattern_match.group(1)
     if not catinput_str:
-        return await event.edit(
+        return await edit_or_reply(
             "Di kategori mana saya harus menambahkan obrolan ini?", parse_mode=parse_pre
         )
     keyword = catinput_str.lower()
     check = sql.is_in_broadcastlist(keyword, event.chat_id)
     if check:
-        return await event.edit(
+        return await edit_or_reply(
             f"Obrolan ini sudah ada dalam kategori ini {keyword}",
             parse_mode=parse_pre,
         )
     sql.add_to_broadcastlist(keyword, event.chat_id)
-    await event.edit(
+    await edit_or_reply(
         f"Obrolan ini Sekarang ditambahkan ke kategori {keyword}", parse_mode=parse_pre
     )
     chat = await event.get_chat()
@@ -146,17 +146,17 @@ async def catbroadcast_remove(event):
         return
     catinput_str = event.pattern_match.group(1)
     if not catinput_str:
-        return await event.edit(
+        return await edit_or_reply(
             "Dari kategori mana saya harus menghapus obrolan ini", parse_mode=parse_pre
         )
     keyword = catinput_str.lower()
     check = sql.is_in_broadcastlist(keyword, event.chat_id)
     if not check:
-        return await event.edit(
+        return await edit_or_reply(
             f"Obrolan ini tidak ada dalam kategori {keyword}", parse_mode=parse_pre
         )
     sql.rm_from_broadcastlist(keyword, event.chat_id)
-    await event.edit(
+    await edit_or_reply(
         f"Obrolan ini Sekarang dihapus dari kategori {keyword}",
         parse_mode=parse_pre,
     )
@@ -182,19 +182,19 @@ async def catbroadcast_list(event):
         return
     catinput_str = event.pattern_match.group(1)
     if not catinput_str:
-        return await event.edit(
+        return await edit_or_reply(
             "Obrolan kategori mana yang harus saya daftarkan?\nCheck `.bclistall`",
             parse_mode=parse_pre,
         )
     keyword = catinput_str.lower()
     no_of_chats = sql.num_broadcastlist_chat(keyword)
     if no_of_chats == 0:
-        return await event.edit(
+        return await edit_or_reply(
             f"Tidak ada kategori dengan nama {keyword}. Check `.bclistall`",
             parse_mode=parse_pre,
         )
     chats = sql.get_chat_broadcastlist(keyword)
-    catevent = await event.edit(
+    catevent = await edit_or_reply(
         f"Fetching info of the category {keyword}", parse_mode=parse_pre
     )
     resultlist = f"**kategori `{keyword}` memiliki `{no_of_chats}` obrolan dan ini tercantum di bawah ini :**\n\n"
@@ -221,7 +221,7 @@ async def catbroadcast_list(event):
     if event.fwd_from:
         return
     if sql.num_broadcastlist_chats() == 0:
-        return await event.edit(
+        return await edit_or_reply(
             "Anda belum membuat setidaknya satu kategori, periksa info untuk bantuan lebih lanjut",
             parse_mode=parse_pre,
         )
@@ -238,12 +238,12 @@ async def catbroadcast_remove(event):
         return
     catinput_str = event.pattern_match.group(1)
     if not catinput_str:
-        return await event.edit(
+        return await edit_or_reply(
             "Dari kategori mana saya harus menghapus obrolan ini", parse_mode=parse_pre
         )
     args = catinput_str.split(" ")
     if len(args) != 2:
-        return await event.edit(
+        return await edit_or_reply(
             "Gunakan sintaks yang tepat seperti yang ditunjukkan .frmfrom category_name groupid",
             parse_mode=parse_pre,
         )
@@ -255,7 +255,7 @@ async def catbroadcast_remove(event):
             groupid = int(args[1])
             keyword = args[0].lower()
         except ValueError:
-            return await event.edit(
+            return await edit_or_reply(
                 event,
                 "Gunakan sintaks yang tepat seperti yang ditunjukkan .frmfrom category_name groupid",
                 parse_mode=parse_pre,
@@ -263,12 +263,12 @@ async def catbroadcast_remove(event):
     keyword = keyword.lower()
     check = sql.is_in_broadcastlist(keyword, int(groupid))
     if not check:
-        return await event.edit(
+        return await edit_or_reply(
             f"Obrolan ini {groupid} tidak termasuk dalam kategori {keyword}",
             parse_mode=parse_pre,
         )
     sql.rm_from_broadcastlist(keyword, groupid)
-    await event.edit(
+    await edit_or_reply(
         event,
         f"Obrolan ini {groupid} sekarang dihapus dari kategori {keyword}",
         parse_mode=parse_pre,
@@ -296,18 +296,18 @@ async def catbroadcast_delete(event):
     catinput_str = event.pattern_match.group(1)
     check1 = sql.num_broadcastlist_chat(catinput_str)
     if check1 < 1:
-        return await event.edit(
+        return await edit_or_reply(
             f"Apakah Anda yakin ada kategori? {catinput_str}",
             parse_mode=parse_pre,
         )
     try:
         sql.del_keyword_broadcastlist(catinput_str)
-        await event.edit(
+        await edit_or_reply(
             f"Berhasil menghapus kategori {catinput_str}",
             parse_mode=parse_pre,
         )
     except Exception as e:
-        await event.edit(
+        await edit_or_reply(
             str(e),
             parse_mode=parse_pre,
         )

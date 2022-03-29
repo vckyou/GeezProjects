@@ -221,9 +221,9 @@ async def anilist(event):
                 event.chat_id, image, caption=msg, parse_mode="md", reply_to=reply_to_id
             )
         else:
-            await event.edit(msg)
+            await edit_or_reply(msg)
     else:
-        await event.edit("Sorry, No such results")
+        await edit_or_reply("Sorry, No such results")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"airing ?(.*)"))
@@ -240,7 +240,7 @@ async def anilist(event):
         ms_g += f"\n**Episode**: `{response['nextAiringEpisode']['episode']}`\n**Airing In**: `{airing_time_final}`"
     else:
         ms_g += f"\n**Episode**:{response['episodes']}\n**Status**: `N/A`"
-    await event.edit(ms_g)
+    await edit_or_reply(ms_g)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"animanga ?(.*)"))
@@ -299,15 +299,15 @@ async def anilist(event):
                 await event.delete()
             except BaseException:
                 ms_g += f" [〽️]({image})"
-                await event.edit(ms_g)
+                await edit_or_reply(ms_g)
         else:
-            await event.edit(ms_g)
+            await edit_or_reply(ms_g)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"anilist ?(.*)"))
 async def anilist(event):
     input_str = event.pattern_match.group(1)
-    event = await event.edit("Searching...")
+    event = await edit_or_reply("Searching...")
     result = await callAPI(input_str)
     msg = await formatJSON(result)
-    await event.edit(msg, link_preview=True)
+    await edit_or_reply(msg, link_preview=True)

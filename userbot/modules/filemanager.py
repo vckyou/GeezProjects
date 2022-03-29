@@ -30,7 +30,7 @@ async def lst(event):
     cat = event.pattern_match.group(1)
     path = cat or os.getcwd()
     if not exists(path):
-        await event.edit(
+        await edit_or_reply(
             f"Tidak ada direktori atau file dengan nama `{cat}` coba check lagi!"
         )
         return
@@ -120,7 +120,7 @@ async def lst(event):
             )
             await event.delete()
     else:
-        await event.edit(msg)
+        await edit_or_reply(msg)
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"rm(?: |$)(.*)"))
@@ -128,16 +128,16 @@ async def rmove(event):
     """Removing Directory/File"""
     cat = event.pattern_match.group(1)
     if not cat:
-        await event.edit("`Lokasi file tidak ada!`")
+        await edit_or_reply("`Lokasi file tidak ada!`")
         return
     if not exists(cat):
-        await event.edit("`Lokasi file tidak ada!`")
+        await edit_or_reply("`Lokasi file tidak ada!`")
         return
     if isfile(cat):
         os.remove(cat)
     else:
         rmtree(cat)
-    await event.edit(f"Dihapus `{cat}`")
+    await edit_or_reply(f"Dihapus `{cat}`")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"rn ([^|]+)\|([^|]+)"))
@@ -146,11 +146,11 @@ async def rname(event):
     cat = str(event.pattern_match.group(1)).strip()
     new_name = str(event.pattern_match.group(2)).strip()
     if not exists(cat):
-        await event.edit(f"file path : {cat} tidak ada!")
+        await edit_or_reply(f"file path : {cat} tidak ada!")
         return
     new_path = join(dirname(cat), new_name)
     shutil.move(cat, new_path)
-    await event.edit(f"Diganti nama dari `{cat}` ke `{new_path}`")
+    await edit_or_reply(f"Diganti nama dari `{cat}` ke `{new_path}`")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"zip (.*)"))
@@ -167,7 +167,7 @@ async def zip_file(event):
         path = path.strip()
         zip_name = zip_name.strip()
     if exists(path):
-        await event.edit("`Zipping...`")
+        await edit_or_reply("`Zipping...`")
         start_time = datetime.now()
         if isdir(path):
             dir_path = path.split("/")[-1]
@@ -185,7 +185,7 @@ async def zip_file(event):
                         arc_path = join(dir_path, relpath(files_path, path))
                         zip_obj.write(files_path, arc_path)
             end_time = (datetime.now() - start_time).seconds
-            await event.edit(
+            await edit_or_reply(
                 f"Zipped `{path}` ke `{zip_path}` dalam `{end_time}` detik."
             )
         elif isfile(path):
@@ -197,9 +197,9 @@ async def zip_file(event):
                     zip_path += ".zip"
             with ZipFile(zip_path, "w", ZIP_DEFLATED) as zip_obj:
                 zip_obj.write(path, file_name)
-            await event.edit(f"Zipped `{path}` ke `{zip_path}`")
+            await edit_or_reply(f"Zipped `{path}` ke `{zip_path}`")
     else:
-        await event.edit("`404: Not Found`")
+        await edit_or_reply("`404: Not Found`")
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"unzip (.*)"))
@@ -213,7 +213,7 @@ async def unzip_file(event):
     output_path = TEMP_DOWNLOAD_DIRECTORY + re.split("(.zip|.rar|.tar)", file_name)[0]
     if exists(input_str):
         start_time = datetime.now()
-        await event.edit("`Unzipping...`")
+        await edit_or_reply("`Unzipping...`")
         if is_zipfile(input_str):
             zip_type = ZipFile
         elif is_rarfile(input_str):
@@ -221,24 +221,24 @@ async def unzip_file(event):
         elif is_tarfile(input_str):
             zip_type = TarFile
         else:
-            return await event.edit(
+            return await edit_or_reply(
                 "`Jenis file tidak didukung!`\n`Hanya Bisa ZIP, RAR dan TAR`"
             )
         try:
             with zip_type(input_str, "r") as zip_obj:
                 zip_obj.extractall(output_path)
         except BadRarFile:
-            return await event.edit("**Error:** `File RAR Rusak`")
+            return await edit_or_reply("**Error:** `File RAR Rusak`")
         except BadZipFile:
-            return await event.edit("**Error:** `File ZIP Rusak`")
+            return await edit_or_reply("**Error:** `File ZIP Rusak`")
         except BaseException as err:
-            return await event.edit(f"**Error:** `{err}`")
+            return await edit_or_reply(f"**Error:** `{err}`")
         end_time = (datetime.now() - start_time).seconds
-        await event.edit(
+        await edit_or_reply(
             f"Unzipped `{input_str}` ke `{output_path}` dalam `{end_time}` detik."
         )
     else:
-        await event.edit("`404: Not Found`")
+        await edit_or_reply("`404: Not Found`")
 
 
 CMD_HELP.update(

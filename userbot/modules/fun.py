@@ -42,7 +42,7 @@ async def _(event):
     if event.fwd_from:
         return
     reply = await event.get_reply_message()
-    await event.edit("`Checking...`")
+    await edit_or_reply("`Checking...`")
     download = await bot.download_media(reply.media)
     img = cv2.VideoCapture(download)
     ret, frame = img.read()
@@ -50,12 +50,12 @@ async def _(event):
     danish = PIL.Image.open("danish.png")
     dark, python = danish.size
     cobra = f"""ffmpeg -f lavfi -i color=c=00ff00:s={dark}x{python}:d=10 -loop 1 -i danish.png -filter_complex "[1]rotate=angle=PI*t:fillcolor=none:ow='hypot(iw,ih)':oh=ow[fg];[0][fg]overlay=x=(W-w)/2:y=(H-h)/2:shortest=1:format=auto,format=yuv420p" -movflags +faststart danish.mp4 -y"""
-    await event.edit("```Processing ...```")
+    await edit_or_reply("```Processing ...```")
     process = await asyncio.create_subprocess_shell(
         cobra, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    await event.edit("```Uploading...```")
+    await edit_or_reply("```Uploading...```")
     c_time = time.time()
     await event.client.send_file(
         event.chat_id,

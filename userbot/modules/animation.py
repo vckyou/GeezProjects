@@ -17,7 +17,7 @@ async def _(event):
 
     if input_str == "bulan":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "🌗",
@@ -62,7 +62,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 32])
+            await edit_or_reply(animation_chars[i % 32])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"sayang$"))
@@ -440,7 +440,7 @@ async def _(event):
 
     if input_str == "cinta":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Connecting Ke Server Cinta`",
@@ -464,7 +464,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"gombal(?: |$)(.*)"))
@@ -789,7 +789,7 @@ async def _(event):
 
     if input_str == "ceritacinta":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`Cerita ❤️ Cinta` ",
@@ -816,7 +816,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 103])
+            await edit_or_reply(animation_chars[i % 103])
 
 
 @geez_cmd(geez_cmd(pattern=r"(.*)", outgoing=True))
@@ -830,7 +830,7 @@ async def _(event):
 
     if input_str == "canda":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "`⠀⠀⠀⣠⣶⡾⠏⠉⠙⠳⢦⡀⠀⠀⠀⢠⠞⠉⠙⠲⡀⠀\n ⠀⣴⠿⠏⠀⠀⠀⠀⠀   ⢳⡀⠀⡏⠀⠀⠀   ⠀⢷\n⢠⣟⣋⡀⢀⣀⣀⡀⠀⣀⡀⣧⠀⢸⠀⠀⠀  ⠀   ⡇\n⢸⣯⡭⠁⠸⣛⣟⠆⡴⣻⡲⣿  ⣸ Kamu    ⡇\n ⣟⣿⡭⠀⠀⠀⠀⠀⢱⠀⠀  ⣿  ⢹⠀        ⡇\n  ⠙⢿⣯⠄⠀⠀⠀__⠀⠀⡿ ⠀⡇⠀⠀⠀⠀    ⡼\n⠀⠀⠀⠹⣶⠆⠀⠀⠀⠀⠀⡴⠃⠀   ⠘⠤⣄⣠⠞⠀\n⠀⠀⠀⠀⢸⣷⡦⢤⡤⢤⣞⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⢀⣤⣴⣿⣏⠁⠀⠀⠸⣏⢯⣷⣖⣦⡀⠀⠀⠀⠀⠀⠀\n⢀⣾⣽⣿⣿⣿⣿⠛⢲⣶⣾⢉⡷⣿⣿⠵⣿⠀⠀⠀⠀⠀⠀\n⣼⣿⠍⠉⣿⡭⠉⠙⢺⣇⣼⡏⠀⠀ ⠀⣄⢸⠀⠀⠀⠀⠀⠀`",
@@ -849,7 +849,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 11])
+            await edit_or_reply(animation_chars[i % 11])
 
 
 @geez_cmd(geez_cmd(outgoing=True, pattern=r"santet(?: |$)(.*)"))
@@ -1185,7 +1185,7 @@ async def _(event):
 
     if input_str == "owner":
 
-        await event.edit(input_str)
+        await edit_or_reply(input_str)
 
         animation_chars = [
             "⬛⬛⬛⬛⬛⬛\n⬛⬜⬜⬜⬜⬛\n⬛⬜⬛⬛⬜⬛\n⬛⬜⬛⬛⬜⬛\n⬛⬜⬜⬜⬜⬛\n⬛⬜⬛⬜⬛⬛\n⬛⬜⬛⬛⬜⬛\n⬛⬛⬛⬛⬛⬛",
@@ -1204,7 +1204,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 6])
+            await edit_or_reply(animation_chars[i % 6])
 
 
 CMD_HELP.update(

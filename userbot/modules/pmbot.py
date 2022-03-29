@@ -295,7 +295,7 @@ async def setpmbot(event):
     try:
         import userbot.modules.sql_helper.globals as sql
     except AttributeError:
-        await event.edit("**Running on Non-SQL mode!**")
+        await edit_or_reply("**Running on Non-SQL mode!**")
         return
     xnxx = await edit_or_reply(event, "`Processing...`")
     conf = event.pattern_match.group(1)

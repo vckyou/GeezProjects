@@ -18,7 +18,7 @@ async def _(event):
         return
     if event.reply_to_msg_id:
         try:
-            await event.edit("`Installing Modules...`")
+            await edit_or_reply("`Installing Modules...`")
             downloaded_file_name = (
                 await event.client.download_media(  # pylint:disable=E0602
                     await event.get_reply_message(),
@@ -29,16 +29,16 @@ async def _(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit(
+                await edit_or_reply(
                     "**Plugin** `{}` **Berhasil di install**".format(
                         os.path.basename(downloaded_file_name)
                     )
                 )
             else:
                 os.remove(downloaded_file_name)
-                await event.edit("**Error!** Plugin ini sudah terinstall di userbot.")
+                await edit_or_reply("**Error!** Plugin ini sudah terinstall di userbot.")
         except Exception as e:
-            await event.edit(str(e))
+            await edit_or_reply(str(e))
             os.remove(downloaded_file_name)
 
 
@@ -71,9 +71,9 @@ async def uninstall(event):
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
-        await event.edit(f"**Berhasil Menghapus Modules** `{shortname}`")
+        await edit_or_reply(f"**Berhasil Menghapus Modules** `{shortname}`")
     except OSError as e:
-        await event.edit("**ERROR:** `%s` : %s" % (dir_path, e.strerror))
+        await edit_or_reply("**ERROR:** `%s` : %s" % (dir_path, e.strerror))
 
 
 CMD_HELP.update(

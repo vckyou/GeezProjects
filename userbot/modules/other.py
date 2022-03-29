@@ -138,7 +138,7 @@ async def _(event):
     k = await event.get_reply_message()
     if k:
         a = await event.client.get_messages(event.chat_id, 0, from_user=k.sender_id)
-        return await event.edit(
+        return await edit_or_reply(
             f"**Total ada** `{a.total}` **Chat Yang dikirim Oleh** {u} **di Grup Chat ini**"
         )
     u = event.pattern_match.group(1)
