@@ -10,7 +10,7 @@ import textwrap
 from PIL import Image, ImageDraw, ImageFont
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import geez_cmd
 from userbot.utils import runcmd, take_screen_shot
 
