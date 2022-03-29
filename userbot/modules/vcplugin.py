@@ -483,18 +483,19 @@ async def vc_volume(event):
 async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
     if len(event.text.split()) > 1:
-        chat_id = event.chat_id
-        chat = event.pattern_match.group(1)
+        chat = event.chat_id
+        chats = event.pattern_match.group(1)
         try:
             chat = await event.client(GetFullUserRequest(chat))
         except AlreadyJoinedError as e:
-            await call_py.leave_group_call(chat_id)
+            await call_py.leave_group_call(chat)
             clear_queue(chat_id)
             await asyncio.sleep(3)
             return await edit_delete(event, f"**ERROR:** `{e}`", 30)
         except (NodeJSNotInstalled, TooOldNodeJSVersion):
             return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
     else:
+        chat_id = event.chat_id
         from_user = vcmention(event.sender)
     if not call_py.is_connected:
         await call_py.start()
