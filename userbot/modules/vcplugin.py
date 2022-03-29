@@ -126,6 +126,27 @@ async def skip_current_song(chat_id: int):
     return [songname, link, type]
 
 
+@geez_cmd(pattern="joinvcs(?: |$)(.*)")
+async def joinvcs(event):
+    chat_id = event.chat_id
+    file = 'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
+    from_user = vcmention(event.sender)
+    if chat_id:
+        try:
+            await call_py.join_group_call(
+                      chat_id,
+                      InputStream(
+                          InputAudioStream(
+                              file,
+                          ),
+                      ),
+                      stream_type=StreamType().pulse_stream,
+            )
+            await edit_or_reply(event, f"**{from_user} Berhasil Naik Ke VC `{chat_id`)
+        except Exception as ep:       
+            await event.edit(f"`{ep}`")
+
+
 @geez_cmd(pattern="play(?:\s|$)([\s\S]*)")
 async def vc_play(event):
     title = event.pattern_match.group(1)
@@ -480,6 +501,7 @@ async def vc_volume(event):
     else:
         await edit_delete(event, "**Tidak Sedang Memutar Streamming**")
 
+
 # credits by @vckyaz < vicky \>
 # FROM GeezProjects < https://github.com/vckyou/GeezProjects \>
 # ambil boleh apus credits jangan ya ka:)
@@ -515,27 +537,6 @@ async def join_(event):
         stream_type=StreamType().pulse_stream,
     )
     await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
-
-
-@geez_cmd(pattern="joinvcs(?: |$)(.*)")
-async def joinvcs(event):
-    chat_id = event.chat_id
-    file = 'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
-    from_user = vcmention(event.sender)
-    if chat_id:
-        try:
-            await call_py.join_group_call(
-                      chat_id,
-                      InputStream(
-                          InputAudioStream(
-                              file,
-                          ),
-                      ),
-                      stream_type=StreamType().pulse_stream,
-            )
-            await edit_or_reply(event, f"**{from_user} Berhasil Naik Ke VC `{chat_id`)
-        except Exception as ep:       
-            await event.edit(f"`{ep}`")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
