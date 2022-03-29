@@ -491,15 +491,9 @@ async def join_(event):
         chat = event.chat_id
         chats = event.pattern_match.group(1)
         try:
-            chat = await event.client(GetFullUserRequest(chats))
-        except AlreadyJoinedError as e:
-            await call_py.leave_group_call(chat)
-            clear_queue(chat)
-            await asyncio.sleep(3)
-            return await edit_delete(event, f"**ERROR:** `{e}`", 30)
-        except (NodeJSNotInstalled, TooOldNodeJSVersion):
-            return await edit_or_reply(event, "NodeJs is not installed or installed version is too old.")
-    else:
+            chat = await event.client(GetFullUserRequest(chat))
+        except Exception as e:
+            await edit_delete(event, f"**ERROR:** `{e}`", 30)    else:
         chat_id = event.chat_id
         chats = event.pattern_match.group(1)
         from_user = vcmention(event.sender)
@@ -510,10 +504,14 @@ async def join_(event):
         AudioPiped(
             'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
         ),
-        chats,
         stream_type=StreamType().pulse_stream,
     )
-    await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
+    try:
+        await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
+    except AlreadyJoinedError
+        return await edit_delete(event, f"{from_user} Akun Sudah Berada Di VC Group")
+    except Exception as e:
+        return await edit_delete(event, f"**ERROR : **`{str(e)}`")
 
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
