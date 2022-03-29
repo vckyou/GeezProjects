@@ -27,7 +27,7 @@ from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
 
 from userbot.utils import humanbytes, progress, run_cmd
 from userbot.utils.FastTelethon import download_file, upload_file
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 
 @geez_cmd(pattern="download$")
 async def download(target_file):

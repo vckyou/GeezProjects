@@ -18,7 +18,7 @@ from userbot import CMD_HELP
 from userbot import OPEN_WEATHER_MAP_APPID as OWM_API
 from userbot import WEATHER_DEFCITY
 
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import geez_cmd
 # ===== CONSTANT =====
 DEFCITY = WEATHER_DEFCITY or None
 

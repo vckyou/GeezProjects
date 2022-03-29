@@ -14,7 +14,7 @@ from github import Github
 # from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
 # from userbot.events import humanbytes, progress, time_formatter
 from userbot import CMD_HELP, GIT_REPO_NAME, GITHUB_ACCESS_TOKEN, bot
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 
 GIT_TEMP_DIR = "./userbot/temp/"
 

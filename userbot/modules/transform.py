@@ -12,7 +12,7 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot
 from userbot.events import register
 from userbot.utils import bash
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 
 @geez_cmd(pattern=r"(mirror|flip|ghost|bw|poster)$")
 async def transform(event):

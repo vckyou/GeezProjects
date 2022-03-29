@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 from userbot.utils import runcmd, take_screen_shot
 
 

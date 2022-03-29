@@ -12,7 +12,7 @@ from wget import download
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 from userbot.utils import bash, deEmojify
 
 

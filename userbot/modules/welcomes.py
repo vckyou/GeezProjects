@@ -14,7 +14,7 @@ from userbot import BLACKLIST_CHAT, BOTLOG_CHATID, CLEAN_WELCOME
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, LOGS
 
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 
 @geez_cmd(ChatAction)
 async def welcome_to_chat(event):

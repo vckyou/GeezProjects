@@ -13,7 +13,7 @@ from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
 
 from userbot.utils import post_to_telegraph
-from userbot.utils import edit_delete, edit_or_reply, geez_cmd
+from userbot.utils import edit_or_reply, geez_cmd
 
 @geez_cmd(pattern="nhentai$")
 async def _(event):
