@@ -497,7 +497,7 @@ async def join_(event):
             await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         chat_id = event.chat_id
-        title = event.pattern_match.group(1)
+        event.pattern_match.group(1)
         chat = await event.get_chat()
         tittle = chat.title
         from_user = vcmention(event.sender)
