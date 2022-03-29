@@ -14,7 +14,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import geez_cmd
 
 

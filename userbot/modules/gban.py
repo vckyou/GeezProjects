@@ -3,7 +3,7 @@
 
 from telethon.events import ChatAction
 
-from userbot import DEVS, bot, owner
+from userbot import DEVS, owner
 from userbot.events import register
 from userbot.utils import geez_cmd, get_user_from_event
 

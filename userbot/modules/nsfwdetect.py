@@ -7,7 +7,7 @@ import os
 
 import requests
 
-from userbot import CMD_HELP, DEEP_AI, bot
+from userbot import CMD_HELP, DEEP_AI
 from userbot.events import geez_cmd
 from userbot.utils import edit_delete, edit_or_reply
 

@@ -12,7 +12,7 @@ from telethon.events import ChatAction
 
 from userbot import BLACKLIST_CHAT, BOTLOG_CHATID, CLEAN_WELCOME
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, LOGS, bot
+from userbot import CMD_HELP, LOGS
 from userbot.events import geez_cmd
 
 

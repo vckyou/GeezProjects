@@ -15,7 +15,7 @@ import requests
 from cowpy import cow
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP
 from userbot.events import geez_cmd
 from userbot.utils import edit_delete, get_user_from_event
 

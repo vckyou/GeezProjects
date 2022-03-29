@@ -7,7 +7,7 @@
 import os
 from pathlib import Path
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP
 from userbot.events import geez_cmd
 from userbot.utils import edit_or_reply, load_module, remove_plugin, reply_id
 

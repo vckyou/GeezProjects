@@ -5,7 +5,7 @@ from telethon.tl.types import ChatBannedRights
 
 import userbot.modules.sql_helper.antiflood_sql as sql
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP
 from userbot.events import geez_cmd, register
 from userbot.utils.tools import is_admin
 
