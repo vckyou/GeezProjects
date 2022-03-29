@@ -9,7 +9,7 @@ from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, geez_cmd
 
 
-@geez_cmd(pattern="firmware(?: |$)(.*)")
+@geez_cmd(pattern="firmware$")
 async def _(event):
     if event.fwd_from:
         return
@@ -33,7 +33,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="fastboot(?: |$)(.*)")
+@geez_cmd(pattern="fastboot$")
 async def _(event):
     if event.fwd_from:
         return
@@ -57,7 +57,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="recovery(?: |$)(.*)")
+@geez_cmd(pattern="recovery$")
 async def _(event):
     if event.fwd_from:
         return
@@ -81,7 +81,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="pb(?: |$)(.*)")
+@geez_cmd(pattern="pb$")
 async def _(event):
     if event.fwd_from:
         return
@@ -105,7 +105,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="of(?: |$)(.*)")
+@geez_cmd(pattern="of$")
 async def _(event):
     if event.fwd_from:
         return
@@ -129,7 +129,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="eu(?: |$)(.*)")
+@geez_cmd(pattern="eu$")
 async def _(event):
     if event.fwd_from:
         return
@@ -153,7 +153,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="vendor(?: |$)(.*)")
+@geez_cmd(pattern="vendor$")
 async def _(event):
     if event.fwd_from:
         return
@@ -177,7 +177,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, response.message)
 
 
-@geez_cmd(pattern="specs(?: |$)(.*)")
+@geez_cmd(pattern="specs$")
 async def _(event):
     if event.fwd_from:
         return

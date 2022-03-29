@@ -63,12 +63,12 @@ from userbot import (
     TEMP_DOWNLOAD_DIRECTORY,
     bot,
 )
-from userbot.events import geez_cmd
+
 from userbot.modules.upload_download import get_video_thumb
 from userbot.utils import (
     chrome,
     edit_delete,
-    edit_or_reply,
+    edit_or_reply, geez_cmd,
     googleimagesdownload,
     options,
     progress,
@@ -97,7 +97,7 @@ async def ocr_space_file(
     return r.json()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"img (.*)"))
+@geez_cmd(pattern="img$")
 async def img_sampler(event):
     """For .img command, search and return images matching the query."""
     await edit_or_reply("`Sedang Mencari Gambar Yang Anda Cari...`")
@@ -129,7 +129,7 @@ async def img_sampler(event):
     await event.delete()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"currency ([\d\.]+) ([a-zA-Z]+) ([a-zA-Z]+)"))
+@geez_cmd(pattern="currency ([\d\.]+) ([a-zA-Z]+) ([a-zA-Z]+)")
 async def moni(event):
     c_from_val = float(event.pattern_match.group(1))
     c_from = (event.pattern_match.group(2)).upper()
@@ -151,7 +151,7 @@ async def moni(event):
     await edit_or_reply(f"**{c_from_val} {c_from} = {c_to_val} {c_to}**")
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"google ([\s\S]*)"))
+@geez_cmd(pattern="google ([\s\S]*)")
 async def gsearch(q_event):
     geez = await edit_or_reply(q_event, "`Processing...`")
     match = q_event.pattern_match.group(1)
@@ -207,7 +207,7 @@ async def gsearch(q_event):
     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"wiki (.*)"))
+@geez_cmd(pattern="wiki$")
 async def wiki(wiki_q):
     """For .wiki command, fetch content from Wikipedia."""
     match = wiki_q.pattern_match.group(1)
@@ -236,7 +236,7 @@ async def wiki(wiki_q):
     await wiki_q.edit("**Search:**\n`" + match + "`\n\n**Result:**\n" + result)
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"ud (.*)"))
+@geez_cmd(pattern="ud$")
 async def _(event):
     if event.fwd_from:
         return
@@ -254,7 +254,7 @@ async def _(event):
         await edit_or_reply("Tidak ada hasil untuk **" + word + "**")
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"tts(?: |$)([\s\S]*)"))
+@geez_cmd(pattern="tts$")
 async def text_to_speech(query):
     """For .tts command, a wrapper for Google Text-to-Speech."""
     textx = await query.get_reply_message()
@@ -293,7 +293,7 @@ async def text_to_speech(query):
         await query.delete()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"tr(?: |$)(.*)"))
+@geez_cmd(pattern="tr$")
 async def _(event):
     if event.fwd_from:
         return
@@ -325,7 +325,7 @@ async def _(event):
         await edit_or_reply(str(exc))
 
 
-@geez_cmd(geez_cmd(pattern=r"lang (tr|tts) (.*)", outgoing=True))
+@geez_cmd(pattern="lang (tr|tts) (.*)")
 async def lang(value):
     """For .lang command, change the default langauge of userbot scrapers."""
     util = value.pattern_match.group(1).lower()
@@ -363,7 +363,7 @@ async def lang(value):
         )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"yt (\d*) *(.*)"))
+@geez_cmd(pattern="yt$")
 async def yt_search(video_q):
     """For .yt command, do a YouTube search from Telegram."""
     if video_q.pattern_match.group(1) != "":
@@ -403,7 +403,7 @@ async def yt_search(video_q):
     await video_q.edit(output, link_preview=False)
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"yt(audio|video( \d{0,4})?) (.*)"))
+@geez_cmd(pattern="yt(audio|video( \d{0,4})?) (.*)")
 async def download_video(v_url):
     """For .yt command, download media from YouTube and many other sites."""
     dl_type = v_url.pattern_match.group(1).lower()
@@ -587,7 +587,7 @@ async def download_video(v_url):
         await v_url.delete()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"rbg(?: |$)(.*)"))
+@geez_cmd(pattern="rbg$")
 async def kbg(remob):
     """For .rbg command, Remove Image Background."""
     if REM_BG_API_KEY is None:
@@ -675,7 +675,7 @@ async def ReTrieveURL(input_url):
     )
 
 
-@geez_cmd(geez_cmd(pattern=r"ocr (.*)", outgoing=True))
+@geez_cmd(pattern="ocr$")
 async def ocr(event):
     if not OCR_SPACE_API_KEY:
         return await edit_or_reply(
@@ -700,7 +700,7 @@ async def ocr(event):
     os.remove(downloaded_file_name)
 
 
-@geez_cmd(geez_cmd(pattern=r"decode$", outgoing=True))
+@geez_cmd(pattern="decode$")
 async def parseqr(qr_e):
     """For .decode command, get QR Code/BarCode content from the replied photo."""
     downloaded_file_name = await qr_e.client.download_media(
@@ -735,7 +735,7 @@ async def parseqr(qr_e):
     await qr_e.edit(qr_contents)
 
 
-@geez_cmd(geez_cmd(pattern=r"barcode(?: |$)([\s\S]*)", outgoing=True))
+@geez_cmd(pattern="barcode$")
 async def bq(event):
     """For .barcode command, genrate a barcode containing the given content."""
     await edit_or_reply("`Processing..`")
@@ -770,7 +770,7 @@ async def bq(event):
     await event.delete()
 
 
-@geez_cmd(geez_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
+@geez_cmd(pattern="makeqr(?: |$)([\s\S]*)")
 async def make_qr(makeqr):
     """For .makeqr command, make a QR Code containing the given content."""
     input_str = makeqr.pattern_match.group(1)
@@ -808,7 +808,7 @@ async def make_qr(makeqr):
     await makeqr.delete()
 
 
-@geez_cmd(geez_cmd(pattern=r"ss (.*)", outgoing=True))
+@geez_cmd(pattern="ss (.*)")
 async def capture(url):
     """For .ss command, capture a website's screenshot and send the photo."""
     await url.edit("`Processing...`")

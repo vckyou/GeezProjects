@@ -11,11 +11,11 @@ from natsort import natsorted
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd
+
 from userbot.utils import post_to_telegraph
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
-
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"nhentai(?: |$)(.*)"))
+@geez_cmd(pattern="nhentai$")
 async def _(event):
     if event.fwd_from:
         return

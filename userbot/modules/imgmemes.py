@@ -12,7 +12,7 @@ from wget import download
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.events import geez_cmd
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 from userbot.utils import bash, deEmojify
 
 
@@ -176,7 +176,7 @@ async def purge():
         pass
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"trump(?: |$)(.*)"))
+@geez_cmd(pattern="trump$")
 async def trump(event):
     text = event.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -197,7 +197,7 @@ async def trump(event):
     await purge()
 
 
-@geez_cmd(geez_cmd(pattern=r"modi(?: |$)(.*)", outgoing=True))
+@geez_cmd(pattern="modi$")
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -217,7 +217,7 @@ async def nekobot(event):
     await purge()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"cmm(?: |$)(.*)"))
+@geez_cmd(pattern="cmm$")
 async def cmm(event):
     text = event.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -238,7 +238,7 @@ async def cmm(event):
     await purge()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"kanna(?: |$)(.*)"))
+@geez_cmd(pattern="kanna$")
 async def kanna(event):
     text = event.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -259,7 +259,7 @@ async def kanna(event):
     await purge()
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"\.tweet(?: |$)(.*)"))
+@geez_cmd(pattern="tweet$")
 async def tweet(event):
     text = event.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -288,7 +288,7 @@ async def tweet(event):
     await purge()
 
 
-@geez_cmd(geez_cmd(pattern=r"threat(?: |$)(.*)", outgoing=True))
+@geez_cmd(pattern="threat$")
 async def nekobot(event):
     replied = await event.get_reply_message()
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -330,7 +330,7 @@ async def nekobot(event):
     await bot.send_file(event.chat_id, file, reply_to=replied)
 
 
-@geez_cmd(geez_cmd(pattern=r"trash(?: |$)(.*)", outgoing=True))
+@geez_cmd(pattern="trash$")
 async def nekobot(event):
     replied = await event.get_reply_message()
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -372,7 +372,7 @@ async def nekobot(event):
     await bot.send_file(event.chat_id, file, reply_to=replied)
 
 
-@geez_cmd(geez_cmd(pattern=r"trap(?: |$)(.*)", outgoing=True))
+@geez_cmd(pattern="trap$")
 async def nekobot(e):
     input_str = e.pattern_match.group(1)
     input_str = deEmojify(input_str)
@@ -424,7 +424,7 @@ async def nekobot(e):
 # Ported by @AshSTR
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"fgs ((.*) ; (.*))"))
+@geez_cmd(pattern="fgs$")
 async def FakeGoogleSearch(event):
     """Get a user-customised google search meme!"""
     input_str = event.pattern_match.group(1)
@@ -459,7 +459,7 @@ async def FakeGoogleSearch(event):
     os.remove("downloads/test.jpg")
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"ph(?: |$)(.*)"))
+@geez_cmd(pattern="ph$")
 async def phcomment(event):
     try:
         await edit_or_reply("`Processing..`")

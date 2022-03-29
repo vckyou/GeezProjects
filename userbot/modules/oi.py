@@ -13,6 +13,8 @@ async def _(event):
     await xx.edit("**Aku Sayang Kamu**")
     sleep(1)
     await xx.edit("**I LOVE YOU 💞**")
+    sleep(1)
+    await xx.edit("**PI BOONG**")
 
 
 # Create by myself @localheart

@@ -12,7 +12,8 @@ from telethon.events import StopPropagation
 from telethon.tl.functions.account import UpdateProfileRequest
 
 from userbot import AFKREASON, BOTLOG_CHATID, PM_AUTO_BAN, bot, owner
-from userbot.events import geez_cmd, register
+from userbot.events import register
+from userbot.utils import geez_cmd
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
@@ -28,7 +29,7 @@ afk_start = {}
 # =================================================================
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"off(?: |$)(.*)"))
+@geez_cmd(pattern="off$")
 async def set_afk(afk_e):
     """For .afk command, allows you to inform people that you are afk when they message you"""
     string = afk_e.pattern_match.group(1)

@@ -2,10 +2,10 @@ from time import sleep
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"sadboy(?: |$)(.*)"))
+@geez_cmd(pattern="sadboy$")
 async def _(event):
     await edit_or_reply("`Pertama-tama kamu cantik`")
     sleep(2)
@@ -17,7 +17,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"punten(?: |$)(.*)"))
+@geez_cmd(pattern="punten$")
 async def _(event):
     await edit_or_reply(
         "`\n┻┳|―-∩`"
@@ -31,7 +31,7 @@ async def _(event):
     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"pantau(?: |$)(.*)"))
+@geez_cmd(pattern="pantau$")
 async def _(event):
     await edit_or_reply(
         "`\n┻┳|―-∩`"

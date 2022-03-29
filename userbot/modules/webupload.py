@@ -7,15 +7,10 @@ import time
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.events import geez_cmd
 
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
-@geez_cmd(
-    geez_cmd(
-        outgoing=True,
-        pattern=r"webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)",
-    )
-)
+@geez_cmd(pattern=r"webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)")
 async def _(event):
     if event.fwd_from:
         return

@@ -8,11 +8,11 @@ import os
 import requests
 
 from userbot import CMD_HELP, DEEP_AI
-from userbot.events import geez_cmd
-from userbot.utils import edit_delete, edit_or_reply
+
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"detect$"))
+@geez_cmd(pattern="detect$")
 async def detect(event):
     if DEEP_AI is None:
         return await edit_delete(

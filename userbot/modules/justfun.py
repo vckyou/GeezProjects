@@ -6,7 +6,7 @@ from userbot import CMD_HELP, bot
 from userbot.events import geez_cmd
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"xogame(?: |$)(.*)"))
+@geez_cmd(pattern="xogame$")
 async def _(event):
     if event.fwd_from:
         return
@@ -22,7 +22,7 @@ async def _(event):
 # Alvin Gans
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"wp(?: |$)(.*)"))
+@geez_cmd(pattern="wp$")
 async def _(event):
     if event.fwd_from:
         return
@@ -38,7 +38,7 @@ async def _(event):
 # Alvin Gans
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"mod(?: |$)(.*)"))
+@geez_cmd(pattern="mod$")
 async def _(event):
     if event.fwd_from:
         return

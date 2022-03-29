@@ -14,7 +14,7 @@ from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, COUNT_PM, LASTMSG, LOGS, PM_AUTO_BAN, PM_LIMIT
 from userbot.events import geez_cmd, register
-from userbot.utils import edit_delete, edit_or_reply
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 DEF_UNAPPROVED_MSG = (
     "╭┈──────────────────────\n"
@@ -159,7 +159,7 @@ async def auto_accept(event):
                     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"notifoff$"))
+@geez_cmd(pattern="notifoff$")
 async def notifoff(noff_event):
     """For .notifoff command, stop getting notifications from unapproved PMs."""
     try:
@@ -172,7 +172,7 @@ async def notifoff(noff_event):
     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"notifon$"))
+@geez_cmd(pattern="notifon$")
 async def notifon(non_event):
     """For .notifoff command, get notifications from unapproved PMs."""
     try:
@@ -185,7 +185,7 @@ async def notifon(non_event):
     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"(?:setuju|ok)\s?(.)?"))
+@geez_cmd(pattern="(?:setuju|ok)\s?(.)?")
 async def approvepm(apprvpm):
     """For .ok command, give someone the permissions to PM you."""
     try:
@@ -248,7 +248,7 @@ async def approvepm(apprvpm):
     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"(?:tolak|nopm)\s?(.)?"))
+@geez_cmd(pattern="(?:tolak|nopm)\s?(.)?")
 async def disapprovepm(disapprvpm):
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
@@ -302,7 +302,7 @@ async def disapprovepm(disapprvpm):
     )
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"block$"))
+@geez_cmd(pattern="block$")
 async def blockpm(block):
     """For .block command, block people from PMing you!"""
     if block.reply_to_msg_id:
@@ -328,7 +328,7 @@ async def blockpm(block):
         pass
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"unblock$"))
+@geez_cmd(pattern="unblock$")
 async def unblockpm(unblock):
     """For .unblock command, let people PMing you again!"""
     if unblock.reply_to_msg_id:
@@ -338,7 +338,7 @@ async def unblockpm(unblock):
         await unblock.edit("**Anda Sudah Tidak Diblokir Lagi.**")
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"(set|get|reset) pmpermit(?: |$)(\w*)"))
+@geez_cmd(pattern="(set|get|reset) pmpermit(?: |$)(\w*)")
 async def add_pmsg(cust_msg):
     """Set your own Unapproved message"""
     if not PM_AUTO_BAN:

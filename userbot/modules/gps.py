@@ -4,10 +4,10 @@ from telethon.tl import types
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"gps(?: |$)(.*)"))
+@geez_cmd(pattern="gps$")
 async def gps(event):
     if event.fwd_from:
         return

@@ -11,10 +11,10 @@ import pybase64
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"hash (.*)"))
+@geez_cmd(pattern="hash$")
 async def gethash(hash_q):
     """For .hash command, find the md5, sha1, sha256, sha512 of the string."""
     hashtxt_ = hash_q.pattern_match.group(1)
@@ -56,7 +56,7 @@ async def gethash(hash_q):
         await hash_q.reply(ans)
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"base64 (en|de) (.*)"))
+@geez_cmd(pattern="base64$")
 async def endecrypt(query):
     """For .base64 command, find the base64 encoding of the given string."""
     if query.pattern_match.group(1) == "en":

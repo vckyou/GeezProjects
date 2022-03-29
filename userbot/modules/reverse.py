@@ -18,7 +18,7 @@ from PIL import Image
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot
-from userbot.events import geez_cmd
+from userbot.utils import geez_cmd
 from userbot.utils import googleimagesdownload
 
 opener = urllib.request.build_opener()
@@ -30,7 +30,7 @@ useragent = (
 opener.addheaders = [("User-agent", useragent)]
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"reverse(?: |$)(\d*)"))
+@geez_cmd(pattern="reverse(?: |$)(\d*)")
 async def okgoogle(img):
     """For .reverse command, Google search images and stickers."""
     if os.path.isfile("okgoogle.png"):

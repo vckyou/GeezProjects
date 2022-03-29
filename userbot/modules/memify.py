@@ -11,11 +11,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
-from userbot.events import geez_cmd
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 from userbot.utils import runcmd, take_screen_shot
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"mmf (.*)"))
+@geez_cmd(pattern="mmf$")
 async def memify(event):
     reply_msg = await event.get_reply_message()
     input_str = event.pattern_match.group(1)

@@ -17,10 +17,10 @@ from telethon.tl.functions.messages import SendMediaRequest
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd
+from userbot.utils import geez_cmd
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"pic(?: |$)(.*)"))
+@geez_cmd(pattern="pic(?: |$)(.*)")
 async def on_file_to_photo(pics):
     await pics.edit("`Processing...`")
     await sleep(1.5)

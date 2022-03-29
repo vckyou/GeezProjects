@@ -10,7 +10,7 @@ from userbot import CMD_HELP, owner
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 
-@geez_cmd(pattern=r"logo(?: |$)(.*)")
+@geez_cmd(pattern="logo$")
 async def _(event):
     if event.fwd_from:
         return

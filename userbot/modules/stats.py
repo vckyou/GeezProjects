@@ -16,8 +16,8 @@ from telethon.tl.types import Channel, Chat, User
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot
-from userbot.events import geez_cmd
-from userbot.utils import edit_delete, edit_or_reply
+
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
 # STRINGS
 STAT_INDICATION = "`Collecting stats, Please wait....`"
@@ -35,7 +35,7 @@ def inline_mention(user):
     return f"[{full_name}](tg://user?id={user.id})"
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"stats$"))
+@geez_cmd(pattern="stats$")
 async def stats(
     event: NewMessage.Event,
 ) -> None:
@@ -109,7 +109,7 @@ async def stats(
     await stat.edit(response)
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"(ustat|deteksi|ustats)(?: |$)(.*)"))
+@geez_cmd(pattern="(ustat|deteksi|ustats)(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return

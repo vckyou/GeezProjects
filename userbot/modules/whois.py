@@ -16,10 +16,9 @@ from telethon.utils import get_input_location
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
-from userbot.events import geez_cmd
+from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
-
-@geez_cmd(geez_cmd(pattern=r"whois(?: |$)(.*)", outgoing=True))
+@geez_cmd(pattern="whois$")
 async def who(event):
 
     await edit_or_reply("`Mengambil Informasi Pengguna Ini...`")

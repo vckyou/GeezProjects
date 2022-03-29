@@ -13,13 +13,13 @@ from pySmartDL import SmartDL
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd
-from userbot.utils import edit_delete, edit_or_reply, reply_id
+
+from userbot.utils import edit_delete, edit_or_reply, reply_id, geez_cmd
 
 ppath = os.path.join(os.getcwd(), "temp", "githubuser.jpg")
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"github( -l(\d+))? ([\s\S]*)"))
+@geez_cmd(pattern="github( -l(\d+))? ([\s\S]*)")
 async def _(event):
     "Get info about an GitHub User"
     reply_to = await reply_id(event)

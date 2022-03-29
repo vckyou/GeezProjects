@@ -7,7 +7,7 @@ from userbot.events import geez_cmd
 from userbot.utils import deEmojify
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"rst(?: |$)(.*)"))
+@geez_cmd(pattern="rst(?: |$)(.*)")
 async def rastick(animu):
     text = animu.pattern_match.group(1)
     if not text:

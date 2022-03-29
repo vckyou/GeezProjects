@@ -12,7 +12,7 @@ import re
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, bot
-from userbot.events import geez_cmd
+from userbot.utils import geez_cmd
 
 usernexp = re.compile(r"@(\w{3,32})\[(.+?)\]")
 nameexp = re.compile(r"\[([\w\S]+)\]\(tg://user\?id=(\d+)\)\[(.+?)\]")
@@ -25,7 +25,7 @@ class FlagContainer:
     is_active = False
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"mention(?: |$)(.*)"))
+@geez_cmd(pattern="mention$")
 async def _(event):
     if event.fwd_from:
         return

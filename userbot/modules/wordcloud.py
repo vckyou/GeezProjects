@@ -18,7 +18,7 @@ from userbot import CMD_HELP
 from userbot.utils import bash, edit_delete, edit_or_reply, geez_cmd
 
 
-@geez_cmd(pattern="(wc)$")
+@geez_cmd(pattern="wc$")
 async def _(event):
     if not event.reply_to_msg_id:
         await edit_delete(event, "`Mohon Balas Ke Media Apapun`")

@@ -16,9 +16,9 @@ from bs4 import BeautifulSoup as bs
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import geez_cmd
+from userbot.utils import edit_or_reply
 
-
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"ts (.*)"))
+@geez_cmd(pattern="ts$")
 async def gengkapak(e):
     await e.edit("`Please wait, fetching results...`")
     query = e.pattern_match.group(1)
@@ -75,7 +75,7 @@ def dogbin(magnets):
     return urls
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"tos(?: |$)(.*)"))
+@geez_cmd(pattern="tos$")
 async def tor_search(event):
     if event.fwd_from:
         return

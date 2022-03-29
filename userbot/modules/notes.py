@@ -10,10 +10,10 @@ from asyncio import sleep
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.events import geez_cmd, register
+from userbot.events import register
+from userbot.utils import geez_cmd
 
-
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"notes$"))
+@geez_cmd(pattern="notes$")
 async def notes_active(svd):
     """For .notes command, list all of the notes saved in a chat."""
     try:
@@ -29,7 +29,7 @@ async def notes_active(svd):
     await svd.edit(message)
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"clear (\w*)"))
+@geez_cmd(pattern="clear$)")
 async def remove_notes(clr):
     """For .clear command, clear note with the given name."""
     try:
@@ -44,7 +44,7 @@ async def remove_notes(clr):
     return await clr.edit("**Berhasil Menghapus Catatan:** `{}`".format(notename))
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"save (\w*)"))
+@geez_cmd(pattern="save$")
 async def add_note(fltr):
     """For .save command, saves notes in a chat."""
     try:
@@ -112,7 +112,7 @@ async def incom_note(getnt):
         pass
 
 
-@geez_cmd(geez_cmd(outgoing=True, pattern=r"rmbotnotes (.*)"))
+@geez_cmd(pattern="rmbotnotes$")
 async def kick_marie_notes(kick):
     """ For .rmbotnotes command, allows you to kick all \
         Marie(or her clones) notes from a chat. """
