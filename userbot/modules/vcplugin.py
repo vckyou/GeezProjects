@@ -484,6 +484,7 @@ async def vc_volume(event):
 # FROM GeezProjects < https://github.com/vckyou/GeezProjects \>
 # ambil boleh apus credits jangan ya ka:)
 
+
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
 async def join_(event):
     geezav = await edit_or_reply(event, f"**Processing**")
@@ -514,6 +515,7 @@ async def join_(event):
         stream_type=StreamType().pulse_stream,
     )
     await geezav.edit(f"**{from_user} Berhasil Naik Ke VC Group!**")
+
 
 @geez_cmd(pattern="joinvcs(?: |$)(.*)")
 async def joinvcs(event):
@@ -548,7 +550,6 @@ async def leavevc(event):
         except (NotInGroupCallError, NoActiveGroupCall):
             await edit_or_reply(event, f"{from_user} Tidak Berada Di VC Group.")
         await geezav.edit(f"**{from_user} Berhasil Turun Dari VC Group.**")
-
 
 
 @geez_cmd(pattern="playlist$")
