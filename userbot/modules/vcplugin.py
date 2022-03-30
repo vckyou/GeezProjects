@@ -506,14 +506,14 @@ async def join_(event):
                     'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
                 ),
             stream_type=StreamType().pulse_stream,
-        )
-        await edit_delete(geezav, f"**{from_user} Berhasil Naik Ke VC Group!**")
-    except AlreadyJoinedError:
+            )
+            await edit_delete(geezav, f"**{from_user} Berhasil Naik Ke VC Group!**")
+        except AlreadyJoinedError:
             await call_py.leave_group_call(chat_id)
             await edit_delete(
                 geezav,
                 f"**ERROR:** `Akun Anda Sudah Berada Di VC Group!`\n\nNoted : Silahkan Ketik `{cmd}joinvc lagi",
-                45,
+                30,
             )
         except Exception as e:
             await geezav.edit(f"**INFO:** `{e}`")
