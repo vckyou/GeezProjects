@@ -509,7 +509,7 @@ async def join_(event):
             await call_py.leave_group_call(chat_id)
             await edit_delete(
                 geezav,
-                f"**ERROR:** `Akun Anda Sudah Berada Di VC Group!`\n\nNoted : Silahkan Ketik `{cmd}joinvc lagi",
+                f"**ERROR:** `Akun Anda Sudah Berada Di VC Group!`\n\n**Noted :** __Silahkan Ketik__ `{cmd}joinvc` __untuk menggunakan command kembali.__",
                 30,
             )
         except Exception as e:
