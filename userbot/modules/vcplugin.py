@@ -4,7 +4,6 @@
 #
 # Recode by @vckyaz
 
-import asyncio
 from pytgcalls import StreamType
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import (
@@ -18,9 +17,7 @@ from pytgcalls.types.input_stream.quality import (
     MediumQualityVideo,
 )
 from pytgcalls.exceptions import (
-    NoActiveGroupCall,
     AlreadyJoinedError,
-    NotInGroupCallError,
 )
 
 from telethon.tl import types
@@ -496,7 +493,7 @@ async def join_(event):
             await edit_delete(event, f"**ERROR:** `{e}`", 30)
     else:
         chat_id = event.chat_id
-        chat = await event.get_chat()
+        await event.get_chat()
         from_user = vcmention(event.sender)
     if chat_id:
         try:
@@ -529,7 +526,7 @@ async def leavevc(event):
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        from_user = vcmention(event.sender)
+        vcmention(event.sender)
     if chat_id:
         try:
             await call_py.leave_group_call(chat_id)
