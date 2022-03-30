@@ -526,13 +526,13 @@ async def leavevc(event):
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        vcmention(event.sender)
+        from_user = vcmention(event.sender)
     if chat_id:
         try:
             await call_py.leave_group_call(chat_id)
             await edit_delete(
                 geezav,
-                f"{vcmention} Berhasil Turun Dari VC Group!",
+                f"{from_user} Berhasil Turun Dari VC Group!",
             )
         except Exception as e:
             await geezav.edit(f"**INFO:** `{e}`")
