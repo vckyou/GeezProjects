@@ -32,7 +32,7 @@ import shlex
 import time
 
 from os.path import basename
-from typing import Optional, Union
+from typing import Optional, Union, Tuple
 from io import BytesIO
 from json.decoder import JSONDecodeError
 from aiohttp import ContentTypeError
