@@ -8,9 +8,12 @@
 #
 # FROM GeezProjects <https://github.com/vckyou/GeezProjects>
 #
-# Support @GeezSupport & @GeezProjects
+# Support @GeezSupport & @GeezProject
 # 
 
+from pytgcalls import StreamType
+from pytgcalls.exceptions import AlreadyJoinedError
+from pytgcalls.types.input_stream import InputAudioStream, InputStream
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
@@ -18,6 +21,7 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
+from .vcplugin import vcmention
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, owner
 from userbot.events import register
@@ -106,6 +110,69 @@ async def change_title(e):
         await edit_or_reply(e, f"**Berhasil Mengubah Judul VCG Menjadi** `{title}`")
     except Exception as ex:
         await edit_delete(e, f"**ERROR:** `{ex}`")
+
+# credits by @vckyaz < vicky \>
+# FROM GeezProjects < https://github.com/vckyou/GeezProjects \>
+# ambil boleh apus credits jangan ya ka:)
+
+
+@geez_cmd(pattern="joinvc(?: |$)(.*)")
+@register(pattern=r"^\.joinvcs(?: |$)(.*)", sudo=True)
+async def joinvc(event):
+    geez = await edit_or_reply(event, "`Processing...`")
+    if len(event.text.split()) > 1:
+        chat_id = event.text.split()[1]
+        try:
+            chat_id = await event.client.get_peer_id(int(chat_id))
+        except Exception as e:
+            return await geez.edit(f"**ERROR:** `{e}`")
+    else:
+        chat_id = event.chat_id
+        from_user = vcmention(event.sender)
+    if chat_id:
+        file = "./userbot/resources/geezmusic.mp3"
+        try:
+            await call_py.join_group_call(
+                chat_id,
+                InputStream(
+                    InputAudioStream(
+                        file,
+                    ),
+                ),
+                stream_type=StreamType().local_stream,
+            )
+            await geez.edit(
+                f"{from_user} Berhasil Naik Ke VC Group!"
+            )
+        except AlreadyJoinedError:
+            return await edit_delete(
+                geez, f"**INFO:** `{from_user} Sudah Berada Di VC Group!`\n\n**Noted :** __Silahkan Ketik__ `{cmd}joinvc` __untuk menggunakan command kembali.`", 30
+            )
+        except Exception as e:
+            return await geez.edit(f"**INFO:** `{e}`")
+
+@geez_cmd(pattern="leavevc(?: |$)(.*)")
+@register(pattern=r"^\.leavevcs(?: |$)(.*)", sudo=True)
+async def leavevc(event):
+    geezav = await edit_or_reply(event, "`Processing...`")
+    if len(event.text.split()) > 1:
+        chat_id = event.text.split()[1]
+        try:
+            chat_id = await event.client(GetFullUserRequest(chat_id))
+        except Exception as e:
+            return await geez.edit(f"**ERROR:** `{e}`")
+    else:
+        chat_id = event.chat_id
+        from_user = vcmention(event.sender)
+    if chat_id:
+        try:
+            await call_py.leave_group_call(chat_id)
+            await edit_delete(
+                geezav,
+                f"{from_user} Berhasil Turun Dari VC Group!",
+            )
+        except Exception as e:
+            await geezav.edit(f"**INFO:** `{e}`")
 
 
 CMD_HELP.update(
