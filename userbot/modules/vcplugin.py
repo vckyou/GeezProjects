@@ -6,7 +6,9 @@
 
 from pytgcalls import StreamType
 from pytgcalls.types import Update
-from pytgcalls.types.input_stream import InputAudioStream, InputStream
+from pytgcalls.types.input_stream import (
+    InputAudioStream,
+    InputStream,
 )
 from pytgcalls.types.input_stream.quality import (
     HighQualityAudio,
