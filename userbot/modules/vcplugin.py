@@ -6,9 +6,7 @@
 
 from pytgcalls import StreamType
 from pytgcalls.types import Update
-from pytgcalls.types.input_stream import (
-    AudioPiped,
-    AudioVideoPiped,
+from pytgcalls.types.input_stream import InputAudioStream, InputStream
 )
 from pytgcalls.types.input_stream.quality import (
     HighQualityAudio,
@@ -31,6 +29,7 @@ from userbot import CMD_HELP
 from userbot import PLAY_PIC as fotoplay
 from userbot import QUEUE_PIC as ngantri
 from userbot import call_py
+from userbot.events import register
 from userbot.utils import bash, edit_delete, edit_or_reply, geez_cmd
 from userbot.utils.chattitle import CHAT_TITLE
 from userbot.utils.queues.queues import (
@@ -483,39 +482,42 @@ async def vc_volume(event):
 
 
 @geez_cmd(pattern="joinvc(?: |$)(.*)")
-async def join_(event):
-    geezav = await edit_or_reply(event, f"**Processing**")
+@register(pattern=r"^\.joinvcs(?: |$)(.*)", sudo=True)
+async def joinvc(event):
+    geez = await edit_or_reply(event, "`Processing...`")
     if len(event.text.split()) > 1:
         chat_id = event.text.split()[1]
         try:
             chat_id = await event.client.get_peer_id(int(chat_id))
         except Exception as e:
-            await edit_delete(event, f"**ERROR:** `{e}`", 30)
+            return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        await event.get_chat()
         from_user = vcmention(event.sender)
     if chat_id:
+        file = "./userbot/resources/geezmusic.mp3"
         try:
             await call_py.join_group_call(
                 chat_id,
-                AudioPiped(
-                    'http://duramecho.com/Misc/SilentCd/Silence01s.mp3'
+                InputStream(
+                    InputAudioStream(
+                        file,
+                    ),
                 ),
-            stream_type=StreamType().pulse_stream,
+                stream_type=StreamType().local_stream,
             )
-            await edit_delete(geezav, f"**{from_user} Berhasil Naik Ke VC Group!**")
+            await geez.edit(
+                f"{from_user} Berhasil Naik Ke VC Group!"
+            )
         except AlreadyJoinedError:
-            await call_py.leave_group_call(chat_id)
-            await edit_delete(
-                geezav,
-                f"**ERROR:** `Akun Anda Sudah Berada Di VC Group!`\n\n**Noted :** __Silahkan Ketik__ `{cmd}joinvc` __untuk menggunakan command kembali.__",
-                30,
+            return await edit_delete(
+                geez, "**INFO:** `{from_user} Sudah Berada Di VC Group!`\n\n**Noted :** __Silahkan Ketik__ `{cmd}joinvc` __untuk menggunakan command kembali.`", 30
             )
         except Exception as e:
-            await geezav.edit(f"**INFO:** `{e}`")
+            return await geez.edit(f"**INFO:** `{e}`")
 
 @geez_cmd(pattern="leavevc(?: |$)(.*)")
+@register(pattern=r"^\.leavevcs(?: |$)(.*)", sudo=True)
 async def leavevc(event):
     geezav = await edit_or_reply(event, "`Processing...`")
     if len(event.text.split()) > 1:
