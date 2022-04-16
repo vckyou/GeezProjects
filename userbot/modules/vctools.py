@@ -21,7 +21,6 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from .vcplugin import vcmention as user
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, owner, call_py
 from userbot.events import register
