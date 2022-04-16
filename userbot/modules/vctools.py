@@ -21,7 +21,7 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from .vcplugin import vcmention
+from .vcplugin import vcmention as user
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP, owner, call_py
 from userbot.events import register
@@ -128,7 +128,7 @@ async def joinvc(event):
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        from_user = vcmention(event.sender)
+        from_user = user(event.sender)
     if chat_id:
         file = "./userbot/resources/geezmusic.mp3"
         try:
@@ -142,7 +142,7 @@ async def joinvc(event):
                 stream_type=StreamType().local_stream,
             )
             await geez.edit(
-                f"{from_user} Berhasil Naik Ke VC Group!"
+                f"• {from_user} Berhasil Naik Ke VC Group!"
             )
         except AlreadyJoinedError:
             return await edit_delete(
@@ -163,13 +163,13 @@ async def leavevc(event):
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        from_user = vcmention(event.sender)
+        from_user = user(event.sender)
     if chat_id:
         try:
             await call_py.leave_group_call(chat_id)
             await edit_delete(
                 geezav,
-                f"{from_user} Berhasil Turun Dari VC Group!",
+                f"• {from_user} Berhasil Turun Dari VC Group!",
             )
         except Exception as e:
             await geezav.edit(f"**INFO:** `{e}`")
