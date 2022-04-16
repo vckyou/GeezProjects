@@ -156,7 +156,7 @@ async def leavevc(event):
     if len(event.text.split()) > 1:
         chat_id = event.text.split()[1]
         try:
-            chat_id = await event.client(GetFullUserRequest(chat_id))
+            chat_id = await event.client.get_peer_id(int(chat_id))
         except Exception as e:
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
