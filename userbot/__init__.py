@@ -391,7 +391,6 @@ else:
 
 
 async def update_restart_msg(chat_id, msg_id):
-    ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
         f"**GeezProjects v{BOT_VER} is back up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
