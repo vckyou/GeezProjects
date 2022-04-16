@@ -23,7 +23,7 @@ from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from .vcplugin import vcmention
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, owner
+from userbot import CMD_HELP, owner, call_py
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply, geez_cmd
 
