@@ -128,7 +128,6 @@ async def joinvc(event):
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        from_user = user(event.sender)
     if chat_id:
         file = "./userbot/resources/geezmusic.mp3"
         try:
@@ -142,11 +141,11 @@ async def joinvc(event):
                 stream_type=StreamType().local_stream,
             )
             await geez.edit(
-                f"• {from_user} Berhasil Naik Ke VC Group!"
+                f"• `Berhasil Naik Ke Voice Chat Group!`"
             )
         except AlreadyJoinedError:
             return await edit_delete(
-                geez, f"**INFO:** `{from_user} Sudah Berada Di VC Group!`\n\n**Noted :** __Silahkan Ketik__ `{cmd}joinvc` __untuk menggunakan command kembali.`", 30
+                geez, f"**INFO:** `Akun Anda Sudah Berada Di VC Group!`\n\n**Noted :** __Silahkan Ketik__ `{cmd}joinvc` __untuk menggunakan command kembali.`", 30
             )
         except Exception as e:
             return await geez.edit(f"**INFO:** `{e}`")
@@ -163,13 +162,12 @@ async def leavevc(event):
             return await geez.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
-        from_user = user(event.sender)
     if chat_id:
         try:
             await call_py.leave_group_call(chat_id)
             await edit_delete(
                 geezav,
-                f"• {from_user} Berhasil Turun Dari VC Group!",
+                f"• Anda Berhasil Turun Dari VC Group!",
             )
         except Exception as e:
             await geezav.edit(f"**INFO:** `{e}`")
