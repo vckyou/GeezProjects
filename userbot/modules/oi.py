@@ -15,9 +15,6 @@ async def _(event):
     await xx.edit("**I LOVE YOU 💞**")
 
 
-# Create by myself @localheart
-
-
 @geez_cmd(pattern="semangat(?: |$)(.*)")
 async def _(event):
     xx = await edit_or_reply(event, "**Apapun Yang Terjadi**")
