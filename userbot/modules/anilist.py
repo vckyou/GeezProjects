@@ -11,7 +11,7 @@ import re
 import requests
 
 from userbot import bot
-from userbot.utils import man_cmd, time_formatter
+from userbot.utils import geez_cmd, time_formatter
 
 
 def shorten(description, info="anilist.co"):
@@ -195,7 +195,7 @@ async def formatJSON(outData):
 url = "https://graphql.anilist.co"
 
 
-@man_cmd(pattern=r"anichar ?(.*)")
+@geez_cmd(pattern=r"anichar ?(.*)")
 async def anichar(event):
     search = event.pattern_match.group(1)
     reply_to_id = event.reply_to_msg_id or event.message.id
@@ -221,7 +221,7 @@ async def anichar(event):
         await event.edit("Sorry, No such results")
 
 
-@man_cmd(pattern="airing ?(.*)")
+@geez_cmd(pattern="airing ?(.*)")
 async def arings(event):
     search = event.pattern_match.group(1)
     variables = {"search": search}
@@ -238,7 +238,7 @@ async def arings(event):
     await event.edit(ms_g)
 
 
-@man_cmd(pattern="animanga ?(.*)")
+@geez_cmd(pattern="animanga ?(.*)")
 async def animanga(event):
     search = event.pattern_match.group(1)
     reply_to_id = event.reply_to_msg_id or event.message.id
@@ -297,7 +297,7 @@ async def animanga(event):
             await event.edit(ms_g)
 
 
-@man_cmd(pattern="anilist ?(.*)")
+@geez_cmd(pattern="anilist ?(.*)")
 async def anilist(event):
     input_str = event.pattern_match.group(1)
     event = await event.edit("Searching...")
