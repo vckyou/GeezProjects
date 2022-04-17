@@ -8,8 +8,8 @@
 from telethon import events
 
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, bot
-from userbot.events import geez_cmd
+from userbot import CMD_HELP
+from userbot.utils import edit_or_reply, geez_cmd
 
 PRINTABLE_ASCII = range(0x21, 0x7F)
 
@@ -24,13 +24,13 @@ def aesthetify(string):
         yield chr(c)
 
 
-@bot.on(geez_cmd(outgoing=True, pattern="ae(?: |$)(.*)"))
+@geez_cmd(pattern="ae(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
     text = event.pattern_match.group(1)
     text = "".join(aesthetify(text))
-    await event.edit(text=text, parse_mode=None, link_preview=False)
+    await edit_or_reply(event, text=text, parse_mode=None, link_preview=False)
     raise events.StopPropagation
 
 
