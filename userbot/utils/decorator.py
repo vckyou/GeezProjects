@@ -149,15 +149,15 @@ def geez_handler(
 ):
     def decorator(func):
         if bot:
-            bot.add_event_handler(func, events.NewMessage(**args, incoming=True))
+            bot.add_event_handler(func, events.NewMessage(**args))
         if GEEZ2:
-            GEEZ2.add_event_handler(func, events.NewMessage(**args, incoming=True))
+            GEEZ2.add_event_handler(func, events.NewMessage(**args))
         if GEEZ3:
-            GEEZ3.add_event_handler(func, events.NewMessage(**args, incoming=True))
+            GEEZ3.add_event_handler(func, events.NewMessage(**args))
         if GEEZ4:
-            GEEZ4.add_event_handler(func, events.NewMessage(**args, incoming=True))
+            GEEZ4.add_event_handler(func, events.NewMessage(**args))
         if GEEZ5:
-            GEEZ5.add_event_handler(func, events.NewMessage(**args, incoming=True))
+            GEEZ5.add_event_handler(func, events.NewMessage(**args))
         return func
 
     return decorator
