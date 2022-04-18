@@ -4,7 +4,6 @@
 # you may not use this file except in compliance with the License.
 #
 
-import logging
 from asyncio import sleep
 
 from telethon.errors import (
@@ -33,17 +32,18 @@ from telethon.tl.types import (
 
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, DEVS, owner
+from userbot import CMD_HELP, DEVS
 from userbot.events import register
 from userbot.utils import (
     _format,
     edit_delete,
     edit_or_reply,
+    get_user_from_event,
     geez_cmd,
     geez_handler,
-    get_user_from_event,
     media_type,
 )
+from userbot.utils.logger import logging
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "**Gambar Terlalu Kecil**"
@@ -75,11 +75,6 @@ UNBAN_RIGHTS = ChatBannedRights(
     send_games=None,
     send_inline=None,
     embed_links=None,
-)
-logging.basicConfig(
-    format="[%(levelname)s- %(asctime)s]- %(name)s- %(message)s",
-    level=logging.INFO,
-    datefmt="%H:%M:%S",
 )
 
 LOGS = logging.getLogger(__name__)
@@ -142,12 +137,12 @@ async def promote(event):
         rank = "admin"
     if not user:
         return
-    eventman = await edit_or_reply(event, "`Promoting...`")
+    eventgeez = await edit_or_reply(event, "`Promoting...`")
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
     except BadRequestError:
-        return await eventman.edit(NO_PERM)
-    await edit_delete(eventman, "`Promoted Successfully!`", 30)
+        return await eventgeez.edit(NO_PERM)
+    await edit_delete(eventgeez, "`Promoted Successfully!`", 30)
 
 
 @geez_cmd(pattern="demote(?:\s|$)([\s\S]*)")
@@ -157,7 +152,7 @@ async def demote(event):
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    eventman = await edit_or_reply(event, "`Demoting...`")
+    eventgeez = await edit_or_reply(event, "`Demoting...`")
     newrights = ChatAdminRights(
         add_admins=None,
         invite_users=None,
@@ -171,13 +166,14 @@ async def demote(event):
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, newrights, rank))
     except BadRequestError:
-        return await eventman.edit(NO_PERM)
-    await edit_delete(eventman, "`Demoted Successfully!`", 30)
+        return await eventgeez.edit(NO_PERM)
+    await edit_delete(eventgeez, "`Demoted Successfully!`", 30)
 
 
 @geez_cmd(pattern="ban(?:\s|$)([\s\S]*)")
 @register(pattern=r"^\.cban(?:\s|$)([\s\S]*)", sudo=True)
 async def ban(bon):
+    me = await bon.client.get_me()
     chat = await bon.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -187,23 +183,21 @@ async def ban(bon):
     user, reason = await get_user_from_event(bon)
     if not user:
         return
-    await edit_or_reply(bon, "`Processing Banned...`")
+    geez = await edit_or_reply(bon, "`Processing Banned...`")
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
         return await edit_or_reply(bon, NO_PERM)
     if reason:
-        await edit_or_reply(
-            bon,
+        await geez.edit(
             r"\\**#Banned_User**//"
             f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
             f"**User ID:** `{str(user.id)}`\n"
             f"**Reason:** `{reason}`",
         )
     else:
-        await edit_or_reply(
-            bon,
-            f"\\\\**#Banned_User**//\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n**User ID:** `{user.id}`\n**Action:** `Banned User by {owner}`",
+        await geez.edit(
+            f"\\\\**#Banned_User**//\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n**User ID:** `{user.id}`\n**Action:** `Banned User by {me.first_name}`",
         )
 
 
@@ -215,16 +209,16 @@ async def nothanos(unbon):
     creator = chat.creator
     if not admin and not creator:
         return await edit_delete(unbon, NO_ADMIN)
-    await edit_or_reply(unbon, "`Processing...`")
+    geez = await edit_or_reply(unbon, "`Processing...`")
     user = await get_user_from_event(unbon)
     user = user[0]
     if not user:
         return
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await edit_delete(unbon, "`Unban Berhasil Dilakukan!`")
+        await edit_delete(geez, "`Unban Berhasil Dilakukan!`")
     except UserIdInvalidError:
-        await edit_delete(unbon, "`Sepertinya Terjadi ERROR!`")
+        await edit_delete(geez, "`Sepertinya Terjadi ERROR!`")
 
 
 @geez_cmd(pattern="mute(?: |$)(.*)")
@@ -239,45 +233,41 @@ async def spider(spdr):
     creator = chat.creator
     if not admin and not creator:
         return await edit_or_reply(spdr, NO_ADMIN)
+    geez = await edit_or_reply(spdr, "`Processing...`")
     user, reason = await get_user_from_event(spdr)
     if not user:
         return
     self_user = await spdr.client.get_me()
     if user.id == self_user.id:
-        return await edit_or_reply(
-            spdr, "**Tidak Bisa Membisukan Diri Sendiri..（>﹏<）**"
-        )
+        return await edit_or_reply(geez, "**Tidak Bisa Membisukan Diri Sendiri..（>﹏<）**")
     if user.id in DEVS:
-        return await edit_or_reply(spdr, "**Gagal Mute, Dia Adalah Pembuat Saya 🤪**")
-    await edit_or_reply(
-        spdr,
+        return await geez.edit("**Gagal Mute, dia adalah Pembuat Saya 🤪**")
+    await geez.edit(
         r"\\**#Muted_User**//"
         f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
         f"**User ID:** `{user.id}`\n"
-        f"**Action:** `Mute by {owner}`",
+        f"**Action:** `Mute by {self_user.first_name}`",
     )
     if mute(spdr.chat_id, user.id) is False:
-        return await edit_delete(spdr, "**ERROR:** `Pengguna Sudah Dibisukan.`")
+        return await edit_delete(geez, "**ERROR:** `Pengguna Sudah Dibisukan.`")
     try:
         await spdr.client(EditBannedRequest(spdr.chat_id, user.id, MUTE_RIGHTS))
         if reason:
-            await edit_or_reply(
-                spdr,
-                r"\\**#DMute_User**//"
+            await geez.edit(
+                r"\\**#Muted_User**//"
                 f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
                 f"**User ID:** `{user.id}`\n"
                 f"**Reason:** `{reason}`",
             )
         else:
-            await edit_or_reply(
-                spdr,
-                r"\\**#DMute_User**//"
+            await geez.edit(
+                r"\\**#Muted_User**//"
                 f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
                 f"**User ID:** `{user.id}`\n"
-                f"**Action:** `DMute by {owner}`",
+                f"**Action:** `Mute by {self_user.first_name}`",
             )
     except UserIdInvalidError:
-        return await edit_delete(spdr, "**Terjadi ERROR!**")
+        return await edit_delete(geez, "**Terjadi ERROR!**")
 
 
 @geez_cmd(pattern="unmute(?: |$)(.*)")
@@ -292,7 +282,7 @@ async def unmoot(unmot):
         from userbot.modules.sql_helper.spam_mute_sql import unmute
     except AttributeError:
         return await unmot.edit(NO_SQL)
-    await edit_or_reply(unmot, "`Processing...`")
+    geez = await edit_or_reply(unmot, "`Processing...`")
     user = await get_user_from_event(unmot)
     user = user[0]
     if not user:
@@ -302,9 +292,9 @@ async def unmoot(unmot):
         return await edit_delete(unmot, "**ERROR! Pengguna Sudah Tidak Dibisukan.**")
     try:
         await unmot.client(EditBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
-        await edit_delete(unmot, "**Berhasil Melakukan Unmute!**")
+        await edit_delete(geez, "**Berhasil Melakukan Unmute!**")
     except UserIdInvalidError:
-        return await edit_delete(unmot, "**Terjadi ERROR!**")
+        return await edit_delete(geez, "**Terjadi ERROR!**")
 
 
 @geez_handler(incoming=True)
@@ -350,13 +340,14 @@ async def ungmoot(un_gmute):
         from userbot.modules.sql_helper.gmute_sql import ungmute
     except AttributeError:
         return await edit_delete(un_gmute, NO_SQL)
+    geez = await edit_or_reply(un_gmute, "`Processing...`")
     user = await get_user_from_event(un_gmute)
     user = user[0]
     if not user:
         return
-    await edit_or_reply(un_gmute, "`Membuka Global Mute Pengguna...`")
+    await geez.edit("`Membuka Global Mute Pengguna...`")
     if ungmute(user.id) is False:
-        await un_gmute.edit("**ERROR!** Pengguna Sedang Tidak Di Gmute.")
+        await geez.edit("**ERROR!** Pengguna Sedang Tidak Di Gmute.")
     else:
         await edit_delete(un_gmute, "**Berhasil! Pengguna Sudah Tidak Dibisukan**")
 
@@ -373,36 +364,33 @@ async def gspider(gspdr):
         from userbot.modules.sql_helper.gmute_sql import gmute
     except AttributeError:
         return await gspdr.edit(NO_SQL)
+    geez = await edit_or_reply(gspdr, "`Processing...`")
     user, reason = await get_user_from_event(gspdr)
     if not user:
         return
     self_user = await gspdr.client.get_me()
     if user.id == self_user.id:
-        return await edit_or_reply(
-            gspdr, "**Tidak Bisa Membisukan Diri Sendiri..（>﹏<）**"
-        )
+        return await geez.edit("**Tidak Bisa Membisukan Diri Sendiri..（>﹏<）**")
     if user.id in DEVS:
-        return await edit_or_reply(
+        return await geez.edit(
             gspdr, "**Gagal Global Mute, Dia Adalah Pembuat Saya 🤪**"
         )
     await edit_or_reply(gspdr, "**Berhasil Membisukan Pengguna!**")
     if gmute(user.id) is False:
         await edit_delete(gspdr, "**ERROR! Pengguna Sudah Dibisukan.**")
     elif reason:
-        await edit_or_reply(
-            gspdr,
+        await geez.edit(
             r"\\**#GMuted_User**//"
             f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
             f"**User ID:** `{user.id}`\n"
             f"**Reason:** `{reason}`",
         )
     else:
-        await edit_or_reply(
-            gspdr,
+        await geez.edit(
             r"\\**#GMuted_User**//"
             f"\n\n**First Name:** [{user.first_name}](tg://user?id={user.id})\n"
             f"**User ID:** `{user.id}`\n"
-            f"**Action:** `Global Muted by {owner}`",
+            f"**Action:** `Global Muted by {self_user.first_name}`",
         )
 
 
@@ -478,7 +466,7 @@ async def get_admin(show):
             else:
                 mentions += f"\n⚜ Akun Terhapus <code>{user.id}</code>"
     except ChatAdminRequiredError as err:
-        mentions += " " + str(err) + "\n"
+        mentions += f" {str(err)}" + "\n"
     await show.edit(mentions, parse_mode="html")
 
 
@@ -501,7 +489,7 @@ async def pin(event):
 
 @geez_cmd(pattern="unpin( all|$)")
 @register(pattern=r"^\.cunpin( all|$)", sudo=True)
-async def pin(event):
+async def unpin(event):
     to_unpin = event.reply_to_msg_id
     options = (event.pattern_match.group(1)).strip()
     if not to_unpin and options != "all":
@@ -544,7 +532,7 @@ async def kick(usr):
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        return await edit_delete(usr, NO_PERM + f"\n{e}")
+        return await edit_delete(usr, f"{NO_PERM}\n{e}")
     if reason:
         await xxnx.edit(
             f"[{user.first_name}](tg://user?id={user.id}) **Telah Dikick Dari Grup**\n**Alasan:** `{reason}`"
@@ -603,25 +591,25 @@ async def _iundlt(event):
 CMD_HELP.update(
     {
         "admin": f"**Plugin : **`admin`\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}promote <username/reply> <nama title (optional)>`\
-        \n  ↳ : **Mempromosikan member sebagai admin.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}demote <username/balas ke pesan>`\
-        \n  ↳ : **Menurunkan admin sebagai member.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}ban <username/balas ke pesan> <alasan (optional)>`\
-        \n  ↳ : **Membanned Pengguna dari grup.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}unban <username/reply>`\
-        \n  ↳ : **Unbanned pengguna jadi bisa join grup lagi.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}mute <username/reply> <alasan (optional)>`\
-        \n  ↳ : **Membisukan Seseorang Di Grup, Bisa Ke Admin Juga.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}unmute <username/reply>`\
-        \n  ↳ : **Membuka bisu orang yang dibisukan.\
-        \n  ↳ : ** Membuka global mute orang yang dibisukan.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}all`\
-        \n  ↳ : **Tag semua member dalam grup.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}admins`\
-        \n  ↳ : **Melihat daftar admin di grup.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}setgpic <flags> <balas ke gambar>`\
-        \n  ↳ : **Untuk mengubah foto profil grup atau menghapus gambar foto profil grup.\
+        \n\n  •  **Syntax :** `{cmd}promote <username/reply> <nama title (optional)>`\
+        \n  •  **Function : **Mempromosikan member sebagai admin.\
+        \n\n  •  **Syntax :** `{cmd}demote <username/balas ke pesan>`\
+        \n  •  **Function : **Menurunkan admin sebagai member.\
+        \n\n  •  **Syntax :** `{cmd}ban <username/balas ke pesan> <alasan (optional)>`\
+        \n  •  **Function : **Membanned Pengguna dari grup.\
+        \n\n  •  **Syntax :** `{cmd}unban <username/reply>`\
+        \n  •  **Function : **Unbanned pengguna jadi bisa join grup lagi.\
+        \n\n  •  **Syntax :** `{cmd}mute <username/reply> <alasan (optional)>`\
+        \n  •  **Function : **Membisukan Seseorang Di Grup, Bisa Ke Admin Juga.\
+        \n\n  •  **Syntax :** `{cmd}unmute <username/reply>`\
+        \n  •  **Function : **Membuka bisu orang yang dibisukan.\
+        \n  •  **Function : ** Membuka global mute orang yang dibisukan.\
+        \n\n  •  **Syntax :** `{cmd}all`\
+        \n  •  **Function : **Tag semua member dalam grup.\
+        \n\n  •  **Syntax :** `{cmd}admins`\
+        \n  •  **Function : **Melihat daftar admin di grup.\
+        \n\n  •  **Syntax :** `{cmd}setgpic <flags> <balas ke gambar>`\
+        \n  •  **Function : **Untuk mengubah foto profil grup atau menghapus gambar foto profil grup.\
         \n  •  **Flags :** `-s` = **Untuk mengubah foto grup** atau `-d` = **Untuk menghapus foto grup**\
     "
     }
@@ -631,14 +619,14 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "pin": f"**Plugin : **`pin`\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}pin` <reply chat>\
-        \n  ↳ : **Untuk menyematkan pesan dalam grup.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}pin loud` <reply chat>\
-        \n  ↳ : **Untuk menyematkan pesan dalam grup (tanpa notifikasi) / menyematkan secara diam diam.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}unpin` <reply chat>\
-        \n  ↳ : **Untuk melepaskan pin pesan dalam grup.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}unpin all`\
-        \n  ↳ : **Untuk melepaskan semua sematan pesan dalam grup.\
+        \n\n  •  **Syntax :** `{cmd}pin` <reply chat>\
+        \n  •  **Function : **Untuk menyematkan pesan dalam grup.\
+        \n\n  •  **Syntax :** `{cmd}pin loud` <reply chat>\
+        \n  •  **Function : **Untuk menyematkan pesan dalam grup (tanpa notifikasi) / menyematkan secara diam diam.\
+        \n\n  •  **Syntax :** `{cmd}unpin` <reply chat>\
+        \n  •  **Function : **Untuk melepaskan pin pesan dalam grup.\
+        \n\n  •  **Syntax :** `{cmd}unpin all`\
+        \n  •  **Function : **Untuk melepaskan semua sematan pesan dalam grup.\
     "
     }
 )
@@ -647,10 +635,10 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "undelete": f"**Plugin : **`undelete`\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}undlt` <jumlah chat>\
-        \n  ↳ : **Untuk mendapatkan pesan yang dihapus baru-baru ini di grup\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}undlt -u` <jumlah chat>\
-        \n  ↳ : **Untuk mendapatkan pesan media yang dihapus baru-baru ini di grup \
+        \n\n  •  **Syntax :** `{cmd}undlt` <jumlah chat>\
+        \n  •  **Function : **Untuk mendapatkan pesan yang dihapus baru-baru ini di grup\
+        \n\n  •  **Syntax :** `{cmd}undlt -u` <jumlah chat>\
+        \n  •  **Function : **Untuk mendapatkan pesan media yang dihapus baru-baru ini di grup \
         \n  •  **Flags :** `-u` = **Gunakan flags ini untuk mengunggah media.**\
         \n\n  •  **NOTE : Membutuhkan Hak admin Grup** \
     "
@@ -661,10 +649,10 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "gmute": f"**Plugin : **`gmute`\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}gmute` <username/reply> <alasan (optional)>\
-        \n  ↳ : **Untuk Membisukan Pengguna di semua grup yang kamu admin.\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}ungmute` <username/reply>\
-        \n  ↳ : **Untuk Membuka global mute Pengguna di semua grup yang kamu admin.\
+        \n\n  •  **Syntax :** `{cmd}gmute` <username/reply> <alasan (optional)>\
+        \n  •  **Function : **Untuk Membisukan Pengguna di semua grup yang kamu admin.\
+        \n\n  •  **Syntax :** `{cmd}ungmute` <username/reply>\
+        \n  •  **Function : **Untuk Membuka global mute Pengguna di semua grup yang kamu admin.\
     "
     }
 )
@@ -673,10 +661,10 @@ CMD_HELP.update(
 CMD_HELP.update(
     {
         "zombies": f"**Plugin : **`zombies`\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}zombies`\
-        \n  ↳ : **Untuk mencari akun terhapus dalam grup\
-        \n\n  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 :** `{cmd}zombies clean`\
-        \n  ↳ : **untuk menghapus Akun Terhapus dari grup.\
+        \n\n  •  **Syntax :** `{cmd}zombies`\
+        \n  •  **Function : **Untuk mencari akun terhapus dalam grup\
+        \n\n  •  **Syntax :** `{cmd}zombies clean`\
+        \n  •  **Function : **untuk menghapus Akun Terhapus dari grup.\
     "
     }
 )
