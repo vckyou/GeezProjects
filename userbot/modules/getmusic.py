@@ -4,7 +4,6 @@
 import asyncio
 import glob
 import os
-import shutil
 import time
 
 from hachoir.metadata import extractMetadata
@@ -12,14 +11,12 @@ from hachoir.parser import createParser
 from pylast import User
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
+from telethon.tl.types import DocumentAttributeVideo
 
 from userbot import CMD_HANDLER as cmd
 from userbot import (
     CMD_HELP,
-    DEEZER_ARL_TOKEN,
     LASTFM_USERNAME,
-    TEMP_DOWNLOAD_DIRECTORY,
     lastfm,
 )
 from userbot.utils import bash, chrome, edit_or_reply, geez_cmd, progress
