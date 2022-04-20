@@ -32,7 +32,7 @@ import shlex
 import time
 
 from os.path import basename
-from typing import Optional, Union, Tuple
+from typing import Optional, Union
 from io import BytesIO
 from json.decoder import JSONDecodeError
 from aiohttp import ContentTypeError
@@ -168,7 +168,7 @@ async def is_admin(chat_id, user_id):
     )
 
 
-async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
+async def runcmd(cmd: str) -> tuple[str, str, int, int]:
     """run command in terminal"""
     args = shlex.split(cmd)
     process = await asyncio.create_subprocess_exec(
@@ -295,7 +295,7 @@ async def check_media(reply_message):
     return data
 
 
-async def run_cmd(cmd: list) -> Tuple[bytes, bytes]:
+async def run_cmd(cmd: list) -> tuple[bytes, bytes]:
     process = await asyncio.create_subprocess_exec(
         *cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -612,8 +612,6 @@ async def Carbon(
     file = BytesIO(con)
     file.name = f"{file_name}.jpg"
     return file
-
-#Lol
 
 
 async def animator(media, mainevent, textevent):
