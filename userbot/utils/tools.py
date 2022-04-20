@@ -32,7 +32,7 @@ import shlex
 import time
 
 from os.path import basename
-from typing import Optional, Union
+from typing import Optional, Union, Tuple
 from io import BytesIO
 from json.decoder import JSONDecodeError
 from aiohttp import ContentTypeError
@@ -168,8 +168,7 @@ async def is_admin(chat_id, user_id):
     )
 
 
-async def runcmd(cmd: str) -> tuple[str, str, int, int]:
-    """run command in terminal"""
+async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     args = shlex.split(cmd)
     process = await asyncio.create_subprocess_exec(
         *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
