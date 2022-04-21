@@ -102,7 +102,7 @@ GeezProjects is licensed under [GNU Affero General Public License](https://www.g
 ### Credits
 * [![TeamGeez](https://img.shields.io/static/v1?label=GeezProjects&message=contributions&color=critical)](https://github.com/vckyou/GeezProjects/graphs/contributors)
 * [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
-* [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
+* [Laky-64](https://github.com/Laky-64) for [PyTgCalls.](https://github.com/pytgcalls/pytgcalls)
 
 > Made with 💕 by [vckyaz](https://t.me/vckyaz).    
 
