@@ -76,9 +76,6 @@ async def type_afk_is_not_true(notafk):
     global COUNT_MSG
     global USERS
     global AFKREASON
-    global USER_AFK
-    global afk_time
-    global afk_start
     global afk_end
     user = await bot.get_me()
     last = user.last_name
@@ -129,11 +126,6 @@ async def type_afk_is_not_true(notafk):
 async def mention_afk(mention):
     """This function takes care of notifying the people who mention you that you are AFK."""
     global COUNT_MSG
-    global USERS
-    global ISAFK
-    global USER_AFK
-    global afk_time
-    global afk_start
     global afk_end
     user = await bot.get_me()  # pylint:disable=E0602
     back_alivee = datetime.now()
@@ -192,15 +184,8 @@ async def mention_afk(mention):
 @register(incoming=True, disable_errors=True)
 async def afk_on_pm(sender):
     """Function which informs people that you are AFK in PM"""
-    global ISAFK
-    global USERS
     global COUNT_MSG
     global COUNT_MSG
-    global USERS
-    global ISAFK
-    global USER_AFK
-    global afk_time
-    global afk_start
     global afk_end
     back_alivee = datetime.now()
     afk_end = back_alivee.replace(microsecond=0)

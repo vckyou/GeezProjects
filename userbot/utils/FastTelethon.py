@@ -341,7 +341,6 @@ def stream_file(file_to_stream: BinaryIO, chunk_size=1024):
 async def _internal_transfer_to_telegram(
     client: TelegramClient, response: BinaryIO, progress_callback: callable
 ) -> Tuple[TypeInputFile, int]:
-    global filename
     file_id = helpers.generate_random_long()
     file_size = os.path.getsize(response.name)
 

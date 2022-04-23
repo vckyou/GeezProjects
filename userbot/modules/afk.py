@@ -23,8 +23,6 @@ afk_start = {}
 async def set_not_afk(event):
     global USER_AFK
     global afk_time
-    global last_afk_message
-    global afk_start
     global afk_end
     user = await event.client.get_me()
     owner = user.first_name
@@ -70,10 +68,6 @@ async def set_not_afk(event):
 async def on_afk(event):
     if event.fwd_from:
         return
-    global USER_AFK
-    global afk_time
-    global last_afk_message
-    global afk_start
     global afk_end
     user = await event.client.get_me()
     owner = user.first_name
