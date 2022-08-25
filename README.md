@@ -44,15 +44,15 @@ Selamat Menikmati :D
 -  ( `mv sample_config.env config.env` )
 -  edit config.env Anda dan isi VARS menggunakan ( `nano config.env` ) `CTRL + S ` untuk menyimpan VARS Anda, gunakan `CTRL + X` untuk keluar dan kembali ke direktori GeezProjects
 -  Buka SCRREN di VPS Anda ( `screen -S GeezProjects` )
--  Kemudian gunakan perintah ini untuk menyebarkan GeezProjects ( `python3 -m userbot` ) Atau ( `bash start` )
+-  Kemudian gunakan perintah ini untuk menyebarkan GeezProjects ( `python3 -m geezproject` ) Atau ( `bash start` )
 
 
 ### Example Plugin
 
   ```python
 from  datetime  import  datetime
-from userbot import bot
-from userbot.utils import edit_or_reply, geez_cmd
+from geezproject import bot
+from geezproject.utils import edit_or_reply, geez_cmd
 
 @geez_cmd(pattern="ping")
 async def ping(event):
@@ -70,8 +70,8 @@ async def ping(event):
 *   [BianSepang](https://github.com/BianSepang/WeebProject) : WeebProject
 *   [Sandy1709](https://github.com/sandy1709/catuserbot) : CatUserbot
 *   [VICKY](https://github.com/vckyou/GeezProjects) :  GeezProjects
-*   [Risman](https://github.com/mrismanaziz/Man-Userbot) :  Man-Userbot
-*   [Alvin](https://github.com/Zora24/Lord-Userbot) : Lord-Userbot
+*   [Risman](https://github.com/mrismanaziz/Man-geezproject) :  Man-geezproject
+*   [Alvin](https://github.com/Zora24/Lord-geezproject) : Lord-geezproject
 *   [X_ImFine](https://github.com/ximfine) :  XBot-REMIX
 
 ### Credits

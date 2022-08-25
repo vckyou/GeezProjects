@@ -4,4 +4,4 @@
 # This file is a part of < https://github.com/vckyou/GeezProjects >
 # PLease read the GNU Affero General Public License in <https://github.com/mrismanaziz/GeezProjects/blob/main/LICENSE/>.
 
-python3 -m userbot
+python3 -m geezproject
