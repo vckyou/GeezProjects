@@ -580,7 +580,7 @@ with bot:
                     description="Repository GeezProjects Ubot",
                     url="https://t.me/GeezSupport",
                     thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text="**GeezProjects Ubot**\n➖➖➖➖➖➖➖➖➖➖\n❍▸ **Owner Repo :** [Vcky](https://t.me/vckyou)\n**Support :** @GeezSupport\n❍▸ **Repository :** [GeezProjects](https://github.com/vckyou/GeezProjects)\n➖➖➖➖➖➖➖➖➖➖",
+                    text="**GeezProjects Ubot**\n➖➖➖➖➖➖➖➖➖➖\n❍▸ **Owner Repo :** [Vcky](https://t.me/vckyou)\n**Support :** @GeezProject\n❍▸ **Repository :** [GeezProjects](https://github.com/vckyou/GeezProjects)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/GeezSupport"),
@@ -629,7 +629,7 @@ with bot:
                     description="GeezProjects Ubot | Telethon",
                     url="https://t.me/GeezSupport",
                     thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
-                    text=f"**GeezProjects**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode:** [{user.first_name}](tg://user?id={user.id})\n**Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @GeezSupport\n➖➖➖➖➖➖➖➖➖➖",
+                    text=f"**GeezProjects**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode:** [{user.first_name}](tg://user?id={user.id})\n**Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @GeezProject\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/GeezSupport"),
