@@ -63,7 +63,7 @@ async def _(event):
                     sixth = await conv.get_response()
                     await bot.send_read_acknowledge(conv.chat_id)
                 await xx.edit(
-                    f"**Berhasil Menyalakan Mode Inline**\n\n**Ketik** `{cmd}helpme` **lagi untuk membuka menu bantuan.**"
+                    f"**Berhasil Menyalakan Mode Inline**\n\n**Ketik** `{cmd}help` **lagi untuk membuka menu bantuan.**"
                 )
             await bot.delete_messages(
                 conv.chat_id,

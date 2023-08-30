@@ -5,7 +5,6 @@
 
 # port to geezproject from uniborg by @keselekpermen69
 
-
 import io
 import re
 
@@ -29,8 +28,6 @@ async def on_new_message(event):
                 await event.reply(
                     "`Anda Tidak Punya Izin Untuk Menghapus Pesan Disini`"
                 )
-                await sleep(1)
-                await reply.delete()
                 sql.rm_from_blacklist(event.chat_id, snip.lower())
             break
 

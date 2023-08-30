@@ -54,4 +54,4 @@ async def client_id(event, botid=None):
         OWNER_ID = uid
         GEEZ_USER = client.first_name
     geeza_mention = f"[{GEEZ_USER}](tg://user?id={OWNER_ID})"
-    return OWNER_ID, GEEZ_USER, geez_mention
+    return OWNER_ID, GEEZ_USER, geeza_mention

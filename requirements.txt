@@ -30,6 +30,7 @@ hentai
 heroku3
 html_telegraph_poster
 htmlwebshot
+https://github.com/yt-dlp/yt-dlp
 httplib2
 humanize 
 jikanpy
@@ -86,5 +87,4 @@ wordcloud
 youtube-dl
 youtube-search
 youtube-search-python==1.4.9
-yt-dlp==2021.11.10.1
 zipfile38

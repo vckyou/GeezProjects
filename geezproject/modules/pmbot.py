@@ -112,7 +112,7 @@ async def unban_user_from_bot(user, reason, reply_to=None):
             \n**First Name:** {_format.mentionuser(get_display_name(user) , user.id)}\
             \n**User ID:** `{user.id}`"
     if BOTLOG_CHATID:
-        await tgbot_message(BOTLOG_CHATID, info)
+        await tgbot.send_message(BOTLOG_CHATID, info)
     return info
 
 

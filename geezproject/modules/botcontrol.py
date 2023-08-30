@@ -22,6 +22,7 @@ from geezproject import (
     GROUP,
     HEROKU_API_KEY,
     HEROKU_APP_NAME,
+    LOGS,
     SUDO_HANDLER,
     StartTime,
     tgbot,

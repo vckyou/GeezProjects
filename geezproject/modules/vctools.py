@@ -158,7 +158,7 @@ async def leavevc(event):
         try:
             chat_id = await event.client.get_peer_id(int(chat_id))
         except Exception as e:
-            return await geez.edit(f"**ERROR:** `{e}`")
+            return await geezav.edit(f"**ERROR:** `{e}`")
     else:
         chat_id = event.chat_id
     if chat_id:

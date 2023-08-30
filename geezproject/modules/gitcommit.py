@@ -10,9 +10,6 @@ from datetime import datetime
 
 from github import Github
 
-# from sample_config import Config
-# from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
-# from geezproject.events import humanbytes, progress, time_formatter
 from geezproject import CMD_HELP, GIT_REPO_NAME, GITHUB_ACCESS_TOKEN, bot
 from geezproject.events import geez_cmd
 

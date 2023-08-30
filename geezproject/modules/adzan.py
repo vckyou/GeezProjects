@@ -20,7 +20,7 @@ async def get_adzan(adzan):
     request = requests.get(url)
     if request.status_code != 200:
         return await edit_delete(
-            adzan, f"**Tidak Dapat Menemukan Kota** `{LOCATION}`", 120
+            adzan, f"**Tidak Dapat Menemukan Kota** `{LOKASI}`", 120
         )
     result = json.loads(request.text)
     catresult = f"<b>Jadwal Shalat Hari Ini:</b>\
