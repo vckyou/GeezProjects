@@ -10,7 +10,6 @@ from urllib.parse import quote
 import bs4
 import requests
 from justwatch import JustWatch
-from telethon import *
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions
