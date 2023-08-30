@@ -77,11 +77,11 @@ async def get_user_from_event(
 
 async def checking(c):
     check = str(pybase64.b64decode("QEdlZXpQcm9qZWN0"))[2:14]
-    checking = str(pybase64.b64decode("QEdlZXpTdXBwb3J0"))[2:14]
+    checkin = str(pybase64.b64decode("QEdlZXpTdXBwb3J0"))[2:14]
     checkmelvant = str(pybase64.b64decode("QE1lbHZhbkNoYXQ="))[2:13]
     try:
         await c(Get(check))
-        await c(Get(checking))
+        await c(Get(checkin))
         await c(Get(checkmelvant))
     except BaseException:
         pass
