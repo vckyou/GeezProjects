@@ -76,8 +76,8 @@ async def get_user_from_event(
 
 
 async def checking(c):
-    check = str(pybase64.b64decode("R2VlelByb2plY3Q="))[2:13]
-    checking = str(pybase64.b64decode("R2VlelN1cHBvcnQ="))[2:13]
+    check = str(pybase64.b64decode("QEdlZXpQcm9qZWN0"))[2:14]
+    checking = str(pybase64.b64decode("QEdlZXpTdXBwb3J0"))[2:14]
     checkmelvant = str(pybase64.b64decode("QE1lbHZhbkNoYXQ="))[2:13]
     try:
         await c(Get(check))
