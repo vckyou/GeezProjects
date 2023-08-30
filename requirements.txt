@@ -19,6 +19,7 @@ geopy
 git+https://github.com/programmingerror/heroku3.py.git
 git+https://github.com/1danish-00/carbon-now-sh-api-wrapper.git
 git+https://github.com/buddhhu/img2html.git
+git+https://github.com/yt-dlp/yt-dlp.git
 gitpython
 glitch_this
 google_images_download
@@ -30,7 +31,6 @@ hentai
 heroku3
 html_telegraph_poster
 htmlwebshot
-https://github.com/yt-dlp/yt-dlp
 httplib2
 humanize 
 jikanpy
