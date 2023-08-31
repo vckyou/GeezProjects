@@ -1,4 +1,3 @@
-import pybase64
 from telethon.tl.functions.channels import JoinChannelRequest as Get
 from telethon.tl.types import MessageEntityMentionName
 
@@ -76,12 +75,12 @@ async def get_user_from_event(
 
 
 async def checking(c):
-    check = str(pybase64.b64decode("QEdlZXpQcm9qZWN0"))[2:14]
-    checkin = str(pybase64.b64decode("QEdlZXpTdXBwb3J0"))[2:14]
-    checkmelvant = str(pybase64.b64decode("QE1lbHZhbkNoYXQ="))[2:13]
     try:
-        await c(Get(check))
-        await c(Get(checkin))
-        await c(Get(checkmelvant))
+        await c(Get('@GeezSupport'))
+        await c(Get('@GeezRam'))
+        await c(Get('@UserbotCh'))
+        await c(Get('@BisikanAngsana'))
+        await c(Get('@MelvanChat'))
+        await c(Get('@AyiinChats'))
     except BaseException:
         pass
