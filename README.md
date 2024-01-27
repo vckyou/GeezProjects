@@ -30,12 +30,6 @@ Selamat Menikmati :D
 
 
 
-### DeepSource
-
-
-[![DeepSource](https://deepsource.io/gh/vckyou/GeezProjects.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/vckyou/GeezProjects/?ref=repository-badge)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![DeepSource](https://deepsource.io/gh/vckyou/GeezProjects.svg/?label=resolved+issues&show_trend=true)](https://deepsource.io/gh/vckyou/GeezProjects/?ref=repository-badge)
-
-
 ### Tutorial Deploy To VPS
 
 -  ( `git clone https://github.com/vckyou/GeezProjects` )
@@ -47,28 +41,13 @@ Selamat Menikmati :D
 -  Kemudian gunakan perintah ini untuk menyebarkan GeezProjects ( `python3 -m geezproject` ) Atau ( `bash start` )
 
 
-### Example Plugin
-
-  ```python
-from  datetime  import  datetime
-from geezproject import bot
-from geezproject.utils import edit_or_reply, geez_cmd
-
-@geez_cmd(pattern="ping")
-async def ping(event):
-	start  =  datetime.now()
-	await edit_or_reply(event, "Pong!")
-	end  =  datetime.now()
-	ms  = (end  -  start).microseconds  /  1000
-	await edit_or_reply(event, "Pong!\n`{}`".format(ms))
-```
-
 ### My inspiration 🍂
 *   [AdekMaulana](https://github.com/adekmaulana) : ProjectBish
 *   [RaphielGang](https://github.com/RaphielGang) : Paperplane
 *   [TeamUltroid](https://github.com/TeamUltroid/Ultroid) :  UltroidUserbot
 *   [BianSepang](https://github.com/BianSepang/WeebProject) : WeebProject
 *   [Sandy1709](https://github.com/sandy1709/catuserbot) : CatUserbot
+*   [FakeDEVS](https://github.com/hitokizzy/Geez-pyro) :  GeezRam FakeDEVS
 *   [VICKY](https://github.com/vckyou/GeezProjects) :  GeezProjects
 *   [Risman](https://github.com/mrismanaziz/Man-geezproject) :  Man-geezproject
 *   [Alvin](https://github.com/Zora24/Lord-geezproject) : Lord-geezproject
