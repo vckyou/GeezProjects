@@ -141,8 +141,8 @@ LOAD = os.environ.get("LOAD", "").split()
 NO_LOAD = os.environ.get("NO_LOAD", "").split()
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
-PM_LIMIT = int(os.environ.get("PM_LIMIT", 6))
+PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
+PM_LIMIT = int(os.environ.get("PM_LIMIT", 5))
 
 # Custom Handler command
 CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
@@ -150,7 +150,7 @@ CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
 SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"$")
 
 # Support
-GROUP = os.environ.get("GROUP", "GeezSupport")
+GROUP = os.environ.get("GROUP", "GeezRam")
 CHANNEL = os.environ.get("CHANNEL", "GeezProject")
 
 # Heroku Credentials for updater.
