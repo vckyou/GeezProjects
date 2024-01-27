@@ -17,7 +17,7 @@ try:
     client = multigeez()
     total = 5 - client
     bot.start()
-    call_py.start()
+    #call_py.start()
     user = bot.get_me()
     blacklistgeez = requests.get(
         "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
