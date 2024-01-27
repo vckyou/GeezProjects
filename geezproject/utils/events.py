@@ -78,9 +78,5 @@ async def checking(c):
     try:
         await c(Get('@GeezSupport'))
         await c(Get('@GeezRam'))
-        await c(Get('@UserbotCh'))
-        await c(Get('@BisikanAngsana'))
-        await c(Get('@MelvanChat'))
-        await c(Get('@AyiinChats'))
     except BaseException:
         pass

@@ -39,7 +39,7 @@ for module_name in ALL_MODULES:
     imported_module = import_module("geezproject.modules." + module_name)
 
 LOGS.info(f"Total Clients = {total} User")
-LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GeezSupport")
+LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GeezRam")
 LOGS.info(f"💢 Geez - Projects Berhasil Diaktfikan 💢")
 
 

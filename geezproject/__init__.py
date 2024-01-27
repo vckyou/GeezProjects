@@ -77,23 +77,12 @@ logging.getLogger("telethon.network.mtprotosender").setLevel(logging.ERROR)
 logging.getLogger("telethon.network.connection.connection").setLevel(logging.ERROR)
 LOGS = getLogger(__name__)
 
-if version_info[0] < 3 or version_info[1] < 8:
+if version_info[0] < 3 or version_info[1] < 10:
     LOGS.info(
-        "Anda HARUS memiliki python setidaknya versi 3.8."
+        "Anda HARUS memiliki python setidaknya versi 3.10"
         "Beberapa fitur tergantung versi python ini. Bot berhenti."
     )
     sys.exit(1)
-
-# Check if the config was edited by using the already used variable.
-# Basically, its the 'virginity check' for the config file ;)
-if CONFIG_CHECK := os.environ.get(
-    "___________PLOX_______REMOVE_____THIS_____LINE__________", None
-):
-    LOGS.info(
-        "Harap hapus baris yang disebutkan dalam tagar pertama dari file config.env"
-    )
-    sys.exit(1)
-
 
 
 while 0 < 6:
