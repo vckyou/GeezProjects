@@ -8,7 +8,7 @@ from importlib import import_module
 from pytgcalls import idle
 
 from geezproject import BOT_TOKEN, BOT_VER, blacklistgeez
-from geezproject import DEVS, LOGS, LOOP, bot, call_py, BOTLOG_CHATID
+from geezproject import DEVS, LOGS, LOOP, bot, BOTLOG_CHATID
 from geezproject.clients import geez_userbot_on, multigeez
 from geezproject.modules import ALL_MODULES
 from geezproject.utils import autobot, autocreategroup
