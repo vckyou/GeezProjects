@@ -15,12 +15,12 @@ import os
 import random
 
 from carbonnow import Carbon
-
+from telethon.utils import get_display_name
+from telethon.tl import types
 from geezproject import CMD_HANDLER as cmd
 from geezproject import CMD_HELP
 from geezproject.utils import edit_delete, edit_or_reply, geez_cmd
 
-from .vcplugin import vcmention
 
 all_col = [
     "Black",
@@ -173,10 +173,15 @@ all_col = [
     "White",
 ]
 
+def zy_mention(user):
+    full_name = get_display_name(user)
+    if not isinstance(user, types.User):
+        return full_name
+    return f"[{full_name}](tg://user?id={user.id})"
 
 @geez_cmd(pattern="(rc|c)arbon")
 async def crbn(event):
-    from_user = vcmention(event.sender)
+    from_user = zy_mention(event.sender)
     xxxx = await edit_or_reply(event, "`Processing...`")
     te = event.text
     col = random.choice(all_col) if te[1] == "r" else None
@@ -209,7 +214,7 @@ async def crbn(event):
 
 @geez_cmd(pattern="ccarbon ?(.*)")
 async def crbn(event):
-    from_user = vcmention(event.sender)
+    from_user = zy_mention(event.sender)
     match = event.pattern_match.group(1)
     if not match:
         return await edit_or_reply(

@@ -7,16 +7,22 @@
 import asyncio
 
 from telethon import events
-
+from telethon.utils import get_display_name
+from telethon.tl import types
 from geezproject import BOTLOG_CHATID
 from geezproject import CMD_HANDLER as cmd
 from geezproject import CMD_HELP, LOGS, SUDO_USERS, bot
 from geezproject.modules.sql_helper import no_log_pms_sql
 from geezproject.modules.sql_helper.globals import addgvar, gvarstatus
-from geezproject.modules.vcplugin import vcmention
+
 from geezproject.utils import _format, edit_delete, edit_or_reply, geez_cmd
 from geezproject.utils.tools import media_type
 
+def zy_mention(user):
+    full_name = get_display_name(user)
+    if not isinstance(user, types.User):
+        return full_name
+    return f"[{full_name}](tg://user?id={user.id})"
 
 class LOG_CHATS:
     def __init__(self):
@@ -40,7 +46,7 @@ async def logaddjoin(event):
         chat = f"[{chat.title}](https://t.me/c/{chat.id}/{event.action_message.id})"
     if event.user_added:
         tmp = event.added_by
-        text = f"📩 **#ADD_LOG\n •** {vcmention(tmp)} **Menambahkan** {vcmention(user)}\n **• Ke Group** {chat}"
+        text = f"📩 **#ADD_LOG\n •** {zy_mention(tmp)} **Menambahkan** {zy_mention(user)}\n **• Ke Group** {chat}"
     elif event.user_joined:
         text = f"📨 **#JOIN_LOG\n •** [{user.first_name}](tg://user?id={user.id}) **Bergabung\n • Ke Group** {chat}"
     else:
