@@ -8,7 +8,7 @@ from importlib import import_module
 from pytgcalls import idle
 
 from geezproject import BOT_TOKEN, BOT_VER, blacklistgeez
-from geezproject import DEVS, LOGS, LOOP, bot, BOTLOG_CHATID
+from geezproject import DEVS, LOGS, LOOP, bot, BOTLOG_CHATID, call_py
 from geezproject.clients import geez_userbot_on, multigeez
 from geezproject.modules import ALL_MODULES
 from geezproject.utils import autobot, autocreategroup
@@ -17,7 +17,7 @@ try:
     client = multigeez()
     total = 5 - client
     bot.start()
-    #call_py.start()
+    call_py.start()
     user = bot.get_me()
     blacklistgeez = requests.get(
         "https://raw.githubusercontent.com/vckyou/Reforestation/master/blacklistgeez.json"
